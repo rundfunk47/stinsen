@@ -92,4 +92,4 @@ _Stins_ is short in Swedish for "Station Master", and _Stinsen_ is the definite 
 
 # License 📃
 
-_Stinsen_ is released under an MIT license. See License.md for more information.
+_Stinsen_ is released under an MIT license. See LICENCE for more information.
