@@ -1,0 +1,1299 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EB1BBB0225E27FA0004B9AEB /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB82BC8725E27CEF001635E6 /* RoundedButton.swift */; };
+		EB1BBB0325E27FA0004B9AEB /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB82BC7D25E27BEE001635E6 /* RoundedTextField.swift */; };
+		EB1BBB0625E27FA1004B9AEB /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB82BC8725E27CEF001635E6 /* RoundedButton.swift */; };
+		EB1BBB0725E27FA1004B9AEB /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB82BC7D25E27BEE001635E6 /* RoundedTextField.swift */; };
+		EB1BBB0825E27FA2004B9AEB /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB82BC8725E27CEF001635E6 /* RoundedButton.swift */; };
+		EB1BBB0925E27FA2004B9AEB /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB82BC7D25E27BEE001635E6 /* RoundedTextField.swift */; };
+		EB1BBB1325E2EAB6004B9AEB /* InfoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1BBB1225E2EAB6004B9AEB /* InfoText.swift */; };
+		EB1BBB1425E2EAB6004B9AEB /* InfoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1BBB1225E2EAB6004B9AEB /* InfoText.swift */; };
+		EB1BBB1525E2EAB6004B9AEB /* InfoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1BBB1225E2EAB6004B9AEB /* InfoText.swift */; };
+		EB1BBB1625E2EAB6004B9AEB /* InfoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1BBB1225E2EAB6004B9AEB /* InfoText.swift */; };
+		EB1BBB1E25E2EC91004B9AEB /* FavoriteProjectsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1BBB1D25E2EC91004B9AEB /* FavoriteProjectsStore.swift */; };
+		EB1BBB1F25E2EC91004B9AEB /* FavoriteProjectsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1BBB1D25E2EC91004B9AEB /* FavoriteProjectsStore.swift */; };
+		EB1BBB2025E2EC91004B9AEB /* FavoriteProjectsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1BBB1D25E2EC91004B9AEB /* FavoriteProjectsStore.swift */; };
+		EB1BBB2125E2EC91004B9AEB /* FavoriteProjectsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1BBB1D25E2EC91004B9AEB /* FavoriteProjectsStore.swift */; };
+		EB1BBB2E25E2F3BE004B9AEB /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1BBB2D25E2F3BE004B9AEB /* HomeScreen.swift */; };
+		EB1BBB2F25E2F3BE004B9AEB /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1BBB2D25E2F3BE004B9AEB /* HomeScreen.swift */; };
+		EB1BBB3025E2F3BE004B9AEB /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1BBB2D25E2F3BE004B9AEB /* HomeScreen.swift */; };
+		EB1BBB3125E2F3BE004B9AEB /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1BBB2D25E2F3BE004B9AEB /* HomeScreen.swift */; };
+		EB1BBB3B25E38A7A004B9AEB /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1BBB3A25E38A7A004B9AEB /* HomeCoordinator.swift */; };
+		EB1BBB3C25E38A7A004B9AEB /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1BBB3A25E38A7A004B9AEB /* HomeCoordinator.swift */; };
+		EB1BBB3D25E38A7A004B9AEB /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1BBB3A25E38A7A004B9AEB /* HomeCoordinator.swift */; };
+		EB1BBB3E25E38A7A004B9AEB /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1BBB3A25E38A7A004B9AEB /* HomeCoordinator.swift */; };
+		EB20B99925E24499007731B1 /* Stinsen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB20B99825E24499007731B1 /* Stinsen.framework */; };
+		EB20B99A25E24499007731B1 /* Stinsen.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EB20B99825E24499007731B1 /* Stinsen.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EB20B9A125E244AA007731B1 /* Stinsen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB20B9A025E244AA007731B1 /* Stinsen.framework */; };
+		EB20B9A225E244AA007731B1 /* Stinsen.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EB20B9A025E244AA007731B1 /* Stinsen.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EB20B9A525E244B3007731B1 /* Stinsen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB20B9A425E244B3007731B1 /* Stinsen.framework */; };
+		EB20B9A625E244B3007731B1 /* Stinsen.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EB20B9A425E244B3007731B1 /* Stinsen.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EB447C2425B1A84A00F79D05 /* ProjectsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB447C2325B1A84A00F79D05 /* ProjectsCoordinator.swift */; };
+		EB447C2925B1A8CC00F79D05 /* ProjectsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB447C2825B1A8CC00F79D05 /* ProjectsScreen.swift */; };
+		EB447C2D25B1B72D00F79D05 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB447C2C25B1B72D00F79D05 /* ProfileCoordinator.swift */; };
+		EB447C3125B1B73A00F79D05 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB447C3025B1B73A00F79D05 /* ProfileScreen.swift */; };
+		EB447C3C25B1C2CF00F79D05 /* ProjectSummaryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB447C3B25B1C2CF00F79D05 /* ProjectSummaryScreen.swift */; };
+		EB447C4425B1C33A00F79D05 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB766E9325ACAFD40071A407 /* MainCoordinator.swift */; };
+		EB447C4525B1C33A00F79D05 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB766E9825ACB3C30071A407 /* LoadingScreen.swift */; };
+		EB447C4825B1C33C00F79D05 /* ProjectSummaryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB447C3B25B1C2CF00F79D05 /* ProjectSummaryScreen.swift */; };
+		EB447C4925B1C33C00F79D05 /* ProjectsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB447C2825B1A8CC00F79D05 /* ProjectsScreen.swift */; };
+		EB447C4A25B1C33C00F79D05 /* ProjectsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB447C2325B1A84A00F79D05 /* ProjectsCoordinator.swift */; };
+		EB447C4D25B1C33F00F79D05 /* AuthenticatedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1DE0025AC8DF90041CEAA /* AuthenticatedCoordinator.swift */; };
+		EB447C5025B1C34200F79D05 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB447C3025B1B73A00F79D05 /* ProfileScreen.swift */; };
+		EB447C5125B1C34200F79D05 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB447C2C25B1B72D00F79D05 /* ProfileCoordinator.swift */; };
+		EB447C5425B1C34800F79D05 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1DDF225AC8CEB0041CEAA /* LoginScreen.swift */; };
+		EB447C5725B1C34B00F79D05 /* ForgotPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB766EBB25ADDE360071A407 /* ForgotPasswordScreen.swift */; };
+		EB447C5825B1C34B00F79D05 /* UnauthenticatedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1DDF825AC8D9C0041CEAA /* UnauthenticatedCoordinator.swift */; };
+		EB6B0EB025DAFF0D0011E826 /* StinsenApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = EB6B0EAF25DAFF0D0011E826 /* StinsenApp.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EB6B0EBC25DAFF0E0011E826 /* StinsenApp.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EB6B0EBB25DAFF0E0011E826 /* StinsenApp.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EB6B0EC925DAFF0E0011E826 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6B0EC825DAFF0E0011E826 /* ComplicationController.swift */; };
+		EB6B0F1525DAFF770011E826 /* CoordinateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC24EE925AC630000F455F3 /* CoordinateApp.swift */; };
+		EB6B0F1B25DAFF7D0011E826 /* ProjectsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB447C2325B1A84A00F79D05 /* ProjectsCoordinator.swift */; };
+		EB6B0F1C25DAFF7D0011E826 /* ProjectsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB447C2825B1A8CC00F79D05 /* ProjectsScreen.swift */; };
+		EB6B0F1D25DAFF7D0011E826 /* ProjectSummaryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB447C3B25B1C2CF00F79D05 /* ProjectSummaryScreen.swift */; };
+		EB6B0F2325DAFF800011E826 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB447C2C25B1B72D00F79D05 /* ProfileCoordinator.swift */; };
+		EB6B0F2425DAFF800011E826 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB447C3025B1B73A00F79D05 /* ProfileScreen.swift */; };
+		EB6B0F2525DAFF800011E826 /* AuthenticatedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1DE0025AC8DF90041CEAA /* AuthenticatedCoordinator.swift */; };
+		EB6B0F2B25DAFF820011E826 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1DDF225AC8CEB0041CEAA /* LoginScreen.swift */; };
+		EB6B0F3125DAFF860011E826 /* ForgotPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB766EBB25ADDE360071A407 /* ForgotPasswordScreen.swift */; };
+		EB6B0F3225DAFF860011E826 /* UnauthenticatedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1DDF825AC8D9C0041CEAA /* UnauthenticatedCoordinator.swift */; };
+		EB6B0F3825DAFF8C0011E826 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB766E9325ACAFD40071A407 /* MainCoordinator.swift */; };
+		EB6B0F3925DAFF8C0011E826 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB766E9825ACB3C30071A407 /* LoadingScreen.swift */; };
+		EB6B0F8525DB04C90011E826 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB766E9825ACB3C30071A407 /* LoadingScreen.swift */; };
+		EB6B0F8625DB04C90011E826 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB766E9325ACAFD40071A407 /* MainCoordinator.swift */; };
+		EB6B0F8D25DB04D30011E826 /* ProjectSummaryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB447C3B25B1C2CF00F79D05 /* ProjectSummaryScreen.swift */; };
+		EB6B0F8E25DB04D30011E826 /* ProjectsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB447C2325B1A84A00F79D05 /* ProjectsCoordinator.swift */; };
+		EB6B0F8F25DB04D30011E826 /* ProjectsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB447C2825B1A8CC00F79D05 /* ProjectsScreen.swift */; };
+		EB6B0F9625DB04D80011E826 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB447C2C25B1B72D00F79D05 /* ProfileCoordinator.swift */; };
+		EB6B0F9725DB04D80011E826 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB447C3025B1B73A00F79D05 /* ProfileScreen.swift */; };
+		EB6B0F9825DB04D80011E826 /* AuthenticatedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1DE0025AC8DF90041CEAA /* AuthenticatedCoordinator.swift */; };
+		EB6B0F9F25DB04DF0011E826 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1DDF225AC8CEB0041CEAA /* LoginScreen.swift */; };
+		EB6B0FA625DB04E40011E826 /* UnauthenticatedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1DDF825AC8D9C0041CEAA /* UnauthenticatedCoordinator.swift */; };
+		EB6B0FA725DB04E40011E826 /* ForgotPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB766EBB25ADDE360071A407 /* ForgotPasswordScreen.swift */; };
+		EB6B0FD025DB04FF0011E826 /* CoordinateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC24EE925AC630000F455F3 /* CoordinateApp.swift */; };
+		EB6B107025DB1CF10011E826 /* CreateProjectCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6B106F25DB1CF10011E826 /* CreateProjectCoordinator.swift */; };
+		EB6B107125DB1CF10011E826 /* CreateProjectCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6B106F25DB1CF10011E826 /* CreateProjectCoordinator.swift */; };
+		EB6B107225DB1CF10011E826 /* CreateProjectCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6B106F25DB1CF10011E826 /* CreateProjectCoordinator.swift */; };
+		EB6B107325DB1CF10011E826 /* CreateProjectCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6B106F25DB1CF10011E826 /* CreateProjectCoordinator.swift */; };
+		EB6B108125DB1D5C0011E826 /* CreateProjectScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6B108025DB1D5C0011E826 /* CreateProjectScreen.swift */; };
+		EB6B108225DB1D5C0011E826 /* CreateProjectScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6B108025DB1D5C0011E826 /* CreateProjectScreen.swift */; };
+		EB6B108325DB1D5C0011E826 /* CreateProjectScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6B108025DB1D5C0011E826 /* CreateProjectScreen.swift */; };
+		EB6B108425DB1D5C0011E826 /* CreateProjectScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6B108025DB1D5C0011E826 /* CreateProjectScreen.swift */; };
+		EB766E9425ACAFD40071A407 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB766E9325ACAFD40071A407 /* MainCoordinator.swift */; };
+		EB766E9925ACB3C30071A407 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB766E9825ACB3C30071A407 /* LoadingScreen.swift */; };
+		EB766EBC25ADDE360071A407 /* ForgotPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB766EBB25ADDE360071A407 /* ForgotPasswordScreen.swift */; };
+		EB82BC6725E279D8001635E6 /* Stinsen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB82BC6625E279D8001635E6 /* Stinsen.framework */; };
+		EB82BC6B25E279E4001635E6 /* Stinsen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB82BC6A25E279E4001635E6 /* Stinsen.framework */; };
+		EB82BC6C25E279E4001635E6 /* Stinsen.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EB82BC6A25E279E4001635E6 /* Stinsen.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EB82BC7E25E27BEE001635E6 /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB82BC7D25E27BEE001635E6 /* RoundedTextField.swift */; };
+		EB82BC8825E27CEF001635E6 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB82BC8725E27CEF001635E6 /* RoundedButton.swift */; };
+		EBC24EFC25AC630300F455F3 /* CoordinateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC24EE925AC630000F455F3 /* CoordinateApp.swift */; };
+		EBC24EFD25AC630300F455F3 /* CoordinateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC24EE925AC630000F455F3 /* CoordinateApp.swift */; };
+		EBDCC59A25E3D64A00C0D074 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBDCC59925E3D64A00C0D074 /* Assets.xcassets */; };
+		EBDCC5A125E3D70300C0D074 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBDCC59925E3D64A00C0D074 /* Assets.xcassets */; };
+		EBDCC5A425E3D70400C0D074 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBDCC59925E3D64A00C0D074 /* Assets.xcassets */; };
+		EBDCC5A725E3D70400C0D074 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBDCC59925E3D64A00C0D074 /* Assets.xcassets */; };
+		EBDCC5AA25E3D70400C0D074 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBDCC59925E3D64A00C0D074 /* Assets.xcassets */; };
+		EBDCC5B425E3E11E00C0D074 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBDCC59925E3D64A00C0D074 /* Assets.xcassets */; };
+		EBE38D8F25DFB90900962D95 /* AllProjectsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE38D8E25DFB90900962D95 /* AllProjectsStore.swift */; };
+		EBE38D9025DFB90900962D95 /* AllProjectsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE38D8E25DFB90900962D95 /* AllProjectsStore.swift */; };
+		EBE38D9125DFB90900962D95 /* AllProjectsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE38D8E25DFB90900962D95 /* AllProjectsStore.swift */; };
+		EBE38D9225DFB90900962D95 /* AllProjectsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE38D8E25DFB90900962D95 /* AllProjectsStore.swift */; };
+		EBE38DA025DFB92400962D95 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE38D9F25DFB92400962D95 /* Project.swift */; };
+		EBE38DA125DFB92400962D95 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE38D9F25DFB92400962D95 /* Project.swift */; };
+		EBE38DA225DFB92400962D95 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE38D9F25DFB92400962D95 /* Project.swift */; };
+		EBE38DA325DFB92400962D95 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE38D9F25DFB92400962D95 /* Project.swift */; };
+		EBF1DDF325AC8CEB0041CEAA /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1DDF225AC8CEB0041CEAA /* LoginScreen.swift */; };
+		EBF1DDF925AC8D9C0041CEAA /* UnauthenticatedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1DDF825AC8D9C0041CEAA /* UnauthenticatedCoordinator.swift */; };
+		EBF1DE0125AC8DF90041CEAA /* AuthenticatedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1DE0025AC8DF90041CEAA /* AuthenticatedCoordinator.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EB6B0EB125DAFF0D0011E826 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EBC24EE425AC62FF00F455F3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EB6B0EAE25DAFF0D0011E826;
+			remoteInfo = "Coordinate WatchKit App";
+		};
+		EB6B0EBD25DAFF0E0011E826 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EBC24EE425AC62FF00F455F3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EB6B0EBA25DAFF0E0011E826;
+			remoteInfo = "Coordinate WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EB20B99B25E24499007731B1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EB20B99A25E24499007731B1 /* Stinsen.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB20B9A325E244AA007731B1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EB20B9A225E244AA007731B1 /* Stinsen.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB20B9A725E244B3007731B1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EB20B9A625E244B3007731B1 /* Stinsen.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB6B0ED325DAFF0F0011E826 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				EB6B0EB025DAFF0D0011E826 /* StinsenApp.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB6B0ED625DAFF0F0011E826 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				EB6B0EBC25DAFF0E0011E826 /* StinsenApp.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB82BC6D25E279E4001635E6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EB82BC6C25E279E4001635E6 /* Stinsen.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		EB1BBB1225E2EAB6004B9AEB /* InfoText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoText.swift; sourceTree = "<group>"; };
+		EB1BBB1D25E2EC91004B9AEB /* FavoriteProjectsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteProjectsStore.swift; sourceTree = "<group>"; };
+		EB1BBB2D25E2F3BE004B9AEB /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		EB1BBB3A25E38A7A004B9AEB /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		EB20B99825E24499007731B1 /* Stinsen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stinsen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB20B99C25E244A0007731B1 /* Stinsen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stinsen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB20B9A025E244AA007731B1 /* Stinsen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stinsen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB20B9A425E244B3007731B1 /* Stinsen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stinsen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB447C2325B1A84A00F79D05 /* ProjectsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsCoordinator.swift; sourceTree = "<group>"; };
+		EB447C2825B1A8CC00F79D05 /* ProjectsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsScreen.swift; sourceTree = "<group>"; };
+		EB447C2C25B1B72D00F79D05 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		EB447C3025B1B73A00F79D05 /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
+		EB447C3B25B1C2CF00F79D05 /* ProjectSummaryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSummaryScreen.swift; sourceTree = "<group>"; };
+		EB6B0EAC25DAFF0D0011E826 /* StinsenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StinsenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB6B0EAF25DAFF0D0011E826 /* StinsenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StinsenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB6B0EB625DAFF0E0011E826 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB6B0EBB25DAFF0E0011E826 /* StinsenApp.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = StinsenApp.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB6B0EC825DAFF0E0011E826 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		EB6B0ECF25DAFF0F0011E826 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB6B0ED025DAFF0F0011E826 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		EB6B0F5E25DB03F60011E826 /* StinsenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StinsenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB6B0F6925DB03F70011E826 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB6B106F25DB1CF10011E826 /* CreateProjectCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProjectCoordinator.swift; sourceTree = "<group>"; };
+		EB6B108025DB1D5C0011E826 /* CreateProjectScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProjectScreen.swift; sourceTree = "<group>"; };
+		EB766E9325ACAFD40071A407 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		EB766E9825ACB3C30071A407 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
+		EB766EBB25ADDE360071A407 /* ForgotPasswordScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordScreen.swift; sourceTree = "<group>"; };
+		EB82BC6025E279D0001635E6 /* Stinsen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stinsen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB82BC6625E279D8001635E6 /* Stinsen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stinsen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB82BC6A25E279E4001635E6 /* Stinsen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stinsen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB82BC7D25E27BEE001635E6 /* RoundedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
+		EB82BC8725E27CEF001635E6 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		EBA2E3ED25DAD4250076B46B /* iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS.entitlements; sourceTree = "<group>"; };
+		EBC24EE925AC630000F455F3 /* CoordinateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateApp.swift; sourceTree = "<group>"; };
+		EBC24EF025AC630300F455F3 /* StinsenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StinsenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBC24EF325AC630300F455F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBC24EF825AC630300F455F3 /* StinsenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StinsenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBC24EFA25AC630300F455F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBC24EFB25AC630300F455F3 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		EBDCC59925E3D64A00C0D074 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EBE38D8E25DFB90900962D95 /* AllProjectsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllProjectsStore.swift; sourceTree = "<group>"; };
+		EBE38D9F25DFB92400962D95 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		EBE390C725E0ED6900962D95 /* Stins.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stins.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBE390CA25E0ED7100962D95 /* Stins.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stins.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBE390CD25E0ED7900962D95 /* Stins.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stins.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBE390D025E0ED7F00962D95 /* Stins.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stins.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBF1DDF225AC8CEB0041CEAA /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		EBF1DDF825AC8D9C0041CEAA /* UnauthenticatedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnauthenticatedCoordinator.swift; sourceTree = "<group>"; };
+		EBF1DE0025AC8DF90041CEAA /* AuthenticatedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedCoordinator.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EB6B0EB825DAFF0E0011E826 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB82BC6725E279D8001635E6 /* Stinsen.framework in Frameworks */,
+				EB82BC6B25E279E4001635E6 /* Stinsen.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB6B0F5B25DB03F60011E826 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB20B99925E24499007731B1 /* Stinsen.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBC24EED25AC630300F455F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB20B9A525E244B3007731B1 /* Stinsen.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBC24EF525AC630300F455F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB20B9A125E244AA007731B1 /* Stinsen.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EB1BBB2C25E2F1BD004B9AEB /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				EB1BBB2D25E2F3BE004B9AEB /* HomeScreen.swift */,
+				EB1BBB3A25E38A7A004B9AEB /* HomeCoordinator.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		EB641D7325E3B2210049B84D /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				EBF1DDF225AC8CEB0041CEAA /* LoginScreen.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		EB641D7425E3B2250049B84D /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				EB766EBB25ADDE360071A407 /* ForgotPasswordScreen.swift */,
+			);
+			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
+		EB6B0EB325DAFF0D0011E826 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				EB6B0EB625DAFF0E0011E826 /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		EB6B0EBF25DAFF0E0011E826 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				EB6B0EC825DAFF0E0011E826 /* ComplicationController.swift */,
+				EB6B0ECF25DAFF0F0011E826 /* Info.plist */,
+				EB6B0ED025DAFF0F0011E826 /* PushNotificationPayload.apns */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		EB6B0F3F25DAFFA70011E826 /* watchOS */ = {
+			isa = PBXGroup;
+			children = (
+				EB6B0EB325DAFF0D0011E826 /* App */,
+				EB6B0EBF25DAFF0E0011E826 /* Extension */,
+			);
+			path = watchOS;
+			sourceTree = "<group>";
+		};
+		EB6B0F5F25DB03F60011E826 /* tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				EB6B0F6925DB03F70011E826 /* Info.plist */,
+			);
+			path = tvOS;
+			sourceTree = "<group>";
+		};
+		EB6B103825DB0EA10011E826 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				EBC24EE925AC630000F455F3 /* CoordinateApp.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		EB6B106E25DB1CBE0011E826 /* CreateProject */ = {
+			isa = PBXGroup;
+			children = (
+				EB6B106F25DB1CF10011E826 /* CreateProjectCoordinator.swift */,
+				EB6B108025DB1D5C0011E826 /* CreateProjectScreen.swift */,
+			);
+			path = CreateProject;
+			sourceTree = "<group>";
+		};
+		EB766E9725ACB3970071A407 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				EB766E9325ACAFD40071A407 /* MainCoordinator.swift */,
+				EB766E9825ACB3C30071A407 /* LoadingScreen.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		EB82BC7C25E27BDE001635E6 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				EB82BC7D25E27BEE001635E6 /* RoundedTextField.swift */,
+				EB82BC8725E27CEF001635E6 /* RoundedButton.swift */,
+				EB1BBB1225E2EAB6004B9AEB /* InfoText.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		EBC24EE325AC62FF00F455F3 = {
+			isa = PBXGroup;
+			children = (
+				EBE38F4125E0369F00962D95 /* StinsenApp */,
+				EBC24EF125AC630300F455F3 /* Products */,
+				EBE38ED925DFD13F00962D95 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		EBC24EE825AC630000F455F3 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				EB6B103825DB0EA10011E826 /* Main */,
+				EB82BC7C25E27BDE001635E6 /* Components */,
+				EBE38D8D25DFB8EE00962D95 /* Stores */,
+				EBE38D8C25DFB8E900962D95 /* Models */,
+				EBF1DE2D25AC9AFC0041CEAA /* Coordinators */,
+				EBDCC59925E3D64A00C0D074 /* Assets.xcassets */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		EBC24EF125AC630300F455F3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EBC24EF025AC630300F455F3 /* StinsenApp.app */,
+				EBC24EF825AC630300F455F3 /* StinsenApp.app */,
+				EB6B0EAC25DAFF0D0011E826 /* StinsenApp.app */,
+				EB6B0EAF25DAFF0D0011E826 /* StinsenApp.app */,
+				EB6B0EBB25DAFF0E0011E826 /* StinsenApp.appex */,
+				EB6B0F5E25DB03F60011E826 /* StinsenApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EBC24EF225AC630300F455F3 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				EBA2E3ED25DAD4250076B46B /* iOS.entitlements */,
+				EBC24EF325AC630300F455F3 /* Info.plist */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		EBC24EF925AC630300F455F3 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				EBC24EFA25AC630300F455F3 /* Info.plist */,
+				EBC24EFB25AC630300F455F3 /* macOS.entitlements */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		EBE38D8C25DFB8E900962D95 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EBE38D9F25DFB92400962D95 /* Project.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EBE38D8D25DFB8EE00962D95 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				EBE38D8E25DFB90900962D95 /* AllProjectsStore.swift */,
+				EB1BBB1D25E2EC91004B9AEB /* FavoriteProjectsStore.swift */,
+			);
+			path = Stores;
+			sourceTree = "<group>";
+		};
+		EBE38ED925DFD13F00962D95 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EB82BC6A25E279E4001635E6 /* Stinsen.framework */,
+				EB82BC6625E279D8001635E6 /* Stinsen.framework */,
+				EB82BC6025E279D0001635E6 /* Stinsen.framework */,
+				EB20B9A425E244B3007731B1 /* Stinsen.framework */,
+				EB20B9A025E244AA007731B1 /* Stinsen.framework */,
+				EB20B99C25E244A0007731B1 /* Stinsen.framework */,
+				EB20B99825E24499007731B1 /* Stinsen.framework */,
+				EBE390D025E0ED7F00962D95 /* Stins.framework */,
+				EBE390CD25E0ED7900962D95 /* Stins.framework */,
+				EBE390CA25E0ED7100962D95 /* Stins.framework */,
+				EBE390C725E0ED6900962D95 /* Stins.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EBE38F4125E0369F00962D95 /* StinsenApp */ = {
+			isa = PBXGroup;
+			children = (
+				EBC24EE825AC630000F455F3 /* Shared */,
+				EBC24EF225AC630300F455F3 /* iOS */,
+				EBC24EF925AC630300F455F3 /* macOS */,
+				EB6B0F3F25DAFFA70011E826 /* watchOS */,
+				EB6B0F5F25DB03F60011E826 /* tvOS */,
+			);
+			path = StinsenApp;
+			sourceTree = "<group>";
+		};
+		EBE45BC525AC8AC300B915E8 /* Unauthenticated */ = {
+			isa = PBXGroup;
+			children = (
+				EB641D7325E3B2210049B84D /* Login */,
+				EB641D7425E3B2250049B84D /* ForgotPassword */,
+				EBF1DDF825AC8D9C0041CEAA /* UnauthenticatedCoordinator.swift */,
+			);
+			path = Unauthenticated;
+			sourceTree = "<group>";
+		};
+		EBE45BC625AC8ACD00B915E8 /* Authenticated */ = {
+			isa = PBXGroup;
+			children = (
+				EBF1DE0025AC8DF90041CEAA /* AuthenticatedCoordinator.swift */,
+			);
+			path = Authenticated;
+			sourceTree = "<group>";
+		};
+		EBF1DE1825AC91390041CEAA /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				EB447C3B25B1C2CF00F79D05 /* ProjectSummaryScreen.swift */,
+				EB447C2325B1A84A00F79D05 /* ProjectsCoordinator.swift */,
+				EB447C2825B1A8CC00F79D05 /* ProjectsScreen.swift */,
+			);
+			path = Projects;
+			sourceTree = "<group>";
+		};
+		EBF1DE1925AC91410041CEAA /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				EB447C2C25B1B72D00F79D05 /* ProfileCoordinator.swift */,
+				EB447C3025B1B73A00F79D05 /* ProfileScreen.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		EBF1DE2D25AC9AFC0041CEAA /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				EB766E9725ACB3970071A407 /* Main */,
+				EBE45BC525AC8AC300B915E8 /* Unauthenticated */,
+				EBE45BC625AC8ACD00B915E8 /* Authenticated */,
+				EB1BBB2C25E2F1BD004B9AEB /* Home */,
+				EBF1DE1825AC91390041CEAA /* Projects */,
+				EBF1DE1925AC91410041CEAA /* Profile */,
+				EB6B106E25DB1CBE0011E826 /* CreateProject */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EB6B0EAB25DAFF0D0011E826 /* StinsenApp (watchOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB6B0EDB25DAFF0F0011E826 /* Build configuration list for PBXNativeTarget "StinsenApp (watchOS)" */;
+			buildPhases = (
+				EB6B0EAA25DAFF0D0011E826 /* Resources */,
+				EB6B0ED325DAFF0F0011E826 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EB6B0EB225DAFF0D0011E826 /* PBXTargetDependency */,
+			);
+			name = "StinsenApp (watchOS)";
+			productName = Coordinate;
+			productReference = EB6B0EAC25DAFF0D0011E826 /* StinsenApp.app */;
+			productType = "com.apple.product-type.application.watchapp2-container";
+		};
+		EB6B0EAE25DAFF0D0011E826 /* StinsenApp (watchOS App) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB6B0EDA25DAFF0F0011E826 /* Build configuration list for PBXNativeTarget "StinsenApp (watchOS App)" */;
+			buildPhases = (
+				EB6B0EAD25DAFF0D0011E826 /* Resources */,
+				EB6B0ED625DAFF0F0011E826 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EB6B0EBE25DAFF0E0011E826 /* PBXTargetDependency */,
+			);
+			name = "StinsenApp (watchOS App)";
+			productName = "Coordinate WatchKit App";
+			productReference = EB6B0EAF25DAFF0D0011E826 /* StinsenApp.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		EB6B0EBA25DAFF0E0011E826 /* StinsenApp (watchOS Extension) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB6B0ED925DAFF0F0011E826 /* Build configuration list for PBXNativeTarget "StinsenApp (watchOS Extension)" */;
+			buildPhases = (
+				EB6B0EB725DAFF0E0011E826 /* Sources */,
+				EB6B0EB825DAFF0E0011E826 /* Frameworks */,
+				EB6B0EB925DAFF0E0011E826 /* Resources */,
+				EB82BC6D25E279E4001635E6 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "StinsenApp (watchOS Extension)";
+			productName = "Coordinate WatchKit Extension";
+			productReference = EB6B0EBB25DAFF0E0011E826 /* StinsenApp.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+		EB6B0F5D25DB03F60011E826 /* StinsenApp (tvOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB6B0F6A25DB03F70011E826 /* Build configuration list for PBXNativeTarget "StinsenApp (tvOS)" */;
+			buildPhases = (
+				EB6B0F5A25DB03F60011E826 /* Sources */,
+				EB6B0F5B25DB03F60011E826 /* Frameworks */,
+				EB6B0F5C25DB03F60011E826 /* Resources */,
+				EB20B99B25E24499007731B1 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "StinsenApp (tvOS)";
+			productName = Coordinate;
+			productReference = EB6B0F5E25DB03F60011E826 /* StinsenApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EBC24EEF25AC630300F455F3 /* StinsenApp (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EBC24F0425AC630300F455F3 /* Build configuration list for PBXNativeTarget "StinsenApp (iOS)" */;
+			buildPhases = (
+				EBC24EEC25AC630300F455F3 /* Sources */,
+				EBC24EED25AC630300F455F3 /* Frameworks */,
+				EBC24EEE25AC630300F455F3 /* Resources */,
+				EB20B9A725E244B3007731B1 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "StinsenApp (iOS)";
+			productName = "Coordinate (iOS)";
+			productReference = EBC24EF025AC630300F455F3 /* StinsenApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EBC24EF725AC630300F455F3 /* StinsenApp (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EBC24F0725AC630300F455F3 /* Build configuration list for PBXNativeTarget "StinsenApp (macOS)" */;
+			buildPhases = (
+				EBC24EF425AC630300F455F3 /* Sources */,
+				EBC24EF525AC630300F455F3 /* Frameworks */,
+				EBC24EF625AC630300F455F3 /* Resources */,
+				EB20B9A325E244AA007731B1 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "StinsenApp (macOS)";
+			productName = "Coordinate (macOS)";
+			productReference = EBC24EF825AC630300F455F3 /* StinsenApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EBC24EE425AC62FF00F455F3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					EB6B0EAB25DAFF0D0011E826 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					EB6B0EAE25DAFF0D0011E826 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					EB6B0EBA25DAFF0E0011E826 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					EB6B0F5D25DB03F60011E826 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					EBC24EEF25AC630300F455F3 = {
+						CreatedOnToolsVersion = 12.3;
+					};
+					EBC24EF725AC630300F455F3 = {
+						CreatedOnToolsVersion = 12.3;
+					};
+				};
+			};
+			buildConfigurationList = EBC24EE725AC62FF00F455F3 /* Build configuration list for PBXProject "StinsenApp" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EBC24EE325AC62FF00F455F3;
+			productRefGroup = EBC24EF125AC630300F455F3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EBC24EEF25AC630300F455F3 /* StinsenApp (iOS) */,
+				EBC24EF725AC630300F455F3 /* StinsenApp (macOS) */,
+				EB6B0EAB25DAFF0D0011E826 /* StinsenApp (watchOS) */,
+				EB6B0EAE25DAFF0D0011E826 /* StinsenApp (watchOS App) */,
+				EB6B0EBA25DAFF0E0011E826 /* StinsenApp (watchOS Extension) */,
+				EB6B0F5D25DB03F60011E826 /* StinsenApp (tvOS) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EB6B0EAA25DAFF0D0011E826 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBDCC5A425E3D70400C0D074 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB6B0EAD25DAFF0D0011E826 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBDCC5A725E3D70400C0D074 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB6B0EB925DAFF0E0011E826 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBDCC5AA25E3D70400C0D074 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB6B0F5C25DB03F60011E826 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBDCC5B425E3E11E00C0D074 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBC24EEE25AC630300F455F3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBDCC59A25E3D64A00C0D074 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBC24EF625AC630300F455F3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBDCC5A125E3D70300C0D074 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EB6B0EB725DAFF0E0011E826 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB6B0F2325DAFF800011E826 /* ProfileCoordinator.swift in Sources */,
+				EB6B107225DB1CF10011E826 /* CreateProjectCoordinator.swift in Sources */,
+				EB1BBB0625E27FA1004B9AEB /* RoundedButton.swift in Sources */,
+				EB6B0F2B25DAFF820011E826 /* LoginScreen.swift in Sources */,
+				EBE38D9125DFB90900962D95 /* AllProjectsStore.swift in Sources */,
+				EB1BBB0725E27FA1004B9AEB /* RoundedTextField.swift in Sources */,
+				EB6B0F1525DAFF770011E826 /* CoordinateApp.swift in Sources */,
+				EB6B108325DB1D5C0011E826 /* CreateProjectScreen.swift in Sources */,
+				EB6B0F3925DAFF8C0011E826 /* LoadingScreen.swift in Sources */,
+				EB1BBB3025E2F3BE004B9AEB /* HomeScreen.swift in Sources */,
+				EB6B0F1C25DAFF7D0011E826 /* ProjectsScreen.swift in Sources */,
+				EB6B0F3125DAFF860011E826 /* ForgotPasswordScreen.swift in Sources */,
+				EB1BBB1525E2EAB6004B9AEB /* InfoText.swift in Sources */,
+				EB6B0F1B25DAFF7D0011E826 /* ProjectsCoordinator.swift in Sources */,
+				EB6B0F3225DAFF860011E826 /* UnauthenticatedCoordinator.swift in Sources */,
+				EBE38DA225DFB92400962D95 /* Project.swift in Sources */,
+				EB6B0F2525DAFF800011E826 /* AuthenticatedCoordinator.swift in Sources */,
+				EB6B0EC925DAFF0E0011E826 /* ComplicationController.swift in Sources */,
+				EB6B0F2425DAFF800011E826 /* ProfileScreen.swift in Sources */,
+				EB1BBB3D25E38A7A004B9AEB /* HomeCoordinator.swift in Sources */,
+				EB6B0F1D25DAFF7D0011E826 /* ProjectSummaryScreen.swift in Sources */,
+				EB1BBB2025E2EC91004B9AEB /* FavoriteProjectsStore.swift in Sources */,
+				EB6B0F3825DAFF8C0011E826 /* MainCoordinator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB6B0F5A25DB03F60011E826 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB6B0F9825DB04D80011E826 /* AuthenticatedCoordinator.swift in Sources */,
+				EB1BBB2125E2EC91004B9AEB /* FavoriteProjectsStore.swift in Sources */,
+				EB1BBB3125E2F3BE004B9AEB /* HomeScreen.swift in Sources */,
+				EB6B0F8F25DB04D30011E826 /* ProjectsScreen.swift in Sources */,
+				EB1BBB1625E2EAB6004B9AEB /* InfoText.swift in Sources */,
+				EB6B0F9F25DB04DF0011E826 /* LoginScreen.swift in Sources */,
+				EB6B107325DB1CF10011E826 /* CreateProjectCoordinator.swift in Sources */,
+				EB6B108425DB1D5C0011E826 /* CreateProjectScreen.swift in Sources */,
+				EB6B0F9725DB04D80011E826 /* ProfileScreen.swift in Sources */,
+				EB6B0F8525DB04C90011E826 /* LoadingScreen.swift in Sources */,
+				EB1BBB0925E27FA2004B9AEB /* RoundedTextField.swift in Sources */,
+				EB6B0F8D25DB04D30011E826 /* ProjectSummaryScreen.swift in Sources */,
+				EBE38D9225DFB90900962D95 /* AllProjectsStore.swift in Sources */,
+				EB6B0FD025DB04FF0011E826 /* CoordinateApp.swift in Sources */,
+				EB6B0F8E25DB04D30011E826 /* ProjectsCoordinator.swift in Sources */,
+				EB1BBB0825E27FA2004B9AEB /* RoundedButton.swift in Sources */,
+				EB6B0F9625DB04D80011E826 /* ProfileCoordinator.swift in Sources */,
+				EB6B0FA725DB04E40011E826 /* ForgotPasswordScreen.swift in Sources */,
+				EB6B0FA625DB04E40011E826 /* UnauthenticatedCoordinator.swift in Sources */,
+				EB6B0F8625DB04C90011E826 /* MainCoordinator.swift in Sources */,
+				EBE38DA325DFB92400962D95 /* Project.swift in Sources */,
+				EB1BBB3E25E38A7A004B9AEB /* HomeCoordinator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBC24EEC25AC630300F455F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB447C2D25B1B72D00F79D05 /* ProfileCoordinator.swift in Sources */,
+				EB1BBB1E25E2EC91004B9AEB /* FavoriteProjectsStore.swift in Sources */,
+				EB1BBB2E25E2F3BE004B9AEB /* HomeScreen.swift in Sources */,
+				EB82BC7E25E27BEE001635E6 /* RoundedTextField.swift in Sources */,
+				EB1BBB1325E2EAB6004B9AEB /* InfoText.swift in Sources */,
+				EB766E9425ACAFD40071A407 /* MainCoordinator.swift in Sources */,
+				EB6B107025DB1CF10011E826 /* CreateProjectCoordinator.swift in Sources */,
+				EB6B108125DB1D5C0011E826 /* CreateProjectScreen.swift in Sources */,
+				EBF1DE0125AC8DF90041CEAA /* AuthenticatedCoordinator.swift in Sources */,
+				EB766E9925ACB3C30071A407 /* LoadingScreen.swift in Sources */,
+				EB447C3C25B1C2CF00F79D05 /* ProjectSummaryScreen.swift in Sources */,
+				EBE38D8F25DFB90900962D95 /* AllProjectsStore.swift in Sources */,
+				EB447C2425B1A84A00F79D05 /* ProjectsCoordinator.swift in Sources */,
+				EBC24EFC25AC630300F455F3 /* CoordinateApp.swift in Sources */,
+				EB447C2925B1A8CC00F79D05 /* ProjectsScreen.swift in Sources */,
+				EBF1DDF925AC8D9C0041CEAA /* UnauthenticatedCoordinator.swift in Sources */,
+				EB82BC8825E27CEF001635E6 /* RoundedButton.swift in Sources */,
+				EB766EBC25ADDE360071A407 /* ForgotPasswordScreen.swift in Sources */,
+				EB447C3125B1B73A00F79D05 /* ProfileScreen.swift in Sources */,
+				EBE38DA025DFB92400962D95 /* Project.swift in Sources */,
+				EBF1DDF325AC8CEB0041CEAA /* LoginScreen.swift in Sources */,
+				EB1BBB3B25E38A7A004B9AEB /* HomeCoordinator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBC24EF425AC630300F455F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB447C4D25B1C33F00F79D05 /* AuthenticatedCoordinator.swift in Sources */,
+				EB1BBB1F25E2EC91004B9AEB /* FavoriteProjectsStore.swift in Sources */,
+				EB1BBB2F25E2F3BE004B9AEB /* HomeScreen.swift in Sources */,
+				EB447C5825B1C34B00F79D05 /* UnauthenticatedCoordinator.swift in Sources */,
+				EB1BBB1425E2EAB6004B9AEB /* InfoText.swift in Sources */,
+				EB6B107125DB1CF10011E826 /* CreateProjectCoordinator.swift in Sources */,
+				EB6B108225DB1D5C0011E826 /* CreateProjectScreen.swift in Sources */,
+				EB447C5725B1C34B00F79D05 /* ForgotPasswordScreen.swift in Sources */,
+				EB447C4525B1C33A00F79D05 /* LoadingScreen.swift in Sources */,
+				EBE38D9025DFB90900962D95 /* AllProjectsStore.swift in Sources */,
+				EB1BBB0325E27FA0004B9AEB /* RoundedTextField.swift in Sources */,
+				EB447C4425B1C33A00F79D05 /* MainCoordinator.swift in Sources */,
+				EB447C5025B1C34200F79D05 /* ProfileScreen.swift in Sources */,
+				EB447C4925B1C33C00F79D05 /* ProjectsScreen.swift in Sources */,
+				EBC24EFD25AC630300F455F3 /* CoordinateApp.swift in Sources */,
+				EB1BBB0225E27FA0004B9AEB /* RoundedButton.swift in Sources */,
+				EB447C4825B1C33C00F79D05 /* ProjectSummaryScreen.swift in Sources */,
+				EB447C5125B1C34200F79D05 /* ProfileCoordinator.swift in Sources */,
+				EB447C5425B1C34800F79D05 /* LoginScreen.swift in Sources */,
+				EBE38DA125DFB92400962D95 /* Project.swift in Sources */,
+				EB447C4A25B1C33C00F79D05 /* ProjectsCoordinator.swift in Sources */,
+				EB1BBB3C25E38A7A004B9AEB /* HomeCoordinator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EB6B0EB225DAFF0D0011E826 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EB6B0EAE25DAFF0D0011E826 /* StinsenApp (watchOS App) */;
+			targetProxy = EB6B0EB125DAFF0D0011E826 /* PBXContainerItemProxy */;
+		};
+		EB6B0EBE25DAFF0E0011E826 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EB6B0EBA25DAFF0E0011E826 /* StinsenApp (watchOS Extension) */;
+			targetProxy = EB6B0EBD25DAFF0E0011E826 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		EB6B0ED125DAFF0F0011E826 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = se.rundfunk.stinsenapp.watchos;
+				PRODUCT_NAME = StinsenApp;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		EB6B0ED225DAFF0F0011E826 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = se.rundfunk.stinsenapp.watchos;
+				PRODUCT_NAME = StinsenApp;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EB6B0ED425DAFF0F0011E826 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				IBSC_MODULE = StinsenApp_WatchKit_Extension;
+				INFOPLIST_FILE = StinsenApp/watchOS/App/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = se.rundfunk.stinsenapp.watchos.watchkitapp;
+				PRODUCT_NAME = StinsenApp;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+			};
+			name = Debug;
+		};
+		EB6B0ED525DAFF0F0011E826 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				IBSC_MODULE = StinsenApp_WatchKit_Extension;
+				INFOPLIST_FILE = StinsenApp/watchOS/App/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = se.rundfunk.stinsenapp.watchos.watchkitapp;
+				PRODUCT_NAME = StinsenApp;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+			};
+			name = Release;
+		};
+		EB6B0ED725DAFF0F0011E826 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = StinsenApp/watchOS/Extension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = se.rundfunk.stinsenapp.watchos.watchkitapp.watchkitextension;
+				PRODUCT_NAME = StinsenApp;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+			};
+			name = Debug;
+		};
+		EB6B0ED825DAFF0F0011E826 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = StinsenApp/watchOS/Extension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = se.rundfunk.stinsenapp.watchos.watchkitapp.watchkitextension;
+				PRODUCT_NAME = StinsenApp;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+			};
+			name = Release;
+		};
+		EB6B0F6B25DB03F70011E826 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = StinsenApp/tvOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = se.rundfunk.stinsenapp.tvos;
+				PRODUCT_NAME = StinsenApp;
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 14.3;
+			};
+			name = Debug;
+		};
+		EB6B0F6C25DB03F70011E826 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = StinsenApp/tvOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = se.rundfunk.stinsenapp.tvos;
+				PRODUCT_NAME = StinsenApp;
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 14.3;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EBC24F0225AC630300F455F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		EBC24F0325AC630300F455F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		EBC24F0525AC630300F455F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = StinsenApp/iOS/iOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V7WT36VGCS;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = StinsenApp/iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = se.rundfunk.stinsenapp.ios;
+				PRODUCT_NAME = StinsenApp;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
+				TARGETED_DEVICE_FAMILY = "1,2,6";
+			};
+			name = Debug;
+		};
+		EBC24F0625AC630300F455F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = StinsenApp/iOS/iOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V7WT36VGCS;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = StinsenApp/iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = se.rundfunk.stinsenapp.ios;
+				PRODUCT_NAME = StinsenApp;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
+				TARGETED_DEVICE_FAMILY = "1,2,6";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EBC24F0825AC630300F455F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = StinsenApp/macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = StinsenApp/macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = se.rundfunk.stinsenapp.macos;
+				PRODUCT_NAME = StinsenApp;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		EBC24F0925AC630300F455F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = StinsenApp/macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = StinsenApp/macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = se.rundfunk.stinsenapp.macos;
+				PRODUCT_NAME = StinsenApp;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EB6B0ED925DAFF0F0011E826 /* Build configuration list for PBXNativeTarget "StinsenApp (watchOS Extension)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB6B0ED725DAFF0F0011E826 /* Debug */,
+				EB6B0ED825DAFF0F0011E826 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB6B0EDA25DAFF0F0011E826 /* Build configuration list for PBXNativeTarget "StinsenApp (watchOS App)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB6B0ED425DAFF0F0011E826 /* Debug */,
+				EB6B0ED525DAFF0F0011E826 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB6B0EDB25DAFF0F0011E826 /* Build configuration list for PBXNativeTarget "StinsenApp (watchOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB6B0ED125DAFF0F0011E826 /* Debug */,
+				EB6B0ED225DAFF0F0011E826 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB6B0F6A25DB03F70011E826 /* Build configuration list for PBXNativeTarget "StinsenApp (tvOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB6B0F6B25DB03F70011E826 /* Debug */,
+				EB6B0F6C25DB03F70011E826 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EBC24EE725AC62FF00F455F3 /* Build configuration list for PBXProject "StinsenApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBC24F0225AC630300F455F3 /* Debug */,
+				EBC24F0325AC630300F455F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EBC24F0425AC630300F455F3 /* Build configuration list for PBXNativeTarget "StinsenApp (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBC24F0525AC630300F455F3 /* Debug */,
+				EBC24F0625AC630300F455F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EBC24F0725AC630300F455F3 /* Build configuration list for PBXNativeTarget "StinsenApp (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBC24F0825AC630300F455F3 /* Debug */,
+				EBC24F0925AC630300F455F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EBC24EE425AC62FF00F455F3 /* Project object */;
+}
