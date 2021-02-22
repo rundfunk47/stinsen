@@ -45,7 +45,7 @@ class ProjectsCoordinator: NavigationCoordinatable {
 }
 ```
 
-The `Route`-enum defines all the possible routes that can be performed from the current coordinator. The function `resolve(route: Route)` is responsible for providing the transition and the actual view that we will route to. This can be combined with a factory in the coordinator as well.
+The `Route`-enum defines all the possible routes that can be performed from the current coordinator. The function `resolve(route: Route)` is responsible for providing the transition and the actual view/coordinator that we will route to. This can be combined with a factory in the coordinator as well.
 
 To perform these transitions, we use `@EnviromentObject` to fetch a reference to the Coordinators context:
 
