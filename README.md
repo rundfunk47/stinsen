@@ -79,7 +79,7 @@ Stinsen out of the box has three different kinds of `Coordinatable` protocols yo
 
 
 
-Clone the repo and run the _StinsenApp_ to get a feel for how _Stinsen_ can be used. _StinsenApp_ works on iOS, tvOS, watchOS and macOS and uses the MVVM-C architecture. It attempts to showcase many of the features _Stinsen_ has available for you to use.
+Clone the repo and run the _StinsenApp_ to get a feel for how _Stinsen_ can be used. _StinsenApp_ works on iOS, tvOS, watchOS and macOS. It attempts to showcase many of the features _Stinsen_ has available for you to use.
 
 
 # Who are responsible? 🙋🏽‍♀️
