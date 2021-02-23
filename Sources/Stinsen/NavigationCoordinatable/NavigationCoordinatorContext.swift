@@ -5,7 +5,7 @@ public class NavigationRouter<T: NavigationCoordinatable>: ObservableObject {
     var parent: AnyCoordinatable?
     public let id: Int?
     
-    public func route(to route: T.CoordinatorRoute) {
+    public func route(to route: T.Route) {
         coordinator.route(to: route)
     }
     
