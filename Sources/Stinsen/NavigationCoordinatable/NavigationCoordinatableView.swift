@@ -9,6 +9,7 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
     @EnvironmentObject private var root: RootCoordinator
     @EnvironmentObject private var parent: ParentCoordinator
     private let router: NavigationRouter<T>
+    private let start: AnyView
     
     var body: some View {
         if self.router.parent == nil {
@@ -17,7 +18,7 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
         
         guard let id = id else {
             return AnyView(
-                coordinator.start()
+                start
                     .onDisappear(perform: {
                         // check if coordinator is at top before removing. not the best solution but meh...
                         if parent.coordinator!.children.activeChildCoordinator?.id == coordinator.id && coordinator.navigationStack.value.count == 0 && parent.coordinator!.isNavigationCoordinator {
@@ -112,5 +113,6 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
             coordinator: coordinator,
             parent: nil // to be set later...
         )
+        self.start = AnyView(coordinator.start())
     }
 }
