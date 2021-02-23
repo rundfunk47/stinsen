@@ -2,9 +2,9 @@ import SwiftUI
 
 import Stinsen
 
-@main
+@available(iOS 14.0, *)
 struct StinsenApp: App {
-    @SceneBuilder var body: some Scene {
+    var body: some Scene {
         WindowGroup {
             CoordinatorView(
                 MainCoordinator()

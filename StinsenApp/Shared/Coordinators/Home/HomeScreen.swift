@@ -25,7 +25,7 @@ struct HomeScreen: View {
                 }
             }
         }
-        .navigationTitle("Home")
+        .navigationBarTitle("Home")
     }
     
     init() {

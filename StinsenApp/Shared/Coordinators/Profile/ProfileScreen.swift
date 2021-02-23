@@ -12,7 +12,7 @@ struct ProfileScreen: View {
                 RoundedButton("Logout") {
                     main.route(to: .unauthenticated)
                 }
-            }.navigationTitle("Profile")
+            }.navigationBarTitle("Profile")
         }
     }
 }

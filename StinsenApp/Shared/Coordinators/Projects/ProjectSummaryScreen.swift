@@ -26,7 +26,7 @@ struct ProjectSummaryScreen: View {
                     }
                 }
             }
-            .navigationTitle(allProjects.projects.first(where: { $0.id == id })!.name)
+            .navigationBarTitle(allProjects.projects.first(where: { $0.id == id })!.name)
         }
     }
     

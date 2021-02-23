@@ -7,11 +7,16 @@ struct LoadingScreen: View {
     @EnvironmentObject var main: RootRouter<MainCoordinator>
     
     var body: some View {
-        ProgressView()
-            .onAppear(perform: {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    main.route(to: .unauthenticated)
-                }
-            })
+        Group {
+            if #available(iOS 14.0, *) {
+                ProgressView()
+            } else {
+                Text("Loading...")
+            }
+        }.onAppear(perform: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                main.route(to: .unauthenticated)
+            }
+        })
     }
 }

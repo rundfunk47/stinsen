@@ -1,10 +1,3 @@
-//
-//  ComplicationController.swift
-//  StinsenApp WatchKit Extension
-//
-//  Created by Narek Mailian on 2021-02-23.
-//
-
 import ClockKit
 
 
