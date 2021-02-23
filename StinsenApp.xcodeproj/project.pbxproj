@@ -99,8 +99,8 @@
 		EBC4E62B25E4E13100C7D645 /* Stinsen.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EBC4E62925E4E13100C7D645 /* Stinsen.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EBC4E62D25E4E13B00C7D645 /* Stinsen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBC4E62C25E4E13B00C7D645 /* Stinsen.framework */; };
 		EBC4E62E25E4E13B00C7D645 /* Stinsen.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EBC4E62C25E4E13B00C7D645 /* Stinsen.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		EBC4E63225E4E14900C7D645 /* Stinsen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBC4E63125E4E14900C7D645 /* Stinsen.framework */; };
-		EBC4E63325E4E14900C7D645 /* Stinsen.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EBC4E63125E4E14900C7D645 /* Stinsen.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EBC4E64B25E4E5AA00C7D645 /* Stinsen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBC4E64A25E4E5AA00C7D645 /* Stinsen.framework */; };
+		EBC4E64C25E4E5AA00C7D645 /* Stinsen.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EBC4E64A25E4E5AA00C7D645 /* Stinsen.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EBDCC59A25E3D64A00C0D074 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBDCC59925E3D64A00C0D074 /* Assets.xcassets */; };
 		EBDCC5A125E3D70300C0D074 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBDCC59925E3D64A00C0D074 /* Assets.xcassets */; };
 		EBDCC5B425E3E11E00C0D074 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBDCC59925E3D64A00C0D074 /* Assets.xcassets */; };
@@ -188,17 +188,6 @@
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EB9E36F925E4DDDE00C4E25C /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				EBC4E63325E4E14900C7D645 /* Stinsen.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		EBC4E62F25E4E13B00C7D645 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -206,6 +195,17 @@
 			dstSubfolderSpec = 10;
 			files = (
 				EBC4E62E25E4E13B00C7D645 /* Stinsen.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBC4E64D25E4E5AA00C7D645 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EBC4E64C25E4E5AA00C7D645 /* Stinsen.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,6 +249,7 @@
 		EBC4E62925E4E13100C7D645 /* Stinsen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stinsen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBC4E62C25E4E13B00C7D645 /* Stinsen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stinsen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBC4E63125E4E14900C7D645 /* Stinsen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stinsen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBC4E64A25E4E5AA00C7D645 /* Stinsen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stinsen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBDCC59925E3D64A00C0D074 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBE38D8E25DFB90900962D95 /* AllProjectsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllProjectsStore.swift; sourceTree = "<group>"; };
 		EBE38D9F25DFB92400962D95 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
@@ -270,7 +271,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBC4E63225E4E14900C7D645 /* Stinsen.framework in Frameworks */,
+				EBC4E64B25E4E5AA00C7D645 /* Stinsen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +470,7 @@
 		EBE38ED925DFD13F00962D95 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EBC4E64A25E4E5AA00C7D645 /* Stinsen.framework */,
 				EBC4E63125E4E14900C7D645 /* Stinsen.framework */,
 				EBC4E62C25E4E13B00C7D645 /* Stinsen.framework */,
 				EBC4E62925E4E13100C7D645 /* Stinsen.framework */,
@@ -607,7 +609,7 @@
 				EB9E367225E4DC1300C4E25C /* Sources */,
 				EB9E367325E4DC1300C4E25C /* Frameworks */,
 				EB9E367425E4DC1300C4E25C /* Resources */,
-				EB9E36F925E4DDDE00C4E25C /* Embed Frameworks */,
+				EBC4E64D25E4E5AA00C7D645 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -936,7 +938,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
 				INFOPLIST_FILE = StinsenApp/watchOS/Extension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -958,7 +959,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
 				INFOPLIST_FILE = StinsenApp/watchOS/Extension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -982,7 +982,6 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
 				IBSC_MODULE = StinsenApp_WatchKit_Extension;
 				INFOPLIST_FILE = StinsenApp/watchOS/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1005,7 +1004,6 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
 				IBSC_MODULE = StinsenApp_WatchKit_Extension;
 				INFOPLIST_FILE = StinsenApp/watchOS/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1027,7 +1025,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CURRENT_PROJECT_VERSION = 1;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = se.rundfunk.stinsenapp;
 				PRODUCT_NAME = StinsenApp;
@@ -1040,7 +1037,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CURRENT_PROJECT_VERSION = 1;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = se.rundfunk.stinsenapp;
 				PRODUCT_NAME = StinsenApp;
