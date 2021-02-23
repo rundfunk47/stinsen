@@ -51,7 +51,7 @@ To perform these transitions, we use `@EnviromentObject` to fetch a reference to
 
 ```swift
 struct ProjectsScreen: View {
-    @EnvironmentObject var projects: NavigationStackCoordinatorContext<ProjectsCoordinator>
+    @EnvironmentObject var projects: NavigationRouter<ProjectsCoordinator>
     
     var body: some View {
         List {
