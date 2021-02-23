@@ -45,7 +45,7 @@ class ProjectsCoordinator: NavigationCoordinatable {
 }
 ```
 
-The `Route`-enum defines all the possible routes that can be performed from the current coordinator. The function `resolve(route: Route)` is responsible for providing the transition and the actual view that we will route to. This can be combined with a factory in the coordinator as well.
+The `Route`-enum defines all the possible routes that can be performed from the current coordinator. The function `resolve(route: Route)` is responsible for providing the transition and the actual view/coordinator that we will route to. This can be combined with a factory in the coordinator as well.
 
 To perform these transitions, we use `@EnviromentObject` to fetch a reference to the Coordinators context:
 
@@ -79,7 +79,7 @@ Stinsen out of the box has three different kinds of `Coordinatable` protocols yo
 
 
 
-Clone the repo and run the _StinsenApp_ to get a feel for how _Stinsen_ can be used. _StinsenApp_ works on iOS, tvOS, watchOS and macOS and uses the MVVM-C architecture. It attempts to showcase many of the features _Stinsen_ has available for you to use.
+Clone the repo and run the _StinsenApp_ to get a feel for how _Stinsen_ can be used. _StinsenApp_ works on iOS, tvOS, watchOS and macOS. It attempts to showcase many of the features _Stinsen_ has available for you to use.
 
 
 # Who are responsible? 🙋🏽‍♀️
@@ -92,4 +92,4 @@ _Stins_ is short in Swedish for "Station Master", and _Stinsen_ is the definite 
 
 # License 📃
 
-_Stinsen_ is released under an MIT license. See License.md for more information.
+_Stinsen_ is released under an MIT license. See LICENCE for more information.
