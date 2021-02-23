@@ -20,7 +20,7 @@
 		OBJ_65 /* NavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* NavigationStack.swift */; };
 		OBJ_66 /* NextChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* NextChecker.swift */; };
 		OBJ_67 /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* Transition.swift */; };
-		OBJ_68 /* NavigationRootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* NavigationRootCoordinator.swift */; };
+		OBJ_68 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* RootCoordinator.swift */; };
 		OBJ_69 /* NavigationViewCoordinatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* NavigationViewCoordinatable.swift */; };
 		OBJ_70 /* NavigationViewCoordinatableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* NavigationViewCoordinatableView.swift */; };
 		OBJ_71 /* RootCoordinatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* RootCoordinatable.swift */; };
@@ -46,7 +46,7 @@
 		OBJ_23 /* NavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStack.swift; sourceTree = "<group>"; };
 		OBJ_24 /* NextChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextChecker.swift; sourceTree = "<group>"; };
 		OBJ_25 /* Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
-		OBJ_27 /* NavigationRootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRootCoordinator.swift; sourceTree = "<group>"; };
+		OBJ_27 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		OBJ_28 /* NavigationViewCoordinatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewCoordinatable.swift; sourceTree = "<group>"; };
 		OBJ_29 /* NavigationViewCoordinatableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewCoordinatableView.swift; sourceTree = "<group>"; };
 		OBJ_31 /* RootCoordinatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinatable.swift; sourceTree = "<group>"; };
@@ -79,6 +79,7 @@
 				OBJ_12 /* Children.swift */,
 				OBJ_13 /* Coordinatable.swift */,
 				OBJ_14 /* CoordinatorView.swift */,
+				OBJ_27 /* RootCoordinator.swift */,
 				OBJ_15 /* ParentCoordinator.swift */,
 				OBJ_16 /* Presentable.swift */,
 			);
@@ -109,21 +110,20 @@
 		OBJ_26 /* NavigationViewCoordinatable */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_27 /* NavigationRootCoordinator.swift */,
 				OBJ_28 /* NavigationViewCoordinatable.swift */,
 				OBJ_29 /* NavigationViewCoordinatableView.swift */,
 			);
 			path = NavigationViewCoordinatable;
 			sourceTree = "<group>";
 		};
-		OBJ_30 /* RootCoordinatable */ = {
+		OBJ_30 /* ViewCoordinatable */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_31 /* RootCoordinatable.swift */,
 				OBJ_32 /* RootCoordinatableView.swift */,
 				OBJ_33 /* RootCoordinatorContext.swift */,
 			);
-			path = RootCoordinatable;
+			path = ViewCoordinatable;
 			sourceTree = "<group>";
 		};
 		OBJ_34 /* TabCoordinatable */ = {
@@ -170,7 +170,7 @@
 				OBJ_17 /* Extensions */,
 				OBJ_19 /* NavigationCoordinatable */,
 				OBJ_26 /* NavigationViewCoordinatable */,
-				OBJ_30 /* RootCoordinatable */,
+				OBJ_30 /* ViewCoordinatable */,
 				OBJ_34 /* TabCoordinatable */,
 			);
 			name = Stinsen;
@@ -255,7 +255,7 @@
 				OBJ_65 /* NavigationStack.swift in Sources */,
 				OBJ_66 /* NextChecker.swift in Sources */,
 				OBJ_67 /* Transition.swift in Sources */,
-				OBJ_68 /* NavigationRootCoordinator.swift in Sources */,
+				OBJ_68 /* RootCoordinator.swift in Sources */,
 				OBJ_69 /* NavigationViewCoordinatable.swift in Sources */,
 				OBJ_70 /* NavigationViewCoordinatableView.swift in Sources */,
 				OBJ_71 /* RootCoordinatable.swift in Sources */,

@@ -6,7 +6,7 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
     @ObservedObject var children: Children
     private let id: Int?
     @ObservedObject private var next: NextChecker<T>
-    @EnvironmentObject private var root: NavigationRootCoordinator
+    @EnvironmentObject private var root: RootCoordinator
     @EnvironmentObject private var parent: ParentCoordinator
     private let router: NavigationRouter<T>
     
@@ -22,23 +22,25 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
                         // check if coordinator is at top before removing. not the best solution but meh...
                         if parent.coordinator!.children.activeChildCoordinator?.id == coordinator.id && coordinator.navigationStack.value.count == 0 && parent.coordinator!.isNavigationCoordinator {
                             parent.coordinator!.children.activeChildCoordinator = nil
+                        } else if parent.coordinator!.children.activeModalChildCoordinator?.id == coordinator.id && coordinator.navigationStack.value.count == 0 {
+                            parent.coordinator!.children.activeModalChildCoordinator = nil
                         }
                     })
                     .sheet(isPresented: Binding<Bool>.init(get: { () -> Bool in
-                        return children.activeModalChildCoordinator != nil
+                        return next.nextModalIsActive
                     }, set: { _ in
                         
                     }), onDismiss: {
-                        children.activeModalChildCoordinator = nil
+
                     }, content: {
-                        children.activeModalChildCoordinator!.coordinatorView().environmentObject(ParentCoordinator(coordinator: self.coordinator))
+                        next.nextModalView()
                     })
                     .environmentObject(router)
                     .background(
                         NavigationLink(
-                            destination: next.nextView(),
+                            destination: next.nextPushView(),
                             isActive: Binding<Bool>.init(get: { () -> Bool in
-                                return next.nextIsActive
+                                return next.nextPushIsActive
                             }, set: { _ in
                                 
                             }),
@@ -50,52 +52,50 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
                     )
             )
         }
+                
+        let presentation = coordinator.navigationStack.value[id]
         
-        let view: AnyView
+        let resolved = coordinator.resolveRoute(route: presentation.route)
         
-        guard let route = coordinator.navigationStack.value[safe: id] else {
-            return AnyView(EmptyView())
-        }
-        
-        let resolved = coordinator.resolveRoute(route: route)
-        
-        switch resolved {
-        case .push(let resolved):
-            if let resolved = resolved as? AnyView {
-                view = resolved
-            } else {
-                fatalError()
-            }
-        case .modal:
-            fatalError()
-        }
-        
-        return AnyView(
-            view
-                .onDisappear(perform: {
-                    // check if coordinator is at top before removing. not the best solution but meh...
-                    if root.coordinator.children.containsChild(child: coordinator.eraseToAnyCoordinatable()) {
-                        if coordinator.navigationStack.value.count - 1 == id {
-                            coordinator.navigationStack.value.remove(at: id)
+        if let resolved = resolved.presentable as? AnyView {
+            return AnyView(
+                resolved
+                    .onDisappear(perform: {
+                        // check if coordinator is at top before removing. not the best solution but meh...
+                        if root.coordinator.children.containsChild(child: coordinator.eraseToAnyCoordinatable()) {
+                            if coordinator.navigationStack.value.count - 1 == id {
+                                coordinator.navigationStack.value.remove(at: id)
+                            }
                         }
-                    }
-                })
-                .environmentObject(router)
-                .background(
-                    NavigationLink(
-                        destination: next.nextView(),
-                        isActive: Binding<Bool>.init(get: { () -> Bool in
-                            return next.nextIsActive
-                        }, set: { _ in
-                            
-                        }),
-                        label: {
-                            EmptyView()
-                        }
+                    })
+                    .sheet(isPresented: Binding<Bool>.init(get: { () -> Bool in
+                        return next.nextModalIsActive
+                    }, set: { _ in
+                        
+                    }), onDismiss: {
+
+                    }, content: {
+                        next.nextModalView()
+                    })
+                    .environmentObject(router)
+                    .background(
+                        NavigationLink(
+                            destination: next.nextPushView(),
+                            isActive: Binding<Bool>.init(get: { () -> Bool in
+                                return next.nextPushIsActive
+                            }, set: { _ in
+                                
+                            }),
+                            label: {
+                                EmptyView()
+                            }
+                        )
+                        .hidden()
                     )
-                    .hidden()
-                )
-        )
+            )
+        } else {
+            fatalError("Routes in stack should only contain views. Coordinators are added in the Children-class")
+        }
     }
     
     init(id: Int?, coordinator: T) {

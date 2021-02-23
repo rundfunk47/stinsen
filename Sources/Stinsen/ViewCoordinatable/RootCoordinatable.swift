@@ -1,8 +1,8 @@
 import Foundation
 import SwiftUI
 
-///The RootCoordinatable represents a view with routes that can be switched to but not pushed or presented modally. This can be used if you have a need to switch between different "modes" in the app, for instance if you switch between logged in and logged out.
-public protocol RootCoordinatable: Coordinatable {
+///The ViewCoordinatable represents a view with routes that can be switched to but not pushed or presented modally. This can be used if you have a need to switch between different "modes" in the app, for instance if you switch between logged in and logged out.
+public protocol ViewCoordinatable: Coordinatable {
     associatedtype Route
     associatedtype Start: View
     func route(to route: Route)
@@ -10,7 +10,7 @@ public protocol RootCoordinatable: Coordinatable {
     @ViewBuilder func start() -> Start
 }
 
-public extension RootCoordinatable {
+public extension ViewCoordinatable {
     var isNavigationCoordinator: Bool {
         return false
     }
@@ -22,7 +22,7 @@ public extension RootCoordinatable {
     
     func coordinatorView() -> AnyView {
         return AnyView(
-            RootCoordinatableView(coordinator: self)
+            ViewCoordinatableView(coordinator: self)
         )
     }
 }

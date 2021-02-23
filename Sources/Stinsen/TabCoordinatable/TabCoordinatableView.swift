@@ -19,7 +19,6 @@ struct TabCoordinatableView<T: TabCoordinatable>: View {
             }
         }
         .environmentObject(ParentCoordinator(coordinator: coordinator))
-        .environmentObject(NavigationRootCoordinator(coordinator: coordinator))
         .environmentObject(router)
     }
     

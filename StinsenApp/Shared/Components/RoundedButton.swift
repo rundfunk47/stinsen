@@ -32,15 +32,18 @@ struct RoundedButton: View {
     }
     
     var ios: some View {
-        Button(title) {
-            action()
-        }
-        .font(.headline)
-        .foregroundColor(style == .primary ? .white : .black)
-        .padding()
-        .frame(minWidth: 200, minHeight: 44)
-        .background(style == .primary ? Color.blue : Color.init(red: 0.8, green: 0.8, blue: 0.8))
-        .cornerRadius(15.0)
+        Button(action: action, label: {
+            HStack {
+                Spacer()
+                Text(title).font(.headline)
+                Spacer()
+            }
+            .foregroundColor(style == .primary ? .white : .black)
+            .padding()
+            .background(style == .primary ? Color.blue : Color.init(red: 0.8, green: 0.8, blue: 0.8))
+            .cornerRadius(15.0)
+            .frame(maxWidth: 355, minHeight: 50)
+        })
     }
     
     init(

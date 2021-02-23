@@ -3,28 +3,59 @@ import Combine
 import SwiftUI
 
 class NextChecker<T: NavigationCoordinatable>: ObservableObject {
+    enum Presentation {
+        case push
+        case modal
+    }
+    
     var cancellables: Set<AnyCancellable> = Set()
     
-    @Published var nextIsActive: Bool
+    @Published var nextPushIsActive: Bool
+    @Published var nextModalIsActive: Bool
+
     let id: Int?
     weak var t: T?
     let children: Children
     
-    private static func calculateNextIsActive(t: T, id: Int?, children: Children) -> Bool {
+    private static func nextIsActive(t: T, id: Int?, children: Children, presentation: Presentation) -> Bool {
         if (id ?? 0 == t.navigationStack.value.count) {
-            if children.activeChildCoordinator != nil {
-                return true
+            if presentation == .push {
+                if children.activeChildCoordinator != nil {
+                    return true
+                }
+            } else if presentation == .modal {
+                if children.activeModalChildCoordinator != nil {
+                    return true
+                }
             }
         }
         
         guard let id = id else {
-            return (t.navigationStack.value[safe: 0] != nil)
+            let itemPresentation = t.navigationStack.value[safe: 0]
+            
+            switch itemPresentation {
+            case .modal:
+                return presentation == .modal
+            case .push:
+                return presentation == .push
+            default:
+                return false
+            }
         }
         
-        return (t.navigationStack.value[safe: id + 1] != nil)
+        let itemPresentation = t.navigationStack.value[safe: id + 1]
+        
+        switch itemPresentation {
+        case .modal:
+            return presentation == .modal
+        case .push:
+            return presentation == .push
+        default:
+            return false
+        }
     }
     
-    func nextView() -> AnyView {
+    func nextPushView() -> AnyView {
         if (id ?? 0 == t!.navigationStack.value.count) {
             if children.activeChildCoordinator != nil {
                 return AnyView(
@@ -36,7 +67,26 @@ class NextChecker<T: NavigationCoordinatable>: ObservableObject {
 
         return AnyView(
             NavigationCoordinatableView(
-                id: id ?? -1 + 1,
+                id: (id ?? -1) + 1,
+                coordinator: t!
+            )
+            .environmentObject(ParentCoordinator(coordinator: t!))
+        )
+    }
+    
+    func nextModalView() -> AnyView {
+        if (id ?? 0 == t!.navigationStack.value.count) {
+            if children.activeModalChildCoordinator != nil {
+                return AnyView(
+                    children.activeModalChildCoordinator!.coordinatorView()
+                        .environmentObject(ParentCoordinator(coordinator: t!))
+                )
+            }
+        }
+
+        return AnyView(
+            NavigationCoordinatableView(
+                id: (id ?? -1) + 1,
                 coordinator: t!
             )
             .environmentObject(ParentCoordinator(coordinator: t!))
@@ -48,24 +98,44 @@ class NextChecker<T: NavigationCoordinatable>: ObservableObject {
         self.t = t
         self.children = children
         
-        nextIsActive = Self.calculateNextIsActive(
+        nextPushIsActive = Self.nextIsActive(
             t: t,
             id: id,
-            children: children
+            children: children,
+            presentation: .push
+        )
+        
+        nextModalIsActive = Self.nextIsActive(
+            t: t,
+            id: id,
+            children: children,
+            presentation: .modal
         )
         
         t.navigationStack.objectWillChange.sink { [weak self] _ in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 
-                let next = Self.calculateNextIsActive(
+                let nextPush = Self.nextIsActive(
                     t: t,
                     id: id,
-                    children: children
+                    children: children,
+                    presentation: .push
                 )
                 
-                if self.nextIsActive != next {
-                    self.nextIsActive = next
+                if self.nextPushIsActive != nextPush {
+                    self.nextPushIsActive = nextPush
+                }
+                
+                let nextModal = Self.nextIsActive(
+                    t: t,
+                    id: id,
+                    children: children,
+                    presentation: .modal
+                )
+                
+                if self.nextModalIsActive != nextModal {
+                    self.nextModalIsActive = nextModal
                 }
             }
         }.store(in: &cancellables)
@@ -74,14 +144,26 @@ class NextChecker<T: NavigationCoordinatable>: ObservableObject {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 
-                let next = Self.calculateNextIsActive(
+                let nextPush = Self.nextIsActive(
                     t: t,
                     id: id,
-                    children: children
+                    children: children,
+                    presentation: .push
                 )
                 
-                if self.nextIsActive != next {
-                    self.nextIsActive = next
+                if self.nextPushIsActive != nextPush {
+                    self.nextPushIsActive = nextPush
+                }
+                
+                let nextModal = Self.nextIsActive(
+                    t: t,
+                    id: id,
+                    children: children,
+                    presentation: .modal
+                )
+                
+                if self.nextModalIsActive != nextModal {
+                    self.nextModalIsActive = nextModal
                 }
             }
         }.store(in: &cancellables)

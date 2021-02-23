@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-struct RootCoordinatableView<T: RootCoordinatable>: View {
+struct ViewCoordinatableView<T: ViewCoordinatable>: View {
     var coordinator: T
     @ObservedObject var children: Children
     let router: RootRouter<T>
@@ -24,6 +24,5 @@ struct RootCoordinatableView<T: RootCoordinatable>: View {
         }
         .environmentObject(router)
         .environmentObject(ParentCoordinator(coordinator: coordinator))
-        .environmentObject(NavigationRootCoordinator(coordinator: coordinator))
     }
 }

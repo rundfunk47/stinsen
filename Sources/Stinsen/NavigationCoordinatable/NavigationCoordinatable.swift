@@ -23,14 +23,16 @@ public extension NavigationCoordinatable {
         switch resolved {
         case .push(let resolved):
             if resolved is AnyView {
-                self.navigationStack.value.append(route)
+                self.navigationStack.value.append(.push(route))
             } else if let resolved = resolved as? AnyCoordinatable {
                 self.children.activeChildCoordinator = resolved
             } else {
                 fatalError("Unsupported presentable")
             }
         case .modal(let resolved):
-            if let resolved = resolved as? AnyCoordinatable {
+            if resolved is AnyView {
+                self.navigationStack.value.append(.modal(route))
+            } else if let resolved = resolved as? AnyCoordinatable {
                 self.children.activeModalChildCoordinator = resolved
             } else {
                 fatalError("Unsupported presentable")

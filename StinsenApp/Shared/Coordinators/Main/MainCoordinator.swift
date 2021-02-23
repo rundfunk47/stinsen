@@ -3,7 +3,7 @@ import SwiftUI
 
 import Stinsen
 
-class MainCoordinator: RootCoordinatable {    
+class MainCoordinator: ViewCoordinatable {    
     var children = Children()
 
     enum Route {

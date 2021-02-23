@@ -9,6 +9,7 @@ public struct CoordinatorView: View {
         coordinator
             .coordinatorView()
             .environmentObject(ParentCoordinator(anyCoordinatable: nil))
+            .environmentObject(RootCoordinator(coordinator: coordinator))
     }
     
     public init<T: Coordinatable>(_ coordinator: T) {

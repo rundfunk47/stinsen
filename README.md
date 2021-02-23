@@ -73,7 +73,7 @@ Stinsen out of the box has three different kinds of `Coordinatable` protocols yo
 
 * `NavigationCoordinatable` - For navigational flows. Make sure to wrap these in a NavigationViewCoordinator somewhere if you wish to push on the navigation stack.
 * `TabCoordinatable` - For TabViews.
-* `RootCoordinatable` - Just a view and routes that do not push but rather replace the entire view, can be used for instance when switching between logged in/logged out.
+* `ViewCoordinatable` - Just a view and routes that do not push but rather replace the entire view, can be used for instance when switching between logged in/logged out.
 
 # Sample App 📱
 

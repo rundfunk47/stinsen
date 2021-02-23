@@ -495,11 +495,11 @@
 		EBE38F4125E0369F00962D95 /* StinsenApp */ = {
 			isa = PBXGroup;
 			children = (
-				EB9E369C25E4DC7300C4E25C /* watchOS */,
-				EBC24EE825AC630000F455F3 /* Shared */,
 				EBC24EF225AC630300F455F3 /* iOS */,
 				EBC24EF925AC630300F455F3 /* macOS */,
+				EB9E369C25E4DC7300C4E25C /* watchOS */,
 				EB6B0F5F25DB03F60011E826 /* tvOS */,
+				EBC24EE825AC630000F455F3 /* Shared */,
 			);
 			path = StinsenApp;
 			sourceTree = "<group>";
@@ -914,7 +914,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = StinsenApp/tvOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -933,7 +932,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = StinsenApp/tvOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -997,7 +995,6 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				IBSC_MODULE = StinsenApp_WatchKit_Extension;
 				INFOPLIST_FILE = StinsenApp/watchOS/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1019,7 +1016,6 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				IBSC_MODULE = StinsenApp_WatchKit_Extension;
 				INFOPLIST_FILE = StinsenApp/watchOS/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1179,7 +1175,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = StinsenApp/iOS/iOS.entitlements;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = StinsenApp/iOS/Info.plist;
@@ -1200,7 +1195,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = StinsenApp/iOS/iOS.entitlements;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = StinsenApp/iOS/Info.plist;
@@ -1222,7 +1216,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = StinsenApp/macOS/macOS.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1245,7 +1238,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = StinsenApp/macOS/macOS.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
