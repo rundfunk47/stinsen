@@ -8,7 +8,13 @@ let package = Package(
     products: [
         .library(
             name: "Stinsen",
-            targets: ["Stinsen"]),
+            type: .dynamic,
+            targets: ["Stinsen"]
+        ),
+        .library(
+            name: "Stinsen (Static)",
+            targets: ["Stinsen"]
+        )
     ],
     dependencies: [],
     targets: [
