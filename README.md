@@ -23,7 +23,7 @@ Example using a Navigation Stack:
 ```swift
 class ProjectsCoordinator: NavigationCoordinatable {
     var children = Children() // usually you would want to initialize this without any active children
-    var navigationStack: NavigationStack<Route> = NavigationStack() // same here, when starting the app this should be empty
+    var navigationStack: NavigationStack<Route> = NavigationStack() // same as above, start with an empty stack
 
     enum Route {
         case project(id: UUID)
