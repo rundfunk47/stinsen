@@ -27,6 +27,14 @@
 		EB1C38A725E50DD300F09EFF /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1C38A625E50DD000F09EFF /* Main.swift */; };
 		EB1C38AA25E50DF300F09EFF /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1C38A925E50DED00F09EFF /* Main.swift */; };
 		EB1C38AF25E50E1300F09EFF /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1C38AC25E50E0D00F09EFF /* Main.swift */; };
+		EB235D1325E8D221008BEE0A /* TestbedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB656D3A25E55A5D003A8F8A /* TestbedCoordinator.swift */; };
+		EB235D1525E8D222008BEE0A /* TestbedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB656D3A25E55A5D003A8F8A /* TestbedCoordinator.swift */; };
+		EB235D1725E8D224008BEE0A /* TestbedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB656D3A25E55A5D003A8F8A /* TestbedCoordinator.swift */; };
+		EB235D1925E8D22C008BEE0A /* TestbedScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB656D3E25E55BB8003A8F8A /* TestbedScreen.swift */; };
+		EB235D1B25E8D22D008BEE0A /* TestbedScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB656D3E25E55BB8003A8F8A /* TestbedScreen.swift */; };
+		EB235D1D25E8D22E008BEE0A /* TestbedScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB656D3E25E55BB8003A8F8A /* TestbedScreen.swift */; };
+		EB235D2325E8D502008BEE0A /* Stinsen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB235D2225E8D502008BEE0A /* Stinsen.framework */; };
+		EB235D2425E8D502008BEE0A /* Stinsen.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EB235D2225E8D502008BEE0A /* Stinsen.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EB447C2425B1A84A00F79D05 /* ProjectsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB447C2325B1A84A00F79D05 /* ProjectsCoordinator.swift */; };
 		EB447C2925B1A8CC00F79D05 /* ProjectsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB447C2825B1A8CC00F79D05 /* ProjectsScreen.swift */; };
 		EB447C2D25B1B72D00F79D05 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB447C2C25B1B72D00F79D05 /* ProfileCoordinator.swift */; };
@@ -43,6 +51,8 @@
 		EB447C5425B1C34800F79D05 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1DDF225AC8CEB0041CEAA /* LoginScreen.swift */; };
 		EB447C5725B1C34B00F79D05 /* ForgotPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB766EBB25ADDE360071A407 /* ForgotPasswordScreen.swift */; };
 		EB447C5825B1C34B00F79D05 /* UnauthenticatedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF1DDF825AC8D9C0041CEAA /* UnauthenticatedCoordinator.swift */; };
+		EB656D3B25E55A5D003A8F8A /* TestbedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB656D3A25E55A5D003A8F8A /* TestbedCoordinator.swift */; };
+		EB656D3F25E55BB8003A8F8A /* TestbedScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB656D3E25E55BB8003A8F8A /* TestbedScreen.swift */; };
 		EB6B0F8525DB04C90011E826 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB766E9825ACB3C30071A407 /* LoadingScreen.swift */; };
 		EB6B0F8625DB04C90011E826 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB766E9325ACAFD40071A407 /* MainCoordinator.swift */; };
 		EB6B0F8D25DB04D30011E826 /* ProjectSummaryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB447C3B25B1C2CF00F79D05 /* ProjectSummaryScreen.swift */; };
@@ -101,10 +111,6 @@
 		EBC4E62825E4E12C00C7D645 /* Stinsen.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EBC4E62625E4E12C00C7D645 /* Stinsen.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EBC4E62A25E4E13100C7D645 /* Stinsen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBC4E62925E4E13100C7D645 /* Stinsen.framework */; };
 		EBC4E62B25E4E13100C7D645 /* Stinsen.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EBC4E62925E4E13100C7D645 /* Stinsen.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		EBC4E62D25E4E13B00C7D645 /* Stinsen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBC4E62C25E4E13B00C7D645 /* Stinsen.framework */; };
-		EBC4E62E25E4E13B00C7D645 /* Stinsen.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EBC4E62C25E4E13B00C7D645 /* Stinsen.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		EBC4E64B25E4E5AA00C7D645 /* Stinsen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBC4E64A25E4E5AA00C7D645 /* Stinsen.framework */; };
-		EBC4E64C25E4E5AA00C7D645 /* Stinsen.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EBC4E64A25E4E5AA00C7D645 /* Stinsen.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EBDCC59A25E3D64A00C0D074 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBDCC59925E3D64A00C0D074 /* Assets.xcassets */; };
 		EBDCC5A125E3D70300C0D074 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBDCC59925E3D64A00C0D074 /* Assets.xcassets */; };
 		EBDCC5B425E3E11E00C0D074 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBDCC59925E3D64A00C0D074 /* Assets.xcassets */; };
@@ -159,6 +165,17 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EB235D2525E8D503008BEE0A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EB235D2425E8D502008BEE0A /* Stinsen.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EB2D6F5325E409BC00D0CA4E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -192,28 +209,6 @@
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EBC4E62F25E4E13B00C7D645 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				EBC4E62E25E4E13B00C7D645 /* Stinsen.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EBC4E64D25E4E5AA00C7D645 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				EBC4E64C25E4E5AA00C7D645 /* Stinsen.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -225,11 +220,14 @@
 		EB1C38A625E50DD000F09EFF /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		EB1C38A925E50DED00F09EFF /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		EB1C38AC25E50E0D00F09EFF /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		EB235D2225E8D502008BEE0A /* Stinsen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stinsen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB447C2325B1A84A00F79D05 /* ProjectsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsCoordinator.swift; sourceTree = "<group>"; };
 		EB447C2825B1A8CC00F79D05 /* ProjectsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsScreen.swift; sourceTree = "<group>"; };
 		EB447C2C25B1B72D00F79D05 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		EB447C3025B1B73A00F79D05 /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		EB447C3B25B1C2CF00F79D05 /* ProjectSummaryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSummaryScreen.swift; sourceTree = "<group>"; };
+		EB656D3A25E55A5D003A8F8A /* TestbedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestbedCoordinator.swift; sourceTree = "<group>"; };
+		EB656D3E25E55BB8003A8F8A /* TestbedScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestbedScreen.swift; sourceTree = "<group>"; };
 		EB6B0F5E25DB03F60011E826 /* StinsenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StinsenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB6B0F6925DB03F70011E826 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB6B106F25DB1CF10011E826 /* CreateProjectCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProjectCoordinator.swift; sourceTree = "<group>"; };
@@ -279,7 +277,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBC4E64B25E4E5AA00C7D645 /* Stinsen.framework in Frameworks */,
+				EB235D2325E8D502008BEE0A /* Stinsen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,7 +285,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBC4E62D25E4E13B00C7D645 /* Stinsen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +330,15 @@
 				EB766EBB25ADDE360071A407 /* ForgotPasswordScreen.swift */,
 			);
 			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
+		EB656D3925E55A3C003A8F8A /* Testbed */ = {
+			isa = PBXGroup;
+			children = (
+				EB656D3A25E55A5D003A8F8A /* TestbedCoordinator.swift */,
+				EB656D3E25E55BB8003A8F8A /* TestbedScreen.swift */,
+			);
+			path = Testbed;
 			sourceTree = "<group>";
 		};
 		EB6B0F5F25DB03F60011E826 /* tvOS */ = {
@@ -482,6 +488,7 @@
 		EBE38ED925DFD13F00962D95 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EB235D2225E8D502008BEE0A /* Stinsen.framework */,
 				EBC4E64A25E4E5AA00C7D645 /* Stinsen.framework */,
 				EBC4E63125E4E14900C7D645 /* Stinsen.framework */,
 				EBC4E62C25E4E13B00C7D645 /* Stinsen.framework */,
@@ -551,6 +558,7 @@
 				EBF1DE1825AC91390041CEAA /* Projects */,
 				EBF1DE1925AC91410041CEAA /* Profile */,
 				EB6B106E25DB1CBE0011E826 /* CreateProject */,
+				EB656D3925E55A3C003A8F8A /* Testbed */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -602,7 +610,6 @@
 				EB9E366825E4DC1200C4E25C /* Resources */,
 				EB9E368A25E4DC1300C4E25C /* Embed App Extensions */,
 				EB9E36F225E4DDCF00C4E25C /* Frameworks */,
-				EBC4E62F25E4E13B00C7D645 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -621,7 +628,7 @@
 				EB9E367225E4DC1300C4E25C /* Sources */,
 				EB9E367325E4DC1300C4E25C /* Frameworks */,
 				EB9E367425E4DC1300C4E25C /* Resources */,
-				EBC4E64D25E4E5AA00C7D645 /* Embed Frameworks */,
+				EB235D2525E8D503008BEE0A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -787,6 +794,7 @@
 				EB6B108425DB1D5C0011E826 /* CreateProjectScreen.swift in Sources */,
 				EB6B0F9725DB04D80011E826 /* ProfileScreen.swift in Sources */,
 				EB6B0F8525DB04C90011E826 /* LoadingScreen.swift in Sources */,
+				EB235D1325E8D221008BEE0A /* TestbedCoordinator.swift in Sources */,
 				EB1C38AA25E50DF300F09EFF /* Main.swift in Sources */,
 				EB1BBB0925E27FA2004B9AEB /* RoundedTextField.swift in Sources */,
 				EB6B0F8D25DB04D30011E826 /* ProjectSummaryScreen.swift in Sources */,
@@ -794,6 +802,7 @@
 				EB6B0FD025DB04FF0011E826 /* StinsenApp.swift in Sources */,
 				EB6B0F8E25DB04D30011E826 /* ProjectsCoordinator.swift in Sources */,
 				EB1BBB0825E27FA2004B9AEB /* RoundedButton.swift in Sources */,
+				EB235D1B25E8D22D008BEE0A /* TestbedScreen.swift in Sources */,
 				EB6B0F9625DB04D80011E826 /* ProfileCoordinator.swift in Sources */,
 				EB6B0FA725DB04E40011E826 /* ForgotPasswordScreen.swift in Sources */,
 				EB6B0FA625DB04E40011E826 /* UnauthenticatedCoordinator.swift in Sources */,
@@ -810,12 +819,14 @@
 				EB9E36D425E4DDAA00C4E25C /* ProjectsScreen.swift in Sources */,
 				EB9E368025E4DC1300C4E25C /* ComplicationController.swift in Sources */,
 				EB9E36DD25E4DDAF00C4E25C /* AuthenticatedCoordinator.swift in Sources */,
+				EB235D1D25E8D22E008BEE0A /* TestbedScreen.swift in Sources */,
 				EB9E36BF25E4DD9300C4E25C /* AllProjectsStore.swift in Sources */,
 				EB9E36B525E4DD8A00C4E25C /* StinsenApp.swift in Sources */,
 				EB9E36C025E4DD9300C4E25C /* FavoriteProjectsStore.swift in Sources */,
 				EB9E36E125E4DDB200C4E25C /* ForgotPasswordScreen.swift in Sources */,
 				EB9E36CE25E4DDA700C4E25C /* ProfileCoordinator.swift in Sources */,
 				EB9E36EB25E4DDB700C4E25C /* MainCoordinator.swift in Sources */,
+				EB235D1725E8D224008BEE0A /* TestbedCoordinator.swift in Sources */,
 				EB9E36CD25E4DDA700C4E25C /* ProfileScreen.swift in Sources */,
 				EB9E36D325E4DDAA00C4E25C /* ProjectsCoordinator.swift in Sources */,
 				EB9E36B925E4DD8F00C4E25C /* InfoText.swift in Sources */,
@@ -848,6 +859,7 @@
 				EB6B107025DB1CF10011E826 /* CreateProjectCoordinator.swift in Sources */,
 				EB6B108125DB1D5C0011E826 /* CreateProjectScreen.swift in Sources */,
 				EBF1DE0125AC8DF90041CEAA /* AuthenticatedCoordinator.swift in Sources */,
+				EB656D3B25E55A5D003A8F8A /* TestbedCoordinator.swift in Sources */,
 				EB766E9925ACB3C30071A407 /* LoadingScreen.swift in Sources */,
 				EB447C3C25B1C2CF00F79D05 /* ProjectSummaryScreen.swift in Sources */,
 				EBE38D8F25DFB90900962D95 /* AllProjectsStore.swift in Sources */,
@@ -855,6 +867,7 @@
 				EBC24EFC25AC630300F455F3 /* StinsenApp.swift in Sources */,
 				EB447C2925B1A8CC00F79D05 /* ProjectsScreen.swift in Sources */,
 				EBF1DDF925AC8D9C0041CEAA /* UnauthenticatedCoordinator.swift in Sources */,
+				EB656D3F25E55BB8003A8F8A /* TestbedScreen.swift in Sources */,
 				EB82BC8825E27CEF001635E6 /* RoundedButton.swift in Sources */,
 				EB766EBC25ADDE360071A407 /* ForgotPasswordScreen.swift in Sources */,
 				EB447C3125B1B73A00F79D05 /* ProfileScreen.swift in Sources */,
@@ -878,6 +891,7 @@
 				EB447C5725B1C34B00F79D05 /* ForgotPasswordScreen.swift in Sources */,
 				EB447C4525B1C33A00F79D05 /* LoadingScreen.swift in Sources */,
 				EBE38D9025DFB90900962D95 /* AllProjectsStore.swift in Sources */,
+				EB235D1525E8D222008BEE0A /* TestbedCoordinator.swift in Sources */,
 				EB1C38A725E50DD300F09EFF /* Main.swift in Sources */,
 				EB1BBB0325E27FA0004B9AEB /* RoundedTextField.swift in Sources */,
 				EB447C4425B1C33A00F79D05 /* MainCoordinator.swift in Sources */,
@@ -885,6 +899,7 @@
 				EB447C4925B1C33C00F79D05 /* ProjectsScreen.swift in Sources */,
 				EBC24EFD25AC630300F455F3 /* StinsenApp.swift in Sources */,
 				EB1BBB0225E27FA0004B9AEB /* RoundedButton.swift in Sources */,
+				EB235D1925E8D22C008BEE0A /* TestbedScreen.swift in Sources */,
 				EB447C4825B1C33C00F79D05 /* ProjectSummaryScreen.swift in Sources */,
 				EB447C5125B1C34200F79D05 /* ProfileCoordinator.swift in Sources */,
 				EB447C5425B1C34800F79D05 /* LoginScreen.swift in Sources */,
@@ -964,7 +979,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Debug;
 		};
@@ -986,7 +1001,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Release;
 		};
@@ -1007,7 +1022,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Debug;
 		};
@@ -1029,7 +1044,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Release;
 		};
@@ -1042,6 +1057,7 @@
 				PRODUCT_NAME = StinsenApp;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Debug;
 		};
@@ -1055,6 +1071,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Release;
 		};
@@ -1111,7 +1128,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

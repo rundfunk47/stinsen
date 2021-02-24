@@ -4,10 +4,10 @@ import SwiftUI
 struct ViewCoordinatableView<T: ViewCoordinatable>: View {
     var coordinator: T
     @ObservedObject var children: Children
-    let router: RootRouter<T>
+    let router: ViewRouter<T>
     
     init(coordinator: T) {
-        self.router = RootRouter(coordinator)
+        self.router = ViewRouter(coordinator)
         self.coordinator = coordinator
         self.children = coordinator.children
     }
@@ -23,6 +23,5 @@ struct ViewCoordinatableView<T: ViewCoordinatable>: View {
             }
         }
         .environmentObject(router)
-        .environmentObject(ParentCoordinator(coordinator: coordinator))
     }
 }

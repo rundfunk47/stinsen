@@ -12,8 +12,8 @@ public protocol NavigationCoordinatable: Coordinatable {
 }
 
 public extension NavigationCoordinatable {
-    var isNavigationCoordinator: Bool {
-        return true
+    var appearingMetadata: AppearingMetadata? {
+        self.navigationStack
     }
 }
 
@@ -23,16 +23,18 @@ public extension NavigationCoordinatable {
         switch resolved {
         case .push(let resolved):
             if resolved is AnyView {
-                self.navigationStack.value.append(.push(route))
+                self.navigationStack.append(.push(route))
             } else if let resolved = resolved as? AnyCoordinatable {
+                self.navigationStack.appearing = nil
                 self.children.activeChildCoordinator = resolved
             } else {
                 fatalError("Unsupported presentable")
             }
         case .modal(let resolved):
             if resolved is AnyView {
-                self.navigationStack.value.append(.modal(route))
+                self.navigationStack.append(.modal(route))
             } else if let resolved = resolved as? AnyCoordinatable {
+                self.navigationStack.appearing = nil
                 self.children.activeModalChildCoordinator = resolved
             } else {
                 fatalError("Unsupported presentable")
@@ -43,7 +45,7 @@ public extension NavigationCoordinatable {
     func coordinatorView() -> AnyView {
         return AnyView(
             NavigationCoordinatableView(
-                id: nil,
+                id: -1,
                 coordinator: self
             )
         )

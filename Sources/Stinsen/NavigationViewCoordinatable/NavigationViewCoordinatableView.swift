@@ -4,30 +4,35 @@ import SwiftUI
 struct NavigationViewCoordinatableView<T: NavigationViewCoordinatable>: View {
     var coordinator: T
     @ObservedObject var children: Children
-    @EnvironmentObject var parent: ParentCoordinator
+    @EnvironmentObject private var root: RootCoordinator
+    private var view: AnyView
 
     init(coordinator: T) {
         self.coordinator = coordinator
         self.children = coordinator.children
+
+        view = coordinator.children.activeChildCoordinator!.coordinatorView()
     }
         
     var body: some View {
         NavigationView {
-            if let childCoordinator = children.activeChildCoordinator {
-                childCoordinator
-                    .coordinatorView()
-            } else {
-                EmptyView()
-            }
+            view
         }
         .onReceive(children.objectWillChange, perform: { _ in
             // dismiss this coordinator as well if it has no children
             if self.children.activeChildCoordinator == nil {
-                if self.parent.coordinator!.children.activeModalChildCoordinator?.id == coordinator.id {
-                    self.parent.coordinator!.children.activeModalChildCoordinator = nil
+                let parent = root.coordinator.children.allChildren.first { (it) -> Bool in
+                    it.children.activeChildCoordinator?.id == coordinator.id
                 }
+                
+                parent?.children.activeChildCoordinator = nil
+                
+                let modalParent = root.coordinator.children.allChildren.first { (it) -> Bool in
+                    it.children.activeModalChildCoordinator?.id == coordinator.id
+                }
+                
+                modalParent?.children.activeModalChildCoordinator = nil
             }
         })
-        .environmentObject(ParentCoordinator(coordinator: coordinator))
     }
 }

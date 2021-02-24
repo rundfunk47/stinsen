@@ -3,7 +3,7 @@ import SwiftUI
 
 /// The NavigationViewCoordinatable is used to represent a coordinator with a NavigationView
 public class NavigationViewCoordinatable: Coordinatable {
-    public var isNavigationCoordinator: Bool = false
+    public var appearingMetadata: AppearingMetadata? = nil
     public var children = Children()
 
     public func coordinatorView() -> AnyView {

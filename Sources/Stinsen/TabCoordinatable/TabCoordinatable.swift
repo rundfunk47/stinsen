@@ -10,10 +10,10 @@ public protocol TabCoordinatable: Coordinatable {
 }
 
 public extension TabCoordinatable {
-    var isNavigationCoordinator: Bool {
-        return false
+    var appearingMetadata: AppearingMetadata? {
+        return nil
     }
-    
+
     func coordinatorView() -> AnyView {
         AnyView(
             TabCoordinatableView(coordinator: self)

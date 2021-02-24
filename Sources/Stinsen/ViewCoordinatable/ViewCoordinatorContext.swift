@@ -1,6 +1,6 @@
 import Foundation
 
-public class RootRouter<T: ViewCoordinatable>: ObservableObject {
+public class ViewRouter<T: ViewCoordinatable>: ObservableObject {
     private let coordinator: T
     
     public func route(to route: T.Route) {

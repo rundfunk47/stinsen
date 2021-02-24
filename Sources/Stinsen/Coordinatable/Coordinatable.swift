@@ -7,7 +7,7 @@ public protocol Coordinatable: ObservableObject, Identifiable {
     func coordinatorView() -> AnyView
     var id: String { get }
     var children: Children { get }
-    var isNavigationCoordinator: Bool { get }
+    var appearingMetadata: AppearingMetadata? { get }
 }
 
 public extension Coordinatable {

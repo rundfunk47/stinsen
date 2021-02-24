@@ -11,10 +11,10 @@ public protocol ViewCoordinatable: Coordinatable {
 }
 
 public extension ViewCoordinatable {
-    var isNavigationCoordinator: Bool {
-        return false
+    var appearingMetadata: AppearingMetadata? {
+        return nil
     }
-    
+
     func route(to route: Route) {
         let resolved = resolveRoute(route: route)
         self.children.activeChildCoordinator = resolved

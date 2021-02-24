@@ -35,6 +35,15 @@ class AuthenticatedCoordinator: TabCoordinatable {
                 }
                 Text("Profile")
             }
+        case 3:
+            Group {
+                if activeTab == 3 {
+                    Image(systemName: "bed.double.fill")
+                } else {
+                    Image(systemName: "bed.double")
+                }
+                Text("Testbed")
+            }
         default:
             fatalError()
         }
@@ -43,6 +52,7 @@ class AuthenticatedCoordinator: TabCoordinatable {
     var coordinators: [AnyCoordinatable] = [
         NavigationViewCoordinatable(childCoordinator: HomeCoordinator()).eraseToAnyCoordinatable(),
         NavigationViewCoordinatable(childCoordinator: ProjectsCoordinator()).eraseToAnyCoordinatable(),
-        NavigationViewCoordinatable(childCoordinator: ProfileCoordinator()).eraseToAnyCoordinatable()
+        NavigationViewCoordinatable(childCoordinator: ProfileCoordinator()).eraseToAnyCoordinatable(),
+        NavigationViewCoordinatable(childCoordinator: TestbedCoordinator()).eraseToAnyCoordinatable()
     ]
 }

@@ -26,7 +26,7 @@ fileprivate class _AnyCoordinatableBase: Coordinatable {
         fatalError("override me")
     }
     
-    var isNavigationCoordinator: Bool {
+    var appearingMetadata: AppearingMetadata? {
         fatalError("override me")
     }
 }
@@ -52,8 +52,10 @@ fileprivate final class _AnyCoordinatableBox<Base: Coordinatable>: _AnyCoordinat
         return base.id
     }
     
-    override var isNavigationCoordinator: Bool {
-        return base.isNavigationCoordinator
+    override var appearingMetadata: AppearingMetadata? {
+        get {
+            return base.appearingMetadata
+        }
     }
 }
 
@@ -61,10 +63,12 @@ fileprivate final class _AnyCoordinatableBox<Base: Coordinatable>: _AnyCoordinat
 public final class AnyCoordinatable: Coordinatable {
     private let box: _AnyCoordinatableBase
     private let _children: () -> Children
-
+    private let _getAppearingMetadata: () -> AppearingMetadata?
+    
     public init<Base: Coordinatable>(_ base: Base) {
         box = _AnyCoordinatableBox(base)
         _children = { base.children }
+        _getAppearingMetadata = { base.appearingMetadata }
     }
 
     public func coordinatorView() -> AnyView {
@@ -89,8 +93,10 @@ public final class AnyCoordinatable: Coordinatable {
         }
     }
     
-    public var isNavigationCoordinator: Bool {
-        box.isNavigationCoordinator
+    public var appearingMetadata: AppearingMetadata? {
+        get {
+            _getAppearingMetadata()
+        }
     }
 }
 

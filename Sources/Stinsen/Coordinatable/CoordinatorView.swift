@@ -8,7 +8,6 @@ public struct CoordinatorView: View {
     public var body: some View {
         coordinator
             .coordinatorView()
-            .environmentObject(ParentCoordinator(anyCoordinatable: nil))
             .environmentObject(RootCoordinator(coordinator: coordinator))
     }
     

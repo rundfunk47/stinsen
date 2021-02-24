@@ -5,20 +5,19 @@ struct TabCoordinatableView<T: TabCoordinatable>: View {
     @ObservedObject var children: Children
     @ObservedObject var coordinator: T
     private let router: TabRouter<T>
-
+    private let views: [AnyView]
+    
     var body: some View {
         TabView(selection: $coordinator.activeTab) {
-            ForEach(Array(coordinator.coordinators.enumerated()), id: \.element.id) { coordinator in
-                coordinator
+            ForEach(Array(views.enumerated()), id: \.offset) { view in
+                view
                     .element
-                    .coordinatorView()
                     .tabItem {
-                        self.coordinator.tabItem(forTab: coordinator.offset)
+                        self.coordinator.tabItem(forTab: view.offset)
                     }
-                    .tag(coordinator.offset)
+                    .tag(view.offset)
             }
         }
-        .environmentObject(ParentCoordinator(coordinator: coordinator))
         .environmentObject(router)
     }
     
@@ -26,5 +25,8 @@ struct TabCoordinatableView<T: TabCoordinatable>: View {
         self.coordinator = coordinator
         self.children = coordinator.children
         self.router = TabRouter(coordinator)
+        views = coordinator.coordinators.map {
+            $0.coordinatorView()
+        }
     }
 }

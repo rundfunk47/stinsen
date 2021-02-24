@@ -1,118 +1,118 @@
 import Foundation
 import SwiftUI
+import Combine
 
 struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
     var coordinator: T
-    @ObservedObject var children: Children
-    private let id: Int?
-    @ObservedObject private var next: NextChecker<T>
+    var children: Children
+    private let id: Int
     @EnvironmentObject private var root: RootCoordinator
-    @EnvironmentObject private var parent: ParentCoordinator
     private let router: NavigationRouter<T>
     private let start: AnyView
+    @ObservedObject var presentationHelper: PresentationHelper<T>
     
     var body: some View {
-        if self.router.parent == nil {
-            self.router.parent = parent.coordinator
-        }
-        
-        guard let id = id else {
-            return AnyView(
-                start
-                    .onDisappear(perform: {
-                        // check if coordinator is at top before removing. not the best solution but meh...
-                        if parent.coordinator!.children.activeChildCoordinator?.id == coordinator.id && coordinator.navigationStack.value.count == 0 && parent.coordinator!.isNavigationCoordinator {
-                            parent.coordinator!.children.activeChildCoordinator = nil
-                        } else if parent.coordinator!.children.activeModalChildCoordinator?.id == coordinator.id && coordinator.navigationStack.value.count == 0 {
-                            parent.coordinator!.children.activeModalChildCoordinator = nil
+        self.start
+            .background(
+                NavigationLink(
+                    destination: { () -> AnyView in
+                        if let view = presentationHelper.presented?.view {
+                            return AnyView(view)
+                        } else {
+                            return AnyView(EmptyView())
                         }
-                    })
-                    .sheet(isPresented: Binding<Bool>.init(get: { () -> Bool in
-                        return next.nextModalIsActive
+                    }(),
+                    isActive: Binding<Bool>.init(get: { () -> Bool in
+                        return presentationHelper.presented?.isPush == true
                     }, set: { _ in
-                        
-                    }), onDismiss: {
-
-                    }, content: {
-                        next.nextModalView()
-                    })
-                    .environmentObject(router)
-                    .background(
-                        NavigationLink(
-                            destination: next.nextPushView(),
-                            isActive: Binding<Bool>.init(get: { () -> Bool in
-                                return next.nextPushIsActive
-                            }, set: { _ in
-                                
-                            }),
-                            label: {
-                                EmptyView()
-                            }
-                        )
-                        .hidden()
-                    )
+                             
+                    }),
+                    label: {
+                        EmptyView()
+                    }
+                )
+                .hidden()
             )
-        }
+            .onAppear(perform: {
+                self.router.root = root.coordinator
+                /*
+                 alerternate version:
+                if self.id == -1 {
+                    if self.router.root == nil {
+                        self.router.root = root.coordinator
+                    }
+                }*/
+
+                // Set the appear variable. This will be checked later in onDisappear.
+                self.coordinator.navigationStack.appearing = id
+            })
+            .onDisappear(perform: {
+                // Find the appearing coordinator
+                guard let appearingCoordinator = self.root.coordinator.children.allChildren.first(where: {
+                    return $0.appearingMetadata?.appearing != nil
+                }) else {
+                    return
+                }
                 
-        let presentation = coordinator.navigationStack.value[id]
-        
-        let resolved = coordinator.resolveRoute(route: presentation.route)
-        
-        if let resolved = resolved.presentable as? AnyView {
-            return AnyView(
-                resolved
-                    .onDisappear(perform: {
-                        // check if coordinator is at top before removing. not the best solution but meh...
-                        if root.coordinator.children.containsChild(child: coordinator.eraseToAnyCoordinatable()) {
-                            if coordinator.navigationStack.value.count - 1 == id {
-                                coordinator.navigationStack.value.remove(at: id)
-                            }
-                        }
-                    })
-                    .sheet(isPresented: Binding<Bool>.init(get: { () -> Bool in
-                        return next.nextModalIsActive
-                    }, set: { _ in
-                        
-                    }), onDismiss: {
-
-                    }, content: {
-                        next.nextModalView()
-                    })
-                    .environmentObject(router)
-                    .background(
-                        NavigationLink(
-                            destination: next.nextPushView(),
-                            isActive: Binding<Bool>.init(get: { () -> Bool in
-                                return next.nextPushIsActive
-                            }, set: { _ in
-                                
-                            }),
-                            label: {
-                                EmptyView()
-                            }
-                        )
-                        .hidden()
-                    )
-            )
-        } else {
-            fatalError("Routes in stack should only contain views. Coordinators are added in the Children-class")
-        }
+                if appearingCoordinator.id == self.coordinator.id {
+                    let appearing = coordinator.navigationStack.appearing!
+                    // We are popping on the same stack
+                    if appearing < id {
+                        self.coordinator.navigationStack.popTo(appearing)
+                    }
+                } else {
+                    // Popping on another stack
+                    let stack = appearingCoordinator.appearingMetadata!
+                    stack.popTo(stack.appearing!)
+                }
+            })
+            .sheet(isPresented: Binding<Bool>.init(get: { () -> Bool in
+                return presentationHelper.presented?.isModal == true
+            }, set: { _ in
+            
+            }), onDismiss: {
+                // shouldn't matter if different coordinators. also this set modal children to nil
+                self.coordinator.navigationStack.popTo(self.id)
+            }, content: { () -> AnyView in
+                return { () -> AnyView in
+                    if let view = presentationHelper.presented?.view {
+                        return AnyView(view)
+                    } else {
+                        return AnyView(EmptyView())
+                    }
+                }()
+            })
+            .environmentObject(router)
     }
     
-    init(id: Int?, coordinator: T) {
+    init(id: Int, coordinator: T) {
         self.id = id
         self.coordinator = coordinator
         self.children = coordinator.children
-        self.next = NextChecker(
-            id: id,
-            coordinator,
-            children: coordinator.children
+        
+        self.presentationHelper = PresentationHelper(
+            id: self.id,
+            coordinator: coordinator
         )
+        
         self.router = NavigationRouter(
             id: id,
-            coordinator: coordinator,
-            parent: nil // to be set later...
+            coordinator: coordinator
         )
-        self.start = AnyView(coordinator.start())
+        
+        if let presentation = coordinator.navigationStack.value[safe: id] {
+            if let view = coordinator.resolveRoute(route: presentation.route).presentable as? AnyView {
+                self.start = view
+            } else {
+                fatalError("Can only show views")
+            }
+        } else if id == -1 {
+            self.start = AnyView(
+                coordinator
+                    .start()
+            )
+        } else {
+            fatalError()
+        }
     }
 }

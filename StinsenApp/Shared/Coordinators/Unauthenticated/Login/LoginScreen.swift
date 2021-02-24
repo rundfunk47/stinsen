@@ -4,7 +4,7 @@ import SwiftUI
 import Stinsen
 
 struct LoginScreen: View {
-    @EnvironmentObject var main: RootRouter<MainCoordinator>
+    @EnvironmentObject var main: ViewRouter<MainCoordinator>
     @EnvironmentObject var unauthenticated: NavigationRouter<UnauthenticatedCoordinator>
 
     @State var username: String = ""
