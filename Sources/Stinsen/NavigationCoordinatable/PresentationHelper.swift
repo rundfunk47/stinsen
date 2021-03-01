@@ -50,6 +50,7 @@ class PresentationHelper<T: NavigationCoordinatable>: ObservableObject {
                                         view
                                     }
                                 )
+                                .navigationViewStyle(StackNavigationViewStyle())
                             )
                         )
                     case .push:

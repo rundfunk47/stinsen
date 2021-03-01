@@ -6,7 +6,9 @@ public protocol TabCoordinatable: Coordinatable {
     var activeTab: Int { get set }
     var coordinators: [AnyCoordinatable] { get set }
     associatedtype ViewType: View
+    associatedtype CustomizeViewType: View
     @ViewBuilder func tabItem(forTab tab: Int) -> ViewType
+    func customize(_ view: AnyView) -> CustomizeViewType
 }
 
 public extension TabCoordinatable {
@@ -16,8 +18,12 @@ public extension TabCoordinatable {
 
     func coordinatorView() -> AnyView {
         AnyView(
-            TabCoordinatableView(coordinator: self)
+            TabCoordinatableView(coordinator: self, customize: customize)
         )
+    }
+    
+    func customize(_ view: AnyView) -> some View {
+        return view
     }
     
     var activeTab: Int {

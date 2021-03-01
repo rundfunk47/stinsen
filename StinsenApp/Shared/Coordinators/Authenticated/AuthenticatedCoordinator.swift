@@ -3,7 +3,7 @@ import SwiftUI
 
 import Stinsen
 
-class AuthenticatedCoordinator: TabCoordinatable {
+class AuthenticatedCoordinator: TabCoordinatable {    
     var children = Children()
     
     func tabItem(forTab tab: Int) -> some View {

@@ -18,6 +18,7 @@ struct NavigationViewCoordinatableView<T: NavigationViewCoordinatable>: View {
         NavigationView {
             view
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         .onReceive(children.objectWillChange, perform: { _ in
             // dismiss this coordinator as well if it has no children
             if self.children.activeChildCoordinator == nil {
