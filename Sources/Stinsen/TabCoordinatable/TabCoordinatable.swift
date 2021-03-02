@@ -18,7 +18,9 @@ public extension TabCoordinatable {
 
     func coordinatorView() -> AnyView {
         AnyView(
-            TabCoordinatableView(coordinator: self, customize: customize)
+            TabCoordinatableView(coordinator: self, customize: customize).onAppear(perform: {
+                self.children.activeChildCoordinator = self.coordinators[0] // default to zero
+            })
         )
     }
     
