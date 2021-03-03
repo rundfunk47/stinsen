@@ -9,6 +9,10 @@ public class NavigationRouter<T: NavigationCoordinatable>: ObservableObject {
         coordinator.route(to: route)
     }
     
+    public func pop() {
+        self.coordinator.navigationStack.popTo(self.coordinator.navigationStack.value.count - 2)
+    }
+    
     public func dismiss() {
         let parent = root!.children.allChildren.first(where: { (it) -> Bool in
             it.children.activeChildCoordinator?.id == coordinator.id
