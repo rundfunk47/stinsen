@@ -17,7 +17,7 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
                 NavigationLink(
                     destination: { () -> AnyView in
                         if let view = presentationHelper.presented?.view {
-                            return AnyView(view)
+                            return AnyView(view.environmentObject(root))
                         } else {
                             return AnyView(EmptyView())
                         }
@@ -76,7 +76,7 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
             }, content: { () -> AnyView in
                 return { () -> AnyView in
                     if let view = presentationHelper.presented?.view {
-                        return AnyView(view)
+                        return AnyView(view.environmentObject(root))
                     } else {
                         return AnyView(EmptyView())
                     }
