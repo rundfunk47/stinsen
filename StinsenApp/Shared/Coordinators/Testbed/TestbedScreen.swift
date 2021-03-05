@@ -32,7 +32,7 @@ struct TestbedScreen: View {
                     testbed.route(to: .pushCoordinator)
                 }
                 RoundedButton("Dismiss me!") {
-                    testbed.dismiss()
+                    testbed.dismiss { print("bye!") }
                 }
             }
         }

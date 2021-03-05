@@ -22,17 +22,31 @@ struct NavigationViewCoordinatableView<T: NavigationViewCoordinatable>: View {
         .onReceive(children.objectWillChange, perform: { _ in
             // dismiss this coordinator as well if it has no children
             if self.children.activeChildCoordinator == nil {
-                let parent = root.coordinator.children.allChildren.first { (it) -> Bool in
+                if let parent = root.coordinator.children.allChildren.first { (it) -> Bool in
                     it.children.activeChildCoordinator?.id == coordinator.id
+                } {
+                    parent.children.activeChildCoordinator = nil
+                    let oldClosure = parent.children.onChildDismiss
+                    
+                    parent.children.onChildDismiss = {
+                        oldClosure()
+                        self.children.onChildDismiss()
+                        self.children.onModalChildDismiss()
+                    }
                 }
                 
-                parent?.children.activeChildCoordinator = nil
-                
-                let modalParent = root.coordinator.children.allChildren.first { (it) -> Bool in
+                if let modalParent = root.coordinator.children.allChildren.first { (it) -> Bool in
                     it.children.activeModalChildCoordinator?.id == coordinator.id
+                } {
+                    modalParent.children.activeModalChildCoordinator = nil
+                    let oldClosure = modalParent.children.onModalChildDismiss
+                    
+                    modalParent.children.onModalChildDismiss = {
+                        oldClosure()
+                        self.children.onChildDismiss()
+                        self.children.onModalChildDismiss()
+                    }
                 }
-                
-                modalParent?.children.activeModalChildCoordinator = nil
             }
         })
     }

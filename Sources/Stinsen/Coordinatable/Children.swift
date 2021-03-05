@@ -5,6 +5,8 @@ public class Children: ObservableObject {
     #warning("TODO: Make this an enum maybe")
     @Published var activeChildCoordinator: AnyCoordinatable?
     @Published var activeModalChildCoordinator: AnyCoordinatable?
+    var onChildDismiss: () -> Void
+    var onModalChildDismiss: () -> Void
     
     public init(
         activeChildCoordinator: AnyCoordinatable? = nil,
@@ -12,6 +14,9 @@ public class Children: ObservableObject {
     ) {
         self.activeChildCoordinator = activeChildCoordinator
         self.activeModalChildCoordinator = activeModalChildCoordinator
+        
+        self.onChildDismiss = {}
+        self.onModalChildDismiss = {}
     }
 }
 

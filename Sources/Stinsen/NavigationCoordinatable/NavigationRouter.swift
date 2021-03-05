@@ -13,12 +13,19 @@ public class NavigationRouter<T: NavigationCoordinatable>: ObservableObject {
         self.coordinator.navigationStack.popTo(self.coordinator.navigationStack.value.count - 2)
     }
     
-    public func dismiss() {
+    public func dismiss(onFinished: @escaping (() -> Void) = {}) {
         let parent = root!.children.allChildren.first(where: { (it) -> Bool in
             it.children.activeChildCoordinator?.id == coordinator.id
         })
         
         if let parent = parent {
+            let oldClosure = parent.children.onChildDismiss
+            
+            parent.children.onChildDismiss = {
+                onFinished()
+                oldClosure()
+            }
+            
             parent.children.activeChildCoordinator = nil
         }
         
@@ -27,6 +34,13 @@ public class NavigationRouter<T: NavigationCoordinatable>: ObservableObject {
         })
         
         if let modalParent = modalParent {
+            let oldClosure = modalParent.children.onModalChildDismiss
+            
+            modalParent.children.onModalChildDismiss = {
+                onFinished()
+                oldClosure()
+            }
+
             modalParent.children.activeModalChildCoordinator = nil
         }
         
