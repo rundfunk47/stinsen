@@ -65,8 +65,10 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
                     let stack = appearingCoordinator.appearingMetadata!
                     stack.popTo(stack.appearing!)
                     
-                    appearingCoordinator.children.onChildDismiss()
-                    appearingCoordinator.children.onChildDismiss = {}
+                    DispatchQueue.main.async {
+                        appearingCoordinator.children.onChildDismiss()
+                        appearingCoordinator.children.onChildDismiss = {}
+                    }
                 }
             })
             .sheet(isPresented: Binding<Bool>.init(get: { () -> Bool in
@@ -76,8 +78,11 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
             }), onDismiss: {
                 // shouldn't matter if different coordinators. also this set modal children to nil
                 self.coordinator.navigationStack.popTo(self.id)
-                self.children.onModalChildDismiss()
-                self.children.onModalChildDismiss = {}
+                
+                DispatchQueue.main.async {
+                    self.children.onModalChildDismiss()
+                    self.children.onModalChildDismiss = {}
+                }
             }, content: { () -> AnyView in
                 return { () -> AnyView in
                     if let view = presentationHelper.presented?.view {
