@@ -28,12 +28,6 @@ extension Children {
         return children + children.flatMap { $0.children.allChildren }
     }
     
-    var allNonModalChildren: [AnyCoordinatable] {
-        let children = [self.activeChildCoordinator].compactMap { $0 }
-        
-        return children + children.flatMap { $0.children.allNonModalChildren }
-    }
-    
     func containsChild<T: Coordinatable>(child: T) -> Bool {
         return allChildren.contains { coordinator -> Bool in
             coordinator.id == child.id
