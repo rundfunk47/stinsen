@@ -2,16 +2,13 @@ import Foundation
 import SwiftUI
 
 struct NavigationViewCoordinatableView<T: NavigationViewCoordinatable>: View {
-    var coordinator: T
-    @ObservedObject var children: Children
+    var coordinator: T    
     @EnvironmentObject private var root: RootCoordinator
     private var view: AnyView
 
     init(coordinator: T) {
         self.coordinator = coordinator
-        self.children = coordinator.children
-
-        view = coordinator.children.activeChildCoordinator!.coordinatorView()
+        view = coordinator.children.childCoordinators.first!.coordinatorView()
     }
         
     var body: some View {
@@ -19,35 +16,21 @@ struct NavigationViewCoordinatableView<T: NavigationViewCoordinatable>: View {
             view
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .onReceive(children.objectWillChange, perform: { _ in
-            // dismiss this coordinator as well if it has no children
-            if self.children.activeChildCoordinator == nil {
-                if let parent = root.coordinator.children.allChildren.first { (it) -> Bool in
-                    it.children.activeChildCoordinator?.id == coordinator.id
-                } {
-                    parent.children.activeChildCoordinator = nil
-                    let oldClosure = parent.children.onChildDismiss
-                    
-                    parent.children.onChildDismiss = {
-                        oldClosure()
-                        self.children.onChildDismiss()
-                        self.children.onModalChildDismiss()
-                    }
+        .onReceive(coordinator.children.$childCoordinators) { (value) in
+            if value.isEmpty {
+                guard let parent = root.coordinator.allChildCoordinators.first(where: {
+                    $0.childCoordinators.contains(where: {
+                        coordinator.id == $0.id
+                    })
+                }) else {
+                    fatalError("no children, cannot dismiss?!")
                 }
                 
-                if let modalParent = root.coordinator.children.allChildren.first { (it) -> Bool in
-                    it.children.activeModalChildCoordinator?.id == coordinator.id
-                } {
-                    modalParent.children.activeModalChildCoordinator = nil
-                    let oldClosure = modalParent.children.onModalChildDismiss
-                    
-                    modalParent.children.onModalChildDismiss = {
-                        oldClosure()
-                        self.children.onChildDismiss()
-                        self.children.onModalChildDismiss()
-                    }
-                }
+                parent.dismissChildCoordinator( 
+                    coordinator.eraseToAnyCoordinatable(),
+                    coordinator.children.childDismissalAction
+                )
             }
-        })
+        }
     }
 }

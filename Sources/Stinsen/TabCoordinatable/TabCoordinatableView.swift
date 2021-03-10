@@ -2,10 +2,10 @@ import Foundation
 import SwiftUI
 
 struct TabCoordinatableView<T: TabCoordinatable, U: View>: View {
-    @ObservedObject var children: Children
     @ObservedObject var coordinator: T
     private let router: TabRouter<T>
     private let views: [AnyView]
+    @ObservedObject var children: Children
     private var customize: (AnyView) -> U
     
     var body: some View {
@@ -28,11 +28,11 @@ struct TabCoordinatableView<T: TabCoordinatable, U: View>: View {
     
     init(coordinator: T, customize: @escaping (AnyView) -> U) {
         self.coordinator = coordinator
-        self.children = coordinator.children
         self.router = TabRouter(coordinator)
         views = coordinator.coordinators.map {
             $0.coordinatorView()
         }
         self.customize = customize
+        self.children = coordinator.children
     }
 }

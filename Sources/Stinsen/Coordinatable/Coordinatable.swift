@@ -6,8 +6,19 @@ public protocol Coordinatable: ObservableObject, Identifiable {
     ///Returns a view for the coordinator
     func coordinatorView() -> AnyView
     var id: String { get }
-    var children: Children { get }
+    /// The active child-coordinators of the coordinator
+    var childCoordinators: [AnyCoordinatable] { get }
     var appearingMetadata: AppearingMetadata? { get }
+    func dismissChildCoordinator(_ childCoordinator: AnyCoordinatable, _ completion: (() -> Void)?)
+    var childDismissalAction: DismissalAction { get set }
+}
+
+public typealias DismissalAction = () -> Void
+
+extension Coordinatable {
+    var allChildCoordinators: [AnyCoordinatable] {
+        return childCoordinators.flatMap { [$0] + $0.allChildCoordinators }
+    }
 }
 
 public extension Coordinatable {

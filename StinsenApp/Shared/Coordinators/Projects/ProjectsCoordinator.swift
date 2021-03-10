@@ -4,8 +4,7 @@ import SwiftUI
 import Stinsen
 
 class ProjectsCoordinator: NavigationCoordinatable {
-    var children = Children()
-    var navigationStack: NavigationStack<Route> = NavigationStack()
+    var navigationStack: NavigationStack = NavigationStack()
 
     enum Route {
         case project(id: UUID)
@@ -19,7 +18,7 @@ class ProjectsCoordinator: NavigationCoordinatable {
         case .createProject:
             return .modal(
                 AnyCoordinatable(
-                    NavigationViewCoordinatable(childCoordinator: CreateProjectCoordinator())
+                    NavigationViewCoordinatable(CreateProjectCoordinator())
                 )
             )
         }

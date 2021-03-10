@@ -3,9 +3,9 @@ import SwiftUI
 
 import Stinsen
 
-class MainCoordinator: ViewCoordinatable {    
-    var children = Children()
-
+class MainCoordinator: ViewCoordinatable {
+    var children = Children([])
+    
     enum Route {
         case unauthenticated
         case authenticated
@@ -16,7 +16,7 @@ class MainCoordinator: ViewCoordinatable {
         case .unauthenticated:
             return AnyCoordinatable(
                 NavigationViewCoordinatable(
-                    childCoordinator: UnauthenticatedCoordinator()
+                    UnauthenticatedCoordinator()
                 )
             )
         case .authenticated:

@@ -4,7 +4,6 @@ import Combine
 
 struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
     var coordinator: T
-    var children: Children
     private let id: Int
     @EnvironmentObject private var root: RootCoordinator
     private let router: NavigationRouter<T>
@@ -48,7 +47,7 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
             })
             .onDisappear(perform: {
                 // Find the appearing coordinator
-                guard let appearingCoordinator = self.root.coordinator.children.allChildren.first(where: {
+                guard let appearingCoordinator = self.root.coordinator.allChildCoordinators.first(where: {
                     return $0.appearingMetadata?.appearing != nil
                 }) else {
                     return
@@ -66,8 +65,8 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
                     stack.popTo(stack.appearing!)
                     
                     DispatchQueue.main.async {
-                        appearingCoordinator.children.onChildDismiss()
-                        appearingCoordinator.children.onChildDismiss = {}
+                        appearingCoordinator.childDismissalAction()
+                        appearingCoordinator.childDismissalAction = {}
                     }
                 }
             })
@@ -80,8 +79,8 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
                 self.coordinator.navigationStack.popTo(self.id)
                 
                 DispatchQueue.main.async {
-                    self.children.onModalChildDismiss()
-                    self.children.onModalChildDismiss = {}
+                    self.coordinator.childDismissalAction()
+                    self.coordinator.childDismissalAction = {}
                 }
             }, content: { () -> AnyView in
                 return { () -> AnyView in
@@ -98,7 +97,6 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
     init(id: Int, coordinator: T) {
         self.id = id
         self.coordinator = coordinator
-        self.children = coordinator.children
         
         self.presentationHelper = PresentationHelper(
             id: self.id,
@@ -109,9 +107,9 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
             id: id,
             coordinator: coordinator
         )
-        
+
         if let presentation = coordinator.navigationStack.value[safe: id] {
-            if let view = coordinator.resolveRoute(route: presentation.route).presentable as? AnyView {
+            if let view = presentation.presentable as? AnyView {
                 self.start = view
             } else {
                 fatalError("Can only show views")

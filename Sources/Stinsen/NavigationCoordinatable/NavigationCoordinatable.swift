@@ -8,38 +8,31 @@ public protocol NavigationCoordinatable: Coordinatable {
     associatedtype Start: View
     func resolveRoute(route: Route) -> Transition
     @ViewBuilder func start() -> Start
-    var navigationStack: NavigationStack<Route> { get }
+    var navigationStack: NavigationStack { get }
 }
 
 public extension NavigationCoordinatable {
+    var childDismissalAction: DismissalAction {
+        get {
+            navigationStack.childDismissalAction
+        } set {
+            navigationStack.childDismissalAction = newValue
+        }
+    }
+    
     var appearingMetadata: AppearingMetadata? {
         self.navigationStack
+    }
+    
+    var childCoordinators: [AnyCoordinatable] {
+        navigationStack.childCoordinators
     }
 }
 
 public extension NavigationCoordinatable {
     func route(to route: Route) {
         let resolved = resolveRoute(route: route)
-        switch resolved {
-        case .push(let resolved):
-            if resolved is AnyView {
-                self.navigationStack.append(.push(route))
-            } else if let resolved = resolved as? AnyCoordinatable {
-                self.navigationStack.appearing = nil
-                self.children.activeChildCoordinator = resolved
-            } else {
-                fatalError("Unsupported presentable")
-            }
-        case .modal(let resolved):
-            if resolved is AnyView {
-                self.navigationStack.append(.modal(route))
-            } else if let resolved = resolved as? AnyCoordinatable {
-                self.navigationStack.appearing = nil
-                self.children.activeModalChildCoordinator = resolved
-            } else {
-                fatalError("Unsupported presentable")
-            }
-        }
+        self.navigationStack.append(resolved)
     }
     
     func coordinatorView() -> AnyView {
@@ -49,5 +42,16 @@ public extension NavigationCoordinatable {
                 coordinator: self
             )
         )
+    }
+    
+    func dismissChildCoordinator(_ childCoordinator: AnyCoordinatable, _ completion: (() -> Void)?) {
+        
+        let oldAction = self.childDismissalAction
+        self.childDismissalAction = {
+            oldAction()
+            completion?()
+        }
+
+        self.navigationStack.popTo(childCoordinator)
     }
 }

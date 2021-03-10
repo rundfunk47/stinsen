@@ -1,38 +1,62 @@
 import Foundation
 import Combine
 
-enum Presentation<Route> {
-    case modal(_ : Route)
-    case push(_ : Route)
-    
-    var route: Route {
-        switch self {
-        case .modal(let route):
-            return route
-        case .push(let route):
-            return route
-        }
-    }
-}
 
-/// Represents a stack of views
-public class NavigationStack<Route>: AppearingMetadata, ObservableObject {
+/// Represents a stack of routes
+public class NavigationStack: AppearingMetadata, ObservableObject {    
+    public func popTo<T: Coordinatable>(_ coordinator: T) {
+        let index = value.firstIndex { tuple in
+            let presentable = tuple.presentable
+            
+            if let presentable = presentable as? AnyCoordinatable {
+                return coordinator.id == presentable.id
+            } else {
+                return false
+            }
+        }!
+
+        self.value = Array(self.value.prefix(index))
+        self.poppedTo.send(index - 1)
+    }
+    
     public var appearing: Int?
     public var poppedTo = PassthroughSubject<Int, Never>()
-
-    @Published private (set) var value: [Presentation<Route>]
+    public var childDismissalAction: DismissalAction
+    
+    @Published private (set) var value: [Transition]
     
     public init() {
         self.value = []
+        self.childDismissalAction = {}
     }
     
     public func popTo(_ int: Int) {
-        value = Array(value.prefix(int + 1))
-        poppedTo.send(int)
+        if int == -1 {
+            value = []
+            poppedTo.send(-1)
+        } else {
+            value = Array(value.prefix(int + 1))
+            poppedTo.send(int)
+        }
     }
     
-    func append(_ route: Presentation<Route>) {
-        self.value.append(route)
+    func append(_ transition: Transition) {
+        self.value.append(transition)
+        
+        if transition.presentable is AnyCoordinatable {
+            appearing = nil
+        }
+    }
+    
+    var childCoordinators: [AnyCoordinatable] {
+        return value.compactMap {
+            switch $0 {
+            case .modal(let presentable):
+                return presentable as? AnyCoordinatable
+            case .push(let presentable):
+                return presentable as? AnyCoordinatable
+            }
+        }
     }
 }
 

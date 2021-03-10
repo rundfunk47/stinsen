@@ -3,8 +3,8 @@ import SwiftUI
 
 import Stinsen
 
-class AuthenticatedCoordinator: TabCoordinatable {    
-    var children = Children()
+class AuthenticatedCoordinator: TabCoordinatable {
+    var children: Children = Children([])
     
     func tabItem(forTab tab: Int) -> some View {
         switch tab {
@@ -50,9 +50,9 @@ class AuthenticatedCoordinator: TabCoordinatable {
     }
     
     var coordinators: [AnyCoordinatable] = [
-        NavigationViewCoordinatable(childCoordinator: HomeCoordinator()).eraseToAnyCoordinatable(),
-        NavigationViewCoordinatable(childCoordinator: ProjectsCoordinator()).eraseToAnyCoordinatable(),
-        NavigationViewCoordinatable(childCoordinator: ProfileCoordinator()).eraseToAnyCoordinatable(),
-        NavigationViewCoordinatable(childCoordinator: TestbedCoordinator()).eraseToAnyCoordinatable()
+        NavigationViewCoordinatable(TestbedCoordinator()).eraseToAnyCoordinatable(),
+        NavigationViewCoordinatable(HomeCoordinator()).eraseToAnyCoordinatable(),
+        NavigationViewCoordinatable(ProjectsCoordinator()).eraseToAnyCoordinatable(),
+        NavigationViewCoordinatable(ProfileCoordinator()).eraseToAnyCoordinatable()
     ]
 }

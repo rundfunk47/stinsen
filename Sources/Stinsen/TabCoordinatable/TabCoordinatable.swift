@@ -4,14 +4,28 @@ import SwiftUI
 /// The TabCoordinatable is used to represent a coordinator with a TabView
 public protocol TabCoordinatable: Coordinatable {
     var activeTab: Int { get set }
+    /// All possible coordinators
     var coordinators: [AnyCoordinatable] { get set }
     associatedtype ViewType: View
     associatedtype CustomizeViewType: View
     @ViewBuilder func tabItem(forTab tab: Int) -> ViewType
     func customize(_ view: AnyView) -> CustomizeViewType
+    var children: Children { get }
 }
 
 public extension TabCoordinatable {
+    var childDismissalAction: DismissalAction {
+        get {
+            children.childDismissalAction
+        } set {
+            children.childDismissalAction = newValue
+        }
+    }
+    
+    var childCoordinators: [AnyCoordinatable] {
+        children.childCoordinators
+    }
+    
     var appearingMetadata: AppearingMetadata? {
         return nil
     }
@@ -19,7 +33,7 @@ public extension TabCoordinatable {
     func coordinatorView() -> AnyView {
         AnyView(
             TabCoordinatableView(coordinator: self, customize: customize).onAppear(perform: {
-                self.children.activeChildCoordinator = self.coordinators[0] // default to zero
+                self.children.childCoordinators = [self.coordinators[0]] // default to zero
             })
         )
     }
@@ -31,7 +45,7 @@ public extension TabCoordinatable {
     var activeTab: Int {
         get {
             for tuple in self.coordinators.enumerated() {
-                if tuple.element.id == self.children.activeChildCoordinator?.id {
+                if tuple.element.id == self.childCoordinators.first?.id {
                     return tuple.offset
                 }
             }
@@ -39,7 +53,11 @@ public extension TabCoordinatable {
             // no child found, default to 0
             return 0
         } set {
-            self.children.activeChildCoordinator = self.coordinators[newValue]
+            self.children.childCoordinators = [self.coordinators[newValue]]
         }
+    }
+    
+    func dismissChildCoordinator(_ childCoordinator: AnyCoordinatable, _ completion: (() -> Void)?) {
+        fatalError("not implemented")
     }
 }

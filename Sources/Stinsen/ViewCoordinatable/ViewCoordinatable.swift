@@ -8,21 +8,38 @@ public protocol ViewCoordinatable: Coordinatable {
     func route(to route: Route)
     func resolveRoute(route: Route) -> AnyCoordinatable
     @ViewBuilder func start() -> Start
+    var children: Children { get }
 }
 
 public extension ViewCoordinatable {
+    var childCoordinators: [AnyCoordinatable] {
+        children.childCoordinators
+    }
+    
+    var childDismissalAction: DismissalAction {
+        get {
+            children.childDismissalAction
+        } set {
+            children.childDismissalAction = newValue
+        }
+    }
+    
     var appearingMetadata: AppearingMetadata? {
         return nil
     }
 
     func route(to route: Route) {
         let resolved = resolveRoute(route: route)
-        self.children.activeChildCoordinator = resolved
+        self.children.childCoordinators = [resolved]
     }
     
     func coordinatorView() -> AnyView {
         return AnyView(
             ViewCoordinatableView(coordinator: self)
         )
+    }
+    
+    func dismissChildCoordinator(_ childCoordinator: AnyCoordinatable, _ completion: (() -> Void)?) {
+        fatalError("not implemented")
     }
 }

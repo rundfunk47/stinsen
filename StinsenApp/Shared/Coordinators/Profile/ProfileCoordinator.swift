@@ -4,8 +4,7 @@ import SwiftUI
 import Stinsen
 
 class ProfileCoordinator: NavigationCoordinatable {
-    var children = Children()
-    var navigationStack: NavigationStack<Route> = NavigationStack()
+    var navigationStack: NavigationStack = NavigationStack()
 
     enum Route {
         case push

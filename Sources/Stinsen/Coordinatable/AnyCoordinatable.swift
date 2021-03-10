@@ -4,11 +4,15 @@ import SwiftUI
 
 // MARK: - Abstract base class
 fileprivate class _AnyCoordinatableBase: Coordinatable {
+    func dismissChildCoordinator(_ childCoordinator: AnyCoordinatable, _ completion: (() -> Void)?) {
+        fatalError("override me")
+    }
+    
     func coordinatorView() -> AnyView {
         fatalError("override me")
     }
     
-    var children: Children {
+    var childCoordinators: [AnyCoordinatable] {
         fatalError("override me")
     }
     
@@ -29,6 +33,14 @@ fileprivate class _AnyCoordinatableBase: Coordinatable {
     var appearingMetadata: AppearingMetadata? {
         fatalError("override me")
     }
+    
+    var childDismissalAction: DismissalAction {
+        get {
+            fatalError("override me")
+        } set {
+            fatalError("override me")
+        }
+    }
 }
 
 // MARK: - Box container class
@@ -44,8 +56,12 @@ fileprivate final class _AnyCoordinatableBox<Base: Coordinatable>: _AnyCoordinat
         return base.coordinatorView()
     }
     
-    override var children: Children {
-        return base.children
+    override var childCoordinators: [AnyCoordinatable] {
+        return base.childCoordinators
+    }
+    
+    override func dismissChildCoordinator(_ childCoordinator: AnyCoordinatable, _ completion: (() -> Void)?) {
+        base.dismissChildCoordinator(childCoordinator, completion)
     }
     
     override var id: String {
@@ -57,18 +73,32 @@ fileprivate final class _AnyCoordinatableBox<Base: Coordinatable>: _AnyCoordinat
             return base.appearingMetadata
         }
     }
+    
+    override var childDismissalAction: DismissalAction {
+        get {
+            return base.childDismissalAction
+        } set {
+            base.childDismissalAction = newValue
+        }
+    }
 }
 
 // MARK: - AnyCoordinatable Wrapper
 public final class AnyCoordinatable: Coordinatable {
     private let box: _AnyCoordinatableBase
-    private let _children: () -> Children
+    private let _childCoordinators: () -> [AnyCoordinatable]
     private let _getAppearingMetadata: () -> AppearingMetadata?
+    private let _getDismissalAction: () -> DismissalAction
+    private let _setDismissalAction: (@escaping DismissalAction) -> Void
     
     public init<Base: Coordinatable>(_ base: Base) {
         box = _AnyCoordinatableBox(base)
-        _children = { base.children }
+        _childCoordinators = { base.childCoordinators }
         _getAppearingMetadata = { base.appearingMetadata }
+        _getDismissalAction = { base.childDismissalAction }
+        _setDismissalAction = { action in
+            base.childDismissalAction = action
+        }
     }
 
     public func coordinatorView() -> AnyView {
@@ -87,15 +117,27 @@ public final class AnyCoordinatable: Coordinatable {
         }
     }
     
-    public var children: Children {
+    public var childCoordinators: [AnyCoordinatable] {
         get {
-            _children()
+            _childCoordinators()
         }
     }
     
     public var appearingMetadata: AppearingMetadata? {
         get {
             _getAppearingMetadata()
+        }
+    }
+    
+    public func dismissChildCoordinator(_ childCoordinator: AnyCoordinatable, _ completion: (() -> Void)?) {
+        box.dismissChildCoordinator(childCoordinator, completion)
+    }
+    
+    public var childDismissalAction: DismissalAction {
+        get {
+            _getDismissalAction()
+        } set {
+            _setDismissalAction(newValue)
         }
     }
 }
@@ -105,4 +147,3 @@ public extension Coordinatable {
         return AnyCoordinatable(self)
     }
 }
-

@@ -4,8 +4,7 @@ import SwiftUI
 import Stinsen
 
 class TestbedCoordinator: NavigationCoordinatable {
-    var children = Children()
-    var navigationStack: NavigationStack<Route> = NavigationStack()
+    var navigationStack: NavigationStack = NavigationStack()
     
     enum Route {
         case pushScreen
@@ -19,9 +18,7 @@ class TestbedCoordinator: NavigationCoordinatable {
         case .modalCoordinator:
             return .modal(
                 AnyCoordinatable(
-                    NavigationViewCoordinatable(
-                        childCoordinator: TestbedCoordinator()
-                    )
+                    NavigationViewCoordinatable(TestbedCoordinator())
                 )
             )
         case .pushCoordinator:
