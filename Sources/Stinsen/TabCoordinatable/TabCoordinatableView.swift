@@ -4,14 +4,14 @@ import SwiftUI
 struct TabCoordinatableView<T: TabCoordinatable, U: View>: View {
     @ObservedObject var coordinator: T
     private let router: TabRouter<T>
-    private let views: [AnyView]
-    @ObservedObject var children: Children
+    @ObservedObject var child: TabChild<T>
     private var customize: (AnyView) -> U
+    private var views: [AnyView]
     
     var body: some View {
         customize(
             AnyView(
-                TabView(selection: $coordinator.activeTab) {
+                TabView(selection: $child.activeTab) {
                     ForEach(Array(views.enumerated()), id: \.offset) { view in
                         view
                             .element
@@ -29,10 +29,11 @@ struct TabCoordinatableView<T: TabCoordinatable, U: View>: View {
     init(coordinator: T, customize: @escaping (AnyView) -> U) {
         self.coordinator = coordinator
         self.router = TabRouter(coordinator)
-        views = coordinator.coordinators.map {
-            $0.coordinatorView()
-        }
         self.customize = customize
-        self.children = coordinator.children
+        self.child = coordinator.children
+        
+        self.views = coordinator.children.coordinators.map {
+            return $0.1.coordinatorView()
+        }
     }
 }

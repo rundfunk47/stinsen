@@ -3,8 +3,8 @@ import Foundation
 public class TabRouter<T: TabCoordinatable>: ObservableObject {
     private let coordinator: T
 
-    public func route(to int: Int) {
-        coordinator.activeTab = int
+    public func route(to route: T.Route) {
+        coordinator.children.route(to: route)
     }
     
     init(_ coordinator: T) {

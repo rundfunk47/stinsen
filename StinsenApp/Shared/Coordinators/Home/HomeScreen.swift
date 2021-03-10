@@ -20,7 +20,7 @@ struct HomeScreen: View {
                 Spacer(minLength: 32)
                 ForEach(Array(favoriteProjects.ids), id: \.self) { id in
                     RoundedButton(allProjects.projects.first(where: { $0.id == id })!.name) {
-                        tabRoute.route(to: 1)
+                        tabRoute.route(to: .projects)
                     }
                 }
             }

@@ -3,14 +3,21 @@ import SwiftUI
 
 import Stinsen
 
-class AuthenticatedCoordinator: TabCoordinatable {
-    var children: Children = Children([])
+final class AuthenticatedCoordinator: TabCoordinatable {
+    lazy var children = TabChild(self, tabRoutes: [.home, .projects, .profile, .testbed])
+    
+    enum Route: TabRoute {
+        case home
+        case projects
+        case profile
+        case testbed
+    }
     
     func tabItem(forTab tab: Int) -> some View {
         switch tab {
         case 0:
             Group {
-                if activeTab == 0 {
+                if children.activeTab == 0 {
                     Image(systemName: "house.fill")
                 } else {
                     Image(systemName: "house")
@@ -19,7 +26,7 @@ class AuthenticatedCoordinator: TabCoordinatable {
             }
         case 1:
             Group {
-                if activeTab == 1 {
+                if children.activeTab == 1 {
                     Image(systemName: "doc.text.fill")
                 } else {
                     Image(systemName: "doc.text")
@@ -28,7 +35,7 @@ class AuthenticatedCoordinator: TabCoordinatable {
             }
         case 2:
             Group {
-                if activeTab == 2 {
+                if children.activeTab == 2 {
                     Image(systemName: "person.fill")
                 } else {
                     Image(systemName: "person")
@@ -37,7 +44,7 @@ class AuthenticatedCoordinator: TabCoordinatable {
             }
         case 3:
             Group {
-                if activeTab == 3 {
+                if children.activeTab == 3 {
                     Image(systemName: "bed.double.fill")
                 } else {
                     Image(systemName: "bed.double")
@@ -49,10 +56,16 @@ class AuthenticatedCoordinator: TabCoordinatable {
         }
     }
     
-    var coordinators: [AnyCoordinatable] = [
-        NavigationViewCoordinatable(TestbedCoordinator()).eraseToAnyCoordinatable(),
-        NavigationViewCoordinatable(HomeCoordinator()).eraseToAnyCoordinatable(),
-        NavigationViewCoordinatable(ProjectsCoordinator()).eraseToAnyCoordinatable(),
-        NavigationViewCoordinatable(ProfileCoordinator()).eraseToAnyCoordinatable()
-    ]
+    func resolveRoute(route: Route) -> AnyCoordinatable {
+        switch route {
+        case .home:
+            return NavigationViewCoordinatable(HomeCoordinator()).eraseToAnyCoordinatable()
+        case .projects:
+            return NavigationViewCoordinatable(ProjectsCoordinator()).eraseToAnyCoordinatable()
+        case .profile:
+            return NavigationViewCoordinatable(ProfileCoordinator()).eraseToAnyCoordinatable()
+        case .testbed:
+            return NavigationViewCoordinatable(TestbedCoordinator()).eraseToAnyCoordinatable()
+        }
+    }
 }

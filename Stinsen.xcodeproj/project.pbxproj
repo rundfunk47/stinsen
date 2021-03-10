@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		EB1B5BF225E6CC310050FB64 /* PresentationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B5BF125E6CC310050FB64 /* PresentationHelper.swift */; };
 		EB1B5BF625E6CC510050FB64 /* Presented.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B5BF525E6CC510050FB64 /* Presented.swift */; };
+		EB5A78A225F9352B0038FF8F /* TabRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5A78A125F9352B0038FF8F /* TabRoute.swift */; };
+		EB5A78A625F9361E0038FF8F /* TabChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5A78A525F9361E0038FF8F /* TabChild.swift */; };
 		EBB6C5D625F7991800C59C06 /* Children.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB6C5D525F7991800C59C06 /* Children.swift */; };
 		OBJ_55 /* AnyCoordinatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* AnyCoordinatable.swift */; };
 		OBJ_57 /* Coordinatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* Coordinatable.swift */; };
@@ -35,6 +37,8 @@
 /* Begin PBXFileReference section */
 		EB1B5BF125E6CC310050FB64 /* PresentationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationHelper.swift; sourceTree = "<group>"; };
 		EB1B5BF525E6CC510050FB64 /* Presented.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presented.swift; sourceTree = "<group>"; };
+		EB5A78A125F9352B0038FF8F /* TabRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabRoute.swift; sourceTree = "<group>"; };
+		EB5A78A525F9361E0038FF8F /* TabChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabChild.swift; sourceTree = "<group>"; };
 		EBB6C5D525F7991800C59C06 /* Children.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Children.swift; sourceTree = "<group>"; };
 		OBJ_11 /* AnyCoordinatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCoordinatable.swift; sourceTree = "<group>"; };
 		OBJ_13 /* Coordinatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinatable.swift; sourceTree = "<group>"; };
@@ -132,6 +136,8 @@
 				OBJ_35 /* TabCoordinatable.swift */,
 				OBJ_37 /* TabCoordinatableView.swift */,
 				OBJ_36 /* TabRouter.swift */,
+				EB5A78A525F9361E0038FF8F /* TabChild.swift */,
+				EB5A78A125F9352B0038FF8F /* TabRoute.swift */,
 			);
 			path = TabCoordinatable;
 			sourceTree = "<group>";
@@ -246,6 +252,7 @@
 				OBJ_57 /* Coordinatable.swift in Sources */,
 				OBJ_58 /* CoordinatorView.swift in Sources */,
 				EB1B5BF225E6CC310050FB64 /* PresentationHelper.swift in Sources */,
+				EB5A78A625F9361E0038FF8F /* TabChild.swift in Sources */,
 				OBJ_60 /* Presentable.swift in Sources */,
 				OBJ_61 /* Array+SafeIndex.swift in Sources */,
 				OBJ_62 /* NavigationCoordinatable.swift in Sources */,
@@ -259,6 +266,7 @@
 				OBJ_70 /* NavigationViewCoordinatableView.swift in Sources */,
 				OBJ_71 /* ViewCoordinatable.swift in Sources */,
 				OBJ_72 /* ViewCoordinatableView.swift in Sources */,
+				EB5A78A225F9352B0038FF8F /* TabRoute.swift in Sources */,
 				OBJ_73 /* ViewRouter.swift in Sources */,
 				EBB6C5D625F7991800C59C06 /* Children.swift in Sources */,
 				OBJ_74 /* TabCoordinatable.swift in Sources */,
