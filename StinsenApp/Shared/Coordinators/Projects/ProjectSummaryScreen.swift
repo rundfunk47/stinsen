@@ -4,7 +4,7 @@ import SwiftUI
 import Stinsen
 
 struct ProjectSummaryScreen: View {
-    @EnvironmentObject var projectsCoordinator: NavigationRouter<ProjectsCoordinator>
+    @EnvironmentObject var projectsCoordinator: NavigationRouter<ProjectsCoordinator.Route>
     @ObservedObject var allProjects: AllProjectsStore = .shared
     @ObservedObject var favoriteProjects: FavoriteProjectsStore = .shared
 

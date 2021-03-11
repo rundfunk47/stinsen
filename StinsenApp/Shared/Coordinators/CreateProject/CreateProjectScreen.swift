@@ -4,7 +4,7 @@ import SwiftUI
 import Stinsen
 
 struct CreateProjectScreen: View {
-    @EnvironmentObject var createProject: NavigationRouter<CreateProjectCoordinator>
+    @EnvironmentObject var createProject: NavigationRouter<CreateProjectCoordinator.Route>
     @State var text: String = ""
 
     var body: some View {

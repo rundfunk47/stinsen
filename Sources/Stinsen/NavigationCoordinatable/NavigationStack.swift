@@ -1,7 +1,6 @@
 import Foundation
 import Combine
 
-
 /// Represents a stack of routes
 public class NavigationStack: AppearingMetadata, ObservableObject {    
     public func popTo<T: Coordinatable>(_ coordinator: T) {

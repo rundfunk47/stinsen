@@ -4,9 +4,9 @@ import SwiftUI
 import Stinsen
 
 class MainCoordinator: ViewCoordinatable {
-    var children = Children([])
+    var children = ViewChild()
     
-    enum Route {
+    enum Route: ViewRoute {
         case unauthenticated
         case authenticated
     }

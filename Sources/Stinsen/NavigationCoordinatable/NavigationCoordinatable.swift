@@ -4,7 +4,7 @@ import Combine
 
 /// The NavigationCoordinatable is used to represent a flow. If you want to push items to the stack you need to wrap this in a NavigationViewCoordinatable.
 public protocol NavigationCoordinatable: Coordinatable {
-    associatedtype Route
+    associatedtype Route: NavigationRoute
     associatedtype Start: View
     func resolveRoute(route: Route) -> Transition
     @ViewBuilder func start() -> Start
@@ -30,6 +30,7 @@ public extension NavigationCoordinatable {
 }
 
 public extension NavigationCoordinatable {
+    #warning("TODO: Move to NavigationRouter")
     func route(to route: Route) {
         let resolved = resolveRoute(route: route)
         self.navigationStack.append(resolved)

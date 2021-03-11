@@ -6,7 +6,7 @@ import Stinsen
 class CreateProjectCoordinator: NavigationCoordinatable {
     var navigationStack: NavigationStack = NavigationStack()
 
-    enum Route {
+    enum Route: NavigationRoute {
 
     }
 

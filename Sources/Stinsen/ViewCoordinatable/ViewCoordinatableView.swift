@@ -3,8 +3,8 @@ import SwiftUI
 
 struct ViewCoordinatableView<T: ViewCoordinatable>: View {
     var coordinator: T
-    let router: ViewRouter<T>
-    @ObservedObject var children: Children
+    let router: ViewRouter<T.Route>
+    @ObservedObject var children: ViewChild
     
     init(coordinator: T) {
         self.router = ViewRouter(coordinator)

@@ -1,13 +1,13 @@
 import Foundation
 
-public class ViewRouter<T: ViewCoordinatable>: ObservableObject {
-    private let coordinator: T
+public class ViewRouter<T: ViewRoute>: ObservableObject {
+    private let routable: ViewRoutable
     
-    public func route(to route: T.Route) {
-        coordinator.route(to: route)
+    public func route(to route: T) {
+        routable.anyRoute(to: route)
     }
     
-    init(_ coordinator: T) {
-        self.coordinator = coordinator
+    init<U: ViewCoordinatable>(_ coordinator: U) {
+        self.routable = ViewRoutable(coordinator: coordinator)
     }
 }

@@ -4,7 +4,7 @@ import SwiftUI
 import Stinsen
 
 struct ForgotPasswordScreen: View {
-    @EnvironmentObject var unauthenticated: NavigationRouter<UnauthenticatedCoordinator>
+    @EnvironmentObject var unauthenticated: NavigationRouter<UnauthenticatedCoordinator.Route>
     
     @State var text: String = ""
     

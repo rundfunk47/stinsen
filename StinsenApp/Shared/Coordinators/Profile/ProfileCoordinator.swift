@@ -6,7 +6,7 @@ import Stinsen
 class ProfileCoordinator: NavigationCoordinatable {
     var navigationStack: NavigationStack = NavigationStack()
 
-    enum Route {
+    enum Route: NavigationRoute {
         case push
         case modal
     }

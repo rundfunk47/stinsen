@@ -4,8 +4,8 @@ import SwiftUI
 import Stinsen
 
 struct ProfileScreen: View {
-    @EnvironmentObject var main: ViewRouter<MainCoordinator>
-    @EnvironmentObject var profile: NavigationRouter<ProfileCoordinator>
+    @EnvironmentObject var main: ViewRouter<MainCoordinator.Route>
+    @EnvironmentObject var profile: NavigationRouter<ProfileCoordinator.Route>
 
     var body: some View {
         ScrollView {

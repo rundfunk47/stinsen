@@ -1,17 +1,10 @@
-//
-//  TestbedScreen.swift
-//  StinsenApp (iOS)
-//
-//  Created by Narek Mailian on 2021-02-23.
-//
-
 import Foundation
 import SwiftUI
 
 import Stinsen
 
 struct TestbedScreen: View {
-    @EnvironmentObject var testbed: NavigationRouter<TestbedCoordinator>
+    @EnvironmentObject var testbed: NavigationRouter<TestbedCoordinator.Route>
     @State var text: String = ""
     
     var body: some View {

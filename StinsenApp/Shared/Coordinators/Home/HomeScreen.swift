@@ -6,7 +6,7 @@ import Stinsen
 struct HomeScreen: View {
     @ObservedObject var favoriteProjects: FavoriteProjectsStore = .shared
     @ObservedObject var allProjects: AllProjectsStore = .shared
-    @EnvironmentObject var tabRoute: TabRouter<AuthenticatedCoordinator>
+    @EnvironmentObject var tabRoute: TabRouter<AuthenticatedCoordinator.Route>
     
     var body: some View {
         ScrollView {

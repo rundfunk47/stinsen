@@ -4,7 +4,7 @@ import SwiftUI
 import Stinsen
 
 struct LoadingScreen: View {
-    @EnvironmentObject var main: ViewRouter<MainCoordinator>
+    @EnvironmentObject var main: ViewRouter<MainCoordinator.Route>
     
     var body: some View {
         Group {

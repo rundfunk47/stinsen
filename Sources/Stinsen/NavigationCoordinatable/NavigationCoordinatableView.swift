@@ -6,7 +6,7 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
     var coordinator: T
     private let id: Int
     @EnvironmentObject private var root: RootCoordinator
-    private let router: NavigationRouter<T>
+    private let router: NavigationRouter<T.Route>
     private let start: AnyView
     @ObservedObject var presentationHelper: PresentationHelper<T>
     

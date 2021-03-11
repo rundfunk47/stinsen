@@ -6,7 +6,7 @@ import Stinsen
 class UnauthenticatedCoordinator: NavigationCoordinatable {    
     var navigationStack = NavigationStack()
     
-    enum Route {
+    enum Route: NavigationRoute {
         case forgotPassword
     }
 

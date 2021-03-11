@@ -31,7 +31,7 @@ public class TabChild<T: TabCoordinatable>: ObservableObject {
     
     func route(to route: T.Route) {
         let coordinator = coordinators.first { (it) -> Bool in
-            it.0 == route
+            it.0.isEqual(to: route)
         }!.1
         
         self.childCoordinator = coordinator

@@ -1,32 +1,24 @@
 import Foundation
 
-public class NavigationRouter<T: NavigationCoordinatable>: ObservableObject {
-    private let coordinator: T
+public class NavigationRouter<T: NavigationRoute>: ObservableObject {
+    private let routable: NavigationRoutable
     var root: AnyCoordinatable?
     public let id: Int?
     
-    public func route(to route: T.Route) {
-        coordinator.route(to: route)
+    public func route(to route: T) {
+        routable.anyRoute(to: route)
     }
     
     public func pop() {
-        self.coordinator.navigationStack.popTo(self.coordinator.navigationStack.value.count - 2)
+        routable.pop()
     }
     
     public func dismiss(onFinished: @escaping (() -> Void) = {}) {
-        guard let parent = root!.allChildCoordinators.first(where: {
-            $0.childCoordinators.contains(where: {
-                coordinator.id == $0.id
-            })
-        }) else {
-            fatalError("no children, cannot dismiss?!")
-        }
-        
-        parent.dismissChildCoordinator(coordinator.eraseToAnyCoordinatable(), onFinished)
+        routable.dismiss(withRootCoordinator: root!, onFinished: onFinished)
     }
     
-    init(id: Int?, coordinator: T) {
+    init<U: NavigationCoordinatable>(id: Int?, coordinator: U) {
         self.id = id
-        self.coordinator = coordinator
+        self.routable = NavigationRoutable(coordinator: coordinator)
     }
 }
