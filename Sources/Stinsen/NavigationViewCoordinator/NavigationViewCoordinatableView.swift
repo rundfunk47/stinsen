@@ -8,7 +8,7 @@ struct NavigationViewCoordinatableView<T: NavigationViewCoordinatable>: View {
 
     init(coordinator: T) {
         self.coordinator = coordinator
-        view = coordinator.children.childCoordinators.first!.coordinatorView()
+        view = coordinator.children.childCoordinator!.coordinatorView()
     }
         
     var body: some View {
@@ -16,8 +16,8 @@ struct NavigationViewCoordinatableView<T: NavigationViewCoordinatable>: View {
             view
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .onReceive(coordinator.children.$childCoordinators) { (value) in
-            if value.isEmpty {
+        .onReceive(coordinator.children.$childCoordinator) { (value) in
+            if value == nil {
                 guard let parent = root.coordinator.allChildCoordinators.first(where: {
                     $0.childCoordinators.contains(where: {
                         coordinator.id == $0.id

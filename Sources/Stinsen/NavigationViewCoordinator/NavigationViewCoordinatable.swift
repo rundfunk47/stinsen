@@ -18,15 +18,15 @@ public class NavigationViewCoordinatable: Coordinatable {
             completion?()
             oldDismissal()
         }
-        children.childCoordinators = []
+        children.childCoordinator = nil
     }
     
     public var childCoordinators: [AnyCoordinatable] {
-        children.childCoordinators
+        [children.childCoordinator].compactMap { $0 }
     }
     
     public var appearingMetadata: AppearingMetadata? = nil
-    @ObservedObject public var children: Children
+    @ObservedObject public var children: NavigationViewChild
 
     public func coordinatorView() -> AnyView {
         AnyView(
@@ -35,6 +35,6 @@ public class NavigationViewCoordinatable: Coordinatable {
     }
         
     public init<T: Coordinatable>(_ childCoordinator: T) {
-        self.children = Children([childCoordinator.eraseToAnyCoordinatable()])
+        self.children = NavigationViewChild(childCoordinator.eraseToAnyCoordinatable())
     }
 }
