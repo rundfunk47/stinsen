@@ -22,8 +22,7 @@ Example using a Navigation Stack:
 
 ```swift
 class ProjectsCoordinator: NavigationCoordinatable {
-    var children = Children() // usually you would want to initialize this without any active children
-    var navigationStack = NavigationStack<Route>() // same as above, start with an empty stack
+    var navigationStack = NavigationStack() // usually you would want to initialize this without any active children
 
     enum Route {
         case project(id: UUID)
@@ -51,7 +50,7 @@ To perform these transitions, we use `@EnviromentObject` to fetch a reference to
 
 ```swift
 struct ProjectsScreen: View {
-    @EnvironmentObject var projects: NavigationRouter<ProjectsCoordinator>
+    @EnvironmentObject var projects: NavigationRouter<ProjectsCoordinator.Route>
     
     var body: some View {
         List {
