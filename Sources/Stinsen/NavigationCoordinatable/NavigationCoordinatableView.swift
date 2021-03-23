@@ -48,7 +48,12 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
             .onDisappear(perform: {
                 // Find the appearing coordinator
                 guard let appearingCoordinator = self.root.coordinator.allChildCoordinators.first(where: {
-                    return $0.appearingMetadata?.appearing != nil
+                    guard ($0.appearingMetadata?.appearing) != nil else { return false }
+
+                    // only return coordinators in the current tree
+                    return ([$0] + $0.allChildCoordinators).contains(where: { (it) -> Bool in
+                        it.id == coordinator.id
+                    })
                 }) else {
                     return
                 }
