@@ -15,7 +15,7 @@ public protocol Coordinatable: ObservableObject, Identifiable {
 
 public typealias DismissalAction = () -> Void
 
-extension Coordinatable {
+public extension Coordinatable {
     var allChildCoordinators: [AnyCoordinatable] {
         return childCoordinators.flatMap { [$0] + $0.allChildCoordinators }
     }
