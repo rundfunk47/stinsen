@@ -1,7 +1,7 @@
 import Foundation
 
 /// Used to mark the root of the coordinator tree. Useful for checking if for example the active coordinator even exists
-class RootCoordinator: ObservableObject {
+public class RootCoordinator: ObservableObject {
     var coordinator: AnyCoordinatable
     
     init<T: Coordinatable>(coordinator: T) {
