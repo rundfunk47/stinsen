@@ -3,21 +3,15 @@ import SwiftUI
 
 /// The NavigationViewCoordinatable is used to represent a coordinator with a NavigationView
 public class NavigationViewCoordinatable: Coordinatable {
-    public var childDismissalAction: DismissalAction {
+    public var dismissalAction: DismissalAction {
         get {
-            children.childDismissalAction
+            children.dismissalAction
         } set {
-            children.childDismissalAction = newValue
+            children.dismissalAction = newValue
         }
     }
     
     public func dismissChildCoordinator(_ childCoordinator: AnyCoordinatable, _ completion: (() -> Void)?) {
-        let oldDismissal = childDismissalAction
-        
-        childDismissalAction = {
-            completion?()
-            oldDismissal()
-        }
         children.childCoordinator = nil
     }
     
@@ -25,7 +19,6 @@ public class NavigationViewCoordinatable: Coordinatable {
         [children.childCoordinator].compactMap { $0 }
     }
     
-    public var appearingMetadata: AppearingMetadata? = nil
     @ObservedObject public var children: NavigationViewChild
 
     public func coordinatorView() -> AnyView {

@@ -5,10 +5,10 @@ import Combine
 /// Used so that you don't need to write @Published
 public class ViewChild: ObservableObject {
     @Published var childCoordinator: AnyCoordinatable?
-    var childDismissalAction: DismissalAction
+    var dismissalAction: DismissalAction
     
     public init(_ childCoordinator: AnyCoordinatable? = nil) {
         self.childCoordinator = childCoordinator
-        self.childDismissalAction = {}
+        self.dismissalAction = {}
     }
 }

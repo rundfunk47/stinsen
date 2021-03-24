@@ -15,18 +15,14 @@ public extension ViewCoordinatable {
         return [children.childCoordinator].compactMap { $0 }
     }
     
-    var childDismissalAction: DismissalAction {
+    var dismissalAction: DismissalAction {
         get {
-            children.childDismissalAction
+            children.dismissalAction
         } set {
-            children.childDismissalAction = newValue
+            children.dismissalAction = newValue
         }
     }
-    
-    var appearingMetadata: AppearingMetadata? {
-        return nil
-    }
-    
+        
     func coordinatorView() -> AnyView {
         return AnyView(
             ViewCoordinatableView(coordinator: self)

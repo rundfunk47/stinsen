@@ -12,16 +12,12 @@ public protocol NavigationCoordinatable: Coordinatable {
 }
 
 public extension NavigationCoordinatable {
-    var childDismissalAction: DismissalAction {
+    var dismissalAction: DismissalAction {
         get {
-            navigationStack.childDismissalAction
+            navigationStack.dismissalAction
         } set {
-            navigationStack.childDismissalAction = newValue
+            navigationStack.dismissalAction = newValue
         }
-    }
-    
-    var appearingMetadata: AppearingMetadata? {
-        self.navigationStack
     }
     
     var childCoordinators: [AnyCoordinatable] {
@@ -46,13 +42,6 @@ public extension NavigationCoordinatable {
     }
     
     func dismissChildCoordinator(_ childCoordinator: AnyCoordinatable, _ completion: (() -> Void)?) {
-        
-        let oldAction = self.childDismissalAction
-        self.childDismissalAction = {
-            oldAction()
-            completion?()
-        }
-
         self.navigationStack.popTo(childCoordinator)
     }
 }

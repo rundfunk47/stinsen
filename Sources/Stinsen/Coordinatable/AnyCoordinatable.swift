@@ -30,11 +30,7 @@ fileprivate class _AnyCoordinatableBase: Coordinatable {
         fatalError("override me")
     }
     
-    var appearingMetadata: AppearingMetadata? {
-        fatalError("override me")
-    }
-    
-    var childDismissalAction: DismissalAction {
+    var dismissalAction: DismissalAction {
         get {
             fatalError("override me")
         } set {
@@ -68,17 +64,11 @@ fileprivate final class _AnyCoordinatableBox<Base: Coordinatable>: _AnyCoordinat
         return base.id
     }
     
-    override var appearingMetadata: AppearingMetadata? {
+    override var dismissalAction: DismissalAction {
         get {
-            return base.appearingMetadata
-        }
-    }
-    
-    override var childDismissalAction: DismissalAction {
-        get {
-            return base.childDismissalAction
+            return base.dismissalAction
         } set {
-            base.childDismissalAction = newValue
+            base.dismissalAction = newValue
         }
     }
 }
@@ -87,17 +77,15 @@ fileprivate final class _AnyCoordinatableBox<Base: Coordinatable>: _AnyCoordinat
 public final class AnyCoordinatable: Coordinatable {
     private let box: _AnyCoordinatableBase
     private let _childCoordinators: () -> [AnyCoordinatable]
-    private let _getAppearingMetadata: () -> AppearingMetadata?
     private let _getDismissalAction: () -> DismissalAction
     private let _setDismissalAction: (@escaping DismissalAction) -> Void
     
     public init<Base: Coordinatable>(_ base: Base) {
         box = _AnyCoordinatableBox(base)
         _childCoordinators = { base.childCoordinators }
-        _getAppearingMetadata = { base.appearingMetadata }
-        _getDismissalAction = { base.childDismissalAction }
+        _getDismissalAction = { base.dismissalAction }
         _setDismissalAction = { action in
-            base.childDismissalAction = action
+            base.dismissalAction = action
         }
     }
 
@@ -123,17 +111,11 @@ public final class AnyCoordinatable: Coordinatable {
         }
     }
     
-    public var appearingMetadata: AppearingMetadata? {
-        get {
-            _getAppearingMetadata()
-        }
-    }
-    
     public func dismissChildCoordinator(_ childCoordinator: AnyCoordinatable, _ completion: (() -> Void)?) {
         box.dismissChildCoordinator(childCoordinator, completion)
     }
     
-    public var childDismissalAction: DismissalAction {
+    public var dismissalAction: DismissalAction {
         get {
             _getDismissalAction()
         } set {

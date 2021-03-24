@@ -28,7 +28,7 @@ struct NavigationViewCoordinatableView<T: NavigationViewCoordinatable>: View {
                 
                 parent.dismissChildCoordinator( 
                     coordinator.eraseToAnyCoordinatable(),
-                    coordinator.children.childDismissalAction
+                    coordinator.children.dismissalAction
                 )
             }
         }

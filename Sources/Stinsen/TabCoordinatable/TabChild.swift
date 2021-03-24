@@ -4,7 +4,7 @@ import Foundation
 /// Used so that you don't need to write @Published
 public class TabChild<T: TabCoordinatable>: ObservableObject {
     @Published var childCoordinator: AnyCoordinatable
-    var childDismissalAction: DismissalAction
+    var dismissalAction: DismissalAction
     let coordinator: T
     let coordinators: [(T.Route, AnyCoordinatable)]
     
@@ -20,7 +20,7 @@ public class TabChild<T: TabCoordinatable>: ObservableObject {
     
     public init(_ coordinator: T, tabRoutes: [T.Route], staringRoute: Int = 0) {
         self.coordinator = coordinator
-        self.childDismissalAction = {}
+        self.dismissalAction = {}
 
         self.coordinators = tabRoutes.map { it in
             return (it, coordinator.resolveRoute(route: it))
