@@ -47,24 +47,29 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
             })
             .onDisappear(perform: {
                 // Find the appearing coordinator
-                guard let appearingCoordinator = self.root.coordinator.allChildCoordinators.first(where: {
+                let appearingCoordinator = self.root.coordinator.allChildCoordinators.first(where: {
                     guard ($0.appearingMetadata?.appearing) != nil else { return false }
 
                     // only return coordinators in the current tree
                     return ([$0] + $0.allChildCoordinators).contains(where: { (it) -> Bool in
                         it.id == coordinator.id
                     })
-                }) else {
-                    return
-                }
+                })
                 
-                if appearingCoordinator.id == self.coordinator.id {
+                if appearingCoordinator?.id == self.coordinator.id {
                     let appearing = coordinator.navigationStack.appearing!
                     // We are popping on the same stack
                     if appearing < id {
                         self.coordinator.navigationStack.popTo(appearing)
                     }
-                } else {
+                } else if appearingCoordinator == nil {
+                    // Not in tree - already removed!
+                    guard let appearingCoordinator = self.root.coordinator.allChildCoordinators.first(where: {
+                        return $0.appearingMetadata?.appearing != nil
+                    }) else {
+                        return
+                    }
+                    
                     // Popping on another stack
                     let stack = appearingCoordinator.appearingMetadata!
                     stack.popTo(stack.appearing!)
