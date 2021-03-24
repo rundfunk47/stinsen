@@ -22,11 +22,7 @@ public extension ViewCoordinatable {
             children.childDismissalAction = newValue
         }
     }
-    
-    var appearingMetadata: AppearingMetadata? {
-        return nil
-    }
-    
+        
     func coordinatorView() -> AnyView {
         return AnyView(
             ViewCoordinatableView(coordinator: self)

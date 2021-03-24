@@ -8,7 +8,6 @@ public protocol Coordinatable: ObservableObject, Identifiable {
     var id: String { get }
     /// The active child-coordinators of the coordinator
     var childCoordinators: [AnyCoordinatable] { get }
-    var appearingMetadata: AppearingMetadata? { get }
     func dismissChildCoordinator(_ childCoordinator: AnyCoordinatable, _ completion: (() -> Void)?)
     var childDismissalAction: DismissalAction { get set }
 }

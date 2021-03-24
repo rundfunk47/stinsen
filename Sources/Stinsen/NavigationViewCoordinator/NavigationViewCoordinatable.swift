@@ -25,7 +25,6 @@ public class NavigationViewCoordinatable: Coordinatable {
         [children.childCoordinator].compactMap { $0 }
     }
     
-    public var appearingMetadata: AppearingMetadata? = nil
     @ObservedObject public var children: NavigationViewChild
 
     public func coordinatorView() -> AnyView {

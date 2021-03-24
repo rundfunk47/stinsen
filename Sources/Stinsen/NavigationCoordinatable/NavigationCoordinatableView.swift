@@ -34,49 +34,15 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
             )
             .onAppear(perform: {
                 self.router.root = root.coordinator
-                /*
-                 alerternate version:
-                if self.id == -1 {
-                    if self.router.root == nil {
-                        self.router.root = root.coordinator
-                    }
-                }*/
-
-                // Set the appear variable. This will be checked later in onDisappear.
-                self.coordinator.navigationStack.appearing = id
-            })
-            .onDisappear(perform: {
-                // Find the appearing coordinator
-                let appearingCoordinator = self.root.coordinator.allChildCoordinators.first(where: {
-                    guard ($0.appearingMetadata?.appearing) != nil else { return false }
-
-                    // only return coordinators in the current tree
-                    return ([$0] + $0.allChildCoordinators).contains(where: { (it) -> Bool in
-                        it.id == coordinator.id
-                    })
-                })
                 
-                if appearingCoordinator?.id == self.coordinator.id {
-                    let appearing = coordinator.navigationStack.appearing!
-                    // We are popping on the same stack
-                    if appearing < id {
-                        self.coordinator.navigationStack.popTo(appearing)
-                    }
-                } else if appearingCoordinator == nil {
-                    // Not in tree - already removed!
-                    guard let appearingCoordinator = self.root.coordinator.allChildCoordinators.first(where: {
-                        return $0.appearingMetadata?.appearing != nil
-                    }) else {
-                        return
-                    }
-                    
-                    // Popping on another stack
-                    let stack = appearingCoordinator.appearingMetadata!
-                    stack.popTo(stack.appearing!)
-                    
+                if self.presentationHelper.presented != nil {
+                    // Pressed back button
+                    self.coordinator.navigationStack.popTo(self.id)
+                } else {
+                    // Dismissing through dismissal-function or other means
                     DispatchQueue.main.async {
-                        appearingCoordinator.childDismissalAction()
-                        appearingCoordinator.childDismissalAction = {}
+                        self.coordinator.childDismissalAction()
+                        self.coordinator.childDismissalAction = {}
                     }
                 }
             })

@@ -20,10 +20,6 @@ public extension NavigationCoordinatable {
         }
     }
     
-    var appearingMetadata: AppearingMetadata? {
-        self.navigationStack
-    }
-    
     var childCoordinators: [AnyCoordinatable] {
         navigationStack.childCoordinators
     }

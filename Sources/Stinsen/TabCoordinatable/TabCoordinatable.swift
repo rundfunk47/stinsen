@@ -25,10 +25,6 @@ public extension TabCoordinatable {
     var childCoordinators: [AnyCoordinatable] {
         [children.childCoordinator]
     }
-    
-    var appearingMetadata: AppearingMetadata? {
-        return nil
-    }
 
     func coordinatorView() -> AnyView {
         AnyView(
