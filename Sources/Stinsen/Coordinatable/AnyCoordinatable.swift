@@ -30,7 +30,7 @@ fileprivate class _AnyCoordinatableBase: Coordinatable {
         fatalError("override me")
     }
     
-    var childDismissalAction: DismissalAction {
+    var dismissalAction: DismissalAction {
         get {
             fatalError("override me")
         } set {
@@ -64,11 +64,11 @@ fileprivate final class _AnyCoordinatableBox<Base: Coordinatable>: _AnyCoordinat
         return base.id
     }
     
-    override var childDismissalAction: DismissalAction {
+    override var dismissalAction: DismissalAction {
         get {
-            return base.childDismissalAction
+            return base.dismissalAction
         } set {
-            base.childDismissalAction = newValue
+            base.dismissalAction = newValue
         }
     }
 }
@@ -83,9 +83,9 @@ public final class AnyCoordinatable: Coordinatable {
     public init<Base: Coordinatable>(_ base: Base) {
         box = _AnyCoordinatableBox(base)
         _childCoordinators = { base.childCoordinators }
-        _getDismissalAction = { base.childDismissalAction }
+        _getDismissalAction = { base.dismissalAction }
         _setDismissalAction = { action in
-            base.childDismissalAction = action
+            base.dismissalAction = action
         }
     }
 
@@ -115,7 +115,7 @@ public final class AnyCoordinatable: Coordinatable {
         box.dismissChildCoordinator(childCoordinator, completion)
     }
     
-    public var childDismissalAction: DismissalAction {
+    public var dismissalAction: DismissalAction {
         get {
             _getDismissalAction()
         } set {

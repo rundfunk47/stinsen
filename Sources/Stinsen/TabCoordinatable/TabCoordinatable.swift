@@ -14,11 +14,11 @@ public protocol TabCoordinatable: Coordinatable {
 }
 
 public extension TabCoordinatable {
-    var childDismissalAction: DismissalAction {
+    var dismissalAction: DismissalAction {
         get {
-            children.childDismissalAction
+            children.dismissalAction
         } set {
-            children.childDismissalAction = newValue
+            children.dismissalAction = newValue
         }
     }
     

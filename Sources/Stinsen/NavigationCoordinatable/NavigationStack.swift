@@ -19,13 +19,13 @@ public class NavigationStack: ObservableObject {
     }
     
     public var poppedTo = PassthroughSubject<Int, Never>()
-    public var childDismissalAction: DismissalAction
+    public var dismissalAction: DismissalAction
     
     @Published private (set) var value: [Transition]
     
     public init() {
         self.value = []
-        self.childDismissalAction = {}
+        self.dismissalAction = {}
     }
     
     public func popTo(_ int: Int) {

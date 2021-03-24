@@ -35,6 +35,12 @@ class NavigationRoutable {
                 fatalError("no children, cannot dismiss?!")
             }
             
+            let oldAction = coordinator.dismissalAction
+            coordinator.dismissalAction = {
+                oldAction()
+                onFinished()
+            }
+            
             parent.dismissChildCoordinator(coordinator.eraseToAnyCoordinatable(), onFinished)
         }
     }

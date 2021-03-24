@@ -36,28 +36,36 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
                 self.router.root = root.coordinator
                 
                 if self.presentationHelper.presented != nil {
-                    // Pressed back button
                     self.coordinator.navigationStack.popTo(self.id)
-                } else {
-                    // Dismissing through dismissal-function or other means
-                    DispatchQueue.main.async {
-                        self.coordinator.childDismissalAction()
-                        self.coordinator.childDismissalAction = {}
-                    }
                 }
             })
+            .onDisappear {
+                DispatchQueue.main.async {
+                    self.coordinator.dismissalAction()
+                    self.coordinator.dismissalAction = {}
+                }
+            }
             .sheet(isPresented: Binding<Bool>.init(get: { () -> Bool in
                 return presentationHelper.presented?.isModal == true
             }, set: { _ in
             
             }), onDismiss: {
                 // shouldn't matter if different coordinators. also this set modal children to nil
-                self.coordinator.navigationStack.popTo(self.id)
+                let presented = self.coordinator.navigationStack.value[safe: id + 1]
                 
-                DispatchQueue.main.async {
-                    self.coordinator.childDismissalAction()
-                    self.coordinator.childDismissalAction = {}
+                switch presented {
+                case .modal(let presentable):
+                    if let presentable = presentable as? AnyCoordinatable {
+                        DispatchQueue.main.async {
+                            presentable.dismissalAction()
+                            presentable.dismissalAction = {}
+                        }
+                    }
+                default:
+                    break
                 }
+                
+                self.coordinator.navigationStack.popTo(self.id)
             }, content: { () -> AnyView in
                 return { () -> AnyView in
                     if let view = presentationHelper.presented?.view {

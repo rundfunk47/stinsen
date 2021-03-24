@@ -9,7 +9,7 @@ public protocol Coordinatable: ObservableObject, Identifiable {
     /// The active child-coordinators of the coordinator
     var childCoordinators: [AnyCoordinatable] { get }
     func dismissChildCoordinator(_ childCoordinator: AnyCoordinatable, _ completion: (() -> Void)?)
-    var childDismissalAction: DismissalAction { get set }
+    var dismissalAction: DismissalAction { get set }
 }
 
 public typealias DismissalAction = () -> Void
