@@ -76,9 +76,7 @@ Stinsen out of the box has three different kinds of `Coordinatable` protocols yo
 
 # Sample App 📱
 
-<p align="center">
-  <img src="./Images/stinsenapp-ios.gif" alt="Stinsen Sample App">
-</p>
+<img src="./Images/stinsenapp-ios.gif" alt="Stinsen Sample App">
 
 Clone the repo and run the _StinsenApp_ to get a feel for how _Stinsen_ can be used. _StinsenApp_ works on iOS, tvOS, watchOS and macOS. It attempts to showcase many of the features _Stinsen_ has available for you to use.
 
