@@ -1,19 +1,21 @@
 import Foundation
 import SwiftUI
 
-struct NavigationViewCoordinatableView<T: NavigationViewCoordinatable>: View {
+struct NavigationViewCoordinatableView<T: NavigationViewCoordinatable<V>, U: View, V: View>: View {
     var coordinator: T    
     @EnvironmentObject private var root: RootCoordinator
     private var view: AnyView
+    private var customize: (AnyView) -> U
 
-    init(coordinator: T) {
+    init(coordinator: T, customize: @escaping (AnyView) -> U) {
         self.coordinator = coordinator
-        view = coordinator.children.childCoordinator!.coordinatorView()
+        self.view = coordinator.children.childCoordinator!.coordinatorView()
+        self.customize = customize
     }
-        
+    
     var body: some View {
         NavigationView {
-            view
+            customize(AnyView(view))
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .onReceive(coordinator.children.$childCoordinator) { (value) in
@@ -26,7 +28,7 @@ struct NavigationViewCoordinatableView<T: NavigationViewCoordinatable>: View {
                     fatalError("no children, cannot dismiss?!")
                 }
                 
-                parent.dismissChildCoordinator( 
+                parent.dismissChildCoordinator(
                     coordinator.eraseToAnyCoordinatable(),
                     coordinator.children.dismissalAction
                 )
