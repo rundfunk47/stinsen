@@ -74,9 +74,29 @@ Stinsen out of the box has three different kinds of `Coordinatable` protocols yo
 * `TabCoordinatable` - For TabViews.
 * `ViewCoordinatable` - Just a view and routes that do not push but rather replace the entire view, can be used for instance when switching between logged in/logged out.
 
+# Installation 💾
+
+_Stinsen_ supports two ways of installation, Cocoapods and SPM. 
+
+## SPM
+
+Open Xcode and your project, click `File / Swift Packages / Add package dependency...` .  In the textfield "_Enter package repository URL_", write `https://github.com/rundfunk47/stinsen` and press _Next_ twice
+
+## Cocoapods
+
+Create a `Podfile` in your app's root directory. Add
+```
+# Podfile
+use_frameworks!
+
+target 'YOUR_TARGET_NAME' do
+    pod 'Stinsen'
+end
+```
+
 # Sample App 📱
 
-
+<img src="./Images/stinsenapp-ios.gif" alt="Stinsen Sample App">
 
 Clone the repo and run the _StinsenApp_ to get a feel for how _Stinsen_ can be used. _StinsenApp_ works on iOS, tvOS, watchOS and macOS. It attempts to showcase many of the features _Stinsen_ has available for you to use.
 
