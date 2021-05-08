@@ -34,7 +34,7 @@ class PresentationHelper<T: NavigationCoordinatable>: ObservableObject {
                                     AnyView(
                                         NavigationView(
                                             content: {
-                                                view
+                                                view.navigationBarHidden(true)
                                             }
                                         )
                                         .navigationViewStyle(StackNavigationViewStyle())

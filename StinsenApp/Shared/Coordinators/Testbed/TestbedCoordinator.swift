@@ -37,8 +37,9 @@ class TestbedCoordinator: NavigationCoordinatable {
         case .modalScreen:
             return .modal(
                 AnyView(
-                    TestbedScreen()
-                        .navigationBarTitle("Modal testbed")
+                    NavigationView {
+                        TestbedScreen().navigationBarTitle("Modal testbed")
+                    }
                 )
             )
         }
