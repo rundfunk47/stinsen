@@ -11,6 +11,10 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
     @ObservedObject var presentationHelper: PresentationHelper<T>
     
     var body: some View {
+        #if os(macOS)
+        commonView
+            .environmentObject(router)
+        #else
         if #available(iOS 14.0, watchOS 7.0, tvOS 14.0, *) {
             commonView
                 .fullScreenCover(isPresented: Binding<Bool>.init(get: { () -> Bool in
@@ -47,6 +51,7 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
             commonView
                 .environmentObject(router)
         }
+        #endif
             
     }
     

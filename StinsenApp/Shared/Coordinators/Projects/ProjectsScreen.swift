@@ -26,6 +26,6 @@ struct ProjectsScreen: View {
                 })
             }
         }
-        .navigationBarTitle("Projects")
+        .navigationTitle(with: "Projects")
     }
 }

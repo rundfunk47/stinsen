@@ -14,6 +14,27 @@ struct NavigationViewCoordinatableView<T: NavigationViewCoordinatable<V>, U: Vie
     }
     
     var body: some View {
+        #if os(macOS)
+        NavigationView {
+            customize(AnyView(view))
+        }
+        .onReceive(coordinator.children.$childCoordinator) { (value) in
+            if value == nil {
+                guard let parent = root.coordinator.allChildCoordinators.first(where: {
+                    $0.childCoordinators.contains(where: {
+                        coordinator.id == $0.id
+                    })
+                }) else {
+                    fatalError("no children, cannot dismiss?!")
+                }
+                
+                parent.dismissChildCoordinator(
+                    coordinator.eraseToAnyCoordinatable(),
+                    coordinator.children.dismissalAction
+                )
+            }
+        }
+        #else
         NavigationView {
             customize(AnyView(view))
         }
@@ -34,5 +55,6 @@ struct NavigationViewCoordinatableView<T: NavigationViewCoordinatable<V>, U: Vie
                 )
             }
         }
+        #endif
     }
 }

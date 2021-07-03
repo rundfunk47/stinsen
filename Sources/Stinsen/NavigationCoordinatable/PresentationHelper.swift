@@ -30,16 +30,32 @@ class PresentationHelper<T: NavigationCoordinatable>: ObservableObject {
                             if presentable is AnyView {
                                 let view = AnyView(NavigationCoordinatableView(id: nextId, coordinator: coordinator))
 
+                                #if os(macOS)
                                 self.presented = .modal(
                                     AnyView(
                                         NavigationView(
                                             content: {
+                                                view
+                                            }
+                                        )
+                                    )
+                                )
+                                #else
+                                self.presented = .modal(
+                                    AnyView(
+                                        NavigationView(
+                                            content: {
+                                                #if os(macOS)
+                                                view
+                                                #else
                                                 view.navigationBarHidden(true)
+                                                #endif
                                             }
                                         )
                                         .navigationViewStyle(StackNavigationViewStyle())
                                     )
                                 )
+                                #endif
                             } else if let presentable = presentable as? AnyCoordinatable {
                                 self.presented = .modal(
                                     AnyView(

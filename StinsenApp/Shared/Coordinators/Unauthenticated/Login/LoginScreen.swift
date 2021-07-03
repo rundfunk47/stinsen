@@ -25,7 +25,7 @@ struct LoginScreen: View {
                 }
             }
         }
-        .navigationBarTitle("Welcome")
+        .navigationTitle(with: "Welcome")
     }
 }
 
