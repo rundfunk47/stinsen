@@ -16,6 +16,13 @@ class ProjectsCoordinator: NavigationCoordinatable {
         case .project(let id):
             return .push(AnyView(ProjectSummaryScreen(id: id)))
         case .createProject:
+            if #available(iOS 14.0, watchOS 7.0, tvOS 14.0, *) {
+                return .fullScreen(
+                    AnyCoordinatable(
+                        NavigationViewCoordinatable(CreateProjectCoordinator())
+                    )
+                )
+            }
             return .modal(
                 AnyCoordinatable(
                     NavigationViewCoordinatable(CreateProjectCoordinator())

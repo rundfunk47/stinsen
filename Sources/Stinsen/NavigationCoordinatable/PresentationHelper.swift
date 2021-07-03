@@ -65,6 +65,26 @@ class PresentationHelper<T: NavigationCoordinatable>: ObservableObject {
                             } else {
                                 fatalError("Unsupported presentable!")
                             }
+                        case .fullScreen(let presentable):
+                            if #available(iOS 14, tvOS 14, watchOS 7, *) {
+                                if presentable is AnyView {
+                                    let view = AnyView(NavigationCoordinatableView(id: nextId, coordinator: coordinator))
+                                    self.presented = .fullScreen(
+                                        view
+                                    )
+                                } else if let presentable = presentable as? AnyCoordinatable {
+                                    self.presented = .fullScreen(
+                                        AnyView(
+                                            presentable.coordinatorView()
+                                        )
+                                    )
+                                }  else {
+                                    fatalError("Unsupported presentable!")
+                                }
+                            } else {
+                                fatalError("Unsupported presentable!")
+                            }
+                            
                         }
                     } else {
                         fatalError()
