@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E644F80F2690952A004D8DA0 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E644F80E2690952A004D8DA0 /* View+.swift */; };
+		E644F81026909538004D8DA0 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E644F80E2690952A004D8DA0 /* View+.swift */; };
+		E644F81126909539004D8DA0 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E644F80E2690952A004D8DA0 /* View+.swift */; };
+		E644F81326909543004D8DA0 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E644F80E2690952A004D8DA0 /* View+.swift */; };
 		EB1BBB0225E27FA0004B9AEB /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB82BC8725E27CEF001635E6 /* RoundedButton.swift */; };
 		EB1BBB0325E27FA0004B9AEB /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB82BC7D25E27BEE001635E6 /* RoundedTextField.swift */; };
 		EB1BBB0825E27FA2004B9AEB /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB82BC8725E27CEF001635E6 /* RoundedButton.swift */; };
@@ -212,6 +216,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E644F80E2690952A004D8DA0 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		EB1BBB1225E2EAB6004B9AEB /* InfoText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoText.swift; sourceTree = "<group>"; };
 		EB1BBB1D25E2EC91004B9AEB /* FavoriteProjectsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteProjectsStore.swift; sourceTree = "<group>"; };
 		EB1BBB2D25E2F3BE004B9AEB /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
@@ -307,6 +312,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E644F80D26909512004D8DA0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E644F80E2690952A004D8DA0 /* View+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		EB1BBB2C25E2F1BD004B9AEB /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -425,6 +438,7 @@
 		EBC24EE825AC630000F455F3 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				E644F80D26909512004D8DA0 /* Extensions */,
 				EB6B103825DB0EA10011E826 /* Main */,
 				EB82BC7C25E27BDE001635E6 /* Components */,
 				EBE38D8D25DFB8EE00962D95 /* Stores */,
@@ -792,6 +806,7 @@
 				EB6B0F9F25DB04DF0011E826 /* LoginScreen.swift in Sources */,
 				EB6B107325DB1CF10011E826 /* CreateProjectCoordinator.swift in Sources */,
 				EB6B108425DB1D5C0011E826 /* CreateProjectScreen.swift in Sources */,
+				E644F81126909539004D8DA0 /* View+.swift in Sources */,
 				EB6B0F9725DB04D80011E826 /* ProfileScreen.swift in Sources */,
 				EB6B0F8525DB04C90011E826 /* LoadingScreen.swift in Sources */,
 				EB235D1325E8D221008BEE0A /* TestbedCoordinator.swift in Sources */,
@@ -820,6 +835,7 @@
 				EB9E368025E4DC1300C4E25C /* ComplicationController.swift in Sources */,
 				EB9E36DD25E4DDAF00C4E25C /* AuthenticatedCoordinator.swift in Sources */,
 				EB235D1D25E8D22E008BEE0A /* TestbedScreen.swift in Sources */,
+				E644F81326909543004D8DA0 /* View+.swift in Sources */,
 				EB9E36BF25E4DD9300C4E25C /* AllProjectsStore.swift in Sources */,
 				EB9E36B525E4DD8A00C4E25C /* StinsenApp.swift in Sources */,
 				EB9E36C025E4DD9300C4E25C /* FavoriteProjectsStore.swift in Sources */,
@@ -857,6 +873,7 @@
 				EB1BBB1325E2EAB6004B9AEB /* InfoText.swift in Sources */,
 				EB766E9425ACAFD40071A407 /* MainCoordinator.swift in Sources */,
 				EB6B107025DB1CF10011E826 /* CreateProjectCoordinator.swift in Sources */,
+				E644F80F2690952A004D8DA0 /* View+.swift in Sources */,
 				EB6B108125DB1D5C0011E826 /* CreateProjectScreen.swift in Sources */,
 				EBF1DE0125AC8DF90041CEAA /* AuthenticatedCoordinator.swift in Sources */,
 				EB656D3B25E55A5D003A8F8A /* TestbedCoordinator.swift in Sources */,
@@ -889,6 +906,7 @@
 				EB6B107125DB1CF10011E826 /* CreateProjectCoordinator.swift in Sources */,
 				EB6B108225DB1D5C0011E826 /* CreateProjectScreen.swift in Sources */,
 				EB447C5725B1C34B00F79D05 /* ForgotPasswordScreen.swift in Sources */,
+				E644F81026909538004D8DA0 /* View+.swift in Sources */,
 				EB447C4525B1C33A00F79D05 /* LoadingScreen.swift in Sources */,
 				EBE38D9025DFB90900962D95 /* AllProjectsStore.swift in Sources */,
 				EB235D1525E8D222008BEE0A /* TestbedCoordinator.swift in Sources */,
@@ -1234,7 +1252,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = StinsenApp/macOS/macOS.entitlements;
 				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = StinsenApp/macOS/Info.plist;
@@ -1245,6 +1265,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = se.rundfunk.stinsenapp.macos;
 				PRODUCT_NAME = StinsenApp;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
 			};
@@ -1256,7 +1277,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = StinsenApp/macOS/macOS.entitlements;
 				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = StinsenApp/macOS/Info.plist;
@@ -1267,6 +1290,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = se.rundfunk.stinsenapp.macos;
 				PRODUCT_NAME = StinsenApp;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
 			};

@@ -18,7 +18,7 @@ struct CreateProjectScreen: View {
                     createProject.dismiss()
                 }
             }
-            .navigationBarTitle("Create project")
+            .navigationTitle(with: "Create project")
         }
     }
 }

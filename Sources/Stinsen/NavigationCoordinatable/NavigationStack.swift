@@ -49,6 +49,8 @@ public class NavigationStack: ObservableObject {
                 return presentable as? AnyCoordinatable
             case .push(let presentable):
                 return presentable as? AnyCoordinatable
+            case .fullScreen(let presentable):
+                return presentable as? AnyCoordinatable
             }
         }
     }
