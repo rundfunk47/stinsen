@@ -74,6 +74,66 @@ Stinsen out of the box has three different kinds of `Coordinatable` protocols yo
 * `TabCoordinatable` - For TabViews.
 * `ViewCoordinatable` - Just a view and routes that do not push but rather replace the entire view, can be used for instance when switching between logged in/logged out.
 
+
+# ViewModel Support
+
+`@EnviromentObject` can only be use via a view. Stinsen provides two methods of passing the router to the ViewModel.
+
+## Via onAppear
+
+```swift
+struct ProjectsScreen: View {
+    @EnvironmentObject var projects: NavigationRouter<ProjectsCoordinator.Route>
+    
+    var body: some View {
+        List {
+          /* ... */
+        }
+        .onAppear {
+            viewModel.router = projects
+        }
+    }
+}
+```
+
+## RouterObject
+
+Let your coordinator implement `RouterIdentifiable` and provide a valid `routerId`. The `RouterStore` saves the instance of the router and you can get it via a custom PropertyWrapper. This provides a nice decoupling between View and ViewModel.
+
+```swift
+extension UnauthenticatedCoordinator: RouterIdentifiable {
+    var routerId: String {
+        "myId1"
+    }
+}
+```
+
+Retrieve Router:
+```swift
+class LoginScreenViewModel: ObservableObject {
+    
+    // directly via the RouterStore
+    var main: ViewRouter<MainCoordinator.Route>? = RouterStore.shared.retrieve(id: "myId")
+    
+    // via the RouterObject property wrapper
+    @RouterObject(routerId: "myId1")
+    var unauthenticated: NavigationRouter<UnauthenticatedCoordinator.Route>?
+    
+    init() {
+        
+    }
+    
+    func loginButtonPressed() {
+        main?.route(to: .authenticated)
+    }
+    
+    func forgotPasswordButtonPressed() {
+        unauthenticated?.route(to: .forgotPassword)
+    }
+}
+```
+
+
 # Installation 💾
 
 _Stinsen_ supports two ways of installation, Cocoapods and SPM. 

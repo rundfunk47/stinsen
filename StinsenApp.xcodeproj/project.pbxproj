@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		142B47CE26A6FEF800BE4B33 /* LoginScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142B47CD26A6FEF800BE4B33 /* LoginScreenViewModel.swift */; };
+		142B47CF26A6FEF800BE4B33 /* LoginScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142B47CD26A6FEF800BE4B33 /* LoginScreenViewModel.swift */; };
+		142B47D026A6FEF800BE4B33 /* LoginScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142B47CD26A6FEF800BE4B33 /* LoginScreenViewModel.swift */; };
+		142B47D126A6FEF800BE4B33 /* LoginScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142B47CD26A6FEF800BE4B33 /* LoginScreenViewModel.swift */; };
 		E644F80F2690952A004D8DA0 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E644F80E2690952A004D8DA0 /* View+.swift */; };
 		E644F81026909538004D8DA0 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E644F80E2690952A004D8DA0 /* View+.swift */; };
 		E644F81126909539004D8DA0 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E644F80E2690952A004D8DA0 /* View+.swift */; };
@@ -216,6 +220,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		142B47CD26A6FEF800BE4B33 /* LoginScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenViewModel.swift; sourceTree = "<group>"; };
 		E644F80E2690952A004D8DA0 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		EB1BBB1225E2EAB6004B9AEB /* InfoText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoText.swift; sourceTree = "<group>"; };
 		EB1BBB1D25E2EC91004B9AEB /* FavoriteProjectsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteProjectsStore.swift; sourceTree = "<group>"; };
@@ -333,6 +338,7 @@
 			isa = PBXGroup;
 			children = (
 				EBF1DDF225AC8CEB0041CEAA /* LoginScreen.swift */,
+				142B47CD26A6FEF800BE4B33 /* LoginScreenViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -809,6 +815,7 @@
 				E644F81126909539004D8DA0 /* View+.swift in Sources */,
 				EB6B0F9725DB04D80011E826 /* ProfileScreen.swift in Sources */,
 				EB6B0F8525DB04C90011E826 /* LoadingScreen.swift in Sources */,
+				142B47D026A6FEF800BE4B33 /* LoginScreenViewModel.swift in Sources */,
 				EB235D1325E8D221008BEE0A /* TestbedCoordinator.swift in Sources */,
 				EB1C38AA25E50DF300F09EFF /* Main.swift in Sources */,
 				EB1BBB0925E27FA2004B9AEB /* RoundedTextField.swift in Sources */,
@@ -849,6 +856,7 @@
 				EB9E36E625E4DDB400C4E25C /* LoginScreen.swift in Sources */,
 				EB9E36EA25E4DDB700C4E25C /* LoadingScreen.swift in Sources */,
 				EB9E36BB25E4DD8F00C4E25C /* RoundedTextField.swift in Sources */,
+				142B47D126A6FEF800BE4B33 /* LoginScreenViewModel.swift in Sources */,
 				EB9E36C925E4DDA300C4E25C /* CreateProjectCoordinator.swift in Sources */,
 				EB9E36BA25E4DD8F00C4E25C /* RoundedButton.swift in Sources */,
 				EB9E36D925E4DDAD00C4E25C /* HomeScreen.swift in Sources */,
@@ -876,6 +884,7 @@
 				E644F80F2690952A004D8DA0 /* View+.swift in Sources */,
 				EB6B108125DB1D5C0011E826 /* CreateProjectScreen.swift in Sources */,
 				EBF1DE0125AC8DF90041CEAA /* AuthenticatedCoordinator.swift in Sources */,
+				142B47CE26A6FEF800BE4B33 /* LoginScreenViewModel.swift in Sources */,
 				EB656D3B25E55A5D003A8F8A /* TestbedCoordinator.swift in Sources */,
 				EB766E9925ACB3C30071A407 /* LoadingScreen.swift in Sources */,
 				EB447C3C25B1C2CF00F79D05 /* ProjectSummaryScreen.swift in Sources */,
@@ -909,6 +918,7 @@
 				E644F81026909538004D8DA0 /* View+.swift in Sources */,
 				EB447C4525B1C33A00F79D05 /* LoadingScreen.swift in Sources */,
 				EBE38D9025DFB90900962D95 /* AllProjectsStore.swift in Sources */,
+				142B47CF26A6FEF800BE4B33 /* LoginScreenViewModel.swift in Sources */,
 				EB235D1525E8D222008BEE0A /* TestbedCoordinator.swift in Sources */,
 				EB1C38A725E50DD300F09EFF /* Main.swift in Sources */,
 				EB1BBB0325E27FA0004B9AEB /* RoundedTextField.swift in Sources */,
