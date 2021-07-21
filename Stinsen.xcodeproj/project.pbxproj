@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		142B47D526A7020100BE4B33 /* RouterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142B47D426A7020100BE4B33 /* RouterStore.swift */; };
+		142B47D826A7DE4100BE4B33 /* RouterIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142B47D726A7DE4100BE4B33 /* RouterIdentifiable.swift */; };
 		EB1B5BF225E6CC310050FB64 /* PresentationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B5BF125E6CC310050FB64 /* PresentationHelper.swift */; };
 		EB1B5BF625E6CC510050FB64 /* Presented.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B5BF525E6CC510050FB64 /* Presented.swift */; };
 		EB5A78A225F9352B0038FF8F /* TabRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5A78A125F9352B0038FF8F /* TabRoute.swift */; };
@@ -41,6 +43,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		142B47D426A7020100BE4B33 /* RouterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterStore.swift; sourceTree = "<group>"; };
+		142B47D726A7DE4100BE4B33 /* RouterIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterIdentifiable.swift; sourceTree = "<group>"; };
 		EB1B5BF125E6CC310050FB64 /* PresentationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationHelper.swift; sourceTree = "<group>"; };
 		EB1B5BF525E6CC510050FB64 /* Presented.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presented.swift; sourceTree = "<group>"; };
 		EB5A78A125F9352B0038FF8F /* TabRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabRoute.swift; sourceTree = "<group>"; };
@@ -88,6 +92,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		142B47D626A7DE2400BE4B33 /* RouterStore */ = {
+			isa = PBXGroup;
+			children = (
+				142B47D426A7020100BE4B33 /* RouterStore.swift */,
+				142B47D726A7DE4100BE4B33 /* RouterIdentifiable.swift */,
+			);
+			path = RouterStore;
+			sourceTree = "<group>";
+		};
 		OBJ_10 /* Coordinatable */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +203,7 @@
 		OBJ_8 /* Stinsen */ = {
 			isa = PBXGroup;
 			children = (
+				142B47D626A7DE2400BE4B33 /* RouterStore */,
 				OBJ_10 /* Coordinatable */,
 				OBJ_17 /* Extensions */,
 				OBJ_19 /* NavigationCoordinatable */,
@@ -286,9 +300,11 @@
 				OBJ_69 /* NavigationViewCoordinatable.swift in Sources */,
 				OBJ_70 /* NavigationViewCoordinatableView.swift in Sources */,
 				OBJ_71 /* ViewCoordinatable.swift in Sources */,
+				142B47D826A7DE4100BE4B33 /* RouterIdentifiable.swift in Sources */,
 				OBJ_72 /* ViewCoordinatableView.swift in Sources */,
 				EB5A78A225F9352B0038FF8F /* TabRoute.swift in Sources */,
 				EB8039E525F9FA58003DA5DC /* ViewRoutable.swift in Sources */,
+				142B47D526A7020100BE4B33 /* RouterStore.swift in Sources */,
 				EB8039D925F9F497003DA5DC /* TabRoutable.swift in Sources */,
 				OBJ_73 /* ViewRouter.swift in Sources */,
 				EBB6C5D625F7991800C59C06 /* NavigationViewChild.swift in Sources */,

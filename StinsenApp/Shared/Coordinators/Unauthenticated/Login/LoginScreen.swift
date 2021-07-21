@@ -7,6 +7,8 @@ struct LoginScreen: View {
     @EnvironmentObject var main: ViewRouter<MainCoordinator.Route>
     @EnvironmentObject var unauthenticated: NavigationRouter<UnauthenticatedCoordinator.Route>
 
+    @StateObject var viewModel = LoginScreenViewModel()
+    
     @State var username: String = ""
     @State var password: String = ""
 
@@ -18,10 +20,10 @@ struct LoginScreen: View {
                 RoundedTextField("Password", text: $password)
                 Spacer(minLength: 32)
                 RoundedButton("Login") {
-                    main.route(to: .authenticated)
+                    viewModel.loginButtonPressed()
                 }
                 RoundedButton("Forgot password", style: .secondary) {
-                    unauthenticated.route(to: .forgotPassword)
+                    viewModel.forgotPasswordButtonPressed()
                 }
             }
         }

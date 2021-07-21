@@ -3,7 +3,7 @@ import SwiftUI
 
 import Stinsen
 
-class UnauthenticatedCoordinator: NavigationCoordinatable {    
+class UnauthenticatedCoordinator: NavigationCoordinatable {
     var navigationStack = NavigationStack()
     
     enum Route: NavigationRoute {
@@ -25,3 +25,11 @@ class UnauthenticatedCoordinator: NavigationCoordinatable {
 
     }
 }
+
+
+extension UnauthenticatedCoordinator: RouterIdentifiable {
+    var routerId: String {
+        "myId1"
+    }
+}
+
