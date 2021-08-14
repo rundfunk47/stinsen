@@ -1,10 +1,3 @@
-//
-//  LoginScreenViewModel.swift
-//  StinsenApp
-//
-//  Created by Moser Simon on 20.07.21.
-//
-
 import Foundation
 import Stinsen
 
