@@ -4,13 +4,14 @@ import SwiftUI
 import Stinsen
 
 final class AuthenticatedCoordinator: TabCoordinatable {
-    lazy var children = TabChild(self, tabRoutes: [.home, .projects, .profile, .testbed])
+    lazy var children = TabChild(self, tabRoutes: [.home, .projects, .profile, .testbedEO, .testbedRO])
     
     enum Route: TabRoute {
         case home
         case projects
         case profile
-        case testbed
+        case testbedEO
+        case testbedRO
     }
     
     func tabItem(forTab tab: Int) -> some View {
@@ -49,7 +50,16 @@ final class AuthenticatedCoordinator: TabCoordinatable {
                 } else {
                     Image(systemName: "bed.double")
                 }
-                Text("Testbed")
+                Text("Testbed (EO)")
+            }
+        case 4:
+            Group {
+                if children.activeTab == 4 {
+                    Image(systemName: "bed.double.fill")
+                } else {
+                    Image(systemName: "bed.double")
+                }
+                Text("Testbed (RO)")
             }
         default:
             fatalError()
@@ -64,8 +74,10 @@ final class AuthenticatedCoordinator: TabCoordinatable {
             return NavigationViewCoordinatable(ProjectsCoordinator()).eraseToAnyCoordinatable()
         case .profile:
             return NavigationViewCoordinatable(ProfileCoordinator()).eraseToAnyCoordinatable()
-        case .testbed:
-            return NavigationViewCoordinatable(TestbedCoordinator()).eraseToAnyCoordinatable()
+        case .testbedEO:
+            return NavigationViewCoordinatable(TestbedEnvironmentObjectCoordinator()).eraseToAnyCoordinatable()
+        case .testbedRO:
+            return NavigationViewCoordinatable(TestbedRouterObjectCoordinator()).eraseToAnyCoordinatable()
         }
     }
 }

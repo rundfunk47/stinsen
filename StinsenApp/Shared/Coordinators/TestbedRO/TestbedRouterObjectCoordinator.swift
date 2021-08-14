@@ -3,7 +3,7 @@ import SwiftUI
 
 import Stinsen
 
-class TestbedCoordinator: NavigationCoordinatable {
+class TestbedRouterObjectCoordinator: NavigationCoordinatable {
     var navigationStack: NavigationStack = NavigationStack()
     
     enum Route: NavigationRoute {
@@ -18,19 +18,19 @@ class TestbedCoordinator: NavigationCoordinatable {
         case .modalCoordinator:
             return .modal(
                 AnyCoordinatable(
-                    NavigationViewCoordinatable(TestbedCoordinator())
+                    NavigationViewCoordinatable(TestbedRouterObjectCoordinator())
                 )
             )
         case .pushCoordinator:
             return .push(
                 AnyCoordinatable(
-                    TestbedCoordinator()
+                    TestbedRouterObjectCoordinator()
                 )
             )
         case .pushScreen:
             return .push(
                 AnyView(
-                    TestbedScreen()
+                    TestbedRouterObjectScreen()
                         .navigationTitle(with: "Pushed testbed")
                 )
             )
@@ -38,7 +38,7 @@ class TestbedCoordinator: NavigationCoordinatable {
             return .modal(
                 AnyView(
                     NavigationView {
-                        TestbedScreen().navigationTitle(with: "Modal testbed")
+                        TestbedRouterObjectScreen().navigationTitle(with: "Modal testbed")
                     }
                 )
             )
@@ -46,7 +46,7 @@ class TestbedCoordinator: NavigationCoordinatable {
     }
     
     @ViewBuilder func start() -> some View {
-        TestbedScreen()
+        TestbedRouterObjectScreen()
             .navigationTitle(with: "Coordinator testbed")
     }
 }

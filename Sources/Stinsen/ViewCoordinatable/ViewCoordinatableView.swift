@@ -9,11 +9,7 @@ struct ViewCoordinatableView<T: ViewCoordinatable, U: View>: View {
 
     init(coordinator: T, customize: @escaping (AnyView) -> U) {
         self.router = ViewRouter(coordinator)
-
-        if let routerIdentifiable = coordinator as? RouterIdentifiable {
-            RouterStore.shared.store(id: routerIdentifiable.routerId, router: router)
-        }
-        
+        RouterStore.shared.store(router: router)
         self.customize = customize
         self.coordinator = coordinator
         self.children = coordinator.children

@@ -136,10 +136,8 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
             id: id,
             coordinator: coordinator
         )
-        
-        if let routerIdentifiable = coordinator as? RouterIdentifiable {
-            RouterStore.shared.store(id: routerIdentifiable.routerId, router: router)
-        }       
+
+        RouterStore.shared.store(router: router)
 
         if let presentation = coordinator.navigationStack.value[safe: id] {
             if let view = presentation.presentable as? AnyView {

@@ -10,9 +10,9 @@ import Stinsen
 
 class LoginScreenViewModel: ObservableObject {
     
-    var main: ViewRouter<MainCoordinator.Route>? = RouterStore.shared.retrieve(id: "myId")
+    var main: ViewRouter<MainCoordinator.Route>? = RouterStore.shared.retrieve()
     
-    @RouterObject(routerId: "myId1")
+    @RouterObject
     var unauthenticated: NavigationRouter<UnauthenticatedCoordinator.Route>?
     
     init() {

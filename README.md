@@ -10,7 +10,7 @@ Simple, powerful and elegant implementation of the Coordinator pattern in SwiftU
 
 # Why? 🤔
 
-We all know routing in UIKit can be hard to do elegantly when working with applications of a larger size or when attempting to apply an architectural pattern such as MVVM. Unfortunately, SwiftUI out of the box suffers from many of the same problems as UIKit does: concepts such as `NavigationLink` live in the view-layer, we still have no clear concept of flows and routes, and so on. _Stinsen_ was created to alleviate these pains, and is an implementation of the _Coordinator Pattern_. Being written in SwiftUI, it is completely cross-platform and uses the native tools such as `@EnviromentObject`. The goal is to make _Stinsen_ feel like a missing tool in SwiftUI, conforming to its coding style and general principles.
+We all know routing in UIKit can be hard to do elegantly when working with applications of a larger size or when attempting to apply an architectural pattern such as MVVM. Unfortunately, SwiftUI out of the box suffers from many of the same problems as UIKit does: concepts such as `NavigationLink` live in the view-layer, we still have no clear concept of flows and routes, and so on. _Stinsen_ was created to alleviate these pains, and is an implementation of the _Coordinator Pattern_. Being written in SwiftUI, it is completely cross-platform and uses the native tools such as `@EnvironmentObject`. The goal is to make _Stinsen_ feel like a missing tool in SwiftUI, conforming to its coding style and general principles.
 
 # What is a Coordinator? 🤷🏽‍♂️ 
 
@@ -46,7 +46,7 @@ class ProjectsCoordinator: NavigationCoordinatable {
 
 The `Route`-enum defines all the possible routes that can be performed from the current coordinator. The function `resolve(route: Route)` is responsible for providing the transition and the actual view/coordinator that we will route to. This can be combined with a factory in the coordinator as well.
 
-To perform these transitions, we use `@EnviromentObject` to fetch a reference to the Coordinators context:
+To perform these transitions, we use `@EnvironmentObject` to fetch a reference to the Coordinators context:
 
 ```swift
 struct ProjectsScreen: View {
@@ -66,7 +66,7 @@ struct ProjectsScreen: View {
 }
 ```
 
-You can also fetch references for coordinators that have appeared earlier in the tree, for instance, if you want to switch the tab. This `@EnvironmentObject` can be put into a ViewModel if you wish to follow the MVVM-C Architectural Pattern. 
+You can also fetch references for coordinators that have appeared earlier in the tree, for instance, if you want to switch the tab.
 
 Stinsen out of the box has three different kinds of `Coordinatable` protocols your coordinators can implement: 
 
@@ -77,7 +77,7 @@ Stinsen out of the box has three different kinds of `Coordinatable` protocols yo
 
 # ViewModel Support
 
-`@EnviromentObject` can only be use via a view. Stinsen provides two methods of passing the router to the ViewModel.
+Since `@EnvironmentObject` only can be accessed within a `View`, Stinsen provides two methods of passing the router to the ViewModel.
 
 ## Via onAppear
 
@@ -98,25 +98,17 @@ struct ProjectsScreen: View {
 
 ## RouterObject
 
-Let your coordinator implement `RouterIdentifiable` and provide a valid `routerId`. The `RouterStore` saves the instance of the router and you can get it via a custom PropertyWrapper. This provides a nice decoupling between View and ViewModel.
+The `RouterStore` saves the instance of the router and you can get it via a custom PropertyWrapper. This provides a nice decoupling between View and ViewModel.
 
-```swift
-extension UnauthenticatedCoordinator: RouterIdentifiable {
-    var routerId: String {
-        "myId1"
-    }
-}
-```
-
-Retrieve Router:
+To retrieve a Router:
 ```swift
 class LoginScreenViewModel: ObservableObject {
     
     // directly via the RouterStore
-    var main: ViewRouter<MainCoordinator.Route>? = RouterStore.shared.retrieve(id: "myId")
+    var main: ViewRouter<MainCoordinator.Route>? = RouterStore.shared.retrieve()
     
     // via the RouterObject property wrapper
-    @RouterObject(routerId: "myId1")
+    @RouterObject
     var unauthenticated: NavigationRouter<UnauthenticatedCoordinator.Route>?
     
     init() {
@@ -132,7 +124,6 @@ class LoginScreenViewModel: ObservableObject {
     }
 }
 ```
-
 
 # Installation 💾
 

@@ -1,6 +1,6 @@
 import Foundation
 
-public class NavigationRouter<T: NavigationRoute>: ObservableObject {
+public class NavigationRouter<T: NavigationRoute>: Routable {
     private let routable: NavigationRoutable
     var root: AnyCoordinatable?
     public let id: Int?

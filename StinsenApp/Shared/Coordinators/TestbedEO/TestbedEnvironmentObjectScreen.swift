@@ -3,8 +3,8 @@ import SwiftUI
 
 import Stinsen
 
-struct TestbedScreen: View {
-    @EnvironmentObject var testbed: NavigationRouter<TestbedCoordinator.Route>
+struct TestbedEnvironmentObjectScreen: View {
+    @EnvironmentObject var testbed: NavigationRouter<TestbedEnvironmentObjectCoordinator.Route>
     @State var text: String = ""
     
     var body: some View {

@@ -25,11 +25,3 @@ class UnauthenticatedCoordinator: NavigationCoordinatable {
 
     }
 }
-
-
-extension UnauthenticatedCoordinator: RouterIdentifiable {
-    var routerId: String {
-        "myId1"
-    }
-}
-

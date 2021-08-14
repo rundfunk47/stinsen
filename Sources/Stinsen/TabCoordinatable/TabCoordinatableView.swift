@@ -29,11 +29,7 @@ struct TabCoordinatableView<T: TabCoordinatable, U: View>: View {
     init(coordinator: T, customize: @escaping (AnyView) -> U) {
         self.coordinator = coordinator
         self.router = TabRouter(coordinator)
-        
-        if let routerIdentifiable = coordinator as? RouterIdentifiable {
-            RouterStore.shared.store(id: routerIdentifiable.routerId, router: router)
-        }
-        
+        RouterStore.shared.store(router: router)
         self.customize = customize
         self.child = coordinator.children
         

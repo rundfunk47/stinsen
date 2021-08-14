@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		142B47D526A7020100BE4B33 /* RouterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142B47D426A7020100BE4B33 /* RouterStore.swift */; };
-		142B47D826A7DE4100BE4B33 /* RouterIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142B47D726A7DE4100BE4B33 /* RouterIdentifiable.swift */; };
 		EB1B5BF225E6CC310050FB64 /* PresentationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B5BF125E6CC310050FB64 /* PresentationHelper.swift */; };
 		EB1B5BF625E6CC510050FB64 /* Presented.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B5BF525E6CC510050FB64 /* Presented.swift */; };
+		EB27DC6D26C819A000721569 /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB27DC6C26C819A000721569 /* Routable.swift */; };
+		EB27DC6F26C81D8E00721569 /* WeakRef.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB27DC6E26C81D8E00721569 /* WeakRef.swift */; };
 		EB5A78A225F9352B0038FF8F /* TabRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5A78A125F9352B0038FF8F /* TabRoute.swift */; };
 		EB5A78A625F9361E0038FF8F /* TabChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5A78A525F9361E0038FF8F /* TabChild.swift */; };
 		EB8039D925F9F497003DA5DC /* TabRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8039D825F9F497003DA5DC /* TabRoutable.swift */; };
@@ -44,9 +45,10 @@
 
 /* Begin PBXFileReference section */
 		142B47D426A7020100BE4B33 /* RouterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterStore.swift; sourceTree = "<group>"; };
-		142B47D726A7DE4100BE4B33 /* RouterIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterIdentifiable.swift; sourceTree = "<group>"; };
 		EB1B5BF125E6CC310050FB64 /* PresentationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationHelper.swift; sourceTree = "<group>"; };
 		EB1B5BF525E6CC510050FB64 /* Presented.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presented.swift; sourceTree = "<group>"; };
+		EB27DC6C26C819A000721569 /* Routable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
+		EB27DC6E26C81D8E00721569 /* WeakRef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakRef.swift; sourceTree = "<group>"; };
 		EB5A78A125F9352B0038FF8F /* TabRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabRoute.swift; sourceTree = "<group>"; };
 		EB5A78A525F9361E0038FF8F /* TabChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabChild.swift; sourceTree = "<group>"; };
 		EB8039D825F9F497003DA5DC /* TabRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabRoutable.swift; sourceTree = "<group>"; };
@@ -96,9 +98,16 @@
 			isa = PBXGroup;
 			children = (
 				142B47D426A7020100BE4B33 /* RouterStore.swift */,
-				142B47D726A7DE4100BE4B33 /* RouterIdentifiable.swift */,
 			);
 			path = RouterStore;
+			sourceTree = "<group>";
+		};
+		EB27DC6B26C8199400721569 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				EB27DC6C26C819A000721569 /* Routable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		OBJ_10 /* Coordinatable */ = {
@@ -113,12 +122,13 @@
 			path = Coordinatable;
 			sourceTree = "<group>";
 		};
-		OBJ_17 /* Extensions */ = {
+		OBJ_17 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_18 /* Array+SafeIndex.swift */,
+				EB27DC6E26C81D8E00721569 /* WeakRef.swift */,
 			);
-			path = Extensions;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		OBJ_19 /* NavigationCoordinatable */ = {
@@ -203,9 +213,10 @@
 		OBJ_8 /* Stinsen */ = {
 			isa = PBXGroup;
 			children = (
+				EB27DC6B26C8199400721569 /* Protocols */,
 				142B47D626A7DE2400BE4B33 /* RouterStore */,
 				OBJ_10 /* Coordinatable */,
-				OBJ_17 /* Extensions */,
+				OBJ_17 /* Utilities */,
 				OBJ_19 /* NavigationCoordinatable */,
 				OBJ_26 /* NavigationViewCoordinator */,
 				OBJ_30 /* ViewCoordinatable */,
@@ -284,6 +295,7 @@
 				EB8039ED25F9FE59003DA5DC /* NavigationRoute.swift in Sources */,
 				EB8039E925F9FE42003DA5DC /* NavigationRoutable.swift in Sources */,
 				OBJ_57 /* Coordinatable.swift in Sources */,
+				EB27DC6D26C819A000721569 /* Routable.swift in Sources */,
 				OBJ_58 /* CoordinatorView.swift in Sources */,
 				EB1B5BF225E6CC310050FB64 /* PresentationHelper.swift in Sources */,
 				EB5A78A625F9361E0038FF8F /* TabChild.swift in Sources */,
@@ -300,12 +312,12 @@
 				OBJ_69 /* NavigationViewCoordinatable.swift in Sources */,
 				OBJ_70 /* NavigationViewCoordinatableView.swift in Sources */,
 				OBJ_71 /* ViewCoordinatable.swift in Sources */,
-				142B47D826A7DE4100BE4B33 /* RouterIdentifiable.swift in Sources */,
 				OBJ_72 /* ViewCoordinatableView.swift in Sources */,
 				EB5A78A225F9352B0038FF8F /* TabRoute.swift in Sources */,
 				EB8039E525F9FA58003DA5DC /* ViewRoutable.swift in Sources */,
 				142B47D526A7020100BE4B33 /* RouterStore.swift in Sources */,
 				EB8039D925F9F497003DA5DC /* TabRoutable.swift in Sources */,
+				EB27DC6F26C81D8E00721569 /* WeakRef.swift in Sources */,
 				OBJ_73 /* ViewRouter.swift in Sources */,
 				EBB6C5D625F7991800C59C06 /* NavigationViewChild.swift in Sources */,
 				EB8039E125F9F9B1003DA5DC /* ViewRoute.swift in Sources */,

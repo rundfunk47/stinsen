@@ -34,9 +34,3 @@ class MainCoordinator: ViewCoordinatable {
         
     }
 }
-
-extension MainCoordinator: RouterIdentifiable {
-    var routerId: String {
-        "myId"
-    }
-}
