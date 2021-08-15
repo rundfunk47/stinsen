@@ -9,24 +9,22 @@ struct TestbedRouterObjectScreen: View {
     var body: some View {
         ScrollView {
             VStack {
-                Text("Number in coordinator stack: " + String(viewModel.testbed!.id ?? -1))
+                Text("Number in coordinator stack: " + String(viewModel.id ?? -1))
                 TextField("Textfield", text: $viewModel.text)
                 RoundedButton("Modal screen") {
-                    viewModel.testbed!.route(to: .modalScreen)
+                    viewModel.modalScreen()
                 }
                 RoundedButton("Push screen") {
-                    viewModel.testbed!.route(to: .pushScreen)
+                    viewModel.pushScreen()
                 }
                 RoundedButton("Modal coordinator") {
-                    viewModel.testbed!.route(to: .modalCoordinator)
+                    viewModel.modalCoordinator()
                 }
                 RoundedButton("Push coordinator") {
-                    viewModel.testbed!.route(to: .pushCoordinator)
+                    viewModel.pushCoordinator()
                 }
                 RoundedButton("Dismiss me!") {
-                    viewModel.testbed!.dismiss {
-                        print("bye!")
-                    }
+                    viewModel.dismiss()
                 }
             }
         }
