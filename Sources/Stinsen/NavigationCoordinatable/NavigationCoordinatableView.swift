@@ -137,6 +137,8 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
             coordinator: coordinator
         )
 
+        RouterStore.shared.store(router: router)
+
         if let presentation = coordinator.navigationStack.value[safe: id] {
             if let view = presentation.presentable as? AnyView {
                 self.start = view

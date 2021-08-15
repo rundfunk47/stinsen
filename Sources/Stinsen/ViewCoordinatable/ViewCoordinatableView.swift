@@ -9,6 +9,7 @@ struct ViewCoordinatableView<T: ViewCoordinatable, U: View>: View {
 
     init(coordinator: T, customize: @escaping (AnyView) -> U) {
         self.router = ViewRouter(coordinator)
+        RouterStore.shared.store(router: router)
         self.customize = customize
         self.coordinator = coordinator
         self.children = coordinator.children

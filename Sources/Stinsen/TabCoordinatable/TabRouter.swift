@@ -1,6 +1,6 @@
 import Foundation
 
-public class TabRouter<T: TabRoute>: ObservableObject {
+public class TabRouter<T: TabRoute>: Routable {
     private let routable: TabRoutable
 
     public func route(to route: T) {

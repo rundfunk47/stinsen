@@ -1,6 +1,6 @@
 import Foundation
 
-public class ViewRouter<T: ViewRoute>: ObservableObject {
+public class ViewRouter<T: ViewRoute>: Routable {
     private let routable: ViewRoutable
     
     public func route(to route: T) {
