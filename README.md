@@ -46,7 +46,7 @@ class ProjectsCoordinator: NavigationCoordinatable {
 
 The `Route`-enum defines all the possible routes that can be performed from the current coordinator. The function `resolve(route: Route)` is responsible for providing the transition and the actual view/coordinator that we will route to. This can be combined with a factory in the coordinator as well.
 
-To perform these transitions, we use `@EnvironmentObject` to fetch a reference to the Coordinators context:
+Using a router, which has a reference to the coordinator, we can perform transitions from a view - but also pop to the previous screen, dismissing the coordinator, switch tab etc (depending on the type of coordinator). Inside the view, the router can be fetched using `@EnvironmentObject`.
 
 ```swift
 struct ProjectsScreen: View {
@@ -66,7 +66,7 @@ struct ProjectsScreen: View {
 }
 ```
 
-You can also fetch references for coordinators that have appeared earlier in the tree, for instance, if you want to switch the tab.
+You can also fetch routers referencing coordinators that appeared earlier in the tree. For instance, you may want to switch the tab from a view that is inside the `TabView`.
 
 Stinsen out of the box has three different kinds of `Coordinatable` protocols your coordinators can implement: 
 
@@ -74,10 +74,9 @@ Stinsen out of the box has three different kinds of `Coordinatable` protocols yo
 * `TabCoordinatable` - For TabViews.
 * `ViewCoordinatable` - Just a view and routes that do not push but rather replace the entire view, can be used for instance when switching between logged in/logged out.
 
+# ViewModel Support 🖥
 
-# ViewModel Support
-
-Since `@EnvironmentObject` only can be accessed within a `View`, Stinsen provides two methods of passing the router to the ViewModel.
+Since `@EnvironmentObject` only can be accessed within a `View`, _Stinsen_ provides two methods of passing the router to the ViewModel.
 
 ## Via onAppear
 
@@ -100,7 +99,7 @@ struct ProjectsScreen: View {
 
 The `RouterStore` saves the instance of the router and you can get it via a custom PropertyWrapper. This provides a nice decoupling between View and ViewModel.
 
-To retrieve a Router:
+To retrieve a router:
 ```swift
 class LoginScreenViewModel: ObservableObject {
     
@@ -150,7 +149,6 @@ end
 <img src="./Images/stinsenapp-ios.gif" alt="Stinsen Sample App">
 
 Clone the repo and run the _StinsenApp_ to get a feel for how _Stinsen_ can be used. _StinsenApp_ works on iOS, tvOS, watchOS and macOS. It attempts to showcase many of the features _Stinsen_ has available for you to use.
-
 
 # Who are responsible? 🙋🏽‍♀️
 
