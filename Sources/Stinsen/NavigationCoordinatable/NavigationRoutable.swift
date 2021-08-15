@@ -23,7 +23,8 @@ class NavigationRoutable {
         }
         
         _anyRoute = { route in
-            coordinator.route(to: route as! T.Route)
+            let resolved = coordinator.resolveRoute(route: route as! T.Route)
+            coordinator.navigationStack.append(resolved)
         }
         
         _dismiss = { root, onFinished in

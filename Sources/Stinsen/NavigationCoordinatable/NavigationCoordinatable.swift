@@ -25,13 +25,7 @@ public extension NavigationCoordinatable {
     }
 }
 
-public extension NavigationCoordinatable {
-    #warning("TODO: Move to NavigationRouter")
-    func route(to route: Route) {
-        let resolved = resolveRoute(route: route)
-        self.navigationStack.append(resolved)
-    }
-    
+public extension NavigationCoordinatable {    
     func coordinatorView() -> AnyView {
         return AnyView(
             NavigationCoordinatableView(
