@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-/// The NavigationCoordinatable is used to represent a flow. If you want to push items to the stack you need to wrap this in a NavigationViewCoordinatable.
+/// The NavigationCoordinatable is used to represent a flow. If you want to push items to the stack you need to wrap this in a NavigationViewCoordinator.
 public protocol NavigationCoordinatable: Coordinatable {
     associatedtype Route: NavigationRoute
     associatedtype Start: View

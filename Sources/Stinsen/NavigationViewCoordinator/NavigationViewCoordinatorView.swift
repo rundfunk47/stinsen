@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-struct NavigationViewCoordinatableView<T: NavigationViewCoordinatable<V>, U: View, V: View>: View {
+struct NavigationViewCoordinatorView<T: NavigationViewCoordinator<V>, U: View, V: View>: View {
     var coordinator: T    
     @EnvironmentObject private var root: RootCoordinator
     private var view: AnyView

@@ -69,15 +69,15 @@ final class AuthenticatedCoordinator: TabCoordinatable {
     func resolveRoute(route: Route) -> AnyCoordinatable {
         switch route {
         case .home:
-            return NavigationViewCoordinatable(HomeCoordinator()).eraseToAnyCoordinatable()
+            return NavigationViewCoordinator(HomeCoordinator()).eraseToAnyCoordinatable()
         case .projects:
-            return NavigationViewCoordinatable(ProjectsCoordinator()).eraseToAnyCoordinatable()
+            return NavigationViewCoordinator(ProjectsCoordinator()).eraseToAnyCoordinatable()
         case .profile:
-            return NavigationViewCoordinatable(ProfileCoordinator()).eraseToAnyCoordinatable()
+            return NavigationViewCoordinator(ProfileCoordinator()).eraseToAnyCoordinatable()
         case .testbedEO:
-            return NavigationViewCoordinatable(TestbedEnvironmentObjectCoordinator()).eraseToAnyCoordinatable()
+            return NavigationViewCoordinator(TestbedEnvironmentObjectCoordinator()).eraseToAnyCoordinatable()
         case .testbedRO:
-            return NavigationViewCoordinatable(TestbedRouterObjectCoordinator()).eraseToAnyCoordinatable()
+            return NavigationViewCoordinator(TestbedRouterObjectCoordinator()).eraseToAnyCoordinatable()
         }
     }
 }

@@ -195,6 +195,7 @@
 		EB1C38A925E50DED00F09EFF /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		EB1C38AC25E50E0D00F09EFF /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		EB235D2225E8D502008BEE0A /* Stinsen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stinsen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB24977626C9201B00A4C2D4 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EB27DC7126C81EED00721569 /* TestbedRouterObjectCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestbedRouterObjectCoordinator.swift; sourceTree = "<group>"; };
 		EB27DC7226C81EED00721569 /* TestbedRouterObjectScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestbedRouterObjectScreen.swift; sourceTree = "<group>"; };
 		EB27DC7526C81F2E00721569 /* TestBedRouterObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBedRouterObjectViewModel.swift; sourceTree = "<group>"; };
@@ -413,6 +414,7 @@
 		EBC24EE325AC62FF00F455F3 = {
 			isa = PBXGroup;
 			children = (
+				EB24977626C9201B00A4C2D4 /* README.md */,
 				EBE38F4125E0369F00962D95 /* StinsenApp */,
 				EBE93BAA26C918A1009C7872 /* Sources */,
 				EBC24EF125AC630300F455F3 /* Products */,

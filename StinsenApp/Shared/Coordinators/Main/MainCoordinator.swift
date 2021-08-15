@@ -15,7 +15,7 @@ class MainCoordinator: ViewCoordinatable {
         switch route {
         case .unauthenticated:
             return AnyCoordinatable(
-                NavigationViewCoordinatable(
+                NavigationViewCoordinator(
                     UnauthenticatedCoordinator()
                 )
             )

@@ -1,8 +1,13 @@
 import Foundation
 import SwiftUI
 
-/// The NavigationViewCoordinatable is used to represent a coordinator with a NavigationView
-public class NavigationViewCoordinatable<U: View>: Coordinatable {
+@available(*, deprecated, renamed: "NavigationViewCoordinator")
+public class NavigationViewCoordinatable<U: View>: NavigationViewCoordinator<U> {
+    
+}
+
+/// The NavigationViewCoordinator is used to represent a coordinator with a NavigationView
+public class NavigationViewCoordinator<U: View>: Coordinatable {
     public var dismissalAction: DismissalAction {
         get {
             children.dismissalAction
@@ -24,7 +29,7 @@ public class NavigationViewCoordinatable<U: View>: Coordinatable {
 
     public func coordinatorView() -> AnyView {
         AnyView(
-            NavigationViewCoordinatableView(coordinator: self, customize: customize)
+            NavigationViewCoordinatorView(coordinator: self, customize: customize)
         )
     }
     
@@ -34,7 +39,7 @@ public class NavigationViewCoordinatable<U: View>: Coordinatable {
     }
 }
 
-public extension NavigationViewCoordinatable where U == AnyView {
+public extension NavigationViewCoordinator where U == AnyView {
     convenience init<T: Coordinatable>(_ childCoordinator: T) {
         self.init(childCoordinator, customize: { $0 })
     }

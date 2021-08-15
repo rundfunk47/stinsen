@@ -18,7 +18,7 @@ class TestbedRouterObjectCoordinator: NavigationCoordinatable {
         case .modalCoordinator:
             return .modal(
                 AnyCoordinatable(
-                    NavigationViewCoordinatable(TestbedRouterObjectCoordinator())
+                    NavigationViewCoordinator(TestbedRouterObjectCoordinator())
                 )
             )
         case .pushCoordinator:
