@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = 'Stinsen'
-    s.version      = '1.0.11'
+    s.version      = '1.1.0'
     s.summary      = 'Simple, powerful and elegant implementation of the Coordinator pattern in SwiftUI.'
     s.homepage     = 'https://github.com/rundfunk47/stinsen'
     s.license      = { :type => 'MIT License' }
