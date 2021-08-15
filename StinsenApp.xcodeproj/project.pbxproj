@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -41,8 +41,19 @@
 		EB235D1925E8D22C008BEE0A /* TestbedEnvironmentObjectScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB656D3E25E55BB8003A8F8A /* TestbedEnvironmentObjectScreen.swift */; };
 		EB235D1B25E8D22D008BEE0A /* TestbedEnvironmentObjectScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB656D3E25E55BB8003A8F8A /* TestbedEnvironmentObjectScreen.swift */; };
 		EB235D1D25E8D22E008BEE0A /* TestbedEnvironmentObjectScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB656D3E25E55BB8003A8F8A /* TestbedEnvironmentObjectScreen.swift */; };
-		EB235D2325E8D502008BEE0A /* Stinsen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB235D2225E8D502008BEE0A /* Stinsen.framework */; };
-		EB235D2425E8D502008BEE0A /* Stinsen.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EB235D2225E8D502008BEE0A /* Stinsen.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EB24976426C9192200A4C2D4 /* Stinsen in Frameworks */ = {isa = PBXBuildFile; productRef = EB24976326C9192200A4C2D4 /* Stinsen */; };
+		EB24976626C9192800A4C2D4 /* Stinsen in Frameworks */ = {isa = PBXBuildFile; productRef = EB24976526C9192800A4C2D4 /* Stinsen */; };
+		EB24976A26C9193500A4C2D4 /* Stinsen in Frameworks */ = {isa = PBXBuildFile; productRef = EB24976926C9193500A4C2D4 /* Stinsen */; };
+		EB24976C26C9194700A4C2D4 /* Stinsen in Frameworks */ = {isa = PBXBuildFile; productRef = EB24976B26C9194700A4C2D4 /* Stinsen */; };
+		EB24976D26C9198F00A4C2D4 /* TestbedRouterObjectScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB27DC7226C81EED00721569 /* TestbedRouterObjectScreen.swift */; };
+		EB24976E26C9198F00A4C2D4 /* TestbedRouterObjectCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB27DC7126C81EED00721569 /* TestbedRouterObjectCoordinator.swift */; };
+		EB24976F26C9198F00A4C2D4 /* TestBedRouterObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB27DC7526C81F2E00721569 /* TestBedRouterObjectViewModel.swift */; };
+		EB24977026C9198F00A4C2D4 /* TestbedRouterObjectScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB27DC7226C81EED00721569 /* TestbedRouterObjectScreen.swift */; };
+		EB24977126C9198F00A4C2D4 /* TestbedRouterObjectCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB27DC7126C81EED00721569 /* TestbedRouterObjectCoordinator.swift */; };
+		EB24977226C9198F00A4C2D4 /* TestBedRouterObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB27DC7526C81F2E00721569 /* TestBedRouterObjectViewModel.swift */; };
+		EB24977326C9199000A4C2D4 /* TestbedRouterObjectScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB27DC7226C81EED00721569 /* TestbedRouterObjectScreen.swift */; };
+		EB24977426C9199000A4C2D4 /* TestbedRouterObjectCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB27DC7126C81EED00721569 /* TestbedRouterObjectCoordinator.swift */; };
+		EB24977526C9199000A4C2D4 /* TestBedRouterObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB27DC7526C81F2E00721569 /* TestBedRouterObjectViewModel.swift */; };
 		EB27DC7326C81EED00721569 /* TestbedRouterObjectCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB27DC7126C81EED00721569 /* TestbedRouterObjectCoordinator.swift */; };
 		EB27DC7426C81EED00721569 /* TestbedRouterObjectScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB27DC7226C81EED00721569 /* TestbedRouterObjectScreen.swift */; };
 		EB27DC7626C81F2E00721569 /* TestBedRouterObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB27DC7526C81F2E00721569 /* TestBedRouterObjectViewModel.swift */; };
@@ -116,12 +127,6 @@
 		EB9E36EB25E4DDB700C4E25C /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB766E9325ACAFD40071A407 /* MainCoordinator.swift */; };
 		EBC24EFC25AC630300F455F3 /* StinsenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC24EE925AC630000F455F3 /* StinsenApp.swift */; };
 		EBC24EFD25AC630300F455F3 /* StinsenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC24EE925AC630000F455F3 /* StinsenApp.swift */; };
-		EBC4E62225E4E12700C7D645 /* Stinsen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBC4E62125E4E12700C7D645 /* Stinsen.framework */; };
-		EBC4E62325E4E12700C7D645 /* Stinsen.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EBC4E62125E4E12700C7D645 /* Stinsen.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		EBC4E62725E4E12C00C7D645 /* Stinsen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBC4E62625E4E12C00C7D645 /* Stinsen.framework */; };
-		EBC4E62825E4E12C00C7D645 /* Stinsen.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EBC4E62625E4E12C00C7D645 /* Stinsen.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		EBC4E62A25E4E13100C7D645 /* Stinsen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBC4E62925E4E13100C7D645 /* Stinsen.framework */; };
-		EBC4E62B25E4E13100C7D645 /* Stinsen.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EBC4E62925E4E13100C7D645 /* Stinsen.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EBDCC59A25E3D64A00C0D074 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBDCC59925E3D64A00C0D074 /* Assets.xcassets */; };
 		EBDCC5A125E3D70300C0D074 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBDCC59925E3D64A00C0D074 /* Assets.xcassets */; };
 		EBDCC5B425E3E11E00C0D074 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBDCC59925E3D64A00C0D074 /* Assets.xcassets */; };
@@ -154,50 +159,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		EB0212B025E40C89009350CE /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				EBC4E62325E4E12700C7D645 /* Stinsen.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EB20B99B25E24499007731B1 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				EBC4E62B25E4E13100C7D645 /* Stinsen.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EB235D2525E8D503008BEE0A /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				EB235D2425E8D502008BEE0A /* Stinsen.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EB2D6F5325E409BC00D0CA4E /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				EBC4E62825E4E12C00C7D645 /* Stinsen.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		EB9E368A25E4DC1300C4E25C /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -275,6 +236,7 @@
 		EBDCC59925E3D64A00C0D074 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBE38D8E25DFB90900962D95 /* AllProjectsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllProjectsStore.swift; sourceTree = "<group>"; };
 		EBE38D9F25DFB92400962D95 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		EBE93BAA26C918A1009C7872 /* Sources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sources; sourceTree = "<group>"; };
 		EBF1DDF225AC8CEB0041CEAA /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		EBF1DDF825AC8D9C0041CEAA /* UnauthenticatedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnauthenticatedCoordinator.swift; sourceTree = "<group>"; };
 		EBF1DE0025AC8DF90041CEAA /* AuthenticatedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedCoordinator.swift; sourceTree = "<group>"; };
@@ -285,7 +247,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBC4E62A25E4E13100C7D645 /* Stinsen.framework in Frameworks */,
+				EB24976626C9192800A4C2D4 /* Stinsen in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,7 +255,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB235D2325E8D502008BEE0A /* Stinsen.framework in Frameworks */,
+				EB24976A26C9193500A4C2D4 /* Stinsen in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,7 +270,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBC4E62225E4E12700C7D645 /* Stinsen.framework in Frameworks */,
+				EB24976C26C9194700A4C2D4 /* Stinsen in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,7 +278,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBC4E62725E4E12C00C7D645 /* Stinsen.framework in Frameworks */,
+				EB24976426C9192200A4C2D4 /* Stinsen in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,6 +414,7 @@
 			isa = PBXGroup;
 			children = (
 				EBE38F4125E0369F00962D95 /* StinsenApp */,
+				EBE93BAA26C918A1009C7872 /* Sources */,
 				EBC24EF125AC630300F455F3 /* Products */,
 				EBE38ED925DFD13F00962D95 /* Frameworks */,
 			);
@@ -610,13 +573,15 @@
 				EB6B0F5A25DB03F60011E826 /* Sources */,
 				EB6B0F5B25DB03F60011E826 /* Frameworks */,
 				EB6B0F5C25DB03F60011E826 /* Resources */,
-				EB20B99B25E24499007731B1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "StinsenApp (tvOS)";
+			packageProductDependencies = (
+				EB24976526C9192800A4C2D4 /* Stinsen */,
+			);
 			productName = Coordinate;
 			productReference = EB6B0F5E25DB03F60011E826 /* StinsenApp.app */;
 			productType = "com.apple.product-type.application";
@@ -654,6 +619,8 @@
 				EB9E367925E4DC1300C4E25C /* PBXTargetDependency */,
 			);
 			name = "StinsenApp (watchOS App)";
+			packageProductDependencies = (
+			);
 			productName = "StinsenApp WatchKit App";
 			productReference = EB9E366A25E4DC1200C4E25C /* StinsenApp.app */;
 			productType = "com.apple.product-type.application.watchapp2";
@@ -665,13 +632,15 @@
 				EB9E367225E4DC1300C4E25C /* Sources */,
 				EB9E367325E4DC1300C4E25C /* Frameworks */,
 				EB9E367425E4DC1300C4E25C /* Resources */,
-				EB235D2525E8D503008BEE0A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "StinsenApp (watchOS Extension)";
+			packageProductDependencies = (
+				EB24976926C9193500A4C2D4 /* Stinsen */,
+			);
 			productName = "StinsenApp WatchKit Extension";
 			productReference = EB9E367625E4DC1300C4E25C /* StinsenApp.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
@@ -683,13 +652,15 @@
 				EBC24EEC25AC630300F455F3 /* Sources */,
 				EBC24EED25AC630300F455F3 /* Frameworks */,
 				EBC24EEE25AC630300F455F3 /* Resources */,
-				EB0212B025E40C89009350CE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "StinsenApp (iOS)";
+			packageProductDependencies = (
+				EB24976B26C9194700A4C2D4 /* Stinsen */,
+			);
 			productName = "Coordinate (iOS)";
 			productReference = EBC24EF025AC630300F455F3 /* StinsenApp.app */;
 			productType = "com.apple.product-type.application";
@@ -701,13 +672,15 @@
 				EBC24EF425AC630300F455F3 /* Sources */,
 				EBC24EF525AC630300F455F3 /* Frameworks */,
 				EBC24EF625AC630300F455F3 /* Resources */,
-				EB2D6F5325E409BC00D0CA4E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "StinsenApp (macOS)";
+			packageProductDependencies = (
+				EB24976326C9192200A4C2D4 /* Stinsen */,
+			);
 			productName = "Coordinate (macOS)";
 			productReference = EBC24EF825AC630300F455F3 /* StinsenApp.app */;
 			productType = "com.apple.product-type.application";
@@ -823,6 +796,8 @@
 			files = (
 				EB6B0F9825DB04D80011E826 /* AuthenticatedCoordinator.swift in Sources */,
 				EB1BBB2125E2EC91004B9AEB /* FavoriteProjectsStore.swift in Sources */,
+				EB24977226C9198F00A4C2D4 /* TestBedRouterObjectViewModel.swift in Sources */,
+				EB24977126C9198F00A4C2D4 /* TestbedRouterObjectCoordinator.swift in Sources */,
 				EB1BBB3125E2F3BE004B9AEB /* HomeScreen.swift in Sources */,
 				EB6B0F8F25DB04D30011E826 /* ProjectsScreen.swift in Sources */,
 				EB1BBB1625E2EAB6004B9AEB /* InfoText.swift in Sources */,
@@ -834,6 +809,7 @@
 				EB6B0F8525DB04C90011E826 /* LoadingScreen.swift in Sources */,
 				142B47D026A6FEF800BE4B33 /* LoginScreenViewModel.swift in Sources */,
 				EB235D1325E8D221008BEE0A /* TestbedEnvironmentObjectCoordinator.swift in Sources */,
+				EB24977026C9198F00A4C2D4 /* TestbedRouterObjectScreen.swift in Sources */,
 				EB1C38AA25E50DF300F09EFF /* Main.swift in Sources */,
 				EB1BBB0925E27FA2004B9AEB /* RoundedTextField.swift in Sources */,
 				EB6B0F8D25DB04D30011E826 /* ProjectSummaryScreen.swift in Sources */,
@@ -861,6 +837,7 @@
 				EB235D1D25E8D22E008BEE0A /* TestbedEnvironmentObjectScreen.swift in Sources */,
 				E644F81326909543004D8DA0 /* View+.swift in Sources */,
 				EB9E36BF25E4DD9300C4E25C /* AllProjectsStore.swift in Sources */,
+				EB24977526C9199000A4C2D4 /* TestBedRouterObjectViewModel.swift in Sources */,
 				EB9E36B525E4DD8A00C4E25C /* StinsenApp.swift in Sources */,
 				EB9E36C025E4DD9300C4E25C /* FavoriteProjectsStore.swift in Sources */,
 				EB9E36E125E4DDB200C4E25C /* ForgotPasswordScreen.swift in Sources */,
@@ -875,12 +852,14 @@
 				EB9E36BB25E4DD8F00C4E25C /* RoundedTextField.swift in Sources */,
 				142B47D126A6FEF800BE4B33 /* LoginScreenViewModel.swift in Sources */,
 				EB9E36C925E4DDA300C4E25C /* CreateProjectCoordinator.swift in Sources */,
+				EB24977426C9199000A4C2D4 /* TestbedRouterObjectCoordinator.swift in Sources */,
 				EB9E36BA25E4DD8F00C4E25C /* RoundedButton.swift in Sources */,
 				EB9E36D925E4DDAD00C4E25C /* HomeScreen.swift in Sources */,
 				EB1C38AF25E50E1300F09EFF /* Main.swift in Sources */,
 				EB9E36C825E4DDA300C4E25C /* CreateProjectScreen.swift in Sources */,
 				EB9E36D825E4DDAD00C4E25C /* HomeCoordinator.swift in Sources */,
 				EB9E36D225E4DDAA00C4E25C /* ProjectSummaryScreen.swift in Sources */,
+				EB24977326C9199000A4C2D4 /* TestbedRouterObjectScreen.swift in Sources */,
 				EB9E36E225E4DDB200C4E25C /* UnauthenticatedCoordinator.swift in Sources */,
 				EB9E36C425E4DD9600C4E25C /* Project.swift in Sources */,
 			);
@@ -929,6 +908,8 @@
 			files = (
 				EB447C4D25B1C33F00F79D05 /* AuthenticatedCoordinator.swift in Sources */,
 				EB1BBB1F25E2EC91004B9AEB /* FavoriteProjectsStore.swift in Sources */,
+				EB24976F26C9198F00A4C2D4 /* TestBedRouterObjectViewModel.swift in Sources */,
+				EB24976E26C9198F00A4C2D4 /* TestbedRouterObjectCoordinator.swift in Sources */,
 				EB1BBB2F25E2F3BE004B9AEB /* HomeScreen.swift in Sources */,
 				EB447C5825B1C34B00F79D05 /* UnauthenticatedCoordinator.swift in Sources */,
 				EB1BBB1425E2EAB6004B9AEB /* InfoText.swift in Sources */,
@@ -940,6 +921,7 @@
 				EBE38D9025DFB90900962D95 /* AllProjectsStore.swift in Sources */,
 				142B47CF26A6FEF800BE4B33 /* LoginScreenViewModel.swift in Sources */,
 				EB235D1525E8D222008BEE0A /* TestbedEnvironmentObjectCoordinator.swift in Sources */,
+				EB24976D26C9198F00A4C2D4 /* TestbedRouterObjectScreen.swift in Sources */,
 				EB1C38A725E50DD300F09EFF /* Main.swift in Sources */,
 				EB1BBB0325E27FA0004B9AEB /* RoundedTextField.swift in Sources */,
 				EB447C4425B1C33A00F79D05 /* MainCoordinator.swift in Sources */,
@@ -976,7 +958,7 @@
 		EB6B0F6B25DB03F70011E826 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "Brand Assets";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = StinsenApp/tvOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -994,7 +976,7 @@
 		EB6B0F6C25DB03F70011E826 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "Brand Assets";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = StinsenApp/tvOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1176,6 +1158,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1229,6 +1212,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
@@ -1240,6 +1224,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = StinsenApp/iOS/iOS.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = StinsenApp/iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1260,6 +1245,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = StinsenApp/iOS/iOS.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = StinsenApp/iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1393,6 +1379,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EB24976326C9192200A4C2D4 /* Stinsen */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Stinsen;
+		};
+		EB24976526C9192800A4C2D4 /* Stinsen */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Stinsen;
+		};
+		EB24976926C9193500A4C2D4 /* Stinsen */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Stinsen;
+		};
+		EB24976B26C9194700A4C2D4 /* Stinsen */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Stinsen;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EBC24EE425AC62FF00F455F3 /* Project object */;
 }

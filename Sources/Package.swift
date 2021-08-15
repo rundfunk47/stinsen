@@ -15,6 +15,8 @@ let package = Package(
     targets: [
         .target(
             name: "Stinsen",
-            dependencies: []),
+            dependencies: [],
+            path: "Stinsen"
+	),
     ]
 )
