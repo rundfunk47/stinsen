@@ -6,7 +6,7 @@ import Foundation
     
     public var wrappedValue: Value? {
         get {
-            return retreived
+            return storage.retrieve()
         }
         @available(*, unavailable, message: "RouterObject cannot be set") set {
             fatalError()
@@ -15,7 +15,6 @@ import Foundation
     
     public init() {
         self.storage = RouterStore.shared
-        self.retreived = storage.retrieve()
     }
 }
 
