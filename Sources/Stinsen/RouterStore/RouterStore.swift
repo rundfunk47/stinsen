@@ -5,8 +5,12 @@ import Foundation
     private var retreived: Value?
     
     public var wrappedValue: Value? {
-        get {
-            return storage.retrieve()
+        mutating get {
+            guard let currentValue: Value = self.retreived else {
+                self.retreived = storage.retrieve()
+                return self.retreived
+            }
+            return currentValue
         }
         @available(*, unavailable, message: "RouterObject cannot be set") set {
             fatalError()
