@@ -17,11 +17,21 @@ struct TestbedRouterObjectScreen: View {
                 RoundedButton("Push screen") {
                     viewModel.pushScreen()
                 }
+                if #available(iOS 14.0, watchOS 7.0, tvOS 14.0, *) {
+                    RoundedButton("Cover screen") {
+                        viewModel.coverScreen()
+                    }
+                }
                 RoundedButton("Modal coordinator") {
                     viewModel.modalCoordinator()
                 }
                 RoundedButton("Push coordinator") {
                     viewModel.pushCoordinator()
+                }
+                if #available(iOS 14.0, watchOS 7.0, tvOS 14.0, *) {
+                    RoundedButton("Cover coordinator") {
+                        viewModel.coverCoordinator()
+                    }
                 }
                 RoundedButton("Dismiss me!") {
                     viewModel.dismiss()

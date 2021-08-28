@@ -11,6 +11,10 @@ class TestbedEnvironmentObjectCoordinator: NavigationCoordinatable {
         case modalScreen
         case pushCoordinator
         case modalCoordinator
+        @available(iOS 14.0, watchOS 7.0, tvOS 14.0, *)
+        case coverScreen
+        @available(iOS 14.0, watchOS 7.0, tvOS 14.0, *)
+        case coverCoordinator
     }
 
     func resolveRoute(route: Route) -> Transition {
@@ -42,6 +46,30 @@ class TestbedEnvironmentObjectCoordinator: NavigationCoordinatable {
                     }
                 )
             )
+        case .coverScreen:
+            if #available(iOS 14.0, watchOS 7.0, tvOS 14.0, *) {
+                return .fullScreen(
+                    AnyView(
+                        NavigationView {
+                            TestbedEnvironmentObjectScreen().navigationTitle(with: "Cover testbed")
+                        }
+                    )
+                )
+            } else {
+                fatalError()
+            }
+        case .coverCoordinator:
+            if #available(iOS 14.0, watchOS 7.0, tvOS 14.0, *) {
+                return .fullScreen(
+                    AnyView(
+                        NavigationView {
+                            TestbedEnvironmentObjectScreen().navigationTitle(with: "Cover testbed")
+                        }
+                    )
+                )
+            } else {
+                fatalError()
+            }
         }
     }
     
