@@ -150,6 +150,11 @@ end
 
 Clone the repo and run the _StinsenApp_ to get a feel for how _Stinsen_ can be used. _StinsenApp_ works on iOS, tvOS, watchOS and macOS. It attempts to showcase many of the features _Stinsen_ has available for you to use.
 
+# Known issues and bugs 🐛
+
+* _Stinsen_ does not support `DoubleColumnNavigationViewStyle`. The reason for this is that it does not work as expected due to issues with `isActive` in SwiftUI. _Workaround:_ Use UIViewRepresentable or create your own implementation.
+* _Stinsen_ works pretty bad in various older versions of iOS 13 due to, well, iOS 13 not really being that good at SwiftUI. Rather than try to set a minimum version that _Stinsen_ supports, you're on your own if you're supporting iOS 13 to figure out whether or not the features you use actually work. Generally, version 13.4 and above seem to work alright.
+
 # Who are responsible? 🙋🏽‍♀️
 
 At Byva we strive to create a 100% SwiftUI application, so it is natural that we needed to create a coordinator framework that satisfied this and other needs we have. The framework is used in production and manages ~50 flows and ~100 screens. The framework is maintained by [@rundfunk47](https://github.com/rundfunk47/).
