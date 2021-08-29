@@ -24,7 +24,7 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
                     Color
                         .clear
                         .fullScreenCover(isPresented: Binding<Bool>.init(get: { () -> Bool in
-                            return presentationHelper.presented?.isFullScreen == true
+                            return presentationHelper.presented?.type.isFullScreen == true
                         }, set: { _ in
                         
                         }), onDismiss: {
@@ -74,7 +74,7 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
                         }
                     }(),
                     isActive: Binding<Bool>.init(get: { () -> Bool in
-                        return presentationHelper.presented?.isPush == true
+                        return presentationHelper.presented?.type.isPush == true
                     }, set: { _ in
                              
                     }),
@@ -105,7 +105,7 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
                 }
             }
             .sheet(isPresented: Binding<Bool>.init(get: { () -> Bool in
-                return presentationHelper.presented?.isModal == true
+                return presentationHelper.presented?.type.isModal == true
             }, set: { _ in
             
             }), onDismiss: {

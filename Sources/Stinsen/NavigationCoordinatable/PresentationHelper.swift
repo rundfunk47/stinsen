@@ -34,8 +34,8 @@ final class PresentationHelper<T: NavigationCoordinatable>: ObservableObject {
                             )
                         )
                         #else
-                        self.presented = .modal(
-                            AnyView(
+                        self.presented = Presented(
+                            view: AnyView(
                                 NavigationView(
                                     content: {
                                         #if os(macOS)
@@ -46,14 +46,16 @@ final class PresentationHelper<T: NavigationCoordinatable>: ObservableObject {
                                     }
                                 )
                                 .navigationViewStyle(StackNavigationViewStyle())
-                            )
+                            ),
+                            type: .modal
                         )
                         #endif
                     } else if let presentable = presentable as? AnyCoordinatable {
-                        self.presented = .modal(
-                            AnyView(
+                        self.presented = Presented(
+                            view: AnyView(
                                 presentable.coordinatorView()
-                            )
+                            ),
+                            type: .modal
                         )
                     } else {
                         fatalError("Unsupported presentable!")
@@ -62,14 +64,16 @@ final class PresentationHelper<T: NavigationCoordinatable>: ObservableObject {
                     if presentable is AnyView {
                         let view = AnyView(NavigationCoordinatableView(id: nextId, coordinator: coordinator))
 
-                        self.presented = .push(
-                            view
+                        self.presented = Presented(
+                            view: view,
+                            type: .push
                         )
                     } else if let presentable = presentable as? AnyCoordinatable {
-                        self.presented = .push(
-                            AnyView(
+                        self.presented = Presented(
+                            view: AnyView(
                                 presentable.coordinatorView()
-                            )
+                            ),
+                            type: .push
                         )
                     } else {
                         fatalError("Unsupported presentable!")
@@ -80,18 +84,19 @@ final class PresentationHelper<T: NavigationCoordinatable>: ObservableObject {
                             let view = AnyView(NavigationCoordinatableView(id: nextId, coordinator: coordinator))
 
                             #if os(macOS)
-                            self.presented = .fullScreen(
-                                AnyView(
+                            self.presented = Presented(
+                                view: AnyView(
                                     NavigationView(
                                         content: {
                                             view
                                         }
                                     )
-                                )
+                                ),
+                                type: .fullScreen
                             )
                             #else
-                            self.presented = .fullScreen(
-                                AnyView(
+                            self.presented = Presented(
+                                view: AnyView(
                                     NavigationView(
                                         content: {
                                             #if os(macOS)
@@ -102,14 +107,16 @@ final class PresentationHelper<T: NavigationCoordinatable>: ObservableObject {
                                         }
                                     )
                                     .navigationViewStyle(StackNavigationViewStyle())
-                                )
+                                ),
+                                type: .fullScreen
                             )
                             #endif
                         } else if let presentable = presentable as? AnyCoordinatable {
-                            self.presented = .fullScreen(
-                                AnyView(
+                            self.presented = Presented(
+                                view: AnyView(
                                     presentable.coordinatorView()
-                                )
+                                ),
+                                type: .fullScreen
                             )
                         }  else {
                             fatalError("Unsupported presentable!")

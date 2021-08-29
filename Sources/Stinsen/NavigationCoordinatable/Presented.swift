@@ -1,11 +1,15 @@
 import Foundation
 import SwiftUI
 
-enum Presented {
-    case modal(_: AnyView)
-    case push(_: AnyView)
-    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, *)
-    case fullScreen(_: AnyView)
+struct Presented {
+    let view: AnyView
+    let type: PresentationType
+}
+
+enum PresentationType {
+    case modal
+    case push
+    case fullScreen
     
     var isModal: Bool {
         switch self {
@@ -31,17 +35,6 @@ enum Presented {
             return true
         default:
             return false
-        }
-    }
-    
-    var view: AnyView {
-        switch self {
-        case .modal(let view):
-            return view
-        case .push(let view):
-            return view
-        case .fullScreen(let view):
-            return view
         }
     }
 }
