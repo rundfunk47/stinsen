@@ -16,6 +16,10 @@ class TestbedRouterObjectCoordinator: NavigationCoordinatable {
         @available(iOS 14.0, watchOS 7.0, tvOS 14.0, *)
         case coverCoordinator
     }
+    
+    deinit {
+        print("Deallocated TestbedRouterObjectCoordinator")
+    }
 
     func resolveRoute(route: Route) -> Transition {
         switch route {

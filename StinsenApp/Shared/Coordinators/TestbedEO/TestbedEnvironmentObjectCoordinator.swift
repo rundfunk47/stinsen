@@ -17,6 +17,10 @@ class TestbedEnvironmentObjectCoordinator: NavigationCoordinatable {
         case coverCoordinator
     }
 
+    deinit {
+        print("Deallocated TestbedEnvironmentObjectCoordinator")
+    }
+
     func resolveRoute(route: Route) -> Transition {
         switch route {
         case .modalCoordinator:
