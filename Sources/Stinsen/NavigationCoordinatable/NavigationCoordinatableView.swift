@@ -30,12 +30,12 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
                         }), onDismiss: {
                             let presented = self.coordinator.navigationStack.value[safe: id + 1]
                             
-                            switch presented {
+                            switch presented?.transition {
                             case .fullScreen(let presentable):
                                 if let presentable = presentable as? AnyCoordinatable {
                                     DispatchQueue.main.async {
-                                        presentable.dismissalAction()
-                                        presentable.dismissalAction = {}
+                                        presentable.dismissalAction?()
+                                        presentable.dismissalAction = nil
                                     }
                                 }
                             default:
@@ -87,14 +87,21 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
             .onAppear(perform: {
                 self.router.root = root.coordinator
                 
-                if self.presentationHelper.presented != nil {
+                // This is here in order to sync the navigation stack array with what is actually shown on screen.
+                // It's in onAppear because it seems to be the best way in SwiftUI, but it requires some hacks in order to work properly.
+                // The "ready" variable is used because we want to be able to do stuff sometimes, such as setting the starting routes, without the popTo-function triggering.
+                if self.presentationHelper.presented != nil && self.coordinator.navigationStack.ready == true {
                     self.coordinator.navigationStack.popTo(self.id)
+                }
+
+                DispatchQueue.main.async {
+                    self.coordinator.navigationStack.ready = true
                 }
             })
             .onDisappear {
                 DispatchQueue.main.async {
-                    self.coordinator.dismissalAction()
-                    self.coordinator.dismissalAction = {}
+                    self.coordinator.dismissalAction?()
+                    self.coordinator.dismissalAction = nil
                 }
             }
             .sheet(isPresented: Binding<Bool>.init(get: { () -> Bool in
@@ -105,12 +112,12 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
                 // shouldn't matter if different coordinators. also this set modal children to nil
                 let presented = self.coordinator.navigationStack.value[safe: id + 1]
                 
-                switch presented {
+                switch presented?.transition {
                 case .modal(let presentable):
                     if let presentable = presentable as? AnyCoordinatable {
                         DispatchQueue.main.async {
-                            presentable.dismissalAction()
-                            presentable.dismissalAction = {}
+                            presentable.dismissalAction?()
+                            presentable.dismissalAction = nil
                         }
                     }
                 default:
@@ -132,6 +139,7 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
     init(id: Int, coordinator: T) {
         self.id = id
         self.coordinator = coordinator
+        self.coordinator.navigationStack.resolver = self.coordinator
         
         self.presentationHelper = PresentationHelper(
             id: self.id,
@@ -146,7 +154,7 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
         RouterStore.shared.store(router: router)
 
         if let presentation = coordinator.navigationStack.value[safe: id] {
-            if let view = presentation.presentable as? AnyView {
+            if let view = presentation.transition.presentable as? AnyView {
                 self.start = view
             } else {
                 fatalError("Can only show views")

@@ -12,7 +12,7 @@ public protocol Coordinatable: ObservableObject, Identifiable {
     var dismissalAction: DismissalAction { get set }
 }
 
-public typealias DismissalAction = () -> Void
+public typealias DismissalAction = (() -> Void)?
 
 public extension Coordinatable {
     var allChildCoordinators: [AnyCoordinatable] {

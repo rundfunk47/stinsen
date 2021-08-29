@@ -9,6 +9,6 @@ public class NavigationViewChild: ObservableObject {
     
     public init(_ childCoordinator: AnyCoordinatable? = nil) {
         self.childCoordinator = childCoordinator
-        self.dismissalAction = {}
+        self.dismissalAction = nil
     }
 }

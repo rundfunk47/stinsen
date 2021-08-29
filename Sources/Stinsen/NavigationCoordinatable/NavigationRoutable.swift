@@ -1,6 +1,6 @@
 import Foundation
 
-class NavigationRoutable {
+final class NavigationRoutable {
     var _anyRoute: (NavigationRoute) -> Void
     var _pop: () -> Void
     var _dismiss: (AnyCoordinatable, @escaping () -> Void) -> Void
@@ -23,8 +23,7 @@ class NavigationRoutable {
         }
         
         _anyRoute = { route in
-            let resolved = coordinator.resolveRoute(route: route as! T.Route)
-            coordinator.navigationStack.append(resolved)
+            coordinator.navigationStack.append(route as! T.Route)
         }
         
         _dismiss = { root, onFinished in
@@ -38,7 +37,7 @@ class NavigationRoutable {
             
             let oldAction = coordinator.dismissalAction
             coordinator.dismissalAction = {
-                oldAction()
+                oldAction?()
                 onFinished()
             }
             

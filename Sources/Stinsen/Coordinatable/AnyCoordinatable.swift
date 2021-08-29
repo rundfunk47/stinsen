@@ -78,7 +78,7 @@ public final class AnyCoordinatable: Coordinatable {
     private let box: _AnyCoordinatableBase
     private let _childCoordinators: () -> [AnyCoordinatable]
     private let _getDismissalAction: () -> DismissalAction
-    private let _setDismissalAction: (@escaping DismissalAction) -> Void
+    private let _setDismissalAction: (DismissalAction) -> Void
     
     public init<Base: Coordinatable>(_ base: Base) {
         box = _AnyCoordinatableBox(base)

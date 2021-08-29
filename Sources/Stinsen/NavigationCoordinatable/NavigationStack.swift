@@ -2,10 +2,10 @@ import Foundation
 import Combine
 
 /// Represents a stack of routes
-public class NavigationStack: ObservableObject {
+public final class NavigationStack<Route: NavigationRoute>: ObservableObject {
     public func popTo<T: Coordinatable>(_ coordinator: T) {
         let index = value.firstIndex { tuple in
-            let presentable = tuple.presentable
+            let presentable = tuple.transition.presentable
             
             if let presentable = presentable as? AnyCoordinatable {
                 return coordinator.id == presentable.id
@@ -20,12 +20,27 @@ public class NavigationStack: ObservableObject {
     
     public var poppedTo = PassthroughSubject<Int, Never>()
     public var dismissalAction: DismissalAction
+    public weak var resolver: AnyNavigationResolver! {
+        didSet {
+            if oldValue == nil {
+                let values = startup.map { route in
+                    (route: route, resolver.anyResolveRoute(route: route))
+                }
+                
+                self.value = values
+            }
+        }
+    }
     
-    @Published private (set) var value: [Transition]
+    @Published private (set) var value: [(route: Route, transition: Transition)]
+
+    var startup: [Route]
+    var ready: Bool = false
     
-    public init() {
+    public init(_ startup: [Route] = []) {
+        self.startup = startup
         self.value = []
-        self.dismissalAction = {}
+        self.dismissalAction = nil
     }
     
     public func popTo(_ int: Int) {
@@ -38,13 +53,14 @@ public class NavigationStack: ObservableObject {
         }
     }
     
-    func append(_ transition: Transition) {
-        self.value.append(transition)
+    func append(_ route: Route) {
+        let transition = self.resolver.anyResolveRoute(route: route)
+        self.value.append((route, transition))
     }
     
     var childCoordinators: [AnyCoordinatable] {
         return value.compactMap {
-            switch $0 {
+            switch $0.transition {
             case .modal(let presentable):
                 return presentable as? AnyCoordinatable
             case .push(let presentable):

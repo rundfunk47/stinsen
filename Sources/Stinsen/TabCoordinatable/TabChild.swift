@@ -20,7 +20,7 @@ public class TabChild<T: TabCoordinatable>: ObservableObject {
     
     public init(_ coordinator: T, tabRoutes: [T.Route], staringRoute: Int = 0) {
         self.coordinator = coordinator
-        self.dismissalAction = {}
+        self.dismissalAction = nil
 
         self.coordinators = tabRoutes.map { it in
             return (it, coordinator.resolveRoute(route: it))
