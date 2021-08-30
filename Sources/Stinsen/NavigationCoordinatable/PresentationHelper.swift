@@ -137,7 +137,7 @@ final class PresentationHelper<T: NavigationCoordinatable>: ObservableObject {
         
         self.setupPresented(coordinator: coordinator)
         
-        navigationStack.$value.dropFirst().sink { [weak self] _ in
+        navigationStack.$value.dropFirst().sink { [weak self, coordinator] _ in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 
