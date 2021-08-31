@@ -4,7 +4,7 @@ import SwiftUI
 import Stinsen
 
 final class AuthenticatedCoordinator: TabCoordinatable {
-    lazy var children = TabChild<Route>([.home, .projects, .profile, .testbedEO, .testbedRO])
+    let children = TabChild<Route>([.home, .projects, .profile, .testbedEO, .testbedRO])
     
     enum Route: TabRoute {
         case home

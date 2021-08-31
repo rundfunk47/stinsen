@@ -4,10 +4,11 @@ import SwiftUI
 struct ViewCoordinatableView<T: ViewCoordinatable, U: View>: View {
     var coordinator: T
     let router: ViewRouter<T.Route>
-    @ObservedObject var children: ViewChild
+    @ObservedObject var children: ViewChild<T.Route>
     private var customize: (AnyView) -> U
 
     init(coordinator: T, customize: @escaping (AnyView) -> U) {
+        coordinator.children.resolver = coordinator
         self.router = ViewRouter(coordinator)
         RouterStore.shared.store(router: router)
         self.customize = customize

@@ -2,13 +2,11 @@ import Foundation
 import SwiftUI
 
 ///The ViewCoordinatable represents a view with routes that can be switched to but not pushed or presented modally. This can be used if you have a need to switch between different "modes" in the app, for instance if you switch between logged in and logged out. The ViewCoordinatable will recreate the view and the coordinator, so it is not suited to replace a tab-bar or similar modes of navigation, where you want to preserve the state.
-public protocol ViewCoordinatable: Coordinatable {
-    associatedtype Route: ViewRoute
+public protocol ViewCoordinatable: Coordinatable, ViewResolver {
     associatedtype CustomizeViewType: View
     associatedtype Start: View
-    func resolveRoute(route: Route) -> AnyCoordinatable
     @ViewBuilder func start() -> Start
-    var children: ViewChild { get }
+    var children: ViewChild<Route> { get }
     func customize(_ view: AnyView) -> CustomizeViewType
 }
 

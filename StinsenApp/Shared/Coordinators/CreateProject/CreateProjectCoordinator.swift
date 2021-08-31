@@ -4,7 +4,7 @@ import SwiftUI
 import Stinsen
 
 class CreateProjectCoordinator: NavigationCoordinatable {
-    var navigationStack: NavigationStack = NavigationStack<Route>()
+    let navigationStack: NavigationStack = NavigationStack<Route>()
 
     enum Route: NavigationRoute {
 

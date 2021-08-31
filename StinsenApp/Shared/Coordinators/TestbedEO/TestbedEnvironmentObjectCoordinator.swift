@@ -4,7 +4,7 @@ import SwiftUI
 import Stinsen
 
 class TestbedEnvironmentObjectCoordinator: NavigationCoordinatable {
-    var navigationStack: NavigationStack = NavigationStack<Route>([.pushScreen])
+    let navigationStack: NavigationStack = NavigationStack<Route>([.pushScreen])
     
     enum Route: NavigationRoute {
         case pushScreen

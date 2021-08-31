@@ -4,7 +4,7 @@ import SwiftUI
 import Stinsen
 
 class UnauthenticatedCoordinator: NavigationCoordinatable {
-    var navigationStack = NavigationStack<Route>()
+    let navigationStack = NavigationStack<Route>()
     
     enum Route: NavigationRoute {
         case forgotPassword

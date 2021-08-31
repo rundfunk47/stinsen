@@ -4,7 +4,7 @@ import SwiftUI
 import Stinsen
 
 class MainCoordinator: ViewCoordinatable {
-    var children = ViewChild()
+    var children = ViewChild<Route>()
     
     enum Route: ViewRoute {
         case unauthenticated

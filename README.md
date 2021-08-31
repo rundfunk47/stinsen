@@ -22,7 +22,7 @@ Example using a Navigation Stack:
 
 ```swift
 class ProjectsCoordinator: NavigationCoordinatable {
-    var navigationStack = NavigationStack() // usually you would want to initialize this without any active children
+    let navigationStack = NavigationStack() // usually you would want to initialize this without any active children
 
     enum Route {
         case project(id: UUID)
