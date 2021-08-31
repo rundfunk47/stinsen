@@ -4,7 +4,7 @@ import SwiftUI
 import Stinsen
 
 final class AuthenticatedCoordinator: TabCoordinatable {
-    lazy var children = TabChild(self, tabRoutes: [.home, .projects, .profile, .testbedEO, .testbedRO])
+    lazy var children = TabChild<Route>([.home, .projects, .profile, .testbedEO, .testbedRO])
     
     enum Route: TabRoute {
         case home
@@ -14,55 +14,41 @@ final class AuthenticatedCoordinator: TabCoordinatable {
         case testbedRO
     }
     
-    func tabItem(forTab tab: Int) -> some View {
-        switch tab {
-        case 0:
-            Group {
-                if children.activeTab == 0 {
-                    Image(systemName: "house.fill")
-                } else {
-                    Image(systemName: "house")
-                }
-                Text("Home")
-            }
-        case 1:
-            Group {
-                if children.activeTab == 1 {
-                    Image(systemName: "doc.text.fill")
-                } else {
-                    Image(systemName: "doc.text")
-                }
-                Text("Projects")
-            }
-        case 2:
-            Group {
-                if children.activeTab == 2 {
-                    Image(systemName: "person.fill")
-                } else {
-                    Image(systemName: "person")
-                }
-                Text("Profile")
-            }
-        case 3:
-            Group {
-                if children.activeTab == 3 {
-                    Image(systemName: "bed.double.fill")
-                } else {
-                    Image(systemName: "bed.double")
-                }
-                Text("Testbed (EO)")
-            }
-        case 4:
-            Group {
-                if children.activeTab == 4 {
-                    Image(systemName: "bed.double.fill")
-                } else {
-                    Image(systemName: "bed.double")
-                }
-                Text("Testbed (RO)")
-            }
-        default:
-            fatalError()
+    private func imageName(forRoute route: Route) -> String {
+        let baseImageName: String
+        switch route {
+        case .home:
+            baseImageName = "house"
+        case .projects:
+            baseImageName = "doc.text"
+        case .profile:
+            baseImageName = "person"
+        case .testbedEO:
+            baseImageName = "bed.double"
+        case .testbedRO:
+            baseImageName = "bed.double"
+        }
+        
+        if route == children.activeRoute {
+            return "\(baseImageName).fill"
+        } else {
+            return baseImageName
+        }
+    }
+    
+    @ViewBuilder func tabItem(forRoute route: Route) -> some View {
+        Image(systemName: imageName(forRoute: route))
+        switch route {
+        case .home:
+            Text("Home")
+        case .projects:
+            Text("Projects")
+        case .profile:
+            Text("Profile")
+        case .testbedEO:
+            Text("Testbed (EO)")
+        case .testbedRO:
+            Text("Testbed (RO)")
         }
     }
     
