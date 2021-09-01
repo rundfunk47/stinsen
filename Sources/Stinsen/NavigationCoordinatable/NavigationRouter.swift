@@ -1,24 +1,52 @@
 import Foundation
 
-public final class NavigationRouter<T: NavigationRoute>: Routable {
-    private let routable: NavigationRoutable
+public final class NavigationRouter<T>: Routable {
+    private let _anyRoute: (Any) -> Void
+    private let _pop: () -> Void
+    private let _dismiss: (AnyCoordinatable, @escaping () -> Void) -> Void
+
     var root: AnyCoordinatable?
     public let id: Int?
     
     public func route(to route: T) {
-        routable.anyRoute(to: route)
+        _anyRoute(route)
     }
     
     public func pop() {
-        routable.pop()
+        _pop()
     }
     
     public func dismiss(onFinished: @escaping (() -> Void) = {}) {
-        routable.dismiss(withRootCoordinator: root!, onFinished: onFinished)
+        _dismiss(root!, onFinished)
     }
     
-    init<U: NavigationCoordinatable>(id: Int?, coordinator: U) {
+    init<U: NavigationCoordinatable>(id: Int?, coordinator: U) where U.Route == T {
         self.id = id
-        self.routable = NavigationRoutable(coordinator: coordinator)
+        
+        _pop = {
+            coordinator.navigationStack.popTo(coordinator.navigationStack.value.count - 2)
+        }
+        
+        _anyRoute = { route in
+            coordinator.navigationStack.append(route as! T)
+        }
+        
+        _dismiss = { root, onFinished in
+            guard let parent = root.allChildCoordinators.first(where: {
+                $0.childCoordinators.contains(where: {
+                    coordinator.id == $0.id
+                })
+            }) else {
+                fatalError("no children, cannot dismiss?!")
+            }
+            
+            let oldAction = coordinator.dismissalAction
+            coordinator.dismissalAction = {
+                oldAction?()
+                onFinished()
+            }
+            
+            parent.dismissChildCoordinator(coordinator.eraseToAnyCoordinatable(), onFinished)
+        }
     }
 }

@@ -3,10 +3,10 @@ import SwiftUI
 
 import Stinsen
 
-class HomeCoordinator: NavigationCoordinatable {
-    let navigationStack: NavigationStack = NavigationStack<Route>()
+final class HomeCoordinator: NavigationCoordinatable {
+    lazy var navigationStack = NavigationStack(self)
 
-    enum Route: NavigationRoute {
+    enum Route {
 
     }
     

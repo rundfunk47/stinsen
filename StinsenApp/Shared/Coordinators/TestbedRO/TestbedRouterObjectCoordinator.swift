@@ -3,10 +3,10 @@ import SwiftUI
 
 import Stinsen
 
-class TestbedRouterObjectCoordinator: NavigationCoordinatable {
-    let navigationStack: NavigationStack = NavigationStack<Route>()
+final class TestbedRouterObjectCoordinator: NavigationCoordinatable {
+    lazy var navigationStack = NavigationStack(self)
     
-    enum Route: NavigationRoute {
+    enum Route {
         case pushScreen
         case modalScreen
         case pushCoordinator

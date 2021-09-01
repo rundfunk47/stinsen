@@ -3,10 +3,12 @@ import SwiftUI
 import Combine
 
 /// The NavigationCoordinatable is used to represent a flow. If you want to push items to the stack you need to wrap this in a NavigationViewCoordinator.
-public protocol NavigationCoordinatable: Coordinatable, NavigationResolver {
+public protocol NavigationCoordinatable: Coordinatable {
     associatedtype Start: View
+    associatedtype Route
     @ViewBuilder func start() -> Start
-    var navigationStack: NavigationStack<Route> { get }
+    var navigationStack: NavigationStack<Self> { get }
+    func resolveRoute(route: Route) -> Transition
 }
 
 public extension NavigationCoordinatable {

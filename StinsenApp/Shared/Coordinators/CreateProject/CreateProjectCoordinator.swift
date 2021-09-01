@@ -3,10 +3,10 @@ import SwiftUI
 
 import Stinsen
 
-class CreateProjectCoordinator: NavigationCoordinatable {
-    let navigationStack: NavigationStack = NavigationStack<Route>()
-
-    enum Route: NavigationRoute {
+final class CreateProjectCoordinator: NavigationCoordinatable {
+    lazy var navigationStack = NavigationStack(self)
+    
+    enum Route {
 
     }
 

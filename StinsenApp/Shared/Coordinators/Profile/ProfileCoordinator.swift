@@ -3,10 +3,10 @@ import SwiftUI
 
 import Stinsen
 
-class ProfileCoordinator: NavigationCoordinatable {
-    let navigationStack: NavigationStack = NavigationStack<Route>()
+final class ProfileCoordinator: NavigationCoordinatable {
+    lazy var navigationStack = NavigationStack(self)
 
-    enum Route: NavigationRoute {
+    enum Route {
         case push
         case modal
     }

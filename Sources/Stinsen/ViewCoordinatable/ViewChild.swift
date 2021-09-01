@@ -3,14 +3,17 @@ import Combine
 
 /// Wrapper around childCoordinators
 /// Used so that you don't need to write @Published
-public class ViewChild<Route: ViewRoute>: ObservableObject {
+public class ViewChild<Coordinator: ViewCoordinatable>: ObservableObject {
+    private weak var coordinator: Coordinator?
     @Published var childCoordinator: AnyCoordinatable?
     var dismissalAction: DismissalAction
     
-    var activeRoute: Route? {
+    var activeRoute: Coordinator.Route? {
         didSet {
+            guard let coordinator = coordinator else { return }
+            
             if let activeRoute = activeRoute {
-                let resolved = resolver.anyResolveRoute(route: activeRoute)
+                let resolved = coordinator.resolveRoute(route: activeRoute)
                 self.childCoordinator = resolved
             } else {
                 self.childCoordinator = nil
@@ -18,20 +21,16 @@ public class ViewChild<Route: ViewRoute>: ObservableObject {
         }
     }
     
-    var startingRoute: Route?
-
-    public weak var resolver: AnyViewResolver! {
-        didSet {
-            if oldValue == nil {
-                if let startingRoute = startingRoute {
-                    activeRoute = startingRoute
-                }
-            }
-        }
-    }
-    
-    public init(_ startingRoute: Route? = nil) {
+    public init(
+        _ coordinator: Coordinator,
+        startingRoute: Coordinator.Route? = nil
+    ) {
+        self.coordinator = coordinator
         self.childCoordinator = nil
         self.dismissalAction = nil
+        
+        if let startingRoute = startingRoute {
+            activeRoute = startingRoute
+        }
     }
 }

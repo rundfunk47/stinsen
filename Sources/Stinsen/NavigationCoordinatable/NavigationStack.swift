@@ -2,7 +2,7 @@ import Foundation
 import Combine
 
 /// Represents a stack of routes
-public final class NavigationStack<Route: NavigationRoute>: ObservableObject {
+public final class NavigationStack<Coordinator: NavigationCoordinatable>: ObservableObject {
     public func popTo<T: Coordinatable>(_ coordinator: T) {
         let index = value.firstIndex { tuple in
             let presentable = tuple.transition.presentable
@@ -20,27 +20,22 @@ public final class NavigationStack<Route: NavigationRoute>: ObservableObject {
     
     public var poppedTo = PassthroughSubject<Int, Never>()
     public var dismissalAction: DismissalAction
-    public weak var resolver: AnyNavigationResolver! {
-        didSet {
-            if oldValue == nil {
-                let values = startup.map { route in
-                    (route: route, resolver.anyResolveRoute(route: route))
-                }
-                
-                self.value = values
-            }
-        }
-    }
-    
-    @Published private (set) var value: [(route: Route, transition: Transition)]
 
-    var startup: [Route]
+    @Published private (set) var value: [(route: Coordinator.Route, transition: Transition)]
+
     var ready: Bool = false
+    private weak var coordinator: Coordinator?
     
-    public init(_ startup: [Route] = []) {
-        self.startup = startup
+    public init(_ coordinator: Coordinator, _ startup: [Coordinator.Route] = []) {
         self.value = []
         self.dismissalAction = nil
+        self.coordinator = coordinator
+                
+        let values = startup.map { route in
+            (route: route, coordinator.resolveRoute(route: route))
+        }
+        
+        self.value = values
     }
     
     public func popTo(_ int: Int) {
@@ -53,8 +48,9 @@ public final class NavigationStack<Route: NavigationRoute>: ObservableObject {
         }
     }
     
-    func append(_ route: Route) {
-        let transition = self.resolver.anyResolveRoute(route: route)
+    func append(_ route: Coordinator.Route) {
+        guard let coordinator = coordinator else { return }
+        let transition = coordinator.resolveRoute(route: route)
         self.value.append((route, transition))
     }
     

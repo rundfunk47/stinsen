@@ -139,7 +139,6 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
     init(id: Int, coordinator: T) {
         self.id = id
         self.coordinator = coordinator
-        self.coordinator.navigationStack.resolver = self.coordinator
         
         self.presentationHelper = PresentationHelper(
             id: self.id,

@@ -1,16 +1,18 @@
 import Foundation
 
-public class TabRouter<T: TabRoute>: Routable {
-    private let routable: TabRoutable
+public class TabRouter<T>: Routable {
+    var _anyFocus: ((Any) -> Bool) throws -> Void
 
     public func focus(where closure: (T) -> Bool) throws {
-        try routable.anyFocus(where: {
+        try _anyFocus({
             return closure($0 as! T)
         })
     }
     
-    init<U: TabCoordinatable>(_ coordinator: U) {
-        self.routable = TabRoutable(coordinator: coordinator)
+    init<U: TabCoordinatable>(_ coordinator: U) where U.Route == T {
+        self._anyFocus = { closure in
+            try coordinator.children.focus(where: closure)
+        }
     }
 }
 

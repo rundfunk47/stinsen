@@ -2,12 +2,14 @@ import Foundation
 import SwiftUI
 
 /// The TabCoordinatable is used to represent a coordinator with a TabView
-public protocol TabCoordinatable: Coordinatable, TabResolver {
+public protocol TabCoordinatable: Coordinatable {
     associatedtype ViewType: View
     associatedtype CustomizeViewType: View
+    associatedtype Route
+    func resolveRoute(route: Route) -> AnyCoordinatable
     @ViewBuilder func tabItem(forRoute route: Route) -> ViewType
     func customize(_ view: AnyView) -> CustomizeViewType
-    var children: TabChild<Route> { get }
+    var children: TabChild<Self> { get }
 }
 
 public extension TabCoordinatable {

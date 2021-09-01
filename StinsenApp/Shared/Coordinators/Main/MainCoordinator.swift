@@ -3,10 +3,10 @@ import SwiftUI
 
 import Stinsen
 
-class MainCoordinator: ViewCoordinatable {
-    var children = ViewChild<Route>()
+final class MainCoordinator: ViewCoordinatable {
+    lazy var children = ViewChild(self)
     
-    enum Route: ViewRoute {
+    enum Route {
         case unauthenticated
         case authenticated
     }

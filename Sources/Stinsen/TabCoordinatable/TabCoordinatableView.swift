@@ -4,7 +4,7 @@ import SwiftUI
 struct TabCoordinatableView<T: TabCoordinatable, U: View>: View {
     private var coordinator: T
     private let router: TabRouter<T.Route>
-    @ObservedObject var child: TabChild<T.Route>
+    @ObservedObject var child: TabChild<T>
     private var customize: (AnyView) -> U
     private var views: [(T.Route, AnyView)]
     
@@ -29,7 +29,6 @@ struct TabCoordinatableView<T: TabCoordinatable, U: View>: View {
     
     init(coordinator: T, customize: @escaping (AnyView) -> U) {
         self.coordinator = coordinator
-        coordinator.children.resolver = coordinator
         
         self.router = TabRouter(coordinator)
         RouterStore.shared.store(router: router)
