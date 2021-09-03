@@ -4,6 +4,10 @@ import SwiftUI
 
 // MARK: - Abstract base class
 fileprivate class _AnyCoordinatableBase: Coordinatable {
+    func handleDeepLink(_ deepLink: [Any]) throws {
+        fatalError("override me")
+    }
+    
     func dismissChildCoordinator(_ childCoordinator: AnyCoordinatable, _ completion: (() -> Void)?) {
         fatalError("override me")
     }
@@ -44,6 +48,10 @@ fileprivate final class _AnyCoordinatableBox<Base: Coordinatable>: _AnyCoordinat
     var base: Base
     init(_ base: Base) { self.base = base }
     
+    override func handleDeepLink(_ deepLink: [Any]) throws {
+        return try base.handleDeepLink(deepLink)
+    }
+    
     override var objectWillChange: ObservableObjectPublisher {
         return base.objectWillChange as! ObservableObjectPublisher
     }
@@ -73,8 +81,10 @@ fileprivate final class _AnyCoordinatableBox<Base: Coordinatable>: _AnyCoordinat
     }
 }
 
-// MARK: - AnyCoordinatable Wrapper
+// Type-erased Coordinatable 😏
 public final class AnyCoordinatable: Coordinatable {
+    public typealias Route = Any
+
     private let box: _AnyCoordinatableBase
     private let _childCoordinators: () -> [AnyCoordinatable]
     private let _getDismissalAction: () -> DismissalAction
@@ -87,6 +97,10 @@ public final class AnyCoordinatable: Coordinatable {
         _setDismissalAction = { action in
             base.dismissalAction = action
         }
+    }
+    
+    public func handleDeepLink(_ route: [Any]) throws {
+        try box.handleDeepLink(route)
     }
 
     public func coordinatorView() -> AnyView {

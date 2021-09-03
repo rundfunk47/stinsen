@@ -3,9 +3,9 @@ import SwiftUI
 
 /// The TabCoordinatable is used to represent a coordinator with a TabView
 public protocol TabCoordinatable: Coordinatable {
+    associatedtype Route
     associatedtype ViewType: View
     associatedtype CustomizeViewType: View
-    associatedtype Route
     func resolveRoute(route: Route) -> AnyCoordinatable
     @ViewBuilder func tabItem(forRoute route: Route) -> ViewType
     func customize(_ view: AnyView) -> CustomizeViewType
@@ -37,5 +37,20 @@ public extension TabCoordinatable {
     
     func dismissChildCoordinator(_ childCoordinator: AnyCoordinatable, _ completion: (() -> Void)?) {
         fatalError("not implemented")
+    }
+}
+
+extension TabCoordinatable where Route: Equatable {
+    func handleDeepLink(_ deepLink: [Any]) throws {
+        guard let first = deepLink.first else { return }
+        guard let route = first as? Route else {
+            throw DeepLinkError.unhandledDeepLink(deepLink: deepLink)
+        }
+        
+        if route != self.children.activeRoute {
+            try self.children.focus(route)
+        }
+        
+        try self.children.childCoordinator.handleDeepLink(Array(deepLink.dropFirst()))
     }
 }

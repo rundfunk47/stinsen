@@ -8,6 +8,7 @@ public class ViewChild<Coordinator: ViewCoordinatable>: ObservableObject {
     @Published var childCoordinator: AnyCoordinatable?
     var dismissalAction: DismissalAction
     
+    /// The route that is currently being shown. If nil, will show the view returned by the `start` function in the Coordinator.
     var activeRoute: Coordinator.Route? {
         didSet {
             guard let coordinator = coordinator else { return }

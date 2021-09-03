@@ -8,15 +8,30 @@ public final class NavigationRouter<T>: Routable {
     var root: AnyCoordinatable?
     public let id: Int?
     
+    /**
+     Appends a route to the navigation stack.
+
+     - Parameter route: The route to append.
+     */
     public func route(to route: T) {
         _anyRoute(route)
     }
     
+    /**
+     Pops the latest view/coordinator from the navigation stack.
+     */
     public func pop() {
         _pop()
     }
     
-    public func dismiss(onFinished: @escaping (() -> Void) = {}) {
+    #warning("add firstroute and pop to int...")
+    
+    /**
+     Dismisses the coordinator and all it's views.
+     
+     - Parameter onFinished: Optional closure to execute once the coordinator has dismissed.
+     */
+    public func dismissCoordinator(onFinished: @escaping (() -> Void) = {}) {
         _dismiss(root!, onFinished)
     }
     

@@ -10,7 +10,7 @@ final class MainCoordinator: ViewCoordinatable {
         case unauthenticated
         case authenticated
     }
-
+    
     func resolveRoute(route: Route) -> AnyCoordinatable {
         switch route {
         case .unauthenticated:

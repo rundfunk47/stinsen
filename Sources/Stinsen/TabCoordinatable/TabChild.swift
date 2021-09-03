@@ -7,7 +7,9 @@ public class TabChild<Coordinator: TabCoordinatable>: ObservableObject {
     var dismissalAction: DismissalAction
     var value: [(Coordinator.Route, AnyCoordinatable)]
     private let tabRoutes: [Coordinator.Route]
-    public var activeRoute: Coordinator.Route
+    
+    /// The route that represents the currently selected tab. To set this, use the `focus` function.
+    public private(set) var activeRoute: Coordinator.Route
     
     private var _activeTab: Int!
 
@@ -55,10 +57,34 @@ public class TabChild<Coordinator: TabCoordinatable>: ObservableObject {
             return tab.offset
         }
         
-        throw TabRouterError.routeNotFound
+        throw FocusError.routeNotFound
     }
     
-    public func focus(where closure: (Coordinator.Route) -> Bool) throws {
-        self.activeTab = try TabChild<Coordinator>.tabNumber(tabRoutes: tabRoutes, where: closure)
+    /**
+     Searches the selectable tabs for the first route that matches the closure. If found, will make that tab the active one.
+
+     - Parameter predicate: A closure that takes an element of the sequence as
+     its argument and returns a Boolean value indicating whether the
+     element is a match.
+     
+     - Throws: `FocusError.routeNotFound`
+               if the route was not found.
+     */
+    public func focus(where predicate: (Coordinator.Route) -> Bool) throws {
+        self.activeTab = try TabChild<Coordinator>.tabNumber(tabRoutes: tabRoutes, where: predicate)
+    }
+}
+
+extension TabChild where Coordinator.Route: Equatable {
+    /**
+     Searches the selectable tabs for the first route that is equal to the route provided. If found, will make that tab the active one.
+
+     - Parameter route: The route to look for.
+     
+     - Throws: `FocusError.routeNotFound`
+               if the route was not found.
+     */
+    public func focus(_ route: Coordinator.Route) throws {
+        try self.focus(where: { $0 == route })
     }
 }
