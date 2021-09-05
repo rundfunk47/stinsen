@@ -40,15 +40,10 @@ public extension NavigationCoordinatable {
     }
 }
 
-extension NavigationCoordinatable where Route: Equatable {
-    func handleDeepLink(_ deepLink: [Any], isView: Bool) throws {
-        guard let first = deepLink.first else { return }
-        guard let route = first as? Route else {
+public extension NavigationCoordinatable where Route: Equatable {
+    private func handleDeepLinkRecursive(_ deepLink: [Any]) throws {
+        guard let route = deepLink.first as? Route else {
             throw DeepLinkError.unhandledDeepLink(deepLink: deepLink)
-        }
-        
-        if !isView {
-            self.navigationStack.popToRoot()
         }
 
         self.navigationStack.append(route)
@@ -60,11 +55,16 @@ extension NavigationCoordinatable where Route: Equatable {
         if let coordinator = self.navigationStack.value.last!.transition.presentable as? AnyCoordinatable {
             try coordinator.handleDeepLink(Array(deepLink.dropFirst()))
         } else {
-            try self.handleDeepLink(Array(deepLink.dropFirst()), isView: true)
+            try self.handleDeepLinkRecursive(Array(deepLink.dropFirst()))
         }
     }
 
     func handleDeepLink(_ deepLink: [Any]) throws {
-        try self.handleDeepLink(deepLink, isView: false)
+        guard deepLink.first != nil else {
+            self.navigationStack.popToRoot()
+            return
+        }
+
+        try self.handleDeepLinkRecursive(deepLink)
     }
 }

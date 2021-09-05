@@ -9,6 +9,13 @@ public protocol ViewCoordinatable: Coordinatable {
     func resolveRoute(route: Route) -> AnyCoordinatable
     @ViewBuilder func start() -> Start
     var children: ViewChild<Self> { get }
+    /**
+     Implement this function if you wish to customize the view on all views and child coordinators, for instance, if you wish to change the `tintColor` or inject an `EnvironmentObject`.
+
+     - Parameter view: The input view.
+
+     - Returns: The modified view.
+     */
     func customize(_ view: AnyView) -> CustomizeViewType
 }
 
@@ -40,7 +47,7 @@ public extension ViewCoordinatable {
     }
 }
 
-extension ViewCoordinatable where Route: Equatable {
+public extension ViewCoordinatable where Route: Equatable {
     func handleDeepLink(_ deepLink: [Any]) throws {
         guard let first = deepLink.first else { return }
         guard let route = first as? Route else {

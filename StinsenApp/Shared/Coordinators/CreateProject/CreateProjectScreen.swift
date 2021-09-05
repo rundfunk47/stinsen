@@ -15,7 +15,7 @@ struct CreateProjectScreen: View {
                 Spacer(minLength: 32)
                 RoundedButton("OK") {
                     AllProjectsStore.shared.add(project: Project(name: text))
-                    createProject.dismiss()
+                    createProject.dismissCoordinator()
                 }
             }
             .navigationTitle(with: "Create project")

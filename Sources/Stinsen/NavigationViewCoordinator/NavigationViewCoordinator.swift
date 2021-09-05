@@ -8,11 +8,8 @@ public class NavigationViewCoordinatable<U: View>: NavigationViewCoordinator<U> 
 
 /// The NavigationViewCoordinator is used to represent a coordinator with a NavigationView
 public class NavigationViewCoordinator<U: View>: Coordinatable {
-    public typealias Route = Any
-    
-    #warning("implement")
     public func handleDeepLink(_ deepLink: [Any]) throws {
-        <#code#>
+        try self.children.childCoordinator?.handleDeepLink(deepLink)
     }
     
     public var dismissalAction: DismissalAction {

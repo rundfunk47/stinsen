@@ -6,7 +6,7 @@ import Stinsen
 final class CreateProjectCoordinator: NavigationCoordinatable {
     lazy var navigationStack = NavigationStack(self)
     
-    enum Route {
+    enum Route: Equatable {
 
     }
 

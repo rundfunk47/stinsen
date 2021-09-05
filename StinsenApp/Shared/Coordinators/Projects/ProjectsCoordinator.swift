@@ -6,7 +6,7 @@ import Stinsen
 final class ProjectsCoordinator: NavigationCoordinatable {
     lazy var navigationStack = NavigationStack(self)
 
-    enum Route {
+    enum Route: Equatable {
         case project(id: UUID)
         case createProject
     }

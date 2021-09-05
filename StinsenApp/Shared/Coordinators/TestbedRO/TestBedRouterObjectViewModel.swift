@@ -32,7 +32,7 @@ class TestBedRouterObjectViewModel: ObservableObject {
     }
     
     func dismiss() {
-        router?.dismiss(onFinished: {
+        router?.dismissCoordinator(onFinished: {
             print("bye!")
         })
     }

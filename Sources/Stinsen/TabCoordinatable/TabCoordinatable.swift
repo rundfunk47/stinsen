@@ -8,6 +8,13 @@ public protocol TabCoordinatable: Coordinatable {
     associatedtype CustomizeViewType: View
     func resolveRoute(route: Route) -> AnyCoordinatable
     @ViewBuilder func tabItem(forRoute route: Route) -> ViewType
+    /**
+     Implement this function if you wish to customize the view on all views and child coordinators, for instance, if you wish to change the `tintColor` or inject an `EnvironmentObject`.
+
+     - Parameter view: The input view.
+
+     - Returns: The modified view.
+     */
     func customize(_ view: AnyView) -> CustomizeViewType
     var children: TabChild<Self> { get }
 }
@@ -40,7 +47,7 @@ public extension TabCoordinatable {
     }
 }
 
-extension TabCoordinatable where Route: Equatable {
+public extension TabCoordinatable where Route: Equatable {
     func handleDeepLink(_ deepLink: [Any]) throws {
         guard let first = deepLink.first else { return }
         guard let route = first as? Route else {
