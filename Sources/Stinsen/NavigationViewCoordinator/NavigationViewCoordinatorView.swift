@@ -20,7 +20,7 @@ struct NavigationViewCoordinatorView<T: NavigationViewCoordinator<V>, U: View, V
         }
         .onReceive(coordinator.children.$childCoordinator) { (value) in
             if value == nil {
-                guard let parent = root.coordinator.allChildCoordinators.first(where: {
+                guard let parent = ([root.coordinator] + root.coordinator.allChildCoordinators).first(where: {
                     $0.childCoordinators.contains(where: {
                         coordinator.id == $0.id
                     })
@@ -41,7 +41,7 @@ struct NavigationViewCoordinatorView<T: NavigationViewCoordinator<V>, U: View, V
         .navigationViewStyle(StackNavigationViewStyle())
         .onReceive(coordinator.children.$childCoordinator) { (value) in
             if value == nil {
-                guard let parent = root.coordinator.allChildCoordinators.first(where: {
+                guard let parent = ([root.coordinator] + root.coordinator.allChildCoordinators).first(where: {
                     $0.childCoordinators.contains(where: {
                         coordinator.id == $0.id
                     })

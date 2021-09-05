@@ -28,7 +28,11 @@ class NavigationRoutable {
         }
         
         _dismiss = { root, onFinished in
-            guard let parent = root.allChildCoordinators.first(where: {
+            print("root: " + root.id)
+            print("me: " + coordinator.id)
+            print("ids: " + root.allChildCoordinators.map { $0.id }.joined(separator: ", "))
+
+            guard let parent = ([root] + root.allChildCoordinators).first(where: {
                 $0.childCoordinators.contains(where: {
                     coordinator.id == $0.id
                 })
