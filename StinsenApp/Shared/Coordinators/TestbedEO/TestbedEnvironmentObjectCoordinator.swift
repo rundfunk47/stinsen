@@ -65,10 +65,8 @@ final class TestbedEnvironmentObjectCoordinator: NavigationCoordinatable {
         case .coverCoordinator:
             if #available(iOS 14.0, watchOS 7.0, tvOS 14.0, *) {
                 return .fullScreen(
-                    AnyView(
-                        NavigationView {
-                            TestbedEnvironmentObjectScreen().navigationTitle(with: "Cover testbed")
-                        }
+                    AnyCoordinatable(
+                        NavigationViewCoordinator(TestbedEnvironmentObjectCoordinator())
                     )
                 )
             } else {

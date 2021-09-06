@@ -19,7 +19,7 @@ final class ProjectsCoordinator: NavigationCoordinatable {
             if #available(iOS 14.0, watchOS 7.0, tvOS 14.0, *) {
                 return .fullScreen(
                     AnyCoordinatable(
-                        NavigationViewCoordinator(CreateProjectCoordinator())
+                        CreateProjectCoordinator()
                     )
                 )
             }
