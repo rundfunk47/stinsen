@@ -13,7 +13,7 @@ class LoginScreenViewModel: ObservableObject {
     }
     
     func loginButtonPressed() {
-        main?.route(to: .authenticated)
+        main?.activeRoute = .authenticated
     }
     
     func forgotPasswordButtonPressed() {

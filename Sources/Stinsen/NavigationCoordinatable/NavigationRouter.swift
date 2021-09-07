@@ -3,8 +3,10 @@ import Foundation
 public final class NavigationRouter<T>: Routable {
     private let _anyRoute: (Any) -> Void
     private let _pop: () -> Void
+    private let _popTo: (Int) -> Void
     private let _dismiss: (AnyCoordinatable, @escaping () -> Void) -> Void
-
+    private let _focusFirst: ((T) -> Bool) throws -> Void
+    
     var root: AnyCoordinatable?
     public let id: Int?
     
@@ -24,8 +26,28 @@ public final class NavigationRouter<T>: Routable {
         _pop()
     }
     
-    #warning("add firstroute and pop to int...")
+    /**
+     Clears the stack.
+     */
+    public func popToRoot() {
+        _popTo(-1)
+    }
     
+    /**
+     Searches the stack for the first route that matches the closure. If found, will remove
+     everything after that route.
+
+     - Parameter predicate: A closure that takes an element of the sequence as
+     its argument and returns a Boolean value indicating whether the
+     element is a match.
+     
+     - Throws: `FocusError.routeNotFound`
+               if the route was not found in the stack.
+     */
+    public func focusFirst(where predicate: (T) -> Bool) throws {
+        try self._focusFirst(predicate)
+    }
+
     /**
      Dismisses the coordinator and all it's views.
      
@@ -37,6 +59,10 @@ public final class NavigationRouter<T>: Routable {
     
     init<U: NavigationCoordinatable>(id: Int?, coordinator: U) where U.Route == T {
         self.id = id
+        
+        _popTo = { int in
+            coordinator.navigationStack.popTo(int)
+        }
         
         _pop = {
             coordinator.navigationStack.popTo(coordinator.navigationStack.value.count - 2)
@@ -62,6 +88,10 @@ public final class NavigationRouter<T>: Routable {
             }
             
             parent.dismissChildCoordinator(coordinator.eraseToAnyCoordinatable(), onFinished)
+        }
+        
+        _focusFirst = { predicate in
+            try coordinator.navigationStack.focusFirst(where: predicate)
         }
     }
 }

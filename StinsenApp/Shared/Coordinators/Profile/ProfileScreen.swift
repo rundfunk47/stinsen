@@ -11,7 +11,7 @@ struct ProfileScreen: View {
         ScrollView {
             VStack {
                 RoundedButton("Logout") {
-                    main.route(to: .unauthenticated)
+                    main.activeRoute = .unauthenticated
                 }
             }.navigationTitle(with: "Profile")
         }
