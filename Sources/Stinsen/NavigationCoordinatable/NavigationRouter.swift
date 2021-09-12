@@ -1,97 +1,200 @@
 import Foundation
+import SwiftUI
 
-public final class NavigationRouter<T>: Routable {
-    private let _anyRoute: (Any) -> Void
-    private let _pop: () -> Void
-    private let _popTo: (Int) -> Void
-    private let _dismiss: (AnyCoordinatable, @escaping () -> Void) -> Void
-    private let _focusFirst: ((T) -> Bool) throws -> Void
+public final class NavigationRouter<T: NavigationCoordinatable>: Routable {
+    public let id: Int
+    fileprivate weak var coordinator: T!
     
-    var root: AnyCoordinatable?
-    public let id: Int?
-    
-    /**
-     Appends a route to the navigation stack.
+    init(id: Int, coordinator: T) {
+        self.id = id
+        self.coordinator = coordinator
+    }
+}
 
-     - Parameter route: The route to append.
-     */
-    public func route(to route: T) {
-        _anyRoute(route)
-    }
-    
-    /**
-     Pops the latest view/coordinator from the navigation stack.
-     */
-    public func pop() {
-        _pop()
-    }
-    
+public extension NavigationRouter {
     /**
      Clears the stack.
      */
-    public func popToRoot() {
-        _popTo(-1)
+    @discardableResult func popToRoot() -> T {
+        coordinator.popToRoot()
+    }
+    
+    /**
+     Appends a view to the navigation stack.
+
+     - Parameter route: The route to append.
+     - Parameter input: The parameters that are used to create the coordinator.
+     */
+    @discardableResult func route<Input, Output: View>(
+        to route: KeyPath<T, Transition<T, Input, Output>>,
+        _ input: Input
+    ) -> T {
+        coordinator.route(to: route, input)
+    }
+    
+    /**
+     Appends a coordinator to the navigation stack.
+
+     - Parameter route: The route to append.
+     - Parameter input: The parameters that are used to create the coordinator.
+     */
+    @discardableResult func route<Input, Output: Coordinatable>(
+        to route: KeyPath<T, Transition<T, Input, Output>>,
+        _ input: Input
+    ) -> Output {
+        coordinator.route(to: route, input)
+    }
+    
+    /**
+     Appends a coordinator to the navigation stack.
+
+     - Parameter route: The route to append.
+     */
+    @discardableResult func route<Output: Coordinatable>(
+        to route: KeyPath<T, Transition<T, Void, Output>>
+    ) -> Output {
+        coordinator.route(to: route)
+    }
+    
+    /**
+     Appends a view to the navigation stack.
+
+     - Parameter route: The route to append.
+     */
+    @discardableResult func route<Output: View>(
+        to route: KeyPath<T, Transition<T, Void, Output>>
+    ) -> T {
+        coordinator.route(to: route)
+    }
+    
+    /**
+     Searches the stack for the first route that matches the route. If found, will remove
+     everything after that route.
+
+     - Parameter route: The route that will be focused.
+     
+     - Throws: `FocusError.routeNotFound`
+               if the route was not found in the stack.
+     */
+    @discardableResult func focusFirst<Output: Coordinatable>(
+        _ route: KeyPath<T, Transition<T, Void, Output>>
+    ) throws -> Output {
+        try coordinator.focusFirst(route)
+    }
+    
+    /**
+     Searches the stack for the first route that matches the route. If found, will remove
+     everything after that route.
+
+     - Parameter route: The route that will be focused.
+     
+     - Throws: `FocusError.routeNotFound`
+               if the route was not found in the stack.
+     */
+    @discardableResult func focusFirst<Output: View>(
+        _ route: KeyPath<T, Transition<T, Void, Output>>
+    ) throws -> T {
+        try coordinator.focusFirst(route)
+    }
+    
+    /**
+     Searches the stack for the first route that matches the route. If found, will remove
+     everything after that route.
+
+     - Parameter route: The route that will be focused.
+     - Parameter input: The input that will be considered.
+     - Parameter comparator: The function to use to determine if the inputs are equal
+     
+     - Throws: `FocusError.routeNotFound`
+               if the route was not found in the stack.
+     */
+    @discardableResult func focusFirst<Input, Output: Coordinatable>(
+        _ route: KeyPath<T, Transition<T, Input, Output>>,
+        _ input: Input,
+        comparator: @escaping (Input, Input) -> Bool
+    ) throws -> Output {
+        try coordinator.focusFirst(route, input, comparator: comparator)
     }
     
     /**
      Searches the stack for the first route that matches the closure. If found, will remove
      everything after that route.
 
-     - Parameter predicate: A closure that takes an element of the sequence as
-     its argument and returns a Boolean value indicating whether the
-     element is a match.
+     - Parameter route: The route that will be focused.
+     - Parameter input: The input that will be considered.
+     - Parameter comparator: The function to use to determine if the inputs are equal
      
      - Throws: `FocusError.routeNotFound`
                if the route was not found in the stack.
      */
-    public func focusFirst(where predicate: (T) -> Bool) throws {
-        try self._focusFirst(predicate)
-    }
-
-    /**
-     Dismisses the coordinator and all it's views.
-     
-     - Parameter onFinished: Optional closure to execute once the coordinator has dismissed.
-     */
-    public func dismissCoordinator(onFinished: @escaping (() -> Void) = {}) {
-        _dismiss(root!, onFinished)
+    @discardableResult func focusFirst<Input, Output: View>(
+        _ route: KeyPath<T, Transition<T, Input, Output>>,
+        _ input: Input,
+        comparator: @escaping (Input, Input) -> Bool
+    ) throws -> T {
+        try coordinator.focusFirst(route, input, comparator: comparator)
     }
     
-    init<U: NavigationCoordinatable>(id: Int?, coordinator: U) where U.Route == T {
-        self.id = id
-        
-        _popTo = { int in
-            coordinator.navigationStack.popTo(int)
-        }
-        
-        _pop = {
-            coordinator.navigationStack.popTo(coordinator.navigationStack.value.count - 2)
-        }
-        
-        _anyRoute = { route in
-            coordinator.navigationStack.append(route as! T)
-        }
-        
-        _dismiss = { root, onFinished in
-            guard let parent = root.allChildCoordinators.first(where: {
-                $0.childCoordinators.contains(where: {
-                    coordinator.id == $0.id
-                })
-            }) else {
-                fatalError("no children, cannot dismiss?!")
-            }
-            
-            let oldAction = coordinator.dismissalAction
-            coordinator.dismissalAction = {
-                oldAction?()
-                onFinished()
-            }
-            
-            parent.dismissChildCoordinator(coordinator.eraseToAnyCoordinatable(), onFinished)
-        }
-        
-        _focusFirst = { predicate in
-            try coordinator.navigationStack.focusFirst(where: predicate)
-        }
+    /**
+     Searches the stack for the first route that matches the route. If found, will remove
+     everything after that route.
+
+     - Parameter route: The route that will be focused.
+     - Parameter input: The input that will be considered. Since this function assumes input is Equatable, it will use the `==` function to determine equality.
+     
+     - Throws: `FocusError.routeNotFound`
+               if the route was not found in the stack.
+     */
+    @discardableResult func focusFirst<Input: Equatable, Output: Coordinatable>(
+        _ route: KeyPath<T, Transition<T, Input, Output>>,
+        _ input: Input
+    ) throws -> Output {
+        try coordinator.focusFirst(route, input)
+    }
+    
+    /**
+     Searches the stack for the first route that matches the closure. If found, will remove
+     everything after that route.
+
+     - Parameter route: The route that will be focused.
+     - Parameter input: The input that will be considered. Since this function assumes input is Equatable, it will use the `==` function to determine equality.
+     
+     - Throws: `FocusError.routeNotFound`
+               if the route was not found in the stack.
+     */
+    @discardableResult func focusFirst<Input: Equatable, Output: View>(
+        _ route: KeyPath<T, Transition<T, Input, Output>>,
+        _ input: Input
+    ) throws -> T {
+        try coordinator.focusFirst(route, input)
+    }
+    
+    /**
+     Searches the stack for the first route that matches the route. If found, will remove
+     everything after that route.
+
+     - Parameter route: The route that will be focused.
+     
+     - Throws: `FocusError.routeNotFound`
+               if the route was not found in the stack.
+     */
+    @discardableResult func focusFirst<Input, Output: Coordinatable>(
+        _ route: KeyPath<T, Transition<T, Input, Output>>
+    ) throws -> Output {
+        try coordinator.focusFirst(route)
+    }
+    /**
+     Searches the stack for the first route that matches the closure. If found, will remove
+     everything after that route.
+
+     - Parameter route: The route that will be focused.
+     
+     - Throws: `FocusError.routeNotFound`
+               if the route was not found in the stack.
+     */
+    @discardableResult func focusFirst<Input, Output: View>(
+        _ route: KeyPath<T, Transition<T, Input, Output>>
+    ) throws -> T {
+        try coordinator.focusFirst(route)
     }
 }

@@ -3,10 +3,10 @@ import SwiftUI
 
 struct TabCoordinatableView<T: TabCoordinatable, U: View>: View {
     private var coordinator: T
-    private let router: TabRouter<T.Route>
-    @ObservedObject var child: TabChild<T>
+    private let router: TabRouter<T>
+    @ObservedObject var child: TabChild
     private var customize: (AnyView) -> U
-    private var views: [(T.Route, AnyView)]
+    private var views: [AnyView]
     
     var body: some View {
         customize(
@@ -15,9 +15,8 @@ struct TabCoordinatableView<T: TabCoordinatable, U: View>: View {
                     ForEach(Array(views.enumerated()), id: \.offset) { view in
                         view
                             .element
-                            .1
                             .tabItem {
-                                self.coordinator.tabItem(forRoute: view.element.0)
+                                coordinator.child.allItems[view.offset].tabItem(view.offset == child.activeTab)
                             }
                             .tag(view.offset)
                     }
@@ -27,16 +26,41 @@ struct TabCoordinatableView<T: TabCoordinatable, U: View>: View {
         .environmentObject(router)
     }
     
-    init(coordinator: T, customize: @escaping (AnyView) -> U) {
+    init(paths: [AnyKeyPath], coordinator: T, customize: @escaping (AnyView) -> U) {
         self.coordinator = coordinator
         
         self.router = TabRouter(coordinator)
         RouterStore.shared.store(router: router)
         self.customize = customize
-        self.child = coordinator.children
+        self.child = coordinator.child
+        coordinator.child.allItems = []
+                        
+        var all: [TabChildItem] = []
         
-        self.views = coordinator.children.value.map {
-            return ($0.0, $0.1.coordinatorView())
+        for abs in coordinator.child.startingItems {
+            let ina = coordinator[keyPath: abs]
+            
+            if let val = ina as? Outputable {
+                all.append(
+                    TabChildItem(
+                        presentable: val.using(coordinator: coordinator),
+                        keyPathIsEqual: {
+                            let lhs = abs as! PartialKeyPath<T>
+                            let rhs = $0 as! PartialKeyPath<T>
+                            return (lhs == rhs)
+                        },
+                        tabItem: {
+                            val.tabItem(active: $0, coordinator: coordinator)
+                        }
+                    )
+                )
+            }
+        }
+        
+        self.coordinator.child.allItems = all
+
+        self.views = coordinator.child.allItems.map {
+            $0.presentable.view()
         }
     }
 }

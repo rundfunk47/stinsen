@@ -6,9 +6,15 @@ import Stinsen
 struct StinsenApp: App {
     var body: some Scene {
         WindowGroup {
-            CoordinatorView(
-                MainCoordinator()
-            )
+            MainCoordinator()
+                .view()
+                .onAppear {
+                    #if os(iOS)
+                    let tintColor = UIColor(named: "AccentColor")
+                    
+                    UITabBar.appearance().tintColor = tintColor
+                    #endif
+                }
         }
     }
 }

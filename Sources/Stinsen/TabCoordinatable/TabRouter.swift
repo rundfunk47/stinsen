@@ -1,41 +1,34 @@
+import SwiftUI
 import Foundation
 
-public class TabRouter<T>: Routable {
-    var _anyFocus: ((Any) -> Bool) throws -> Void
-
-    /**
-     Searches the selectable tabs for the first route that matches the closure. If found, will make that tab the active one.
-
-     - Parameter predicate: A closure that takes an element of the sequence as
-     its argument and returns a Boolean value indicating whether the
-     element is a match.
-     
-     - Throws: `FocusError.routeNotFound`
-               if the route was not found.
-     */
-    public func focus(where predicate: (T) -> Bool) throws {
-        try _anyFocus({
-            return predicate($0 as! T)
-        })
-    }
+public class TabRouter<T: TabCoordinatable>: Routable {
+    fileprivate weak var coordinator: T!
     
-    init<U: TabCoordinatable>(_ coordinator: U) where U.Route == T {
-        self._anyFocus = { closure in
-            try coordinator.children.focus(where: closure)
-        }
+    init(_ coordinator: T) {
+        self.coordinator = coordinator
     }
 }
 
-extension TabRouter where T: Equatable {
+public extension TabRouter {
     /**
-     Searches the selectable tabs for the first route that is equal to the route provided. If found, will make that tab the active one.
-     
-     - Parameter route: The route to look for.
-     
-     - Throws: `FocusError.routeNotFound`
-               if the route was not found.
+     Searches the tabbar for the first route that matches the route and makes it the active tab.
+
+     - Parameter route: The route that will be focused.
      */
-    public func focus(_ route: T) throws {
-        try self.focus(where: { $0 == route })
+    @discardableResult func focusFirst<Output: Coordinatable>(
+        _ route: KeyPath<T, Content<T, Output>>
+    ) -> Output {
+        self.coordinator.focusFirst(route)
+    }
+    
+    /**
+     Searches the tabbar for the first route that matches the route and makes it the active tab.
+
+     - Parameter route: The route that will be focused.
+     */
+    @discardableResult func focusFirst<Output: View>(
+        _ route: KeyPath<T, Content<T, Output>>
+    ) -> T {
+        self.coordinator.focusFirst(route)
     }
 }

@@ -4,26 +4,28 @@ import SwiftUI
 import Stinsen
 
 struct LoginScreen: View {
-    @EnvironmentObject var main: ViewRouter<MainCoordinator.Route>
-    @EnvironmentObject var unauthenticated: NavigationRouter<UnauthenticatedCoordinator.Route>
-
-    @StateObject var viewModel = LoginScreenViewModel()
+    @EnvironmentObject var mainRouter: MainCoordinator.Router
+    @EnvironmentObject var unauthenticatedRouter: UnauthenticatedCoordinator.Router
     
     @State var username: String = ""
     @State var password: String = ""
 
     var body: some View {
         ScrollView {
+            InfoText("Welcome to StinsenApp. This app's purpose is to showcase many of the features Stinsen has to offer. Feel free to look around!")
             VStack {
                 Spacer(minLength: 16)
                 RoundedTextField("Username", text: $username)
                 RoundedTextField("Password", text: $password)
                 Spacer(minLength: 32)
                 RoundedButton("Login") {
-                    viewModel.loginButtonPressed()
+                    mainRouter.route(
+                        to: \.authenticated,
+                        User(username: username, accessToken: "token")
+                    )
                 }
                 RoundedButton("Forgot password", style: .secondary) {
-                    viewModel.forgotPasswordButtonPressed()
+                    unauthenticatedRouter.route(to: \.forgotPassword)
                 }
             }
         }

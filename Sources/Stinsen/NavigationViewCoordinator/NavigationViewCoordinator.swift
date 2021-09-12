@@ -1,50 +1,17 @@
 import Foundation
 import SwiftUI
 
-@available(*, deprecated, renamed: "NavigationViewCoordinator")
-public class NavigationViewCoordinatable<U: View>: NavigationViewCoordinator<U> {
-    
-}
-
 /// The NavigationViewCoordinator is used to represent a coordinator with a NavigationView
-public class NavigationViewCoordinator<U: View>: Coordinatable {
-    public func handleDeepLink(_ deepLink: [Any]) throws {
-        try self.children.childCoordinator?.handleDeepLink(deepLink)
-    }
-    
-    public var dismissalAction: DismissalAction {
-        get {
-            children.dismissalAction
-        } set {
-            children.dismissalAction = newValue
-        }
-    }
-    
-    public func dismissChildCoordinator(_ childCoordinator: AnyCoordinatable, _ completion: (() -> Void)?) {
-        children.childCoordinator = nil
-    }
-    
-    public var childCoordinators: [AnyCoordinatable] {
-        [children.childCoordinator].compactMap { $0 }
-    }
-    
-    @ObservedObject public var children: NavigationViewChild
-    var customize: (AnyView) -> U
+public class NavigationViewCoordinator<T: Coordinatable>: Coordinatable {
+    public let child: T
 
-    public func coordinatorView() -> AnyView {
+    public func view() -> AnyView {
         AnyView(
-            NavigationViewCoordinatorView(coordinator: self, customize: customize)
+            NavigationViewCoordinatorView(coordinator: self)
         )
     }
     
-    public init<T: Coordinatable>(_ childCoordinator: T, customize: @escaping (_ view: AnyView) -> U) {
-        self.children = NavigationViewChild(childCoordinator.eraseToAnyCoordinatable())
-        self.customize = customize
-    }
-}
-
-public extension NavigationViewCoordinator where U == AnyView {
-    convenience init<T: Coordinatable>(_ childCoordinator: T) {
-        self.init(childCoordinator, customize: { $0 })
+    public init(_ childCoordinator: T) {
+        self.child = childCoordinator
     }
 }

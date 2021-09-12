@@ -5,8 +5,7 @@ import Combine
 struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
     var coordinator: T
     private let id: Int
-    @EnvironmentObject private var root: RootCoordinator
-    private let router: NavigationRouter<T.Route>
+    private let router: NavigationRouter<T>
     private let start: AnyView
     @ObservedObject var presentationHelper: PresentationHelper<T>
     
@@ -26,12 +25,14 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
                         .fullScreenCover(isPresented: Binding<Bool>.init(get: { () -> Bool in
                             return presentationHelper.presented?.type.isFullScreen == true
                         }, set: { _ in
-                        
+                            self.coordinator.appear(self.id)
                         }), onDismiss: {
-                            let presented = self.coordinator.navigationStack.value[safe: id + 1]
+                            let presented = self.coordinator.stack.value[safe: id + 1]
                             
-                            switch presented?.transition {
-                            case .fullScreen(let presentable):
+                            #warning("fix dismissal")
+                            /*
+                            switch presented?.presentationType {
+                            case .fullScreen:
                                 if let presentable = presentable as? AnyCoordinatable {
                                     DispatchQueue.main.async {
                                         presentable.dismissalAction?()
@@ -41,12 +42,14 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
                             default:
                                 break
                             }
+                             */
                             
-                            self.coordinator.navigationStack.popTo(self.id)
+                            //self.coordinator.popTo(self.id)
                         }, content: { () -> AnyView in
                             return { () -> AnyView in
                                 if let view = presentationHelper.presented?.view {
-                                    return AnyView(view.environmentObject(root))
+                                    #warning("fix dismissal")
+                                    return AnyView(view/*.environmentObject(root)*/)
                                 } else {
                                     return AnyView(EmptyView())
                                 }
@@ -64,11 +67,15 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
     @ViewBuilder
     var commonView: some View {
         self.start
+            .onAppear(perform: {
+                #warning("fix dismissal")
+            })
             .background(
                 NavigationLink(
                     destination: { () -> AnyView in
                         if let view = presentationHelper.presented?.view {
-                            return AnyView(view.environmentObject(root))
+                            #warning("fix dismissal")
+                            return AnyView(view/*.environmentObject(root)*/)
                         } else {
                             return AnyView(EmptyView())
                         }
@@ -76,7 +83,7 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
                     isActive: Binding<Bool>.init(get: { () -> Bool in
                         return presentationHelper.presented?.type.isPush == true
                     }, set: { _ in
-                             
+                        self.coordinator.appear(self.id)
                     }),
                     label: {
                         EmptyView()
@@ -84,36 +91,25 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
                 )
                 .hidden()
             )
-            .onAppear(perform: {
-                self.router.root = root.coordinator
-                
-                // This is here in order to sync the navigation stack array with what is actually shown on screen.
-                // It's in onAppear because it seems to be the best way in SwiftUI, but it requires some hacks in order to work properly.
-                // The "ready" variable is used because we want to be able to do stuff sometimes, such as setting the starting routes, without the popTo-function triggering.
-                if self.presentationHelper.presented != nil && self.coordinator.navigationStack.ready == true {
-                    self.coordinator.navigationStack.popTo(self.id)
-                }
-
-                DispatchQueue.main.async {
-                    self.coordinator.navigationStack.ready = true
-                }
-            })
             .onDisappear {
-                DispatchQueue.main.async {
-                    self.coordinator.dismissalAction?()
-                    self.coordinator.dismissalAction = nil
-                }
+                #warning("fix dismissal")
+                /*
+                self.coordinator.dismissalAction?()
+                self.coordinator.dismissalAction = nil
+                */
             }
             .sheet(isPresented: Binding<Bool>.init(get: { () -> Bool in
                 return presentationHelper.presented?.type.isModal == true
             }, set: { _ in
-            
+                self.coordinator.appear(self.id)
             }), onDismiss: {
                 // shouldn't matter if different coordinators. also this set modal children to nil
-                let presented = self.coordinator.navigationStack.value[safe: id + 1]
+                let presented = self.coordinator.stack.value[safe: id + 1]
                 
-                switch presented?.transition {
-                case .modal(let presentable):
+                #warning("fix dismissal")
+                /*
+                switch presented?.presentationType {
+                case .modal:
                     if let presentable = presentable as? AnyCoordinatable {
                         DispatchQueue.main.async {
                             presentable.dismissalAction?()
@@ -123,12 +119,11 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
                 default:
                     break
                 }
-                
-                self.coordinator.navigationStack.popTo(self.id)
+                 */
             }, content: { () -> AnyView in
                 return { () -> AnyView in
                     if let view = presentationHelper.presented?.view {
-                        return AnyView(view.environmentObject(root))
+                        return AnyView(view/*.environmentObject(root)*/)
                     } else {
                         return AnyView(EmptyView())
                     }
@@ -152,8 +147,8 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
 
         RouterStore.shared.store(router: router)
 
-        if let presentation = coordinator.navigationStack.value[safe: id] {
-            if let view = presentation.transition.presentable as? AnyView {
+        if let presentation = coordinator.stack.value[safe: id] {
+            if let view = presentation.presentable as? AnyView {
                 self.start = view
             } else {
                 fatalError("Can only show views")

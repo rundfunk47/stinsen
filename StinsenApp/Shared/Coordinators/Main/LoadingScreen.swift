@@ -4,7 +4,7 @@ import SwiftUI
 import Stinsen
 
 struct LoadingScreen: View {
-    @EnvironmentObject var main: ViewRouter<MainCoordinator.Route>
+    @EnvironmentObject var mainRouter: MainCoordinator.Router
     
     var body: some View {
         Group {
@@ -15,9 +15,7 @@ struct LoadingScreen: View {
             }
         }.onAppear(perform: {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                if main.activeRoute == nil {
-                    main.activeRoute = .unauthenticated
-                }
+                mainRouter.route(to: \.unauthenticated)
             }
         })
     }

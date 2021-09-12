@@ -1,24 +1,22 @@
 import Foundation
 import SwiftUI
 
-struct NavigationViewCoordinatorView<T: NavigationViewCoordinator<V>, U: View, V: View>: View {
+struct NavigationViewCoordinatorView<U: Coordinatable, T: NavigationViewCoordinator<U>>: View {
     var coordinator: T    
-    @EnvironmentObject private var root: RootCoordinator
     private var view: AnyView
-    private var customize: (AnyView) -> U
 
-    init(coordinator: T, customize: @escaping (AnyView) -> U) {
+    init(coordinator: T) {
         self.coordinator = coordinator
-        self.view = coordinator.children.childCoordinator!.coordinatorView()
-        self.customize = customize
+        self.view = coordinator.child.view()
     }
     
     var body: some View {
         #if os(macOS)
         NavigationView {
-            customize(AnyView(view))
+            view
         }
-        .onReceive(coordinator.children.$childCoordinator) { (value) in
+        #warning("fix dismissal")
+        /*.onReceive(coordinator.children.$childCoordinator) { (value) in
             if value == nil {
                 guard let parent = ([root.coordinator] + root.coordinator.allChildCoordinators).first(where: {
                     $0.childCoordinators.contains(where: {
@@ -33,13 +31,14 @@ struct NavigationViewCoordinatorView<T: NavigationViewCoordinator<V>, U: View, V
                     coordinator.children.dismissalAction
                 )
             }
-        }
+        }*/
         #else
         NavigationView {
-            customize(AnyView(view))
+            view
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .onReceive(coordinator.children.$childCoordinator) { (value) in
+        #warning("fix dismissal")
+        /*.onReceive(coordinator.children.$childCoordinator) { (value) in
             if value == nil {
                 guard let parent = ([root.coordinator] + root.coordinator.allChildCoordinators).first(where: {
                     $0.childCoordinators.contains(where: {
@@ -54,7 +53,7 @@ struct NavigationViewCoordinatorView<T: NavigationViewCoordinator<V>, U: View, V
                     coordinator.children.dismissalAction
                 )
             }
-        }
+        }*/
         #endif
     }
 }
