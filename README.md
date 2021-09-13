@@ -282,6 +282,7 @@ _Stins_ is short in Swedish for "Station Master", and _Stinsen_ is the definite 
 * CoordinatorView has been removed, use `.view()`.
 * Routers are specialized using the coordinator instead of the route.
 * Minor changes to functions and variable names.
+* Coordinators need to be marked as final.
 
 # License 📃
 
