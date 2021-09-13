@@ -3,7 +3,13 @@ import Foundation
 class TodosStore: ObservableObject {
     static var shared = TodosStore()
     
-    @Published var all: [Todo]
+    @Published var all: [Todo] {
+        didSet {
+            let encoder = JSONEncoder()
+            let jsonString = try! encoder.encode(all)
+            UserDefaults.standard.setValue(jsonString, forKey: "stored")
+        }
+    }
     
     var favorites: [Todo] {
         all.filter(\.isFavorite)
@@ -24,6 +30,12 @@ class TodosStore: ObservableObject {
     }
     
     init() {
-        all = []
+        if let data = UserDefaults.standard.data(forKey: "stored") {
+            let decoder = JSONDecoder()
+            let decoded = try! decoder.decode([Todo].self, from: data)
+            all = decoded
+        } else {
+            all = []
+        }
     }
 }

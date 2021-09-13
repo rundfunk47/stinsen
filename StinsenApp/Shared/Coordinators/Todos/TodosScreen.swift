@@ -16,24 +16,31 @@ struct TodosScreen: View {
         })
     }
     
+    @ViewBuilder var content: some View {
+        ScrollView {
+            if store.all.isEmpty {
+                InfoText("You have no stored todos.")
+            }
+            VStack {
+                #if os(watchOS)
+                button
+                #endif
+                ForEach(store.all) { todo in
+                    Button(todo.name, action: {
+                        todos.route(to: \.todo, todo.id)
+                    })
+                }
+            }
+            .padding(18)
+        }
+        .navigationTitle(with: "Todos")
+    }
+    
     @ViewBuilder var body: some View {
         #if os(watchOS)
-        ScrollView {
-            button
-            ForEach(store.all) { todo in
-                Button(todo.name, action: {
-                    todos.route(to: \.todo, todo.id)
-                })
-            }
-        }
-        .navigationTitle(with: "Todos")
+        content
         #else
-        List(store.all) { todo in
-            Button(todo.name, action: {
-                todos.route(to: \.todo, todo.id)
-            })
-        }
-        .navigationTitle(with: "Todos")
+        content
         .navigationBarItems(
             trailing: button
         )

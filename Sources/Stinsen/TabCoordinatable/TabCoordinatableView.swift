@@ -33,31 +33,10 @@ struct TabCoordinatableView<T: TabCoordinatable, U: View>: View {
         RouterStore.shared.store(router: router)
         self.customize = customize
         self.child = coordinator.child
-        coordinator.child.allItems = []
-                        
-        var all: [TabChildItem] = []
         
-        for abs in coordinator.child.startingItems {
-            let ina = coordinator[keyPath: abs]
-            
-            if let val = ina as? Outputable {
-                all.append(
-                    TabChildItem(
-                        presentable: val.using(coordinator: coordinator),
-                        keyPathIsEqual: {
-                            let lhs = abs as! PartialKeyPath<T>
-                            let rhs = $0 as! PartialKeyPath<T>
-                            return (lhs == rhs)
-                        },
-                        tabItem: {
-                            val.tabItem(active: $0, coordinator: coordinator)
-                        }
-                    )
-                )
-            }
+        if coordinator.child.allItems == nil {
+            coordinator.setupAllTabs()
         }
-        
-        self.coordinator.child.allItems = all
 
         self.views = coordinator.child.allItems.map {
             $0.presentable.view()

@@ -1,6 +1,6 @@
 import Foundation
 
-struct Todo: Identifiable, Equatable {
+struct Todo: Identifiable, Codable {
     let id: UUID
     var name: String
     var isFavorite: Bool

@@ -94,4 +94,112 @@ public extension ViewRouter {
     @discardableResult func reset() -> T {
         return coordinator.reset()
     }
+    
+    /**
+     Checks if no routes is active, i.e. the coordinator is showing the view returned by `start()`.
+     */
+    func isStart() -> Bool {
+        return coordinator.isStart()
+    }
+
+    /**
+     Checks if the specified route is active, i.e. is the one currently showing.
+
+     - Parameter route: The route to check.
+     */
+    func isActive<Output: Coordinatable>(
+        _ route: KeyPath<T, ((T) -> ((Void) -> Output))>
+    ) -> Bool {
+        return coordinator.isActive(route)
+    }
+    
+    /**
+     Checks if the specified route is active, i.e. is the one currently showing.
+
+     - Parameter route: The route to check.
+     */
+    func isActive<Output: View>(
+        _ route: KeyPath<T, (T) -> ((Void) -> Output)>
+    ) -> Bool {
+        return coordinator.isActive(route)
+    }
+    
+    /**
+     Checks if the specified route is active, i.e. is the one currently showing.
+
+     - Parameter route: The route to check.
+     */
+    func isActive<Input, Output: Coordinatable>(
+        _ route: KeyPath<T, ((T) -> ((Input) -> Output))>
+    ) -> Bool {
+        return coordinator.isActive(route)
+    }
+    
+    /**
+     Checks if the specified route is active, i.e. is the one currently showing.
+
+     - Parameter route: The route to check.
+     */
+    func isActive<Input, Output: View>(
+        _ route: KeyPath<T, (T) -> ((Input) -> Output)>
+    ) -> Bool {
+        return coordinator.isActive(route)
+    }
+
+    /**
+     Checks if the specified route is active, i.e. is the one currently showing.
+
+     - Parameter route: The route to check.
+     - Parameter input: The input to consider.  If input conforms to `Equatable`, there is no need to add a comparator unless you need it.
+
+     */
+    func isActive<Input: Equatable, Output: Coordinatable>(
+        _ route: KeyPath<T, ((T) -> ((Input) -> Output))>,
+        _ input: Input
+    ) -> Bool {
+        return coordinator.isActive(route, input)
+    }
+    
+    /**
+     Checks if the specified route is active, i.e. is the one currently showing.
+
+     - Parameter route: The route to check.
+     - Parameter input: The input to consider. If input conforms to `Equatable`, there is no need to add a comparator unless you need it.
+     */
+    func isActive<Input: Equatable, Output: View>(
+        _ route: KeyPath<T, (T) -> ((Input) -> Output)>,
+        _ input: Input
+    ) -> Bool {
+        return coordinator.isActive(route, input)
+    }
+    
+    /**
+     Checks if the specified route is active, i.e. is the one currently showing.
+
+     - Parameter route: The route to check.
+     - Parameter input: The input to consider.  If input conforms to `Equatable`, there is no need to add a comparator unless you need it.
+     - Parameter comparator: The function to use to determine if the inputs are equal
+     */
+    func isActive<Input: Equatable, Output: Coordinatable>(
+        _ route: KeyPath<T, ((T) -> ((Input) -> Output))>,
+        _ input: Input,
+        comparator: @escaping (Input, Input) -> Bool
+    ) -> Bool {
+        return coordinator.isActive(route, input, comparator: comparator)
+    }
+    
+    /**
+     Checks if the specified route is active, i.e. is the one currently showing.
+
+     - Parameter route: The route to check.
+     - Parameter input: The input to consider. If input conforms to `Equatable`, there is no need to add a comparator unless you need it.
+     - Parameter comparator: The function to use to determine if the inputs are equal
+     */
+    func isActive<Input: Equatable, Output: View>(
+        _ route: KeyPath<T, (T) -> ((Input) -> Output)>,
+        _ input: Input,
+        comparator: @escaping (Input, Input) -> Bool
+    ) -> Bool {
+        return coordinator.isActive(route, input, comparator: comparator)
+    }
 }

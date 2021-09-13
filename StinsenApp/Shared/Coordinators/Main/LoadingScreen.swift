@@ -15,7 +15,9 @@ struct LoadingScreen: View {
             }
         }.onAppear(perform: {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                mainRouter.route(to: \.unauthenticated)
+                if mainRouter.isStart() {
+                    mainRouter.route(to: \.unauthenticated)
+                }
             }
         })
     }

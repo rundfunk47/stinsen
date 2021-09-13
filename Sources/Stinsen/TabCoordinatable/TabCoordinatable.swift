@@ -39,6 +39,32 @@ public protocol TabCoordinatable: Coordinatable {
 }
 
 public extension TabCoordinatable {
+    internal func setupAllTabs() {
+        var all: [TabChildItem] = []
+        
+        for abs in self.child.startingItems {
+            let ina = self[keyPath: abs]
+            
+            if let val = ina as? Outputable {
+                all.append(
+                    TabChildItem(
+                        presentable: val.using(coordinator: self),
+                        keyPathIsEqual: {
+                            let lhs = abs as! PartialKeyPath<Self>
+                            let rhs = $0 as! PartialKeyPath<Self>
+                            return (lhs == rhs)
+                        },
+                        tabItem: {
+                            val.tabItem(active: $0, coordinator: self)
+                        }
+                    )
+                )
+            }
+        }
+        
+        self.child.allItems = all
+    }
+    
     func customize(_ view: AnyView) -> some View {
         return view
     }
@@ -56,6 +82,10 @@ public extension TabCoordinatable {
     @discardableResult func focusFirst<Output: Coordinatable>(
         _ route: KeyPath<Self, Content<Self, Output>>
     ) -> Output {
+        if child.allItems == nil {
+            setupAllTabs()
+        }
+        
         guard let value = child.allItems.enumerated().first(where: { item in
             guard item.element.keyPathIsEqual(route) else {
                 return false
@@ -74,6 +104,10 @@ public extension TabCoordinatable {
     @discardableResult func focusFirst<Output: View>(
         _ route: KeyPath<Self, Content<Self, Output>>
     ) -> Self {
+        if child.allItems == nil {
+            setupAllTabs()
+        }
+
         guard let value = child.allItems.enumerated().first(where: { item in
             guard item.element.keyPathIsEqual(route) else {
                 return false

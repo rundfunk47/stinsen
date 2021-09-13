@@ -89,9 +89,98 @@ public protocol ViewCoordinatable: Coordinatable {
     ) -> Output
     
     /**
-     Resets the ViewCoordinatable to use the view returned by `start()`
+     Resets the ViewCoordinatable to use the view returned by `start()`.
      */
     @discardableResult func reset() -> Self
+    
+    /**
+     Checks if no routes is active, i.e. the coordinator is showing the view returned by `start()`.
+     */
+    func isStart() -> Bool
+    
+    /**
+     Checks if the specified route is active, i.e. is the one currently showing.
+
+     - Parameter route: The route to check.
+     */
+    func isActive<Output: Coordinatable>(
+        _ route: KeyPath<Self, ((Self) -> ((Void) -> Output))>
+    ) -> Bool
+    
+    /**
+     Checks if the specified route is active, i.e. is the one currently showing.
+
+     - Parameter route: The route to check.
+     */
+    func isActive<Output: View>(
+        _ route: KeyPath<Self, (Self) -> ((Void) -> Output)>
+    ) -> Bool
+    
+    /**
+     Checks if the specified route is active, i.e. is the one currently showing.
+
+     - Parameter route: The route to check.
+     */
+    func isActive<Input, Output: Coordinatable>(
+        _ route: KeyPath<Self, ((Self) -> ((Input) -> Output))>
+    ) -> Bool
+    
+    /**
+     Checks if the specified route is active, i.e. is the one currently showing.
+
+     - Parameter route: The route to check.
+     */
+    func isActive<Input, Output: View>(
+        _ route: KeyPath<Self, (Self) -> ((Input) -> Output)>
+    ) -> Bool
+
+    /**
+     Checks if the specified route is active, i.e. is the one currently showing.
+
+     - Parameter route: The route to check.
+     - Parameter input: The input to consider.  If input conforms to `Equatable`, there is no need to add a comparator unless you need it.
+     */
+    func isActive<Input: Equatable, Output: Coordinatable>(
+        _ route: KeyPath<Self, ((Self) -> ((Input) -> Output))>,
+        _ input: Input
+    ) -> Bool
+    
+    /**
+     Checks if the specified route is active, i.e. is the one currently showing.
+
+     - Parameter route: The route to check.
+     - Parameter input: The input to consider. If input conforms to `Equatable`, there is no need to add a comparator unless you need it.
+     */
+    func isActive<Input: Equatable, Output: View>(
+        _ route: KeyPath<Self, (Self) -> ((Input) -> Output)>,
+        _ input: Input
+    ) -> Bool
+    
+    /**
+     Checks if the specified route is active, i.e. is the one currently showing.
+
+     - Parameter route: The route to check.
+     - Parameter input: The input to consider.  If input conforms to `Equatable`, there is no need to add a comparator unless you need it.
+     - Parameter comparator: The function to use to determine if the inputs are equal
+     */
+    func isActive<Input: Equatable, Output: Coordinatable>(
+        _ route: KeyPath<Self, ((Self) -> ((Input) -> Output))>,
+        _ input: Input,
+        comparator: @escaping (Input, Input) -> Bool
+    ) -> Bool
+    
+    /**
+     Checks if the specified route is active, i.e. is the one currently showing.
+
+     - Parameter route: The route to check.
+     - Parameter input: The input to consider. If input conforms to `Equatable`, there is no need to add a comparator unless you need it.
+     - Parameter comparator: The function to use to determine if the inputs are equal
+     */
+    func isActive<Input: Equatable, Output: View>(
+        _ route: KeyPath<Self, (Self) -> ((Input) -> Output)>,
+        _ input: Input,
+        comparator: @escaping (Input, Input) -> Bool
+    ) -> Bool
 }
 
 public extension ViewCoordinatable {
@@ -217,5 +306,148 @@ public extension ViewCoordinatable {
         _ input: Input
     ) -> Output {
         self.route(to: route, input, comparator: { $0 == $1 })
+    }
+    
+    func isStart() -> Bool {
+        return child.item == nil
+    }
+    
+    private func _isActive<Input, Output: Coordinatable>(
+        _ route: KeyPath<Self, (Self) -> ((Input) -> Output)>,
+        inputItem: (input: Input, comparator: (Input, Input) -> Bool)?
+    ) -> Bool {
+        guard child.item?.keyPath == route.hashValue else {
+            return false
+        }
+        
+        guard let inputItem = inputItem else {
+            return true
+        }
+
+        guard let compareTo = child.item?.input else {
+            fatalError()
+        }
+
+        return inputItem.comparator(compareTo as! Input, inputItem.input)
+    }
+    
+    private func _isActive<Input, Output: View>(
+        _ route: KeyPath<Self, (Self) -> ((Input) -> Output)>,
+        inputItem: (input: Input, comparator: (Input, Input) -> Bool)?
+    ) -> Bool {
+        guard child.item?.keyPath == route.hashValue else {
+            return false
+        }
+        
+        guard let inputItem = inputItem else {
+            return true
+        }
+
+        guard let compareTo = child.item?.input else {
+            fatalError()
+        }
+
+        return inputItem.comparator(compareTo as! Input, inputItem.input)
+    }
+    
+    /**
+     Checks if the specified route is active, i.e. is the one currently showing.
+
+     - Parameter route: The route to check.
+     */
+    func isActive<Output: Coordinatable>(
+        _ route: KeyPath<Self, ((Self) -> ((Void) -> Output))>
+    ) -> Bool {
+        return self._isActive(route, inputItem: nil)
+    }
+    
+    /**
+     Checks if the specified route is active, i.e. is the one currently showing.
+
+     - Parameter route: The route to check.
+     */
+    func isActive<Output: View>(
+        _ route: KeyPath<Self, (Self) -> ((Void) -> Output)>
+    ) -> Bool {
+        return self._isActive(route, inputItem: nil)
+    }
+    
+    /**
+     Checks if the specified route is active, i.e. is the one currently showing.
+
+     - Parameter route: The route to check.
+     */
+    func isActive<Input, Output: Coordinatable>(
+        _ route: KeyPath<Self, ((Self) -> ((Input) -> Output))>
+    ) -> Bool {
+        return self._isActive(route, inputItem: nil)
+    }
+    
+    /**
+     Checks if the specified route is active, i.e. is the one currently showing.
+
+     - Parameter route: The route to check.
+     */
+    func isActive<Input, Output: View>(
+        _ route: KeyPath<Self, (Self) -> ((Input) -> Output)>
+    ) -> Bool {
+        return self._isActive(route, inputItem: nil)
+    }
+
+    /**
+     Checks if the specified route is active, i.e. is the one currently showing.
+
+     - Parameter route: The route to check.
+     - Parameter input: The input to consider.  If input conforms to `Equatable`, there is no need to add a comparator unless you need it.
+
+     */
+    func isActive<Input: Equatable, Output: Coordinatable>(
+        _ route: KeyPath<Self, ((Self) -> ((Input) -> Output))>,
+        _ input: Input
+    ) -> Bool {
+        return self._isActive(route, inputItem: (input: input, comparator: { $0 == $1 }))
+    }
+    
+    /**
+     Checks if the specified route is active, i.e. is the one currently showing.
+
+     - Parameter route: The route to check.
+     - Parameter input: The input to consider. If input conforms to `Equatable`, there is no need to add a comparator unless you need it.
+     */
+    func isActive<Input: Equatable, Output: View>(
+        _ route: KeyPath<Self, (Self) -> ((Input) -> Output)>,
+        _ input: Input
+    ) -> Bool {
+        return self._isActive(route, inputItem: (input: input, comparator: { $0 == $1 }))
+    }
+    
+    /**
+     Checks if the specified route is active, i.e. is the one currently showing.
+
+     - Parameter route: The route to check.
+     - Parameter input: The input to consider.  If input conforms to `Equatable`, there is no need to add a comparator unless you need it.
+     - Parameter comparator: The function to use to determine if the inputs are equal
+     */
+    func isActive<Input: Equatable, Output: Coordinatable>(
+        _ route: KeyPath<Self, ((Self) -> ((Input) -> Output))>,
+        _ input: Input,
+        comparator: @escaping (Input, Input) -> Bool
+    ) -> Bool {
+        return self._isActive(route, inputItem: (input: input, comparator: comparator))
+    }
+    
+    /**
+     Checks if the specified route is active, i.e. is the one currently showing.
+
+     - Parameter route: The route to check.
+     - Parameter input: The input to consider. If input conforms to `Equatable`, there is no need to add a comparator unless you need it.
+     - Parameter comparator: The function to use to determine if the inputs are equal
+     */
+    func isActive<Input: Equatable, Output: View>(
+        _ route: KeyPath<Self, (Self) -> ((Input) -> Output)>,
+        _ input: Input,
+        comparator: @escaping (Input, Input) -> Bool
+    ) -> Bool {
+        return self._isActive(route, inputItem: (input: input, comparator: comparator))
     }
 }
