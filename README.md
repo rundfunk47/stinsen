@@ -23,6 +23,7 @@ Example using a Navigation Stack:
 
 ```swift
 final class TodosCoordinator: NavigationCoordinatable {
+    // Required by Stinsen:
     var stack = NavigationStack()
     
     @Route(.push) var todo = makeTodo
@@ -36,6 +37,7 @@ final class TodosCoordinator: NavigationCoordinatable {
         CreateTodoScreen()
     }
     
+    // Required by Stinsen:
     @ViewBuilder func start() -> some View {
         TodosScreen()
     }
