@@ -192,7 +192,7 @@ final class AuthenticatedCoordinator: TabCoordinatable {
 
 ## Chaining
 
-Some functions in a coordinator can be chained if you want to perform a more advanced routing. For instance, you might create a SwiftUI button:
+Functions can be chained if you want to perform a more advanced routing. For instance, to create a SwiftUI button that will change the tab and select a specific todo from anywhere in the app after login:
 
 ```swift
 Button(todo.name) {
@@ -206,12 +206,12 @@ Button(todo.name) {
 
 The `AuthenticatedCoordinator` referenced by the `authenticatedRouter` is a `TabCoordinatable`, so the function will:
 
-* `focusFirst`: find the first tab represented by the route `todos` and make it the active tab.
-* `child`: select it's child, the `Todos`-tab is a `NavigationViewCoordinator` and the child is the `NavigationCoordinatable`.
+* `focusFirst`: return the first tab represented by the route `todos` and make it the active tab, unless it already is the active one.
+* `child`: will return it's child, the `Todos`-tab is a `NavigationViewCoordinator` and the child is the `NavigationCoordinatable`.
 * `popToRoot`: will pop away any children that may or may not have been present.
 * `route`: will route to the route `Todo` with the specified id. 
 
-Since the routes are type-safe, invalid chains cannot be created. This means: if you have a route in _A_ to _B_ and in _B_ to _C_, the app will not compile if you try to route from _A_ to _C_ without routing to _B_ first. Also, you cannot perform actions such as `popToRoot()` on a `TabCoordinatable` and so on.
+Since Stinsen uses KeyPaths to represent the routes, the functions are type-safe and invalid chains cannot be created. This means: if you have a route in _A_ to _B_ and in _B_ to _C_, the app will not compile if you try to route from _A_ to _C_ without routing to _B_ first. Also, you cannot perform actions such as `popToRoot()` on a `TabCoordinatable` and so on.
 
 ## Deeplinking
 
