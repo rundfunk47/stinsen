@@ -211,7 +211,7 @@ The `AuthenticatedCoordinator` referenced by the `authenticatedRouter` is a `Tab
 * `popToRoot`: will pop away any children that may or may not have been present.
 * `route`: will route to the route `Todo` with the specified id. 
 
-Since the routes are type-safe, invalid chains cannot be created (meaning: if you have a route in _A_ to _B_ and in _B_ to _C_, the app will not compile if you try to route from _A_ to _C_ without routing to _B_ first).
+Since the routes are type-safe, invalid chains cannot be created. This means: if you have a route in _A_ to _B_ and in _B_ to _C_, the app will not compile if you try to route from _A_ to _C_ without routing to _B_ first. Also, you cannot perform actions such as `popToRoot()` on a `TabCoordinatable` and so on.
 
 ## Deeplinking
 
