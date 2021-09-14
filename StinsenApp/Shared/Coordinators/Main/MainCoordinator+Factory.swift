@@ -11,7 +11,7 @@ extension MainCoordinator {
         return AuthenticatedCoordinator(user: user)
     }
     
-    @ViewBuilder func start() -> some View {
+    @ViewBuilder func makeStart() -> some View {
         LoadingScreen()
     }
 }

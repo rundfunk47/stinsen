@@ -6,9 +6,11 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
     var coordinator: T
     private let id: Int
     private let router: NavigationRouter<T>
-    private let start: AnyView
     @ObservedObject var presentationHelper: PresentationHelper<T>
+    @ObservedObject var root: NavigationRoot
     
+    var start: AnyView?
+
     var body: some View {
         #if os(macOS)
         commonView
@@ -66,7 +68,7 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
     
     @ViewBuilder
     var commonView: some View {
-        self.start
+        (id == -1 ? AnyView(self.coordinator.customize(AnyView(root.item.child.view()))) : AnyView(self.start!))
             .onAppear(perform: {
                 #warning("fix dismissal")
             })
@@ -144,9 +146,15 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
             id: id,
             coordinator: coordinator
         )
+        
+        if coordinator.stack.root == nil {
+            coordinator.setupRoot()
+        }
+        
+        self.root = coordinator.stack.root
 
         RouterStore.shared.store(router: router)
-
+        
         if let presentation = coordinator.stack.value[safe: id] {
             if let view = presentation.presentable as? AnyView {
                 self.start = view
@@ -154,10 +162,7 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
                 fatalError("Can only show views")
             }
         } else if id == -1 {
-            self.start = AnyView(
-                coordinator
-                    .start()
-            )
+            self.start = nil
         } else {
             fatalError()
         }

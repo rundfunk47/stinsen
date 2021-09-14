@@ -7,7 +7,7 @@ extension UnauthenticatedCoordinator {
         ForgotPasswordScreen()
     }
     
-    @ViewBuilder func start() -> some View {
+    @ViewBuilder func makeStart() -> some View {
         LoginScreen()
     }
 }

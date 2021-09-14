@@ -3,5 +3,11 @@ import SwiftUI
 import Stinsen
 
 final class ProfileCoordinator: NavigationCoordinatable {
-    var stack = NavigationStack()
+    let stack = NavigationStack(initialRoute: \ProfileCoordinator.start)
+    
+    func customize(_ view: AnyView) -> some View {
+        return view
+    }
+    
+    @Route var start = makeStart
 }

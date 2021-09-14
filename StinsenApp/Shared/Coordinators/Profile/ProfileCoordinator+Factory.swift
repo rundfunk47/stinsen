@@ -3,7 +3,7 @@ import SwiftUI
 import Stinsen
 
 extension ProfileCoordinator {
-    @ViewBuilder func start() -> some View {
+    @ViewBuilder func makeStart() -> some View {
         ProfileScreen()
     }
 }

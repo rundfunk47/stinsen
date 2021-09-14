@@ -11,7 +11,7 @@ extension TodosCoordinator {
         CreateTodoScreen()
     }
     
-    @ViewBuilder func start() -> some View {
+    @ViewBuilder func makeStart() -> some View {
         TodosScreen()
     }
 }

@@ -26,7 +26,7 @@ public extension NavigationRouter {
      - Parameter input: The parameters that are used to create the coordinator.
      */
     @discardableResult func route<Input, Output: View>(
-        to route: KeyPath<T, Transition<T, Input, Output>>,
+        to route: KeyPath<T, Transition<T, Presentation, Input, Output>>,
         _ input: Input
     ) -> T {
         coordinator.route(to: route, input)
@@ -39,7 +39,7 @@ public extension NavigationRouter {
      - Parameter input: The parameters that are used to create the coordinator.
      */
     @discardableResult func route<Input, Output: Coordinatable>(
-        to route: KeyPath<T, Transition<T, Input, Output>>,
+        to route: KeyPath<T, Transition<T, Presentation, Input, Output>>,
         _ input: Input
     ) -> Output {
         coordinator.route(to: route, input)
@@ -51,7 +51,7 @@ public extension NavigationRouter {
      - Parameter route: The route to append.
      */
     @discardableResult func route<Output: Coordinatable>(
-        to route: KeyPath<T, Transition<T, Void, Output>>
+        to route: KeyPath<T, Transition<T, Presentation, Void, Output>>
     ) -> Output {
         coordinator.route(to: route)
     }
@@ -62,7 +62,7 @@ public extension NavigationRouter {
      - Parameter route: The route to append.
      */
     @discardableResult func route<Output: View>(
-        to route: KeyPath<T, Transition<T, Void, Output>>
+        to route: KeyPath<T, Transition<T, Presentation, Void, Output>>
     ) -> T {
         coordinator.route(to: route)
     }
@@ -77,7 +77,7 @@ public extension NavigationRouter {
                if the route was not found in the stack.
      */
     @discardableResult func focusFirst<Output: Coordinatable>(
-        _ route: KeyPath<T, Transition<T, Void, Output>>
+        _ route: KeyPath<T, Transition<T, Presentation, Void, Output>>
     ) throws -> Output {
         try coordinator.focusFirst(route)
     }
@@ -92,7 +92,7 @@ public extension NavigationRouter {
                if the route was not found in the stack.
      */
     @discardableResult func focusFirst<Output: View>(
-        _ route: KeyPath<T, Transition<T, Void, Output>>
+        _ route: KeyPath<T, Transition<T, Presentation, Void, Output>>
     ) throws -> T {
         try coordinator.focusFirst(route)
     }
@@ -109,7 +109,7 @@ public extension NavigationRouter {
                if the route was not found in the stack.
      */
     @discardableResult func focusFirst<Input, Output: Coordinatable>(
-        _ route: KeyPath<T, Transition<T, Input, Output>>,
+        _ route: KeyPath<T, Transition<T, Presentation, Input, Output>>,
         _ input: Input,
         comparator: @escaping (Input, Input) -> Bool
     ) throws -> Output {
@@ -128,7 +128,7 @@ public extension NavigationRouter {
                if the route was not found in the stack.
      */
     @discardableResult func focusFirst<Input, Output: View>(
-        _ route: KeyPath<T, Transition<T, Input, Output>>,
+        _ route: KeyPath<T, Transition<T, Presentation, Input, Output>>,
         _ input: Input,
         comparator: @escaping (Input, Input) -> Bool
     ) throws -> T {
@@ -146,7 +146,7 @@ public extension NavigationRouter {
                if the route was not found in the stack.
      */
     @discardableResult func focusFirst<Input: Equatable, Output: Coordinatable>(
-        _ route: KeyPath<T, Transition<T, Input, Output>>,
+        _ route: KeyPath<T, Transition<T, Presentation, Input, Output>>,
         _ input: Input
     ) throws -> Output {
         try coordinator.focusFirst(route, input)
@@ -163,7 +163,7 @@ public extension NavigationRouter {
                if the route was not found in the stack.
      */
     @discardableResult func focusFirst<Input: Equatable, Output: View>(
-        _ route: KeyPath<T, Transition<T, Input, Output>>,
+        _ route: KeyPath<T, Transition<T, Presentation, Input, Output>>,
         _ input: Input
     ) throws -> T {
         try coordinator.focusFirst(route, input)
@@ -179,7 +179,7 @@ public extension NavigationRouter {
                if the route was not found in the stack.
      */
     @discardableResult func focusFirst<Input, Output: Coordinatable>(
-        _ route: KeyPath<T, Transition<T, Input, Output>>
+        _ route: KeyPath<T, Transition<T, Presentation, Input, Output>>
     ) throws -> Output {
         try coordinator.focusFirst(route)
     }
@@ -193,8 +193,104 @@ public extension NavigationRouter {
                if the route was not found in the stack.
      */
     @discardableResult func focusFirst<Input, Output: View>(
-        _ route: KeyPath<T, Transition<T, Input, Output>>
+        _ route: KeyPath<T, Transition<T, Presentation, Input, Output>>
     ) throws -> T {
         try coordinator.focusFirst(route)
+    }
+    
+    @discardableResult func setRoot<Output: Coordinatable>(
+        _ route: KeyPath<T, Transition<T, Root, Void, Output>>
+    ) -> Output {
+        return coordinator.setRoot(route)
+    }
+    
+    @discardableResult func setRoot<Output: View>(
+        _ route: KeyPath<T, Transition<T, Root, Void, Output>>
+    ) -> T {
+        return coordinator.setRoot(route)
+    }
+    
+    @discardableResult func setRoot<Input, Output: Coordinatable>(
+        _ route: KeyPath<T, Transition<T, Root, Input, Output>>,
+        _ input: Input,
+        comparator: @escaping (Input, Input) -> Bool
+    ) -> Output {
+        return coordinator.setRoot(route, input, comparator: comparator)
+    }
+    
+    @discardableResult func setRoot<Input, Output: View>(
+        _ route: KeyPath<T, Transition<T, Root, Input, Output>>,
+        _ input: Input,
+        comparator: @escaping (Input, Input) -> Bool
+    ) -> T {
+        return coordinator.setRoot(route, input, comparator: comparator)
+    }
+    
+    @discardableResult func setRoot<Input: Equatable, Output: Coordinatable>(
+        _ route: KeyPath<T, Transition<T, Root, Input, Output>>,
+        _ input: Input
+    ) -> Output {
+        return coordinator.setRoot(route, input)
+    }
+    
+    @discardableResult func setRoot<Input: Equatable, Output: View>(
+        _ route: KeyPath<T, Transition<T, Root, Input, Output>>,
+        _ input: Input
+    ) -> T {
+        return coordinator.setRoot(route, input)
+    }
+    
+    func isRoot<Output: Coordinatable>(
+        _ route: KeyPath<T, Transition<T, Root, Void, Output>>
+    ) -> Bool {
+        return coordinator.isRoot(route)
+    }
+    
+    func isRootk<Output: View>(
+        _ route: KeyPath<T, Transition<T, Root, Void, Output>>
+    ) -> Bool {
+        return coordinator.isRoot(route)
+    }
+
+    func isRoot<Input, Output: Coordinatable>(
+        _ route: KeyPath<T, Transition<T, Root, Input, Output>>
+    ) -> Bool {
+        return coordinator.isRoot(route)
+    }
+
+    func isRoot<Input, Output: View>(
+        _ route: KeyPath<T, Transition<T, Root, Input, Output>>
+    ) -> Bool {
+        return coordinator.isRoot(route)
+    }
+
+    func isRoot<Input: Equatable, Output: Coordinatable>(
+        _ route: KeyPath<T, Transition<T, Root, Input, Output>>,
+        _ input: Input
+    ) -> Bool {
+        return coordinator.isRoot(route, input)
+    }
+
+    func isRoot<Input: Equatable, Output: View>(
+        _ route: KeyPath<T, Transition<T, Root, Input, Output>>,
+        _ input: Input
+    ) -> Bool {
+        return coordinator.isRoot(route, input)
+    }
+
+    func isRoot<Input: Equatable, Output: Coordinatable>(
+        _ route: KeyPath<T, Transition<T, Root, Input, Output>>,
+        _ input: Input,
+        comparator: @escaping (Input, Input) -> Bool
+    ) -> Bool {
+        return coordinator.isRoot(route, input, comparator: comparator)
+    }
+
+    func isRoot<Input: Equatable, Output: View>(
+        _ route: KeyPath<T, Transition<T, Root, Input, Output>>,
+        _ input: Input,
+        comparator: @escaping (Input, Input) -> Bool
+    ) -> Bool {
+        return coordinator.isRoot(route, input, comparator: comparator)
     }
 }
