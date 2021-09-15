@@ -19,7 +19,7 @@ struct LoginScreen: View {
                 RoundedTextField("Password", text: $password)
                 Spacer(minLength: 32)
                 RoundedButton("Login") {
-                    mainRouter.setRoot(\.authenticated, User(username: username, accessToken: "token"))
+                    mainRouter.root(\.authenticated, User(username: username, accessToken: "token"))
                 }
                 RoundedButton("Forgot password", style: .secondary) {
                     unauthenticatedRouter.route(to: \.forgotPassword)

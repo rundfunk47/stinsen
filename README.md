@@ -23,9 +23,9 @@ Example using a Navigation Stack:
 
 ```swift
 final class TodosCoordinator: NavigationCoordinatable {
-    // Required by Stinsen:
-    var stack = NavigationStack()
+    var stack = NavigationStack(initial: \TodosCoordinator.start)
     
+    @Route var start = makeStart
     @Route(.push) var todo = makeTodo
     @Route(.modal) var createTodo = makeCreateTodo
     
@@ -36,9 +36,8 @@ final class TodosCoordinator: NavigationCoordinatable {
     @ViewBuilder func makeCreateTodo() -> some View {
         CreateTodoScreen()
     }
-    
-    // Required by Stinsen:
-    @ViewBuilder func start() -> some View {
+
+    @ViewBuilder func makeStart() -> some View {
         TodosScreen()
     }
 }
@@ -46,11 +45,10 @@ final class TodosCoordinator: NavigationCoordinatable {
 
 The `@Route`s defines all the possible routes that can be performed from the current coordinator. The value on the right hand side is the factory function that will be executed when routing. The function can return either a SwiftUI view or another coordinator. 
 
-Stinsen out of the box has three different kinds of `Coordinatable` protocols your coordinators can implement: 
+Stinsen out of the box has two different kinds of `Coordinatable` protocols your coordinators can implement: 
 
 * `NavigationCoordinatable` - For navigational flows. Make sure to wrap these in a NavigationViewCoordinator if you wish to push on the navigation stack.
 * `TabCoordinatable` - For TabViews.
-* `ViewCoordinatable` - Just a view and routes that do not push but rather replace the entire view, can be used for instance when switching between logged in/logged out.
 
 ## Showing the coordinator for the user
 The view for the coordinator can be created using `.view()`, so in order to show a coordinator to the user you would just do something like:
@@ -93,7 +91,7 @@ You can also fetch routers referencing coordinators that appeared earlier in the
 Routing can be performed directly on the coordinator itself, which can be useful if you want your coordinator to have some logic:
 
 ```swift
-final class MainCoordinator: ViewCoordinatable {
+final class MainCoordinator: NavigationCoordinatable {
     @Route var unauthenticated = makeUnauthenticated
     @Route var authenticated = makeAuthenticated
     
@@ -103,9 +101,9 @@ final class MainCoordinator: ViewCoordinatable {
         cancellable = AuthenticationService.shared.status.sink { [weak self] status in
             switch status {
             case .authenticated(let user):
-                self?.route(to: \.authentiated, user)
+                self?.root(\.authentiated, user)
             case .unauthenticated:
-                self?.route(to: \.unauthentiated)
+                self?.root(\.unauthentiated)
             }
         }
     }
@@ -117,6 +115,7 @@ What actions you can perform from the router/coordinator depends on the kind of 
 * `popLast` - Removes the last item from the stack. Note that `Stinsen` doesn't care if the view was presented modally or pushed, the same function is used for both. 
 * `pop` - Removes the view from the stack. This function can only be performed by a router, since only the router knows about which view you're trying to pop.
 * `popToRoot` - Clears the stack.
+* `root` - Changes the root. If the root is already the active root, will do nothing.
 * `route` - Navigates to another route.
 * `focusFirst` - Finds the specified route if it exists in the stack, starting from the first item. If found, will remove everything after that.
 * `dismissCoordinator` - Deletes the whole coordinator and it's associated children from the tree.
@@ -218,7 +217,7 @@ Since Stinsen uses KeyPaths to represent the routes, the functions are type-safe
 Using chaining, you can deeplink within the app:
 
 ```swift
-final class MainCoordinator: ViewCoordinatable {
+final class MainCoordinator: NavigationCoordinatable {
     @ViewBuilder func customize(_ view: AnyView) -> some View {
         if #available(iOS 14.0, *) {
             view.onOpenURL { url in
@@ -227,7 +226,7 @@ final class MainCoordinator: ViewCoordinatable {
                 switch deeplink {
                     case todo(let todoId):
                         self
-                            .route(to: \.authenticated)
+                            .setRoot(\.authenticated)
                             .focusFirst(\.todos)
                             .child
                             .route(to: \.todo, todoId)

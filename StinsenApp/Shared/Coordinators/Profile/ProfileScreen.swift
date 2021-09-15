@@ -9,7 +9,7 @@ struct ProfileScreen: View {
         ScrollView {
             VStack {
                 RoundedButton("Logout") {
-                    mainRouter.setRoot(\.unauthenticated)
+                    mainRouter.root(\.unauthenticated)
                 }
             }
         }

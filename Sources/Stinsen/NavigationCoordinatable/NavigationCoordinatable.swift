@@ -4,6 +4,7 @@ import Combine
 
 public protocol NavigationCoordinatable: Coordinatable {
     typealias Route = NavigationRoute
+    typealias Root = NavigationRoute
     typealias Router = NavigationRouter<Self>
     associatedtype CustomizeViewType: View
     
@@ -177,70 +178,70 @@ public protocol NavigationCoordinatable: Coordinatable {
         _ route: KeyPath<Self, Transition<Self, Presentation, Input, Output>>
     ) throws -> Self
     
-    @discardableResult func setRoot<Output: Coordinatable>(
-        _ route: KeyPath<Self, Transition<Self, Root, Void, Output>>
+    @discardableResult func root<Output: Coordinatable>(
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Void, Output>>
     ) -> Output
     
-    @discardableResult func setRoot<Output: View>(
-        _ route: KeyPath<Self, Transition<Self, Root, Void, Output>>
+    @discardableResult func root<Output: View>(
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Void, Output>>
     ) -> Self
     
-    @discardableResult func setRoot<Input, Output: Coordinatable>(
-        _ route: KeyPath<Self, Transition<Self, Root, Input, Output>>,
+    @discardableResult func root<Input, Output: Coordinatable>(
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>,
         _ input: Input,
         comparator: @escaping (Input, Input) -> Bool
     ) -> Output
     
-    @discardableResult func setRoot<Input, Output: View>(
-        _ route: KeyPath<Self, Transition<Self, Root, Input, Output>>,
+    @discardableResult func root<Input, Output: View>(
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>,
         _ input: Input,
         comparator: @escaping (Input, Input) -> Bool
     ) -> Self
     
-    @discardableResult func setRoot<Input: Equatable, Output: Coordinatable>(
-        _ route: KeyPath<Self, Transition<Self, Root, Input, Output>>,
+    @discardableResult func root<Input: Equatable, Output: Coordinatable>(
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>,
         _ input: Input
     ) -> Output
     
-    @discardableResult func setRoot<Input: Equatable, Output: View>(
-        _ route: KeyPath<Self, Transition<Self, Root, Input, Output>>,
+    @discardableResult func root<Input: Equatable, Output: View>(
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>,
         _ input: Input
     ) -> Self
     
     func isRoot<Output: Coordinatable>(
-        _ route: KeyPath<Self, Transition<Self, Root, Void, Output>>
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Void, Output>>
     ) -> Bool
     
     func isRoot<Output: View>(
-        _ route: KeyPath<Self, Transition<Self, Root, Void, Output>>
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Void, Output>>
     ) -> Bool
 
     func isRoot<Input, Output: Coordinatable>(
-        _ route: KeyPath<Self, Transition<Self, Root, Input, Output>>
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>
     ) -> Bool
 
     func isRoot<Input, Output: View>(
-        _ route: KeyPath<Self, Transition<Self, Root, Input, Output>>
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>
     ) -> Bool
 
     func isRoot<Input: Equatable, Output: Coordinatable>(
-        _ route: KeyPath<Self, Transition<Self, Root, Input, Output>>,
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>,
         _ input: Input
     ) -> Bool
 
     func isRoot<Input: Equatable, Output: View>(
-        _ route: KeyPath<Self, Transition<Self, Root, Input, Output>>,
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>,
         _ input: Input
     ) -> Bool
 
     func isRoot<Input: Equatable, Output: Coordinatable>(
-        _ route: KeyPath<Self, Transition<Self, Root, Input, Output>>,
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>,
         _ input: Input,
         comparator: @escaping (Input, Input) -> Bool
     ) -> Bool
 
     func isRoot<Input: Equatable, Output: View>(
-        _ route: KeyPath<Self, Transition<Self, Root, Input, Output>>,
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>,
         _ input: Input,
         comparator: @escaping (Input, Input) -> Bool
     ) -> Bool
@@ -252,11 +253,11 @@ public extension NavigationCoordinatable {
     }
     
     internal func setupRoot() {
-        let a = self[keyPath: self.stack.initialRoute] as! NavigationOutputable
+        let a = self[keyPath: self.stack.initial] as! NavigationOutputable
         let presentable = a.using(coordinator: self, input: ())
         
         let item = NavigationRootItem(
-            keyPath: self.stack.initialRoute.hashValue,
+            keyPath: self.stack.initial.hashValue,
             input: self.stack.initialInput,
             child: presentable
         )
@@ -465,8 +466,8 @@ public extension NavigationCoordinatable {
         try self._focusFirst(route, nil)
     }
     
-    @discardableResult private func _setRoot<Output: Coordinatable, Input>(
-        _ route: KeyPath<Self, Transition<Self, Root, Input, Output>>,
+    @discardableResult private func _root<Output: Coordinatable, Input>(
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>,
         inputItem: (input: Input, comparator: (Input, Input) -> Bool)?
     ) -> Output {
         if stack.root.item.keyPath == route.hashValue {
@@ -496,8 +497,8 @@ public extension NavigationCoordinatable {
         return output
     }
     
-    @discardableResult private func _setRoot<Output: View, Input>(
-        _ route: KeyPath<Self, Transition<Self, Root, Input, Output>>,
+    @discardableResult private func _root<Output: View, Input>(
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>,
         inputItem: (input: Input, comparator: (Input, Input) -> Bool)?
     ) -> Self {
         if stack.root.item.keyPath == route.hashValue {
@@ -527,50 +528,50 @@ public extension NavigationCoordinatable {
         return self
     }
     
-    @discardableResult func setRoot<Output: Coordinatable>(
-        _ route: KeyPath<Self, Transition<Self, Root, Void, Output>>
+    @discardableResult func root<Output: Coordinatable>(
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Void, Output>>
     ) -> Output {
-        self._setRoot(route, inputItem: nil)
+        self._root(route, inputItem: nil)
     }
     
-    @discardableResult func setRoot<Output: View>(
-        _ route: KeyPath<Self, Transition<Self, Root, Void, Output>>
+    @discardableResult func root<Output: View>(
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Void, Output>>
     ) -> Self {
-        self._setRoot(route, inputItem: nil)
+        self._root(route, inputItem: nil)
     }
     
-    @discardableResult func setRoot<Input, Output: Coordinatable>(
-        _ route: KeyPath<Self, Transition<Self, Root, Input, Output>>,
+    @discardableResult func root<Input, Output: Coordinatable>(
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>,
         _ input: Input,
         comparator: @escaping (Input, Input) -> Bool
     ) -> Output {
-        self._setRoot(route, inputItem: (input, comparator))
+        self._root(route, inputItem: (input, comparator))
     }
     
-    @discardableResult func setRoot<Input, Output: View>(
-        _ route: KeyPath<Self, Transition<Self, Root, Input, Output>>,
+    @discardableResult func root<Input, Output: View>(
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>,
         _ input: Input,
         comparator: @escaping (Input, Input) -> Bool
     ) -> Self {
-        self._setRoot(route, inputItem: (input, comparator))
+        self._root(route, inputItem: (input, comparator))
     }
     
-    @discardableResult func setRoot<Input: Equatable, Output: Coordinatable>(
-        _ route: KeyPath<Self, Transition<Self, Root, Input, Output>>,
+    @discardableResult func root<Input: Equatable, Output: Coordinatable>(
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>,
         _ input: Input
     ) -> Output {
-        self._setRoot(route, inputItem: (input, { $0 == $1 }))
+        self._root(route, inputItem: (input, { $0 == $1 }))
     }
     
-    @discardableResult func setRoot<Input: Equatable, Output: View>(
-        _ route: KeyPath<Self, Transition<Self, Root, Input, Output>>,
+    @discardableResult func root<Input: Equatable, Output: View>(
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>,
         _ input: Input
     ) -> Self {
-        self._setRoot(route, inputItem: (input, { $0 == $1 }))
+        self._root(route, inputItem: (input, { $0 == $1 }))
     }
     
     private func _isRoot<Input, Output: Coordinatable>(
-        _ route: KeyPath<Self, Transition<Self, Root, Input, Output>>,
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>,
         inputItem: (input: Input, comparator: (Input, Input) -> Bool)?
     ) -> Bool {
         guard stack.root.item.keyPath == route.hashValue else {
@@ -589,7 +590,7 @@ public extension NavigationCoordinatable {
     }
     
     private func _isRoot<Input, Output: View>(
-        _ route: KeyPath<Self, Transition<Self, Root, Input, Output>>,
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>,
         inputItem: (input: Input, comparator: (Input, Input) -> Bool)?
     ) -> Bool {
         guard stack.root.item.keyPath == route.hashValue else {
@@ -608,45 +609,45 @@ public extension NavigationCoordinatable {
     }
     
     func isRoot<Output: Coordinatable>(
-        _ route: KeyPath<Self, Transition<Self, Root, Void, Output>>
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Void, Output>>
     ) -> Bool {
         return self._isRoot(route, inputItem: nil)
     }
     
     func isRoot<Output: View>(
-        _ route: KeyPath<Self, Transition<Self, Root, Void, Output>>
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Void, Output>>
     ) -> Bool {
         return self._isRoot(route, inputItem: nil)
     }
 
     func isRoot<Input, Output: Coordinatable>(
-        _ route: KeyPath<Self, Transition<Self, Root, Input, Output>>
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>
     ) -> Bool {
         return self._isRoot(route, inputItem: nil)
     }
 
     func isRoot<Input, Output: View>(
-        _ route: KeyPath<Self, Transition<Self, Root, Input, Output>>
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>
     ) -> Bool {
         return self._isRoot(route, inputItem: nil)
     }
 
     func isRoot<Input: Equatable, Output: Coordinatable>(
-        _ route: KeyPath<Self, Transition<Self, Root, Input, Output>>,
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>,
         _ input: Input
     ) -> Bool {
         return self._isRoot(route, inputItem: (input: input, comparator: { $0 == $1 }))
     }
 
     func isRoot<Input: Equatable, Output: View>(
-        _ route: KeyPath<Self, Transition<Self, Root, Input, Output>>,
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>,
         _ input: Input
     ) -> Bool {
         return self._isRoot(route, inputItem: (input: input, comparator: { $0 == $1 }))
     }
 
     func isRoot<Input: Equatable, Output: Coordinatable>(
-        _ route: KeyPath<Self, Transition<Self, Root, Input, Output>>,
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>,
         _ input: Input,
         comparator: @escaping (Input, Input) -> Bool
     ) -> Bool {
@@ -654,7 +655,7 @@ public extension NavigationCoordinatable {
     }
 
     func isRoot<Input: Equatable, Output: View>(
-        _ route: KeyPath<Self, Transition<Self, Root, Input, Output>>,
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>,
         _ input: Input,
         comparator: @escaping (Input, Input) -> Bool
     ) -> Bool {

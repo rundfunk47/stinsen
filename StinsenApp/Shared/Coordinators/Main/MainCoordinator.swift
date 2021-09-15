@@ -4,7 +4,7 @@ import SwiftUI
 import Stinsen
 
 final class MainCoordinator: NavigationCoordinatable {
-    var stack = NavigationStack<MainCoordinator>(initialRoute: \MainCoordinator.start)
+    var stack = NavigationStack<MainCoordinator>(initial: \MainCoordinator.start)
 
     @Route var start = makeStart
     @Route var unauthenticated = makeUnauthenticated
@@ -26,7 +26,7 @@ final class MainCoordinator: NavigationCoordinatable {
                 
                 // you should really do some kind of auth-check here
                 self
-                    .setRoot(\.authenticated, User(username: "username", accessToken: "token"))
+                    .root(\.authenticated, User(username: "username", accessToken: "token"))
                     .focusFirst(\.todos)
                     .child
                     .route(to: \.todo, todoId)

@@ -9,7 +9,7 @@ public protocol RouteType {
     
 }
 
-public struct Root: RouteType {
+public struct RootSwitch: RouteType {
 
 }
 
@@ -67,33 +67,33 @@ extension NavigationRoute where T: NavigationCoordinatable, Output: Coordinatabl
     }
 }
 
-extension NavigationRoute where T: NavigationCoordinatable, Input == Void , Output == AnyView , U == Root {
+extension NavigationRoute where T: NavigationCoordinatable, Input == Void , Output == AnyView , U == RootSwitch {
     public convenience init<ViewOutput: View>(wrappedValue: @escaping ((T) -> (() -> ViewOutput))) {
-        self.init(standard: Transition(type: Root(), closure: { coordinator in
+        self.init(standard: Transition(type: RootSwitch(), closure: { coordinator in
             return { _ in AnyView(wrappedValue(coordinator)()) }
         }))
     }
 }
 
-extension NavigationRoute where T: NavigationCoordinatable, Output == AnyView, U == Root {
+extension NavigationRoute where T: NavigationCoordinatable, Output == AnyView, U == RootSwitch {
     public convenience init<ViewOutput: View>(wrappedValue: @escaping ((T) -> ((Input) -> ViewOutput))) {
-        self.init(standard: Transition(type: Root() , closure: { coordinator in
+        self.init(standard: Transition(type: RootSwitch() , closure: { coordinator in
             return { input in AnyView(wrappedValue(coordinator)(input)) }
         }))
     }
 }
 
-extension NavigationRoute where T: NavigationCoordinatable, Input == Void , Output: Coordinatable, U == Root {
+extension NavigationRoute where T: NavigationCoordinatable, Input == Void , Output: Coordinatable, U == RootSwitch {
     public convenience init(wrappedValue: @escaping ((T) -> (() -> Output))) {
-        self.init(standard: Transition(type: Root(), closure: { coordinator in
+        self.init(standard: Transition(type: RootSwitch(), closure: { coordinator in
             return { _ in wrappedValue(coordinator)() }
         }))
     }
 }
 
-extension NavigationRoute where T: NavigationCoordinatable, Output: Coordinatable, U == Root {
+extension NavigationRoute where T: NavigationCoordinatable, Output: Coordinatable, U == RootSwitch {
     public convenience init(wrappedValue: @escaping ((T) -> ((Input) -> Output))) {
-        self.init(standard: Transition(type: Root(), closure: { coordinator in
+        self.init(standard: Transition(type: RootSwitch(), closure: { coordinator in
             return { input in wrappedValue(coordinator)(input) }
         }))
     }

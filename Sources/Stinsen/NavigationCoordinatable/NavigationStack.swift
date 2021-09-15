@@ -21,15 +21,15 @@ public class NavigationRoot: ObservableObject {
 /// Represents a stack of routes
 public class NavigationStack<T: NavigationCoordinatable> {
     var poppedTo = PassthroughSubject<Int, Never>()
-    let initialRoute: PartialKeyPath<T>
+    let initial: PartialKeyPath<T>
     let initialInput: Any?
     var root: NavigationRoot!
     
     @Published var value: [NavigationStackItem]
     
-    public init(initialRoute: PartialKeyPath<T>, initialInput: Any? = nil) {
+    public init(initial: PartialKeyPath<T>, _ initialInput: Any? = nil) {
         self.value = []
-        self.initialRoute = initialRoute
+        self.initial = initial
         self.initialInput = initialInput
         self.root = nil
     }
