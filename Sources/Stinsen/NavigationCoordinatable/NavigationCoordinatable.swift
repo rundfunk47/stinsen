@@ -5,11 +5,16 @@ import Combine
 public protocol NavigationCoordinatable: Coordinatable {
     typealias Route = NavigationRoute
     typealias Router = NavigationRouter<Self>
-    associatedtype CustomizedViewType: View
+    associatedtype CustomizeViewType: View
     
     var stack: NavigationStack<Self> { get }
 
-    @ViewBuilder func customize(_ view: AnyView) -> CustomizedViewType
+    /**
+     Implement this function if you wish to customize the view on all views and child coordinators, for instance, if you wish to change the `tintColor` or inject an `EnvironmentObject`.
+     - Parameter view: The input view.
+     - Returns: The modified view.
+     */
+    func customize(_ view: AnyView) -> CustomizeViewType
     
     /**
      Clears the stack.
@@ -242,6 +247,10 @@ public protocol NavigationCoordinatable: Coordinatable {
 }
 
 public extension NavigationCoordinatable {
+    func customize(_ view: AnyView) -> some View {
+        return view
+    }
+    
     internal func setupRoot() {
         let a = self[keyPath: self.stack.initialRoute] as! NavigationOutputable
         let presentable = a.using(coordinator: self, input: ())

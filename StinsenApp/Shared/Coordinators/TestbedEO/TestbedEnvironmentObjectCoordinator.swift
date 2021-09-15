@@ -5,11 +5,6 @@ import Stinsen
 
 final class TestbedEnvironmentObjectCoordinator: NavigationCoordinatable {
     let stack = NavigationStack(initialRoute: \TestbedEnvironmentObjectCoordinator.start)
-    
-    func customize(_ view: AnyView) -> some View {
-        return view
-    }
-    
 
     @Route var start = makeStart
     @Route(.modal) var modalScreen = makeModalScreen
