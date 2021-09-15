@@ -13,9 +13,6 @@ struct HomeScreen: View {
             } else {
                 InfoText("Welcome to Stinsenapp! Here are your favorite todos:")
                 VStack {
-                    #if os(watchOS)
-                    button
-                    #endif
                     ForEach(todos.favorites) { todo in
                         Button(todo.name) {
                             authenticatedRouter
