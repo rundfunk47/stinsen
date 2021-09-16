@@ -29,29 +29,12 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
                         }, set: { _ in
                             self.coordinator.appear(self.id)
                         }), onDismiss: {
-                            let presented = self.coordinator.stack.value[safe: id + 1]
-                            
-                            #warning("fix dismissal")
-                            /*
-                            switch presented?.presentationType {
-                            case .fullScreen:
-                                if let presentable = presentable as? AnyCoordinatable {
-                                    DispatchQueue.main.async {
-                                        presentable.dismissalAction?()
-                                        presentable.dismissalAction = nil
-                                    }
-                                }
-                            default:
-                                break
-                            }
-                             */
-                            
-                            //self.coordinator.popTo(self.id)
+                            self.coordinator.stack.dismissalAction[id]?()
+                            self.coordinator.stack.dismissalAction[id] = nil
                         }, content: { () -> AnyView in
                             return { () -> AnyView in
                                 if let view = presentationHelper.presented?.view {
-                                    #warning("fix dismissal")
-                                    return AnyView(view/*.environmentObject(root)*/)
+                                    return AnyView(view)
                                 } else {
                                     return AnyView(EmptyView())
                                 }
@@ -69,15 +52,14 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
     @ViewBuilder
     var commonView: some View {
         (id == -1 ? AnyView(self.coordinator.customize(AnyView(root.item.child.view()))) : AnyView(self.start!))
-            .onAppear(perform: {
-                #warning("fix dismissal")
-            })
             .background(
                 NavigationLink(
                     destination: { () -> AnyView in
                         if let view = presentationHelper.presented?.view {
-                            #warning("fix dismissal")
-                            return AnyView(view/*.environmentObject(root)*/)
+                            return AnyView(view.onDisappear {
+                                self.coordinator.stack.dismissalAction[id]?()
+                                self.coordinator.stack.dismissalAction[id] = nil
+                            })
                         } else {
                             return AnyView(EmptyView())
                         }
@@ -93,39 +75,17 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
                 )
                 .hidden()
             )
-            .onDisappear {
-                #warning("fix dismissal")
-                /*
-                self.coordinator.dismissalAction?()
-                self.coordinator.dismissalAction = nil
-                */
-            }
             .sheet(isPresented: Binding<Bool>.init(get: { () -> Bool in
                 return presentationHelper.presented?.type.isModal == true
             }, set: { _ in
                 self.coordinator.appear(self.id)
             }), onDismiss: {
-                // shouldn't matter if different coordinators. also this set modal children to nil
-                let presented = self.coordinator.stack.value[safe: id + 1]
-                
-                #warning("fix dismissal")
-                /*
-                switch presented?.presentationType {
-                case .modal:
-                    if let presentable = presentable as? AnyCoordinatable {
-                        DispatchQueue.main.async {
-                            presentable.dismissalAction?()
-                            presentable.dismissalAction = nil
-                        }
-                    }
-                default:
-                    break
-                }
-                 */
+                self.coordinator.stack.dismissalAction[id]?()
+                self.coordinator.stack.dismissalAction[id] = nil
             }, content: { () -> AnyView in
                 return { () -> AnyView in
                     if let view = presentationHelper.presented?.view {
-                        return AnyView(view/*.environmentObject(root)*/)
+                        return AnyView(view)
                     } else {
                         return AnyView(EmptyView())
                     }

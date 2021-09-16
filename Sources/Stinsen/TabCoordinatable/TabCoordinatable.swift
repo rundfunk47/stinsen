@@ -39,6 +39,18 @@ public protocol TabCoordinatable: Coordinatable {
 }
 
 public extension TabCoordinatable {
+    func dismissChild(coordinator: AnyCoordinatable, action: (() -> Void)?) {
+        fatalError("Not implemented")
+    }
+    
+    var parent: AnyCoordinatable? {
+        get {
+            fatalError()
+        } set {
+            fatalError()
+        }
+    }
+    
     internal func setupAllTabs() {
         var all: [TabChildItem] = []
         

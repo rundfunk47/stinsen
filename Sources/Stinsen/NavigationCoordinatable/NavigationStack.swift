@@ -20,6 +20,9 @@ public class NavigationRoot: ObservableObject {
 
 /// Represents a stack of routes
 public class NavigationStack<T: NavigationCoordinatable> {
+    var dismissalAction: [Int: () -> Void] = [:]
+    
+    var parent: AnyCoordinatable?
     var poppedTo = PassthroughSubject<Int, Never>()
     let initial: PartialKeyPath<T>
     let initialInput: Any?

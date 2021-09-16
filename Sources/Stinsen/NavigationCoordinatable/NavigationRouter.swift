@@ -15,8 +15,12 @@ public extension NavigationRouter {
     /**
      Clears the stack.
      */
-    @discardableResult func popToRoot() -> T {
-        coordinator.popToRoot()
+    @discardableResult func popToRoot(_ action: (() -> ())? = nil) -> T {
+        coordinator.popToRoot(action)
+    }
+    
+    func dismissCoordinator(_ action: (() -> ())? = nil) {
+        coordinator.dismissCoordinator(action)
     }
     
     /**

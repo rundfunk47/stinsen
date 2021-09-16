@@ -15,45 +15,11 @@ struct NavigationViewCoordinatorView<U: Coordinatable, T: NavigationViewCoordina
         NavigationView {
             view
         }
-        #warning("fix dismissal")
-        /*.onReceive(coordinator.children.$childCoordinator) { (value) in
-            if value == nil {
-                guard let parent = ([root.coordinator] + root.coordinator.allChildCoordinators).first(where: {
-                    $0.childCoordinators.contains(where: {
-                        coordinator.id == $0.id
-                    })
-                }) else {
-                    fatalError("no children, cannot dismiss?!")
-                }
-                
-                parent.dismissChildCoordinator(
-                    coordinator.eraseToAnyCoordinatable(),
-                    coordinator.children.dismissalAction
-                )
-            }
-        }*/
         #else
         NavigationView {
             view
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        #warning("fix dismissal")
-        /*.onReceive(coordinator.children.$childCoordinator) { (value) in
-            if value == nil {
-                guard let parent = ([root.coordinator] + root.coordinator.allChildCoordinators).first(where: {
-                    $0.childCoordinators.contains(where: {
-                        coordinator.id == $0.id
-                    })
-                }) else {
-                    fatalError("no children, cannot dismiss?!")
-                }
-                
-                parent.dismissChildCoordinator(
-                    coordinator.eraseToAnyCoordinatable(),
-                    coordinator.children.dismissalAction
-                )
-            }
-        }*/
         #endif
     }
 }

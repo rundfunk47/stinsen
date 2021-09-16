@@ -38,9 +38,9 @@ struct TestbedEnvironmentObjectScreen: View {
                 }
                  */
                 RoundedButton("Dismiss me!") {
-                    /*testbed.dismissCoordinator {
+                    testbed.dismissCoordinator {
                         print("bye!")
-                    }*/
+                    }
                 }
             }
         }

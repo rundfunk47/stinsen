@@ -17,10 +17,12 @@ public protocol NavigationCoordinatable: Coordinatable {
      */
     func customize(_ view: AnyView) -> CustomizeViewType
     
+    func dismissCoordinator(_ action: (() -> ())?)
+    
     /**
      Clears the stack.
      */
-    @discardableResult func popToRoot() -> Self
+    @discardableResult func popToRoot(_ action: (() -> ())?) -> Self
 
     /**
      Appends a view to the navigation stack.
@@ -248,8 +250,32 @@ public protocol NavigationCoordinatable: Coordinatable {
 }
 
 public extension NavigationCoordinatable {
+    var parent: AnyCoordinatable? {
+        get {
+            return stack.parent
+        } set {
+            stack.parent = newValue
+        }
+    }
+
     func customize(_ view: AnyView) -> some View {
         return view
+    }
+    
+    func dismissChild(coordinator: AnyCoordinatable, action: (() -> Void)?) {
+        let value = stack.value.firstIndex { item in
+            guard let presentable = item.presentable as? AnyCoordinatable else {
+                return false
+            }
+            
+            return presentable === coordinator
+        }!
+        
+        self.popTo(value - 1, action)
+    }
+    
+    func dismissCoordinator(_ action: (() -> ())?) {
+        stack.parent!.dismissChild(coordinator: self, action: action)
     }
     
     internal func setupRoot() {
@@ -266,10 +292,14 @@ public extension NavigationCoordinatable {
     }
     
     internal func appear(_ int: Int) {        
-        self.popTo(int)
+        self.popTo(int, nil)
     }
     
-    internal func popTo(_ int: Int) {
+    internal func popTo(_ int: Int, _ action: (() -> ())?) {
+        if let action = action {
+            self.stack.dismissalAction[int] = action
+        }
+
         guard int + 1 <= self.stack.value.count else {
             return
         }
@@ -287,8 +317,8 @@ public extension NavigationCoordinatable {
         return AnyView(NavigationCoordinatableView(id: -1, coordinator: self))
     }
 
-    func popToRoot() -> Self {
-        self.popTo(-1)
+    func popToRoot(_ action: (() -> ())? = nil) -> Self {
+        self.popTo(-1, action)
         return self
     }
     
@@ -306,6 +336,7 @@ public extension NavigationCoordinatable {
                 input: input
             )
         )
+        output.parent = self
         return output
     }
     
@@ -322,6 +353,7 @@ public extension NavigationCoordinatable {
                 input: nil
             )
         )
+        output.parent = self
         return output
     }
     
@@ -380,7 +412,7 @@ public extension NavigationCoordinatable {
             throw FocusError.routeNotFound
         }
         
-        self.popTo(value.offset)
+        self.popTo(value.offset, nil)
         
         return value.element.presentable as! Output
     }
@@ -407,7 +439,7 @@ public extension NavigationCoordinatable {
             throw FocusError.routeNotFound
         }
         
-        self.popTo(value.offset)
+        self.popTo(value.offset, nil)
         
         return self
     }
