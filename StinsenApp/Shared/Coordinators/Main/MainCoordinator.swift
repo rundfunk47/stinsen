@@ -3,34 +3,36 @@ import SwiftUI
 
 import Stinsen
 
-class MainCoordinator: ViewCoordinatable {
-    var children = ViewChild()
-    
-    enum Route: ViewRoute {
-        case unauthenticated
-        case authenticated
-    }
+final class MainCoordinator: NavigationCoordinatable {
+    var stack = NavigationStack<MainCoordinator>(initial: \MainCoordinator.start)
 
-    func resolveRoute(route: Route) -> AnyCoordinatable {
-        switch route {
-        case .unauthenticated:
-            return AnyCoordinatable(
-                NavigationViewCoordinator(
-                    UnauthenticatedCoordinator()
-                )
-            )
-        case .authenticated:
-            return AnyCoordinatable(
-                AuthenticatedCoordinator()
-            )
+    @Root var start = makeStart
+    @Route var unauthenticated = makeUnauthenticated
+    @Route var authenticated = makeAuthenticated
+    
+    @ViewBuilder func customize(_ view: AnyView) -> some View {
+        if #available(iOS 14.0, *) {
+            view.onOpenURL { url in
+                print(url)
+                // very naive deeplinking
+                // please implement a better one in your app
+                let urlString = url.absoluteString.dropFirst(13)
+                let split = urlString.split(separator: "/")
+                guard split[0] == "todo" else { return }
+                
+                guard let todoId = TodosStore.shared.all.first(where: { todo in
+                    todo.name.lowercased() == split[1].lowercased()
+                })?.id else { return }
+                
+                // you should really do some kind of auth-check here
+                self
+                    .root(\.authenticated, User(username: "username", accessToken: "token"))
+                    .focusFirst(\.todos)
+                    .child
+                    .route(to: \.todo, todoId)
+            }
+        } else {
+            view
         }
-    }
-    
-    @ViewBuilder func start() -> some View {
-        LoadingScreen()
-    }
-    
-    init() {
-        
     }
 }

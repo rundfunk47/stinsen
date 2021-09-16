@@ -26,13 +26,12 @@ public class RouterStore {
     public static let shared = RouterStore()
     
     // an array of weak references
-    private var routers = [WeakRef]()
+    private var routers = [WeakRef<AnyObject>]()
 }
 
 public extension RouterStore {
     func store<T: Routable>(router: T) {
-        let ref = WeakRef()
-        ref.value = router
+        let ref = WeakRef<AnyObject>(value: router)
         self.routers.insert(ref, at: 0)
     }
     

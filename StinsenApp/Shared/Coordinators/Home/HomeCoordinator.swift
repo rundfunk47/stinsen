@@ -3,18 +3,8 @@ import SwiftUI
 
 import Stinsen
 
-class HomeCoordinator: NavigationCoordinatable {
-    var navigationStack: NavigationStack = NavigationStack()
+final class HomeCoordinator: NavigationCoordinatable {    
+    let stack = NavigationStack(initial: \HomeCoordinator.start)    
 
-    enum Route: NavigationRoute {
-
-    }
-    
-    func resolveRoute(route: Route) -> Transition {
-
-    }
-    
-    @ViewBuilder func start() -> some View {
-        HomeScreen()
-    }
+    @Root var start = makeStart
 }

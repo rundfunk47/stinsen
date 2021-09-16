@@ -2,134 +2,135 @@ import Foundation
 import Combine
 import SwiftUI
 
-class PresentationHelper<T: NavigationCoordinatable>: ObservableObject {
+final class PresentationHelper<T: NavigationCoordinatable>: ObservableObject {
     private let id: Int
-    let navigationStack: NavigationStack
+    let navigationStack: NavigationStack<T>
     private var cancellables = Set<AnyCancellable>()
     
     @Published var presented: Presented?
     
-    init(id: Int, coordinator: T) {
-        self.id = id
-        self.navigationStack = coordinator.navigationStack
+    func setupPresented(coordinator: T) {
+        let value = self.navigationStack.value
         
-        navigationStack.$value.sink { [weak self] _ in
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                
-                let value = self.navigationStack.value
-                
-                let nextId = id + 1
-                
-                // Only apply updates on last screen in navigation stack
-                // This check is important to get the behaviour as using a bool-state in the view that you set
-                if value.count - 1 == nextId, self.presented == nil {
-                    if let value = value[safe: nextId] {
-                        switch value {
-                        case .modal(let presentable):
-                            if presentable is AnyView {
-                                let view = AnyView(NavigationCoordinatableView(id: nextId, coordinator: coordinator))
+        let nextId = id + 1
+        
+        // Only apply updates on last screen in navigation stack
+        // This check is important to get the behaviour as using a bool-state in the view that you set
+        if value.count - 1 == nextId, self.presented == nil {
+            if let value = value[safe: nextId] {
+                let presentable = value.presentable
+                switch value.presentationType {
+                case .modal:
+                    if presentable is AnyView {
+                        let view = AnyView(NavigationCoordinatableView(id: nextId, coordinator: coordinator))
 
-                                #if os(macOS)
-                                self.presented = .modal(
-                                    AnyView(
-                                        NavigationView(
-                                            content: {
-                                                view
-                                            }
-                                        )
-                                    )
+                        #if os(macOS)
+                        self.presented = .modal(
+                            AnyView(
+                                NavigationView(
+                                    content: {
+                                        view
+                                    }
                                 )
-                                #else
-                                self.presented = .modal(
-                                    AnyView(
-                                        NavigationView(
-                                            content: {
-                                                #if os(macOS)
-                                                view
-                                                #else
-                                                view.navigationBarHidden(true)
-                                                #endif
-                                            }
-                                        )
-                                        .navigationViewStyle(StackNavigationViewStyle())
-                                    )
+                            )
+                        )
+                        #else
+                        self.presented = Presented(
+                            view: AnyView(
+                                NavigationView(
+                                    content: {
+                                        #if os(macOS)
+                                        view
+                                        #else
+                                        view.navigationBarHidden(true)
+                                        #endif
+                                    }
                                 )
-                                #endif
-                            } else if let presentable = presentable as? AnyCoordinatable {
-                                self.presented = .modal(
-                                    AnyView(
-                                        presentable.coordinatorView()
-                                    )
-                                )
-                            } else {
-                                fatalError("Unsupported presentable!")
-                            }
-                        case .push(let presentable):
-                            if presentable is AnyView {
-                                let view = AnyView(NavigationCoordinatableView(id: nextId, coordinator: coordinator))
+                                .navigationViewStyle(StackNavigationViewStyle())
+                            ),
+                            type: .modal
+                        )
+                        #endif
+                    } else {
+                        self.presented = Presented(
+                            view: presentable.view(),
+                            type: .modal
+                        )
+                    }
+                case .push:
+                    if presentable is AnyView {
+                        let view = AnyView(NavigationCoordinatableView(id: nextId, coordinator: coordinator))
 
-                                self.presented = .push(
-                                    view
-                                )
-                            } else if let presentable = presentable as? AnyCoordinatable {
-                                self.presented = .push(
-                                    AnyView(
-                                        presentable.coordinatorView()
-                                    )
-                                )
-                            } else {
-                                fatalError("Unsupported presentable!")
-                            }
-                        case .fullScreen(let presentable):
-                            if #available(iOS 14, tvOS 14, watchOS 7, *) {
-                                if presentable is AnyView {
-                                    let view = AnyView(NavigationCoordinatableView(id: nextId, coordinator: coordinator))
+                        self.presented = Presented(
+                            view: view,
+                            type: .push
+                        )
+                    } else {
+                        self.presented = Presented(
+                            view: presentable.view(),
+                            type: .push
+                        )
+                    }
+                case.fullScreen:
+                    if #available(iOS 14, tvOS 14, watchOS 7, *) {
+                        if presentable is AnyView {
+                            let view = AnyView(NavigationCoordinatableView(id: nextId, coordinator: coordinator))
 
-                                    #if os(macOS)
-                                    self.presented = .fullScreen(
-                                        AnyView(
-                                            NavigationView(
-                                                content: {
-                                                    view
-                                                }
-                                            )
-                                        )
+                            #if os(macOS)
+                            self.presented = Presented(
+                                view: AnyView(
+                                    NavigationView(
+                                        content: {
+                                            view
+                                        }
                                     )
-                                    #else
-                                    self.presented = .fullScreen(
-                                        AnyView(
-                                            NavigationView(
-                                                content: {
-                                                    #if os(macOS)
-                                                    view
-                                                    #else
-                                                    view.navigationBarHidden(true)
-                                                    #endif
-                                                }
-                                            )
-                                            .navigationViewStyle(StackNavigationViewStyle())
-                                        )
+                                ),
+                                type: .fullScreen
+                            )
+                            #else
+                            self.presented = Presented(
+                                view: AnyView(
+                                    NavigationView(
+                                        content: {
+                                            #if os(macOS)
+                                            view
+                                            #else
+                                            view.navigationBarHidden(true)
+                                            #endif
+                                        }
                                     )
-                                    #endif
-                                } else if let presentable = presentable as? AnyCoordinatable {
-                                    self.presented = .fullScreen(
-                                        AnyView(
-                                            presentable.coordinatorView()
-                                        )
-                                    )
-                                }  else {
-                                    fatalError("Unsupported presentable!")
-                                }
-                            } else {
-                                fatalError("Unsupported presentable!")
-                            }
-                            
+                                    .navigationViewStyle(StackNavigationViewStyle())
+                                ),
+                                type: .fullScreen
+                            )
+                            #endif
+                        } else {
+                            self.presented = Presented(
+                                view: AnyView(
+                                    presentable.view()
+                                ),
+                                type: .fullScreen
+                            )
                         }
                     } else {
                         fatalError()
                     }
                 }
+            }
+        }
+    }
+    
+    init(id: Int, coordinator: T) {
+        self.id = id
+        self.navigationStack = coordinator.stack
+        
+        self.setupPresented(coordinator: coordinator)
+        
+        navigationStack.$value.dropFirst().sink { [weak self, coordinator] _ in
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                
+                self.setupPresented(coordinator: coordinator)
             }
         }
         .store(in: &cancellables)

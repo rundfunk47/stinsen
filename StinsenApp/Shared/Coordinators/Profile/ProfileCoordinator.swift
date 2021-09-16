@@ -1,26 +1,9 @@
 import Foundation
 import SwiftUI
-
 import Stinsen
 
-class ProfileCoordinator: NavigationCoordinatable {
-    var navigationStack: NavigationStack = NavigationStack()
-
-    enum Route: NavigationRoute {
-        case push
-        case modal
-    }
-
-    func resolveRoute(route: Route) -> Transition {
-        switch route {
-        case .modal:
-            return .modal(AnyView(ProfileScreen()))
-        case .push:
-            return .push(AnyView(ProfileScreen()))
-        }
-    }
+final class ProfileCoordinator: NavigationCoordinatable {
+    let stack = NavigationStack(initial: \ProfileCoordinator.start)
     
-    @ViewBuilder func start() -> some View {
-        ProfileScreen()
-    }
+    @Root var start = makeStart
 }

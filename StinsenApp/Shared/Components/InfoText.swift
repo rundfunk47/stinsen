@@ -21,7 +21,7 @@ struct InfoText: View {
     var ios: some View {
         Text(text)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding([.leading, .trailing], 18)
+            .padding(18)
     }
     
     var standard: some View {

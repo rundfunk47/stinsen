@@ -2,9 +2,9 @@ import Foundation
 import SwiftUI
 
 struct TabCoordinatableView<T: TabCoordinatable, U: View>: View {
-    @ObservedObject var coordinator: T
-    private let router: TabRouter<T.Route>
-    @ObservedObject var child: TabChild<T>
+    private var coordinator: T
+    private let router: TabRouter<T>
+    @ObservedObject var child: TabChild
     private var customize: (AnyView) -> U
     private var views: [AnyView]
     
@@ -16,7 +16,7 @@ struct TabCoordinatableView<T: TabCoordinatable, U: View>: View {
                         view
                             .element
                             .tabItem {
-                                self.coordinator.tabItem(forTab: view.offset)
+                                coordinator.child.allItems[view.offset].tabItem(view.offset == child.activeTab)
                             }
                             .tag(view.offset)
                     }
@@ -26,15 +26,20 @@ struct TabCoordinatableView<T: TabCoordinatable, U: View>: View {
         .environmentObject(router)
     }
     
-    init(coordinator: T, customize: @escaping (AnyView) -> U) {
+    init(paths: [AnyKeyPath], coordinator: T, customize: @escaping (AnyView) -> U) {
         self.coordinator = coordinator
+        
         self.router = TabRouter(coordinator)
         RouterStore.shared.store(router: router)
         self.customize = customize
-        self.child = coordinator.children
+        self.child = coordinator.child
         
-        self.views = coordinator.children.coordinators.map {
-            return $0.1.coordinatorView()
+        if coordinator.child.allItems == nil {
+            coordinator.setupAllTabs()
+        }
+
+        self.views = coordinator.child.allItems.map {
+            $0.presentable.view()
         }
     }
 }

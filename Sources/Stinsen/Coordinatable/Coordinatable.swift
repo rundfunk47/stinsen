@@ -1,23 +1,16 @@
 import Foundation
 import SwiftUI
 
-///A Coordinatable usually represents some kind of flow in the app. You do not need to implement this directly if you're not toying with other types of navigation e.g. a hamburger menu, but rather you would implement TabCoordinatable, NavigationCoordinatable or ViewCoordinatable.
-public protocol Coordinatable: ObservableObject, Identifiable {
-    ///Returns a view for the coordinator
-    func coordinatorView() -> AnyView
-    var id: String { get }
-    /// The active child-coordinators of the coordinator
-    var childCoordinators: [AnyCoordinatable] { get }
-    func dismissChildCoordinator(_ childCoordinator: AnyCoordinatable, _ completion: (() -> Void)?)
-    var dismissalAction: DismissalAction { get set }
+/// A Coordinatable usually represents some kind of flow in the app. You do not need to implement this directly if you're not toying with other types of navigation e.g. a hamburger menu, but rather you would implement TabCoordinatable, NavigationCoordinatable or ViewCoordinatable.
+public protocol Coordinatable: ObservableObject, Identifiable, AnyCoordinatable {
+
 }
 
-public typealias DismissalAction = () -> Void
-
-public extension Coordinatable {
-    var allChildCoordinators: [AnyCoordinatable] {
-        return childCoordinators.flatMap { [$0] + $0.allChildCoordinators }
-    }
+public protocol AnyCoordinatable: Presentable, AnyObject {
+    /// This function is used internally for Stinsen. Do not implement this directly in a coordinator, it will use the a standard implementation derived from the coordinatable you're implementing. The ID for the coordinator. Will not be unique across instances of the coordinator.
+    var id: String { get }
+    var parent: AnyCoordinatable? { get set }
+    func dismissChild(coordinator: AnyCoordinatable, action: (() -> Void)?)
 }
 
 public extension Coordinatable {

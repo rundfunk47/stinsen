@@ -1,57 +1,46 @@
 import Foundation
 import Combine
+import SwiftUI
+
+struct NavigationRootItem {
+    let keyPath: Int
+    let input: Any?
+    let child: Presentable
+}
+
+/// Wrapper around childCoordinators
+/// Used so that you don't need to write @Published
+public class NavigationRoot: ObservableObject {
+    @Published var item: NavigationRootItem
+    
+    init(item: NavigationRootItem) {
+        self.item = item
+    }
+}
 
 /// Represents a stack of routes
-public class NavigationStack: ObservableObject {
-    public func popTo<T: Coordinatable>(_ coordinator: T) {
-        let index = value.firstIndex { tuple in
-            let presentable = tuple.presentable
-            
-            if let presentable = presentable as? AnyCoordinatable {
-                return coordinator.id == presentable.id
-            } else {
-                return false
-            }
-        }!
-
-        self.value = Array(self.value.prefix(index))
-        self.poppedTo.send(index - 1)
-    }
+public class NavigationStack<T: NavigationCoordinatable> {
+    var dismissalAction: [Int: () -> Void] = [:]
     
-    public var poppedTo = PassthroughSubject<Int, Never>()
-    public var dismissalAction: DismissalAction
+    var parent: AnyCoordinatable?
+    var poppedTo = PassthroughSubject<Int, Never>()
+    let initial: PartialKeyPath<T>
+    let initialInput: Any?
+    var root: NavigationRoot!
     
-    @Published private (set) var value: [Transition]
+    @Published var value: [NavigationStackItem]
     
-    public init() {
+    public init(initial: PartialKeyPath<T>, _ initialInput: Any? = nil) {
         self.value = []
-        self.dismissalAction = {}
+        self.initial = initial
+        self.initialInput = initialInput
+        self.root = nil
     }
-    
-    public func popTo(_ int: Int) {
-        if int == -1 {
-            value = []
-            poppedTo.send(-1)
-        } else {
-            value = Array(value.prefix(int + 1))
-            poppedTo.send(int)
-        }
-    }
-    
-    func append(_ transition: Transition) {
-        self.value.append(transition)
-    }
-    
-    var childCoordinators: [AnyCoordinatable] {
-        return value.compactMap {
-            switch $0 {
-            case .modal(let presentable):
-                return presentable as? AnyCoordinatable
-            case .push(let presentable):
-                return presentable as? AnyCoordinatable
-            case .fullScreen(let presentable):
-                return presentable as? AnyCoordinatable
-            }
-        }
-    }
+}
+
+struct NavigationStackItem {
+    let presentationType: PresentationType
+    let presentable: Presentable
+    let keyPath: Int
+    let input: Any?
 }

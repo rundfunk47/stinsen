@@ -3,25 +3,9 @@ import SwiftUI
 
 import Stinsen
 
-class UnauthenticatedCoordinator: NavigationCoordinatable {
-    var navigationStack = NavigationStack()
+final class UnauthenticatedCoordinator: NavigationCoordinatable {
+    let stack = NavigationStack(initial: \UnauthenticatedCoordinator.start)
     
-    enum Route: NavigationRoute {
-        case forgotPassword
-    }
-
-    func resolveRoute(route: Route) -> Transition {
-        switch route {
-        case .forgotPassword:
-            return .push(AnyView(ForgotPasswordScreen()))
-        }
-    }
-    
-    @ViewBuilder func start() -> some View {
-        LoginScreen()
-    }
-    
-    init() {
-
-    }
+    @Root var start = makeStart
+    @Route(.push) var forgotPassword = makeForgotPassword
 }

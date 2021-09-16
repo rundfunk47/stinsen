@@ -40,9 +40,9 @@ struct RoundedButton: View {
             }
             .foregroundColor(style == .primary ? .white : .black)
             .padding()
-            .background(style == .primary ? Color.blue : Color.init(red: 0.8, green: 0.8, blue: 0.8))
+            .background(style == .primary ? Color("AccentColor") : Color.init(red: 0.8, green: 0.8, blue: 0.8))
             .cornerRadius(15.0)
-            .frame(maxWidth: 355, minHeight: 50)
+            .frame(maxWidth: 300, minHeight: 50)
         })
     }
     

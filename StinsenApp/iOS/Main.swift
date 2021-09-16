@@ -43,9 +43,7 @@ class DefaultSceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
-        let contentView = CoordinatorView(
-            MainCoordinator()
-        )
+        let contentView = MainCoordinator().view()
         
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)

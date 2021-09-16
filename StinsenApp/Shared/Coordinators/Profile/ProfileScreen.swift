@@ -1,19 +1,18 @@
 import Foundation
 import SwiftUI
-
 import Stinsen
 
 struct ProfileScreen: View {
-    @EnvironmentObject var main: ViewRouter<MainCoordinator.Route>
-    @EnvironmentObject var profile: NavigationRouter<ProfileCoordinator.Route>
+    @EnvironmentObject var mainRouter: MainCoordinator.Router
 
     var body: some View {
         ScrollView {
             VStack {
                 RoundedButton("Logout") {
-                    main.route(to: .unauthenticated)
+                    mainRouter.root(\.unauthenticated)
                 }
-            }.navigationTitle(with: "Profile")
+            }
         }
+        .navigationTitle(with: "Profile")
     }
 }
