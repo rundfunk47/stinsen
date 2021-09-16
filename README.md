@@ -43,7 +43,7 @@ final class TodosCoordinator: NavigationCoordinatable {
 }
 ```
 
-The `@Route`s defines all the possible routes that can be performed from the current coordinator. The value on the right hand side is the factory function that will be executed when routing. The function can return either a SwiftUI view or another coordinator. 
+The `@Route`s defines all the possible routes that can be performed from the current coordinator and the transition that will be performed. The value on the right hand side is the factory function that will be executed when routing. The function can return either a SwiftUI view or another coordinator. The `@Root` another type of route that has no transition, and used for defining the first view of the coordinator.  
 
 Stinsen out of the box has two different kinds of `Coordinatable` protocols your coordinators can implement: 
 
@@ -92,8 +92,8 @@ Routing can be performed directly on the coordinator itself, which can be useful
 
 ```swift
 final class MainCoordinator: NavigationCoordinatable {
-    @Route var unauthenticated = makeUnauthenticated
-    @Route var authenticated = makeAuthenticated
+    @Root var unauthenticated = makeUnauthenticated
+    @Root var authenticated = makeAuthenticated
     
     /* ... */
     
@@ -115,7 +115,7 @@ What actions you can perform from the router/coordinator depends on the kind of 
 * `popLast` - Removes the last item from the stack. Note that `Stinsen` doesn't care if the view was presented modally or pushed, the same function is used for both. 
 * `pop` - Removes the view from the stack. This function can only be performed by a router, since only the router knows about which view you're trying to pop.
 * `popToRoot` - Clears the stack.
-* `root` - Changes the root. If the root is already the active root, will do nothing.
+* `root` - Changes the root (i.e. the first view of the stack). If the root is already the active root, will do nothing.
 * `route` - Navigates to another route.
 * `focusFirst` - Finds the specified route if it exists in the stack, starting from the first item. If found, will remove everything after that.
 * `dismissCoordinator` - Deletes the whole coordinator and it's associated children from the tree.
@@ -159,14 +159,14 @@ class LoginScreenViewModel: ObservableObject {
     
     // via the RouterObject property wrapper
     @RouterObject
-    var unauthenticated: MainCoordinator.Router?
+    var unauthenticated: Unauthenticated.Router?
     
     init() {
         
     }
     
     func loginButtonPressed() {
-        main?.route(to: \.authenticated)
+        main?.root(\.authenticated)
     }
     
     func forgotPasswordButtonPressed() {
@@ -284,6 +284,7 @@ _Stins_ is short in Swedish for "Station Master", and _Stinsen_ is the definite 
 * Routers are specialized using the coordinator instead of the route.
 * Minor changes to functions and variable names.
 * Coordinators need to be marked as final.
+* ViewCoordinatable has been removed and folded into NavigationCoordinatable. Use multiple `@Root`s and switch between them using `.root()` to get the same functionality.
 
 # License 📃
 
