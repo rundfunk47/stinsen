@@ -50,6 +50,8 @@ Stinsen out of the box has two different kinds of `Coordinatable` protocols your
 * `NavigationCoordinatable` - For navigational flows. Make sure to wrap these in a NavigationViewCoordinator if you wish to push on the navigation stack.
 * `TabCoordinatable` - For TabViews.
 
+In addition, Stinsen also has two Coordinators you can use, `ViewWrapperCoordinator` and `NavigationViewCoordinator`. `ViewWrapperCoordinator` is a coordinator you can either subclass or use right away to wrap your coordinator in a view, and `NavigationViewCoordinator` is a subclass that wraps your coordinator in a `NavigationView`.   
+
 ## Showing the coordinator for the user
 The view for the coordinator can be created using `.view()`, so in order to show a coordinator to the user you would just do something like:
 
@@ -177,7 +179,7 @@ class LoginScreenViewModel: ObservableObject {
 
 ## Customizing
 
-Sometimes you'd want to customize your coordinators. Implement the `customize`-function in order to do so: 
+Sometimes you'd want to customize your coordinators. NavigationViewCoordinator and TabCoordinatable have a `customize`-function you can implement in order to do so: 
 
 ```swift
 final class AuthenticatedCoordinator: TabCoordinatable {
@@ -185,9 +187,20 @@ final class AuthenticatedCoordinator: TabCoordinatable {
     @ViewBuilder func customize(_ view: AnyView) -> some View {
         view
             .accentColor(Color("AccentColor"))
-    }    
+            .onReceive(Services.shared.$authentication) { authentication in
+                switch authentication {
+                case .authenticated:
+                    self.root(\.authenticated)
+                case .unauthenticated:
+                    self.root(\.authenticated)
+                }
+            }
+        }
+    }
 }
 ```
+
+There is also a `ViewWrapperCoordinator` you can use to customize as well.
 
 ## Chaining
 
