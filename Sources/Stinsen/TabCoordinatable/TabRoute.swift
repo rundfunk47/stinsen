@@ -12,14 +12,14 @@ public struct Content<T: TabCoordinatable, Output: Presentable>: Outputable {
     }
     
     func using(coordinator: Any) -> Presentable {
-        return self.closure(coordinator as! T)(())
+        return self.closure(coordinator as! T)()
     }
     
-    let closure: ((T) -> ((Void) -> Output))
+    let closure: ((T) -> (() -> Output))
     let tabItem: ((T) -> ((Bool) -> AnyView))
     
     init<TabItem: View>(
-        closure: @escaping ((T) -> ((Void) -> Output)),
+        closure: @escaping ((T) -> (() -> Output)),
         tabItem: @escaping ((T) -> ((Bool) -> TabItem))
     ) {
         self.closure = closure
@@ -44,7 +44,7 @@ extension TabRoute where T: TabCoordinatable, Output == AnyView {
     ) {
         self.init(
             standard: Content(
-                closure: { coordinator in { _ in AnyView(wrappedValue(coordinator)()) }},
+                closure: { coordinator in { AnyView(wrappedValue(coordinator)()) }},
                 tabItem: tabItem
             )
         )
@@ -58,7 +58,7 @@ extension TabRoute where T: TabCoordinatable, Output: Coordinatable {
     ) {
         self.init(
             standard: Content(
-                closure: { coordinator in { _ in wrappedValue(coordinator)() }},
+                closure: { coordinator in {  wrappedValue(coordinator)() }},
                 tabItem: tabItem
             )
         )
