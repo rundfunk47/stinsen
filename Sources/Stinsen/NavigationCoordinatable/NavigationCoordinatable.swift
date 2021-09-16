@@ -295,6 +295,10 @@ public extension NavigationCoordinatable {
         self.popTo(int, nil)
     }
     
+    internal func popLast(_ action: (() -> ())?) {
+        self.popTo(self.stack.value.count - 2, action)
+    }
+    
     internal func popTo(_ int: Int, _ action: (() -> ())?) {
         if let action = action {
             self.stack.dismissalAction[int] = action
@@ -307,7 +311,7 @@ public extension NavigationCoordinatable {
         if int == -1 {
             self.stack.value = []
             self.stack.poppedTo.send(-1)
-        } else {
+        } else if int >= 0 {
             self.stack.value = Array(self.stack.value.prefix(int + 1))
             self.stack.poppedTo.send(int)
         }

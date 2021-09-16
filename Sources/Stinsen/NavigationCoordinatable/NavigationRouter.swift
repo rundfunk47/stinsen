@@ -19,6 +19,14 @@ public extension NavigationRouter {
         coordinator.popToRoot(action)
     }
     
+    func pop(_ action: (() -> ())? = nil) {
+        coordinator.popTo(self.id - 1, action)
+    }
+    
+    func popLast(_ action: (() -> ())? = nil) {
+        coordinator.popLast(action)
+    }
+    
     func dismissCoordinator(_ action: (() -> ())? = nil) {
         coordinator.dismissCoordinator(action)
     }

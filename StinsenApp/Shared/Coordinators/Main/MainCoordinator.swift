@@ -6,7 +6,7 @@ import Stinsen
 final class MainCoordinator: NavigationCoordinatable {
     var stack = NavigationStack<MainCoordinator>(initial: \MainCoordinator.start)
 
-    @Route var start = makeStart
+    @Root var start = makeStart
     @Route var unauthenticated = makeUnauthenticated
     @Route var authenticated = makeAuthenticated
     

@@ -25,7 +25,7 @@ Example using a Navigation Stack:
 final class TodosCoordinator: NavigationCoordinatable {
     var stack = NavigationStack(initial: \TodosCoordinator.start)
     
-    @Route var start = makeStart
+    @Root var start = makeStart
     @Route(.push) var todo = makeTodo
     @Route(.modal) var createTodo = makeCreateTodo
     
