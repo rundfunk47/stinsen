@@ -3,14 +3,12 @@ import SwiftUI
 import Stinsen
 
 struct TodosScreen: View {
-    @ObservedObject private var store: TodosStore = .shared
-    
-    @EnvironmentObject private var main: MainCoordinator.Router
-    @EnvironmentObject private var todos: TodosCoordinator.Router
+    @ObservedObject private var todosStore: TodosStore
+    @EnvironmentObject private var todosRouter: TodosCoordinator.Router
     
     @ViewBuilder var button: some View {
         Button(action: {
-            todos.route(to: \.createTodo)
+            todosRouter.route(to: \.createTodo)
         }, label: {
             Image(systemName: "folder.badge.plus")
         })
@@ -18,16 +16,13 @@ struct TodosScreen: View {
     
     @ViewBuilder var content: some View {
         ScrollView {
-            if store.all.isEmpty {
+            if todosStore.all.isEmpty {
                 InfoText("You have no stored todos.")
             }
             VStack {
-                #if os(watchOS)
-                button
-                #endif
-                ForEach(store.all) { todo in
+                ForEach(todosStore.all) { todo in
                     Button(todo.name, action: {
-                        todos.route(to: \.todo, todo.id)
+                        todosRouter.route(to: \.todo, todo.id)
                     })
                 }
             }
@@ -37,13 +32,24 @@ struct TodosScreen: View {
     }
     
     @ViewBuilder var body: some View {
-        #if os(watchOS)
-        content
-        #else
+        #if os(iOS)
         content
         .navigationBarItems(
             trailing: button
         )
+        #else
+        button
+        content
         #endif
+    }
+    
+    init(todosStore: TodosStore) {
+        self.todosStore = todosStore
+    }
+}
+
+struct TodosScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        TodosScreen(todosStore: TodosStore(user: User(username: "user@example.com", accessToken: UUID().uuidString)))
     }
 }

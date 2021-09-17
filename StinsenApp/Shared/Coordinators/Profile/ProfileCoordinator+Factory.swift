@@ -4,6 +4,6 @@ import Stinsen
 
 extension ProfileCoordinator {
     @ViewBuilder func makeStart() -> some View {
-        ProfileScreen()
+        ProfileScreen(user: user)
     }
 }

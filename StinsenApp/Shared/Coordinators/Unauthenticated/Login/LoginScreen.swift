@@ -4,11 +4,12 @@ import SwiftUI
 import Stinsen
 
 struct LoginScreen: View {
-    @EnvironmentObject var mainRouter: MainCoordinator.Router
-    @EnvironmentObject var unauthenticatedRouter: UnauthenticatedCoordinator.Router
+    @EnvironmentObject private var mainRouter: MainCoordinator.Router
+    @EnvironmentObject private var unauthenticatedRouter: UnauthenticatedCoordinator.Router
+    private let services: UnauthenticatedServices
     
-    @State var username: String = ""
-    @State var password: String = ""
+    @State private var username: String = "user@example.com"
+    @State private var password: String = "password"
 
     var body: some View {
         ScrollView {
@@ -16,22 +17,34 @@ struct LoginScreen: View {
             VStack {
                 Spacer(minLength: 16)
                 RoundedTextField("Username", text: $username)
-                RoundedTextField("Password", text: $password)
+                RoundedTextField("Password", text: $password, secure: true)
                 Spacer(minLength: 32)
                 RoundedButton("Login") {
-                    mainRouter.root(\.authenticated, User(username: username, accessToken: "token"))
+                    services.login.login(
+                        username: username,
+                        password: password,
+                        callback: nil
+                    )
                 }
-                RoundedButton("Forgot password", style: .secondary) {
+                RoundedButton("Register", style: .secondary) {
+                    unauthenticatedRouter.route(to: \.registration)
+                }
+                RoundedButton("Forgot your password?", style: .tertiary) {
                     unauthenticatedRouter.route(to: \.forgotPassword)
                 }
             }
         }
         .navigationTitle(with: "Welcome")
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+    
+    init(services: UnauthenticatedServices) {
+        self.services = services
     }
 }
 
 struct LoginScreen_Previews: PreviewProvider {
     static var previews: some View {
-        LoginScreen()
+        LoginScreen(services: UnauthenticatedServices())
     }
 }

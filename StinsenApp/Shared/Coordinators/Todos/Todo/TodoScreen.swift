@@ -6,37 +6,42 @@ struct TodoScreen: View {
     private let todoId: UUID
     
     @EnvironmentObject private var todosRouter: TodosCoordinator.Router
-    @ObservedObject private var todos = TodosStore.shared
-    
+    @ObservedObject private var todosStore: TodosStore
+
     var content: some View {
         ScrollView {
             InfoText("This is the details screen for your todo.")
-            #if os(watchOS)
-            button
-            #endif
         }
-        .navigationTitle(with: todos[todoId].name)
+        .navigationTitle(with: todosStore[todoId].name)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     
     var button: some View {
         Button(action: {
-            todos[todoId].isFavorite.toggle()
+            todosStore[todoId].isFavorite.toggle()
         }, label: {
-            Image(systemName: "star" + (todos[todoId].isFavorite ? ".fill" : ""))
+            Image(systemName: "star" + (todosStore[todoId].isFavorite ? ".fill" : ""))
         })
     }
     
     var body: some View {
-        #if os(watchOS)
-        content
-        #else
+        #if os(iOS)
         content
             .navigationBarItems(trailing: button)
+        #else
+        button
+        content
         #endif
     }
     
-    init(todoId: UUID) {
+    init(todosStore: TodosStore, todoId: UUID) {
         self.todoId = todoId
+        self.todosStore = todosStore
+    }
+}
+
+struct TodoScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        TodoScreen(todosStore: TodosStore(user: User(username: "user@example.com", accessToken: UUID().uuidString)), todoId: UUID())
     }
 }

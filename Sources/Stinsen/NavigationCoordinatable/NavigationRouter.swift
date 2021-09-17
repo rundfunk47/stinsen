@@ -305,4 +305,31 @@ public extension NavigationRouter {
     ) -> Bool {
         return coordinator.isRoot(route, input, comparator: comparator)
     }
+    
+    @discardableResult func hasRoot<Input, Output: Coordinatable>(
+        _ route: KeyPath<T, Transition<T, RootSwitch, Input, Output>>
+    ) -> Output? {
+        return coordinator.hasRoot(route)
+    }
+    
+    @discardableResult func hasRoot<Output: Coordinatable>(
+        _ route: KeyPath<T, Transition<T, RootSwitch, Void, Output>>
+    ) -> Output? {
+        return coordinator.hasRoot(route)
+    }
+    
+    @discardableResult func hasRoot<Input: Equatable, Output: Coordinatable>(
+        _ route: KeyPath<T, Transition<T, RootSwitch, Input, Output>>,
+        _ input: Input
+    ) -> Output? {
+        return coordinator.hasRoot(route, input)
+    }
+    
+    @discardableResult func hasRoot<Input: Equatable, Output: Coordinatable>(
+        _ route: KeyPath<T, Transition<T, RootSwitch, Input, Output>>,
+        _ input: Input,
+        comparator: @escaping (Input, Input) -> Bool
+    ) -> Output? {
+        return coordinator.hasRoot(route, input, comparator: comparator)
+    }
 }

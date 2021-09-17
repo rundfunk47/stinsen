@@ -4,9 +4,10 @@ import SwiftUI
 import Stinsen
 
 struct ForgotPasswordScreen: View {
-    @EnvironmentObject var unauthenticated: UnauthenticatedCoordinator.Router
-    @State var text: String = ""
-    
+    @EnvironmentObject private var unauthenticatedRouter: UnauthenticatedCoordinator.Router
+    @State private var text: String = ""
+    private var services: UnauthenticatedServices
+
     var body: some View {
         ScrollView {
             VStack {
@@ -15,16 +16,22 @@ struct ForgotPasswordScreen: View {
                 RoundedTextField("Username", text: $text)
                 Spacer(minLength: 32)
                 RoundedButton("OK") {
-                    unauthenticated.popToRoot()
+                    services.forgotPassword.forgot(username: text) { 
+                        unauthenticatedRouter.popToRoot()
+                    }
                 }
             }
             .navigationTitle(with: "Forgot password")
         }
     }
+    
+    init(services: UnauthenticatedServices) {
+        self.services = services
+    }
 }
 
 struct ForgotPasswordScreen_Previews: PreviewProvider {
     static var previews: some View {
-        ForgotPasswordScreen()
+        ForgotPasswordScreen(services: UnauthenticatedServices())
     }
 }

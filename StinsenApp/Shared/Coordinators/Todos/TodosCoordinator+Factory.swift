@@ -4,14 +4,14 @@ import Stinsen
 
 extension TodosCoordinator {
     @ViewBuilder func makeTodo(todoId: UUID) -> some View {
-        TodoScreen(todoId: todoId)
+        TodoScreen(todosStore: todosStore, todoId: todoId)
     }
     
     @ViewBuilder func makeCreateTodo() -> some View {
-        CreateTodoScreen()
+        CreateTodoScreen(todosStore: todosStore)
     }
     
     @ViewBuilder func makeStart() -> some View {
-        TodosScreen()
+        TodosScreen(todosStore: todosStore)
     }
 }

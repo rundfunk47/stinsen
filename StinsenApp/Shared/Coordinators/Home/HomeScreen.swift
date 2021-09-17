@@ -3,17 +3,17 @@ import SwiftUI
 import Stinsen
 
 struct HomeScreen: View {
-    @EnvironmentObject var authenticatedRouter: AuthenticatedCoordinator.Router
-    @ObservedObject var todos = TodosStore.shared
-    
+    @EnvironmentObject private var authenticatedRouter: AuthenticatedCoordinator.Router
+    @ObservedObject private var todosStore: TodosStore
+
     var body: some View {
         ScrollView {
-            if todos.favorites.isEmpty {
+            if todosStore.favorites.isEmpty {
                 InfoText("Welcome to Stinsenapp! If you had any todo's marked as your favorites, they would show up on this page.")
             } else {
                 InfoText("Welcome to Stinsenapp! Here are your favorite todos:")
                 VStack {
-                    ForEach(todos.favorites) { todo in
+                    ForEach(todosStore.favorites) { todo in
                         Button(todo.name) {
                             authenticatedRouter
                                 .focusFirst(\.todos)
@@ -28,4 +28,15 @@ struct HomeScreen: View {
         }
         .navigationTitle(with: "Home")
     }
+    
+    init(todosStore: TodosStore) {
+        self.todosStore = todosStore
+    }
 }
+
+struct HomeScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeScreen(todosStore: TodosStore(user: User(username: "user@example.com", accessToken: UUID().uuidString)))
+    }
+}
+

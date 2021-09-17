@@ -10,8 +10,4 @@ extension MainCoordinator {
     func makeAuthenticated(user: User) -> AuthenticatedCoordinator {
         return AuthenticatedCoordinator(user: user)
     }
-    
-    @ViewBuilder func makeStart() -> some View {
-        LoadingScreen()
-    }
 }

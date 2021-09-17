@@ -4,6 +4,6 @@ import Stinsen
 
 extension HomeCoordinator {
     @ViewBuilder func makeStart() -> some View {
-        HomeScreen()
+        HomeScreen(todosStore: todosStore)
     }
 }

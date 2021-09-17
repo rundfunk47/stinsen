@@ -4,35 +4,58 @@ import SwiftUI
 import Stinsen
 
 final class MainCoordinator: NavigationCoordinatable {
-    var stack = NavigationStack<MainCoordinator>(initial: \MainCoordinator.start)
+    var stack: NavigationStack<MainCoordinator>
 
-    @Root var start = makeStart
-    @Route var unauthenticated = makeUnauthenticated
-    @Route var authenticated = makeAuthenticated
+    @Root var unauthenticated = makeUnauthenticated
+    @Root var authenticated = makeAuthenticated
+    
+    @ViewBuilder func sharedView(_ view: AnyView) -> some View {
+        view
+            .onReceive(AuthenticationService.shared.$status, perform: { status in
+                switch status {
+                case .unauthenticated:
+                    self.root(\.unauthenticated)
+                case .authenticated(let user):
+                    self.root(\.authenticated, user)
+                }
+            })
+            
+    }
     
     @ViewBuilder func customize(_ view: AnyView) -> some View {
+        #if os(tvOS)
+        sharedView(view)
+        #else
         if #available(iOS 14.0, *) {
-            view.onOpenURL { url in
-                print(url)
-                // very naive deeplinking
-                // please implement a better one in your app
-                let urlString = url.absoluteString.dropFirst(13)
-                let split = urlString.split(separator: "/")
-                guard split[0] == "todo" else { return }
-                
-                guard let todoId = TodosStore.shared.all.first(where: { todo in
-                    todo.name.lowercased() == split[1].lowercased()
-                })?.id else { return }
-                
-                // you should really do some kind of auth-check here
-                self
-                    .root(\.authenticated, User(username: "username", accessToken: "token"))
-                    .focusFirst(\.todos)
-                    .child
-                    .route(to: \.todo, todoId)
-            }
+            sharedView(view).onOpenURL(perform: { url in
+                if let coordinator = self.hasRoot(\.authenticated) {
+                    do {
+                        let deepLink = try DeepLink(url: url, todosStore: coordinator.todosStore)
+                        
+                        switch deepLink {
+                        case .todo(let id):
+                            coordinator
+                                .focusFirst(\.todos)
+                                .child
+                                .route(to: \.todo, id)
+                        }
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                }
+            }).accentColor(Color("AccentColor"))
         } else {
-            view
+            sharedView(view).accentColor(Color("AccentColor"))
+        }
+        #endif
+    }
+    
+    init() {
+        switch AuthenticationService.shared.status {
+        case .authenticated(let user):
+            stack = NavigationStack(initial: \MainCoordinator.authenticated, user)
+        case .unauthenticated:
+            stack = NavigationStack(initial: \MainCoordinator.unauthenticated)
         }
     }
 }

@@ -1,13 +1,11 @@
 import Foundation
 
 class TodosStore: ObservableObject {
-    static var shared = TodosStore()
-    
     @Published var all: [Todo] {
         didSet {
             let encoder = JSONEncoder()
             let jsonString = try! encoder.encode(all)
-            UserDefaults.standard.setValue(jsonString, forKey: "stored")
+            UserDefaults.standard.setValue(jsonString, forKey: "stored+\(user.username)")
         }
     }
     
@@ -29,8 +27,12 @@ class TodosStore: ObservableObject {
         }
     }
     
-    init() {
-        if let data = UserDefaults.standard.data(forKey: "stored") {
+    private let user: User
+    
+    init(user: User) {
+        self.user = user
+        
+        if let data = UserDefaults.standard.data(forKey: "stored+\(user.username)") {
             let decoder = JSONDecoder()
             let decoded = try! decoder.decode([Todo].self, from: data)
             all = decoded

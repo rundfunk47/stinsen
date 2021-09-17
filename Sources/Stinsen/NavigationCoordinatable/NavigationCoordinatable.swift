@@ -247,6 +247,25 @@ public protocol NavigationCoordinatable: Coordinatable {
         _ input: Input,
         comparator: @escaping (Input, Input) -> Bool
     ) -> Bool
+    
+    @discardableResult func hasRoot<Input, Output: Coordinatable>(
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>
+    ) -> Output?
+    
+    @discardableResult func hasRoot<Output: Coordinatable>(
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Void, Output>>
+    ) -> Output?
+    
+    @discardableResult func hasRoot<Input: Equatable, Output: Coordinatable>(
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>,
+        _ input: Input
+    ) -> Output?
+    
+    @discardableResult func hasRoot<Input: Equatable, Output: Coordinatable>(
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>,
+        _ input: Input,
+        comparator: @escaping (Input, Input) -> Bool
+    ) -> Output?
 }
 
 public extension NavigationCoordinatable {
@@ -644,31 +663,38 @@ public extension NavigationCoordinatable {
         return inputItem.comparator(compareTo as! Input, inputItem.input)
     }
     
-    func isRoot<Output: Coordinatable>(
+    private func _hasRoot<Input, Output: Coordinatable>(
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>,
+        inputItem: (input: Input, comparator: (Input, Input) -> Bool)?
+    ) -> Output? {
+        return _isRoot(route, inputItem: inputItem) ? (stack.root.item.child as! Output) : nil
+    }
+    
+    @discardableResult func isRoot<Output: Coordinatable>(
         _ route: KeyPath<Self, Transition<Self, RootSwitch, Void, Output>>
     ) -> Bool {
         return self._isRoot(route, inputItem: nil)
     }
     
-    func isRoot<Output: View>(
+    @discardableResult func isRoot<Output: View>(
         _ route: KeyPath<Self, Transition<Self, RootSwitch, Void, Output>>
     ) -> Bool {
         return self._isRoot(route, inputItem: nil)
     }
 
-    func isRoot<Input, Output: Coordinatable>(
+    @discardableResult func isRoot<Input, Output: Coordinatable>(
         _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>
     ) -> Bool {
         return self._isRoot(route, inputItem: nil)
     }
 
-    func isRoot<Input, Output: View>(
+    @discardableResult func isRoot<Input, Output: View>(
         _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>
     ) -> Bool {
         return self._isRoot(route, inputItem: nil)
     }
 
-    func isRoot<Input: Equatable, Output: Coordinatable>(
+    @discardableResult func isRoot<Input: Equatable, Output: Coordinatable>(
         _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>,
         _ input: Input
     ) -> Bool {
@@ -696,5 +722,32 @@ public extension NavigationCoordinatable {
         comparator: @escaping (Input, Input) -> Bool
     ) -> Bool {
         return self._isRoot(route, inputItem: (input: input, comparator: comparator))
+    }
+    
+    @discardableResult func hasRoot<Input, Output: Coordinatable>(
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>
+    ) -> Output? {
+        return self._hasRoot(route, inputItem: nil)
+    }
+    
+    @discardableResult func hasRoot<Output: Coordinatable>(
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Void, Output>>
+    ) -> Output? {
+        return self._hasRoot(route, inputItem: nil)
+    }
+    
+    @discardableResult func hasRoot<Input: Equatable, Output: Coordinatable>(
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>,
+        _ input: Input
+    ) -> Output? {
+        return self._hasRoot(route, inputItem: (input: input, comparator: { $0 == $1 }))
+    }
+    
+    @discardableResult func hasRoot<Input: Equatable, Output: Coordinatable>(
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>,
+        _ input: Input,
+        comparator: @escaping (Input, Input) -> Bool
+    ) -> Output? {
+        return self._hasRoot(route, inputItem: (input: input, comparator: comparator))
     }
 }

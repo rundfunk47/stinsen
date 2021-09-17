@@ -12,7 +12,8 @@ final class AuthenticatedCoordinator: TabCoordinatable {
         ]
     )
     
-    private var user: User
+    let todosStore: TodosStore
+    let user: User
 
     @Route(tabItem: makeHomeTab) var home = makeHome
     @Route(tabItem: makeTodosTab) var todos = makeTodos
@@ -20,10 +21,7 @@ final class AuthenticatedCoordinator: TabCoordinatable {
     @Route(tabItem: makeTestbedTab) var testbed = makeTestbed
     
     init(user: User) {
+        self.todosStore = TodosStore(user: user)
         self.user = user
     }
-    
-    func customize(_ view: AnyView) -> some View {
-        view.accentColor(Color("AccentColor"))
-    }    
 }

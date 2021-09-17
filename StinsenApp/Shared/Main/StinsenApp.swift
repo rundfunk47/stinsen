@@ -8,13 +8,6 @@ struct StinsenApp: App {
         WindowGroup {
             MainCoordinator()
                 .view()
-                .onAppear {
-                    #if os(iOS)
-                    let tintColor = UIColor(named: "AccentColor")
-                    
-                    UITabBar.appearance().tintColor = tintColor
-                    #endif
-                }
         }
     }
 }

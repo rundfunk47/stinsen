@@ -5,6 +5,7 @@ struct RoundedButton: View {
     enum Style: Equatable {
         case primary
         case secondary
+        case tertiary
     }
     
     let title: String
@@ -38,12 +39,34 @@ struct RoundedButton: View {
                 Text(title).font(.headline)
                 Spacer()
             }
-            .foregroundColor(style == .primary ? .white : .black)
+            .foregroundColor(foregroundColor)
             .padding()
-            .background(style == .primary ? Color("AccentColor") : Color.init(red: 0.8, green: 0.8, blue: 0.8))
+            .background(backgroundColor)
             .cornerRadius(15.0)
             .frame(maxWidth: 300, minHeight: 50)
         })
+    }
+    
+    var foregroundColor: Color {
+        switch style {
+        case .primary:
+            return .white
+        case .secondary:
+            return .black
+        case .tertiary:
+            return Color("AccentColor")
+        }
+    }
+    
+    var backgroundColor: Color {
+        switch style {
+        case .primary:
+            return Color("AccentColor")
+        case .secondary:
+            return Color(red: 0.8, green: 0.8, blue: 0.8)
+        case .tertiary:
+            return Color.clear
+        }
     }
     
     init(

@@ -13,7 +13,7 @@ extension AuthenticatedCoordinator {
     }
 
     func makeHome() -> NavigationViewCoordinator<HomeCoordinator> {
-        return NavigationViewCoordinator(HomeCoordinator())
+        return NavigationViewCoordinator(HomeCoordinator(todosStore: todosStore))
     }
     
     @ViewBuilder func makeHomeTab(isActive: Bool) -> some View {
@@ -22,7 +22,7 @@ extension AuthenticatedCoordinator {
     }
     
     func makeTodos() -> NavigationViewCoordinator<TodosCoordinator> {
-        return NavigationViewCoordinator(TodosCoordinator())
+        return NavigationViewCoordinator(TodosCoordinator(todosStore: todosStore))
     }
     
     @ViewBuilder func makeTodosTab(isActive: Bool) -> some View {
@@ -31,7 +31,7 @@ extension AuthenticatedCoordinator {
     }
     
     func makeProfile() -> NavigationViewCoordinator<ProfileCoordinator> {
-        return NavigationViewCoordinator(ProfileCoordinator())
+        return NavigationViewCoordinator(ProfileCoordinator(user: user))
     }
     
     @ViewBuilder func makeProfileTab(isActive: Bool) -> some View {
