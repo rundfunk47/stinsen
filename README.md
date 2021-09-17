@@ -22,35 +22,36 @@ Normally in SwiftUI, the view has to handle adding other views to the navigation
 Example using a Navigation Stack:
 
 ```swift
-final class TodosCoordinator: NavigationCoordinatable {
-    var stack = NavigationStack(initial: \TodosCoordinator.start)
+final class UnauthenticatedCoordinator: NavigationCoordinatable {
+    let stack = NavigationStack(initial: \UnauthenticatedCoordinator.start)
     
     @Root var start = makeStart
-    @Route(.push) var todo = makeTodo
-    @Route(.modal) var createTodo = makeCreateTodo
+    @Route(.modal) var forgotPassword = makeForgotPassword
+    @Route(.push) var registration = makeRegistration
     
-    @ViewBuilder func makeTodo(todoId: UUID) -> some View {
-        TodoScreen(todoId: todoId)
+    func makeRegistration() -> RegistrationCoordinator {
+        return RegistrationCoordinator()
     }
     
-    @ViewBuilder func makeCreateTodo() -> some View {
-        CreateTodoScreen()
+    @ViewBuilder func makeForgotPassword() -> some View {
+        ForgotPasswordScreen()
     }
-
+    
     @ViewBuilder func makeStart() -> some View {
-        TodosScreen()
+        LoginScreen()
     }
 }
+
 ```
 
-The `@Route`s defines all the possible routes that can be performed from the current coordinator and the transition that will be performed. The value on the right hand side is the factory function that will be executed when routing. The function can return either a SwiftUI view or another coordinator. The `@Root` another type of route that has no transition, and used for defining the first view of the coordinator.  
+The `@Route`s defines all the possible routes that can be performed from the current coordinator and the transition that will be performed. The value on the right hand side is the factory function that will be executed when routing. The function can return either a SwiftUI view or another coordinator. The `@Root` another type of route that has no transition, and used for defining the first view of the coordinator's navigation stack, which is referenced by the `NavigationStack`-class.  
 
 Stinsen out of the box has two different kinds of `Coordinatable` protocols your coordinators can implement: 
 
 * `NavigationCoordinatable` - For navigational flows. Make sure to wrap these in a NavigationViewCoordinator if you wish to push on the navigation stack.
 * `TabCoordinatable` - For TabViews.
 
-In addition, Stinsen also has two Coordinators you can use, `ViewWrapperCoordinator` and `NavigationViewCoordinator`. `ViewWrapperCoordinator` is a coordinator you can either subclass or use right away to wrap your coordinator in a view, and `NavigationViewCoordinator` is a subclass that wraps your coordinator in a `NavigationView`.   
+In addition, Stinsen also has two Coordinators you can use, `ViewWrapperCoordinator` and `NavigationViewCoordinator`. `ViewWrapperCoordinator` is a coordinator you can either subclass or use right away to wrap your coordinator in a view, and `NavigationViewCoordinator` is a `ViewWrapperCoordinator` subclass that wraps your coordinator in a `NavigationView`.   
 
 ## Showing the coordinator for the user
 The view for the coordinator can be created using `.view()`, so in order to show a coordinator to the user you would just do something like:
@@ -65,10 +66,10 @@ struct StinsenApp: App {
 }
 ```
 
-Stinsen can be used to power your whole app, or just parts of your app. You can still use the usual SwiftUI `NavigationLink`s and present modal sheets inside views managed by Stinsen, if you want to do so.
+Stinsen can be used to power your whole app, or just parts of your app. You can still use the usual SwiftUI `NavigationLink`s and present modal sheets inside views managed by Stinsen, if you wish to do so.
 
 ## Navigating from the coordinator
-Using a router, which has a reference to both the coordinator and the view, we can perform transitions from a view. Inside the view, the router can be fetched using `@EnvironmentObject`:
+Using a router, which has a reference to both the coordinator and the view, we can perform transitions from a view. Inside the view, the router can be fetched using `@EnvironmentObject`. Using the router one can transition to other routes:
 
 ```swift
 struct TodosScreen: View {
@@ -80,8 +81,13 @@ struct TodosScreen: View {
         }
         .navigationBarItems(
             trailing: Button(
-                action: { todosRouter.route(to: \.createTodo) },
-                label: { Image(systemName: "doc.badge.plus") }
+                action: {
+                    // Transition to the screen to create a todo:
+                    todosRouter.route(to: \.createTodo) 
+                },
+                label: { 
+                    Image(systemName: "doc.badge.plus") 
+                }
             )
         )
     }
@@ -90,7 +96,7 @@ struct TodosScreen: View {
 
 You can also fetch routers referencing coordinators that appeared earlier in the tree. For instance, you may want to switch the tab from a view that is inside the `TabView`.
 
-Routing can be performed directly on the coordinator itself, which can be useful if you want your coordinator to have some logic:
+Routing can be performed directly on the coordinator itself, which can be useful if you want your coordinator to have some logic, or if you pass the coordinator around:
 
 ```swift
 final class MainCoordinator: NavigationCoordinatable {
@@ -100,6 +106,8 @@ final class MainCoordinator: NavigationCoordinatable {
     /* ... */
     
     init() {
+        /* ... */
+
         cancellable = AuthenticationService.shared.status.sink { [weak self] status in
             switch status {
             case .authenticated(let user):
@@ -112,7 +120,7 @@ final class MainCoordinator: NavigationCoordinatable {
 }
 ```
 
-What actions you can perform from the router/coordinator depends on the kind of coordinator used. For instance, using a `NavigationCoordinatable` you can perform the following functions:
+What actions you can perform from the router/coordinator depends on the kind of coordinator used. For instance, using a `NavigationCoordinatable`, some of the functions you can perform are:
 
 * `popLast` - Removes the last item from the stack. Note that `Stinsen` doesn't care if the view was presented modally or pushed, the same function is used for both. 
 * `pop` - Removes the view from the stack. This function can only be performed by a router, since only the router knows about which view you're trying to pop.
@@ -179,14 +187,13 @@ class LoginScreenViewModel: ObservableObject {
 
 ## Customizing
 
-Sometimes you'd want to customize your coordinators. NavigationViewCoordinator and TabCoordinatable have a `customize`-function you can implement in order to do so: 
+Sometimes you'd want to customize the view generated by your coordinator. NavigationCoordinatable and TabCoordinatable have a `customize`-function you can implement in order to do so: 
 
 ```swift
 final class AuthenticatedCoordinator: TabCoordinatable {
     /* ... */
     @ViewBuilder func customize(_ view: AnyView) -> some View {
         view
-            .accentColor(Color("AccentColor"))
             .onReceive(Services.shared.$authentication) { authentication in
                 switch authentication {
                 case .authenticated:
@@ -204,15 +211,19 @@ There is also a `ViewWrapperCoordinator` you can use to customize as well.
 
 ## Chaining
 
-Functions can be chained if you want to perform a more advanced routing. For instance, to create a SwiftUI button that will change the tab and select a specific todo from anywhere in the app after login:
+Since most functions on the coordinator/router return a coordinator, you can use the results and chain them together to perform more advanced routing, if needed. For instance, to create a SwiftUI buttons that will change the tab and select a specific todo from anywhere in the app after login:
 
 ```swift
-Button(todo.name) {
-    authenticatedRouter
-        .focusFirst(\.todos)
-        .child
-        .popToRoot()
-        .route(to: \.todo, todo.id)
+VStack {
+    ForEach(todosStore.favorites) { todo in
+        Button(todo.name) {
+            authenticatedRouter
+                .focusFirst(\.todos)
+                .child
+                .popToRoot()
+                .route(to: \.todo, todo.id)
+        }
+    }
 }
 ```
 
@@ -225,28 +236,30 @@ The `AuthenticatedCoordinator` referenced by the `authenticatedRouter` is a `Tab
 
 Since Stinsen uses KeyPaths to represent the routes, the functions are type-safe and invalid chains cannot be created. This means: if you have a route in _A_ to _B_ and in _B_ to _C_, the app will not compile if you try to route from _A_ to _C_ without routing to _B_ first. Also, you cannot perform actions such as `popToRoot()` on a `TabCoordinatable` and so on.
 
-## Deeplinking
+## Deep Linking
 
-Using chaining, you can deeplink within the app:
+Using the returned values, you can easily deeplink within the app:
 
 ```swift
 final class MainCoordinator: NavigationCoordinatable {
     @ViewBuilder func customize(_ view: AnyView) -> some View {
-        if #available(iOS 14.0, *) {
-            view.onOpenURL { url in
-                let deeplink = try! createFromUrl(url) // creates a enum from an URL 
-
-                switch deeplink {
-                    case todo(let todoId):
-                        self
-                            .setRoot(\.authenticated)
+        view.onOpenURL { url in
+            if let coordinator = self.hasRoot(\.authenticated) {
+                do {
+                    // Dreate a DeepLink-enum
+                    let deepLink = try DeepLink(url: url, todosStore: coordinator.todosStore)
+                    
+                    switch deepLink {
+                    case .todo(let id):
+                        coordinator
                             .focusFirst(\.todos)
                             .child
-                            .route(to: \.todo, todoId)
+                            .route(to: \.todo, id)
+                    }
+                } catch {
+                    print(error.localizedDescription)
                 }
             }
-        } else {
-            view
         }
     }
 }
@@ -290,8 +303,10 @@ _Stins_ is short in Swedish for "Station Master", and _Stinsen_ is the definite 
 
 # Updating from Stinsen v1 🚀
 
-* The Route-enum has been replaced with property wrappers.
-* AnyCoordinatable has been removed.
+The biggest change in Stinsen v2 is that it is more type-safe than Stinsen v1, which allows for easier chaining and deep-linking, among other things.
+
+* The Route-enum has been replaced with property wrappers. 
+* `AnyCoordinatable` has been replaced with a protocol. It does not perform the same duties as the old `AnyCoordinatable` and does not fit in with the more type-safe routing of version 2, so remove it from your project.
 * Enums are not used for routes, now _Stinsen_ uses keypaths. So instead of `route(to: .a)` we use `route(to: \.a)`.
 * CoordinatorView has been removed, use `.view()`.
 * Routers are specialized using the coordinator instead of the route.
