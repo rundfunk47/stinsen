@@ -2,16 +2,16 @@ import Foundation
 import SwiftUI
 
 protocol Outputable {
-    func using(coordinator: Any) -> Presentable
+    func using(coordinator: Any) -> ViewPresentable
     func tabItem(active: Bool, coordinator: Any) -> AnyView
 }
 
-public struct Content<T: TabCoordinatable, Output: Presentable>: Outputable {
+public struct Content<T: TabCoordinatable, Output: ViewPresentable>: Outputable {
     func tabItem(active: Bool, coordinator: Any) -> AnyView {
         return self.tabItem(coordinator as! T)(active)
     }
     
-    func using(coordinator: Any) -> Presentable {
+    func using(coordinator: Any) -> ViewPresentable {
         return self.closure(coordinator as! T)()
     }
     
@@ -29,7 +29,7 @@ public struct Content<T: TabCoordinatable, Output: Presentable>: Outputable {
     }
 }
 
-@propertyWrapper public class TabRoute<T: TabCoordinatable, Output: Presentable> {
+@propertyWrapper public class TabRoute<T: TabCoordinatable, Output: ViewPresentable> {
     public var wrappedValue: Content<T, Output>
     
     fileprivate init(standard: Content<T, Output>) {

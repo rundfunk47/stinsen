@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 
 protocol NavigationOutputable {
-    func using(coordinator: Any, input: Any) -> Presentable
+    func using(coordinator: Any, input: Any) -> ViewPresentable
 }
 
 public protocol RouteType {
@@ -17,16 +17,16 @@ public struct Presentation: RouteType {
     let type: PresentationType
 }
 
-public struct Transition<T: NavigationCoordinatable, U: RouteType, Input, Output: Presentable>: NavigationOutputable {
+public struct Transition<T: NavigationCoordinatable, U: RouteType, Input, Output: ViewPresentable>: NavigationOutputable {
     let type: U
     let closure: ((T) -> ((Input) -> Output))
     
-    func using(coordinator: Any, input: Any) -> Presentable {
+    func using(coordinator: Any, input: Any) -> ViewPresentable {
         return closure(coordinator as! T)(input as! Input)
     }
 }
 
-@propertyWrapper public class NavigationRoute<T: NavigationCoordinatable, U: RouteType, Input, Output: Presentable> {
+@propertyWrapper public class NavigationRoute<T: NavigationCoordinatable, U: RouteType, Input, Output: ViewPresentable> {
     
     public var wrappedValue: Transition<T, U, Input, Output>
     

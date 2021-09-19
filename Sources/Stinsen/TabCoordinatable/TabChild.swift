@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 
 struct TabChildItem {
-    let presentable: Presentable
+    let presentable: ViewPresentable
     let keyPathIsEqual: (Any) -> Bool
     let tabItem: (Bool) -> AnyView
 }

@@ -5,7 +5,7 @@ import SwiftUI
 struct NavigationRootItem {
     let keyPath: Int
     let input: Any?
-    let child: Presentable
+    let child: ViewPresentable
 }
 
 /// Wrapper around childCoordinators
@@ -40,7 +40,7 @@ public class NavigationStack<T: NavigationCoordinatable> {
 
 struct NavigationStackItem {
     let presentationType: PresentationType
-    let presentable: Presentable
+    let presentable: ViewPresentable
     let keyPath: Int
     let input: Any?
 }
