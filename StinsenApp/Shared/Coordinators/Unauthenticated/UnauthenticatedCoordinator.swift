@@ -10,4 +10,8 @@ final class UnauthenticatedCoordinator: NavigationCoordinatable {
     @Root var start = makeStart
     @Route(.push) var forgotPassword = makeForgotPassword
     @Route(.push) var registration = makeRegistration
+    
+    deinit {
+        print("Deinit UnauthenticatedCoordinator")
+    }
 }

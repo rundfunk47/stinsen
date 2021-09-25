@@ -24,7 +24,9 @@ public struct Content<T: TabCoordinatable, Output: ViewPresentable>: Outputable 
     ) {
         self.closure = closure
         self.tabItem = { coordinator in
-            return { AnyView(tabItem(coordinator)($0)) }
+            return {
+                AnyView(tabItem(coordinator)($0))
+            }
         }
     }
 }
@@ -58,7 +60,7 @@ extension TabRoute where T: TabCoordinatable, Output: Coordinatable {
     ) {
         self.init(
             standard: Content(
-                closure: { coordinator in {  wrappedValue(coordinator)() }},
+                closure: { coordinator in { wrappedValue(coordinator)() }},
                 tabItem: tabItem
             )
         )

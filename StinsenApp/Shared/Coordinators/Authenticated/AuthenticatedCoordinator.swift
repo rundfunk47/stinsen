@@ -24,4 +24,8 @@ final class AuthenticatedCoordinator: TabCoordinatable {
         self.todosStore = TodosStore(user: user)
         self.user = user
     }
+    
+    deinit {
+        print("Deinit AuthenticatedCoordinator")
+    }
 }

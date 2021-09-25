@@ -50,6 +50,10 @@ final class MainCoordinator: NavigationCoordinatable {
         #endif
     }
     
+    deinit {
+        print("Deinit MainCoordinator")
+    }
+
     init() {
         switch AuthenticationService.shared.status {
         case .authenticated(let user):

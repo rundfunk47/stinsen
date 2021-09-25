@@ -13,4 +13,8 @@ final class HomeCoordinator: NavigationCoordinatable {
     init(todosStore: TodosStore) {
         self.todosStore = todosStore
     }
+    
+    deinit {
+        print("Deinit HomeCoordinator")
+    }
 }

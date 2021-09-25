@@ -7,7 +7,7 @@ open class ViewWrapperCoordinator<T: Coordinatable, V: View>: Coordinatable {
         self.parent!.dismissChild(coordinator: self, action: action)
     }
     
-    public var parent: AnyCoordinatable?
+    public weak var parent: AnyCoordinatable?
     public let child: T
     private let viewFactory: (AnyView) -> V
 

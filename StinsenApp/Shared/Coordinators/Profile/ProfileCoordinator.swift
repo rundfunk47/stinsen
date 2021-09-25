@@ -12,4 +12,8 @@ final class ProfileCoordinator: NavigationCoordinatable {
     init(user: User) {
         self.user = user
     }
+    
+    deinit {
+        print("Deinit ProfileCoordinator")
+    }
 }

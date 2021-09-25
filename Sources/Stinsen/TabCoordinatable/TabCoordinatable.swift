@@ -66,7 +66,7 @@ public extension TabCoordinatable {
                             let rhs = $0 as! PartialKeyPath<Self>
                             return (lhs == rhs)
                         },
-                        tabItem: {
+                        tabItem: { [unowned self] in
                             val.tabItem(active: $0, coordinator: self)
                         }
                     )

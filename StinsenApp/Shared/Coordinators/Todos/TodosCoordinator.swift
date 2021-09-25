@@ -14,4 +14,8 @@ final class TodosCoordinator: NavigationCoordinatable {
     init(todosStore: TodosStore) {
         self.todosStore = todosStore
     }
+    
+    deinit {
+        print("Deinit TodosCoordinator")
+    }
 }

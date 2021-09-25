@@ -12,4 +12,8 @@ final class RegistrationCoordinator: NavigationCoordinatable {
     init(services: UnauthenticatedServices) {
         self.services = services
     }
+    
+    deinit {
+        print("Deinit RegistrationCoordinator")
+    }
 }
