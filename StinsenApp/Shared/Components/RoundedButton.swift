@@ -13,14 +13,16 @@ struct RoundedButton: View {
     let style: Style
     
     var body: some View {
-        #if os(iOS)
-        ios
+        #if targetEnvironment(macCatalyst)
+        standard
         #elseif os(macOS)
         standard
         #elseif os(watchOS)
         standard
         #elseif os(tvOS)
         standard
+        #elseif os(iOS)
+        ios
         #else
         standard
         #endif
@@ -41,8 +43,13 @@ struct RoundedButton: View {
             }
             .foregroundColor(foregroundColor)
             .padding()
-            .background(backgroundColor)
-            .cornerRadius(15.0)
+            .background(
+                RoundedRectangle(
+                    cornerRadius: 20,
+                    style: .continuous
+                )
+                .foregroundColor(backgroundColor)
+            )
             .frame(maxWidth: 300, minHeight: 50)
         })
     }

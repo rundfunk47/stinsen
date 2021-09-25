@@ -5,14 +5,14 @@ struct InfoText: View {
     let text: String
 
     var body: some View {
-        #if os(iOS)
-        ios
-        #elseif os(macOS)
+        #if os(macOS)
         standard
         #elseif os(watchOS)
         standard
         #elseif os(tvOS)
         standard
+        #elseif os(iOS)
+        ios
         #else
         standard
         #endif

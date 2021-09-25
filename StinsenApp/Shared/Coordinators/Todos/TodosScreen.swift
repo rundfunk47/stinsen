@@ -16,6 +16,9 @@ struct TodosScreen: View {
     
     @ViewBuilder var content: some View {
         ScrollView {
+            #if !os(iOS)
+            button
+            #endif
             if todosStore.all.isEmpty {
                 InfoText("You have no stored todos.")
             }
@@ -38,7 +41,6 @@ struct TodosScreen: View {
             trailing: button
         )
         #else
-        button
         content
         #endif
     }

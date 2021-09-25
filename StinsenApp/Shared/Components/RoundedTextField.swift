@@ -7,14 +7,14 @@ struct RoundedTextField: View {
     var text: Binding<String>
     
     var body: some View {
-        #if os(iOS)
-        ios
-        #elseif os(macOS)
+        #if os(macOS)
         standard
         #elseif os(watchOS)
         standard
         #elseif os(tvOS)
         standard
+        #elseif os(iOS)
+        ios
         #else
         standard
         #endif
@@ -31,7 +31,7 @@ struct RoundedTextField: View {
     @ViewBuilder var ios: some View {
         standard
             .padding()
-            .background(Color.init(red: 0.9, green: 0.9, blue: 0.9))
+            .background(Color.gray.opacity(0.2))
             .cornerRadius(5.0)
             .padding([.leading, .trailing])
     }
