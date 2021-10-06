@@ -12,8 +12,8 @@ extension AuthenticatedCoordinator {
         Text("Testbed")
     }
 
-    func makeHome() -> NavigationViewCoordinator<HomeCoordinator> {
-        return NavigationViewCoordinator(HomeCoordinator(todosStore: todosStore))
+    func makeHome() -> UnwrappedNavigationViewCoordinator<HomeCoordinator> {
+        return UnwrappedNavigationViewCoordinator(HomeCoordinator(todosStore: todosStore))
     }
     
     @ViewBuilder func makeHomeTab(isActive: Bool) -> some View {
