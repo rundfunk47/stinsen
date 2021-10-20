@@ -25,7 +25,12 @@ public extension NavigationCoordinatable {
     }
 }
 
-public extension NavigationCoordinatable {    
+public extension NavigationCoordinatable {
+    func route(to route: Route) {
+        let resolved = resolveRoute(route: route)
+        self.navigationStack.append(resolved)
+    }
+    
     func coordinatorView() -> AnyView {
         return AnyView(
             NavigationCoordinatableView(
