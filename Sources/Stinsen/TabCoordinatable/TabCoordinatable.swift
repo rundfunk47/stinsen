@@ -45,9 +45,9 @@ public extension TabCoordinatable {
     
     var parent: AnyCoordinatable? {
         get {
-            fatalError()
+            return child.parent
         } set {
-            fatalError()
+            child.parent = newValue
         }
     }
     

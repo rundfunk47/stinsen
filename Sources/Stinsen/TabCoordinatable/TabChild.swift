@@ -10,6 +10,7 @@ struct TabChildItem {
 /// Wrapper around childCoordinators
 /// Used so that you don't need to write @Published
 public class TabChild: ObservableObject {
+    weak var parent: AnyCoordinatable?
     public let startingItems: [AnyKeyPath]
     
     @Published var activeItem: TabChildItem!
