@@ -5,6 +5,9 @@ import SwiftUI
 public protocol TabCoordinatable: Coordinatable {
     typealias Route = TabRoute
     typealias Router = TabRouter<Self>
+    associatedtype RouterStoreType
+
+    var routerStorable: RouterStoreType { get }
 
     var child: TabChild { get }
 
@@ -39,6 +42,12 @@ public protocol TabCoordinatable: Coordinatable {
 }
 
 public extension TabCoordinatable {
+    var routerStorable: Self {
+        get {
+            self
+        }
+    }
+
     func dismissChild(coordinator: AnyCoordinatable, action: (() -> Void)?) {
         fatalError("Not implemented")
     }

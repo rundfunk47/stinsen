@@ -7,6 +7,9 @@ public protocol NavigationCoordinatable: Coordinatable {
     typealias Root = NavigationRoute
     typealias Router = NavigationRouter<Self>
     associatedtype CustomizeViewType: View
+    associatedtype RouterStoreType
+
+    var routerStorable: RouterStoreType { get }
     
     var stack: NavigationStack<Self> { get }
 
@@ -269,6 +272,12 @@ public protocol NavigationCoordinatable: Coordinatable {
 }
 
 public extension NavigationCoordinatable {
+    var routerStorable: Self {
+        get {
+            self
+        }
+    }
+    
     var parent: AnyCoordinatable? {
         get {
             return stack.parent

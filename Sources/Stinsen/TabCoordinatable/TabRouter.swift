@@ -1,15 +1,19 @@
 import SwiftUI
 import Foundation
 
-public class TabRouter<T: TabCoordinatable>: Routable {
-    fileprivate weak var coordinator: T!
+public class TabRouter<T>: Routable {
+    public var coordinator: T {
+        _coordinator.value as! T
+    }
     
-    init(_ coordinator: T) {
-        self.coordinator = coordinator
+    private var _coordinator: WeakRef<AnyObject>
+    
+    public init(coordinator: T) {
+        self._coordinator = WeakRef(value: coordinator as AnyObject)
     }
 }
 
-public extension TabRouter {
+public extension TabRouter where T: TabCoordinatable {
     /**
      Searches the tabbar for the first route that matches the route and makes it the active tab.
 

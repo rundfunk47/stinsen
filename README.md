@@ -130,17 +130,19 @@ What actions you can perform from the router/coordinator depends on the kind of 
 * `focusFirst` - Finds the specified route if it exists in the stack, starting from the first item. If found, will remove everything after that.
 * `dismissCoordinator` - Deletes the whole coordinator and it's associated children from the tree.
 
-# Sample App 📱
+# Examples 📱
 
 <img src="./Images/stinsenapp-ios.gif" alt="Stinsen Sample App">
 
-Clone the repo and run the _StinsenApp_ to get a feel for how _Stinsen_ can be used. _StinsenApp_ works on iOS, tvOS, watchOS and macOS. It attempts to showcase many of the features _Stinsen_ has available for you to use. Most of the code from this readme comes from the sample app.
+Clone the repo and run the _StinsenApp_ in _Examples/App_ to get a feel for how _Stinsen_ can be used. _StinsenApp_ works on iOS, tvOS, watchOS and macOS. It attempts to showcase many of the features _Stinsen_ has available for you to use. Most of the code from this readme comes from the sample app. There is also an example showing how _Stinsen_ can be used to apply a testable MVVM-C architecture in SwiftUI, which is available in _Example/MVVM_.
 
 # Advanced usage 👩🏾‍🔬
 
 ## ViewModel Support
 
-Since `@EnvironmentObject` only can be accessed within a `View`, _Stinsen_ provides two methods of passing the router to the ViewModel. The first one is using the `onAppear` function:
+Since `@EnvironmentObject` only can be accessed within a `View`, _Stinsen_ provides a couple of ways of routing from the ViewModel. You can inject the coordinator through the ìnitializer, or register it at creation and resolve it in the viewmodel through a dependency injection framework. These are the recommended ways of doing this, since you will have maximum control and functionality. 
+
+Other ways are passing the router using the `onAppear` function:
 
 ```swift
 struct TodosScreen: View {
@@ -158,7 +160,7 @@ struct TodosScreen: View {
 }
 ```
 
-You can also use what is called the `RouterStore` to retreive the router. The `RouterStore` saves the instance of the router and you can get it via a custom PropertyWrapper. This provides a nice decoupling between View and ViewModel.
+You can also use what is called the `RouterStore` to retreive the router. The `RouterStore` saves the instance of the router and you can get it via a custom PropertyWrapper.
 
 To retrieve a router:
 ```swift
@@ -184,6 +186,8 @@ class LoginScreenViewModel: ObservableObject {
     }
 }
 ```
+
+To see this example in action, please check the MVVM-app in _Examples/MVVM_.
 
 ## Customizing
 

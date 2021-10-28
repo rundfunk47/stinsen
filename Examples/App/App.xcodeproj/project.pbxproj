@@ -1,0 +1,1557 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EB24976426C9192200A4C2D4 /* Stinsen in Frameworks */ = {isa = PBXBuildFile; productRef = EB24976326C9192200A4C2D4 /* Stinsen */; };
+		EB24976626C9192800A4C2D4 /* Stinsen in Frameworks */ = {isa = PBXBuildFile; productRef = EB24976526C9192800A4C2D4 /* Stinsen */; };
+		EB24976A26C9193500A4C2D4 /* Stinsen in Frameworks */ = {isa = PBXBuildFile; productRef = EB24976926C9193500A4C2D4 /* Stinsen */; };
+		EB24976C26C9194700A4C2D4 /* Stinsen in Frameworks */ = {isa = PBXBuildFile; productRef = EB24976B26C9194700A4C2D4 /* Stinsen */; };
+		EB42847F272AA20100911C54 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42842E272AA20100911C54 /* Main.swift */; };
+		EB428487272AA20100911C54 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428432272AA20100911C54 /* Main.swift */; };
+		EB428494272AA20100911C54 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428436272AA20100911C54 /* ComplicationController.swift */; };
+		EB428498272AA20100911C54 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428437272AA20100911C54 /* Main.swift */; };
+		EB4284AF272AA20100911C54 /* HomeCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428442272AA20100911C54 /* HomeCoordinator+Factory.swift */; };
+		EB4284B0272AA20100911C54 /* HomeCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428442272AA20100911C54 /* HomeCoordinator+Factory.swift */; };
+		EB4284B1272AA20100911C54 /* HomeCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428442272AA20100911C54 /* HomeCoordinator+Factory.swift */; };
+		EB4284B2272AA20100911C54 /* HomeCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428442272AA20100911C54 /* HomeCoordinator+Factory.swift */; };
+		EB4284B3272AA20100911C54 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428443272AA20100911C54 /* HomeCoordinator.swift */; };
+		EB4284B4272AA20100911C54 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428443272AA20100911C54 /* HomeCoordinator.swift */; };
+		EB4284B5272AA20100911C54 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428443272AA20100911C54 /* HomeCoordinator.swift */; };
+		EB4284B6272AA20100911C54 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428443272AA20100911C54 /* HomeCoordinator.swift */; };
+		EB4284B7272AA20100911C54 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428444272AA20100911C54 /* HomeScreen.swift */; };
+		EB4284B8272AA20100911C54 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428444272AA20100911C54 /* HomeScreen.swift */; };
+		EB4284B9272AA20100911C54 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428444272AA20100911C54 /* HomeScreen.swift */; };
+		EB4284BA272AA20100911C54 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428444272AA20100911C54 /* HomeScreen.swift */; };
+		EB4284BB272AA20100911C54 /* PasswordRegistrationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428446272AA20100911C54 /* PasswordRegistrationScreen.swift */; };
+		EB4284BC272AA20100911C54 /* PasswordRegistrationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428446272AA20100911C54 /* PasswordRegistrationScreen.swift */; };
+		EB4284BD272AA20100911C54 /* PasswordRegistrationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428446272AA20100911C54 /* PasswordRegistrationScreen.swift */; };
+		EB4284BE272AA20100911C54 /* PasswordRegistrationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428446272AA20100911C54 /* PasswordRegistrationScreen.swift */; };
+		EB4284BF272AA20100911C54 /* RegistrationCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428447272AA20100911C54 /* RegistrationCoordinator+Factory.swift */; };
+		EB4284C0272AA20100911C54 /* RegistrationCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428447272AA20100911C54 /* RegistrationCoordinator+Factory.swift */; };
+		EB4284C1272AA20100911C54 /* RegistrationCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428447272AA20100911C54 /* RegistrationCoordinator+Factory.swift */; };
+		EB4284C2272AA20100911C54 /* RegistrationCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428447272AA20100911C54 /* RegistrationCoordinator+Factory.swift */; };
+		EB4284C3272AA20100911C54 /* RegistrationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428448272AA20100911C54 /* RegistrationCoordinator.swift */; };
+		EB4284C4272AA20100911C54 /* RegistrationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428448272AA20100911C54 /* RegistrationCoordinator.swift */; };
+		EB4284C5272AA20100911C54 /* RegistrationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428448272AA20100911C54 /* RegistrationCoordinator.swift */; };
+		EB4284C6272AA20100911C54 /* RegistrationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428448272AA20100911C54 /* RegistrationCoordinator.swift */; };
+		EB4284C7272AA20100911C54 /* UserRegistrationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428449272AA20100911C54 /* UserRegistrationScreen.swift */; };
+		EB4284C8272AA20100911C54 /* UserRegistrationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428449272AA20100911C54 /* UserRegistrationScreen.swift */; };
+		EB4284C9272AA20100911C54 /* UserRegistrationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428449272AA20100911C54 /* UserRegistrationScreen.swift */; };
+		EB4284CA272AA20100911C54 /* UserRegistrationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428449272AA20100911C54 /* UserRegistrationScreen.swift */; };
+		EB4284CB272AA20100911C54 /* TestbedEnvironmentObjectScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42844B272AA20100911C54 /* TestbedEnvironmentObjectScreen.swift */; };
+		EB4284CC272AA20100911C54 /* TestbedEnvironmentObjectScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42844B272AA20100911C54 /* TestbedEnvironmentObjectScreen.swift */; };
+		EB4284CD272AA20100911C54 /* TestbedEnvironmentObjectScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42844B272AA20100911C54 /* TestbedEnvironmentObjectScreen.swift */; };
+		EB4284CE272AA20100911C54 /* TestbedEnvironmentObjectScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42844B272AA20100911C54 /* TestbedEnvironmentObjectScreen.swift */; };
+		EB4284CF272AA20100911C54 /* TestbedEnvironmentObjectCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42844C272AA20100911C54 /* TestbedEnvironmentObjectCoordinator+Factory.swift */; };
+		EB4284D0272AA20100911C54 /* TestbedEnvironmentObjectCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42844C272AA20100911C54 /* TestbedEnvironmentObjectCoordinator+Factory.swift */; };
+		EB4284D1272AA20100911C54 /* TestbedEnvironmentObjectCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42844C272AA20100911C54 /* TestbedEnvironmentObjectCoordinator+Factory.swift */; };
+		EB4284D2272AA20100911C54 /* TestbedEnvironmentObjectCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42844C272AA20100911C54 /* TestbedEnvironmentObjectCoordinator+Factory.swift */; };
+		EB4284D3272AA20100911C54 /* TestbedEnvironmentObjectCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42844D272AA20100911C54 /* TestbedEnvironmentObjectCoordinator.swift */; };
+		EB4284D4272AA20100911C54 /* TestbedEnvironmentObjectCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42844D272AA20100911C54 /* TestbedEnvironmentObjectCoordinator.swift */; };
+		EB4284D5272AA20100911C54 /* TestbedEnvironmentObjectCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42844D272AA20100911C54 /* TestbedEnvironmentObjectCoordinator.swift */; };
+		EB4284D6272AA20100911C54 /* TestbedEnvironmentObjectCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42844D272AA20100911C54 /* TestbedEnvironmentObjectCoordinator.swift */; };
+		EB4284D7272AA20100911C54 /* AuthenticatedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42844F272AA20100911C54 /* AuthenticatedCoordinator.swift */; };
+		EB4284D8272AA20100911C54 /* AuthenticatedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42844F272AA20100911C54 /* AuthenticatedCoordinator.swift */; };
+		EB4284D9272AA20100911C54 /* AuthenticatedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42844F272AA20100911C54 /* AuthenticatedCoordinator.swift */; };
+		EB4284DA272AA20100911C54 /* AuthenticatedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42844F272AA20100911C54 /* AuthenticatedCoordinator.swift */; };
+		EB4284DB272AA20100911C54 /* AuthenticatedCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428450272AA20100911C54 /* AuthenticatedCoordinator+Factory.swift */; };
+		EB4284DC272AA20100911C54 /* AuthenticatedCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428450272AA20100911C54 /* AuthenticatedCoordinator+Factory.swift */; };
+		EB4284DD272AA20100911C54 /* AuthenticatedCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428450272AA20100911C54 /* AuthenticatedCoordinator+Factory.swift */; };
+		EB4284DE272AA20100911C54 /* AuthenticatedCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428450272AA20100911C54 /* AuthenticatedCoordinator+Factory.swift */; };
+		EB4284DF272AA20100911C54 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428452272AA20100911C54 /* ProfileScreen.swift */; };
+		EB4284E0272AA20100911C54 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428452272AA20100911C54 /* ProfileScreen.swift */; };
+		EB4284E1272AA20100911C54 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428452272AA20100911C54 /* ProfileScreen.swift */; };
+		EB4284E2272AA20100911C54 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428452272AA20100911C54 /* ProfileScreen.swift */; };
+		EB4284E3272AA20100911C54 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428453272AA20100911C54 /* ProfileCoordinator.swift */; };
+		EB4284E4272AA20100911C54 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428453272AA20100911C54 /* ProfileCoordinator.swift */; };
+		EB4284E5272AA20100911C54 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428453272AA20100911C54 /* ProfileCoordinator.swift */; };
+		EB4284E6272AA20100911C54 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428453272AA20100911C54 /* ProfileCoordinator.swift */; };
+		EB4284E7272AA20100911C54 /* ProfileCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428454272AA20100911C54 /* ProfileCoordinator+Factory.swift */; };
+		EB4284E8272AA20100911C54 /* ProfileCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428454272AA20100911C54 /* ProfileCoordinator+Factory.swift */; };
+		EB4284E9272AA20100911C54 /* ProfileCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428454272AA20100911C54 /* ProfileCoordinator+Factory.swift */; };
+		EB4284EA272AA20100911C54 /* ProfileCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428454272AA20100911C54 /* ProfileCoordinator+Factory.swift */; };
+		EB4284EB272AA20100911C54 /* UnauthenticatedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428456272AA20100911C54 /* UnauthenticatedCoordinator.swift */; };
+		EB4284EC272AA20100911C54 /* UnauthenticatedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428456272AA20100911C54 /* UnauthenticatedCoordinator.swift */; };
+		EB4284ED272AA20100911C54 /* UnauthenticatedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428456272AA20100911C54 /* UnauthenticatedCoordinator.swift */; };
+		EB4284EE272AA20100911C54 /* UnauthenticatedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428456272AA20100911C54 /* UnauthenticatedCoordinator.swift */; };
+		EB4284EF272AA20100911C54 /* ForgotPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428458272AA20100911C54 /* ForgotPasswordScreen.swift */; };
+		EB4284F0272AA20100911C54 /* ForgotPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428458272AA20100911C54 /* ForgotPasswordScreen.swift */; };
+		EB4284F1272AA20100911C54 /* ForgotPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428458272AA20100911C54 /* ForgotPasswordScreen.swift */; };
+		EB4284F2272AA20100911C54 /* ForgotPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428458272AA20100911C54 /* ForgotPasswordScreen.swift */; };
+		EB4284F3272AA20100911C54 /* UnauthenticatedCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428459272AA20100911C54 /* UnauthenticatedCoordinator+Factory.swift */; };
+		EB4284F4272AA20100911C54 /* UnauthenticatedCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428459272AA20100911C54 /* UnauthenticatedCoordinator+Factory.swift */; };
+		EB4284F5272AA20100911C54 /* UnauthenticatedCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428459272AA20100911C54 /* UnauthenticatedCoordinator+Factory.swift */; };
+		EB4284F6272AA20100911C54 /* UnauthenticatedCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428459272AA20100911C54 /* UnauthenticatedCoordinator+Factory.swift */; };
+		EB4284F7272AA20100911C54 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42845B272AA20100911C54 /* LoginScreen.swift */; };
+		EB4284F8272AA20100911C54 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42845B272AA20100911C54 /* LoginScreen.swift */; };
+		EB4284F9272AA20100911C54 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42845B272AA20100911C54 /* LoginScreen.swift */; };
+		EB4284FA272AA20100911C54 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42845B272AA20100911C54 /* LoginScreen.swift */; };
+		EB4284FB272AA20100911C54 /* TodosCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42845D272AA20100911C54 /* TodosCoordinator.swift */; };
+		EB4284FC272AA20100911C54 /* TodosCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42845D272AA20100911C54 /* TodosCoordinator.swift */; };
+		EB4284FD272AA20100911C54 /* TodosCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42845D272AA20100911C54 /* TodosCoordinator.swift */; };
+		EB4284FE272AA20100911C54 /* TodosCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42845D272AA20100911C54 /* TodosCoordinator.swift */; };
+		EB4284FF272AA20100911C54 /* TodoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42845F272AA20100911C54 /* TodoScreen.swift */; };
+		EB428500272AA20100911C54 /* TodoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42845F272AA20100911C54 /* TodoScreen.swift */; };
+		EB428501272AA20100911C54 /* TodoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42845F272AA20100911C54 /* TodoScreen.swift */; };
+		EB428502272AA20100911C54 /* TodoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42845F272AA20100911C54 /* TodoScreen.swift */; };
+		EB428503272AA20100911C54 /* CreateTodoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428461272AA20100911C54 /* CreateTodoScreen.swift */; };
+		EB428504272AA20100911C54 /* CreateTodoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428461272AA20100911C54 /* CreateTodoScreen.swift */; };
+		EB428505272AA20100911C54 /* CreateTodoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428461272AA20100911C54 /* CreateTodoScreen.swift */; };
+		EB428506272AA20100911C54 /* CreateTodoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428461272AA20100911C54 /* CreateTodoScreen.swift */; };
+		EB428507272AA20100911C54 /* TodosScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428462272AA20100911C54 /* TodosScreen.swift */; };
+		EB428508272AA20100911C54 /* TodosScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428462272AA20100911C54 /* TodosScreen.swift */; };
+		EB428509272AA20100911C54 /* TodosScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428462272AA20100911C54 /* TodosScreen.swift */; };
+		EB42850A272AA20100911C54 /* TodosScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428462272AA20100911C54 /* TodosScreen.swift */; };
+		EB42850B272AA20100911C54 /* TodosCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428463272AA20100911C54 /* TodosCoordinator+Factory.swift */; };
+		EB42850C272AA20100911C54 /* TodosCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428463272AA20100911C54 /* TodosCoordinator+Factory.swift */; };
+		EB42850D272AA20100911C54 /* TodosCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428463272AA20100911C54 /* TodosCoordinator+Factory.swift */; };
+		EB42850E272AA20100911C54 /* TodosCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428463272AA20100911C54 /* TodosCoordinator+Factory.swift */; };
+		EB42850F272AA20100911C54 /* MainCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428465272AA20100911C54 /* MainCoordinator+Factory.swift */; };
+		EB428510272AA20100911C54 /* MainCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428465272AA20100911C54 /* MainCoordinator+Factory.swift */; };
+		EB428511272AA20100911C54 /* MainCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428465272AA20100911C54 /* MainCoordinator+Factory.swift */; };
+		EB428512272AA20100911C54 /* MainCoordinator+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428465272AA20100911C54 /* MainCoordinator+Factory.swift */; };
+		EB428513272AA20100911C54 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428466272AA20100911C54 /* MainCoordinator.swift */; };
+		EB428514272AA20100911C54 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428466272AA20100911C54 /* MainCoordinator.swift */; };
+		EB428515272AA20100911C54 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428466272AA20100911C54 /* MainCoordinator.swift */; };
+		EB428516272AA20100911C54 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428466272AA20100911C54 /* MainCoordinator.swift */; };
+		EB428517272AA20100911C54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB428467272AA20100911C54 /* Assets.xcassets */; };
+		EB428518272AA20100911C54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB428467272AA20100911C54 /* Assets.xcassets */; };
+		EB428519272AA20100911C54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB428467272AA20100911C54 /* Assets.xcassets */; };
+		EB42851A272AA20100911C54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB428467272AA20100911C54 /* Assets.xcassets */; };
+		EB42851B272AA20100911C54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB428467272AA20100911C54 /* Assets.xcassets */; };
+		EB42851C272AA20100911C54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB428467272AA20100911C54 /* Assets.xcassets */; };
+		EB42851D272AA20100911C54 /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428469272AA20100911C54 /* DeepLink.swift */; };
+		EB42851E272AA20100911C54 /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428469272AA20100911C54 /* DeepLink.swift */; };
+		EB42851F272AA20100911C54 /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428469272AA20100911C54 /* DeepLink.swift */; };
+		EB428520272AA20100911C54 /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428469272AA20100911C54 /* DeepLink.swift */; };
+		EB428521272AA20100911C54 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42846A272AA20100911C54 /* User.swift */; };
+		EB428522272AA20100911C54 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42846A272AA20100911C54 /* User.swift */; };
+		EB428523272AA20100911C54 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42846A272AA20100911C54 /* User.swift */; };
+		EB428524272AA20100911C54 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42846A272AA20100911C54 /* User.swift */; };
+		EB428525272AA20100911C54 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42846B272AA20100911C54 /* Todo.swift */; };
+		EB428526272AA20100911C54 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42846B272AA20100911C54 /* Todo.swift */; };
+		EB428527272AA20100911C54 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42846B272AA20100911C54 /* Todo.swift */; };
+		EB428528272AA20100911C54 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42846B272AA20100911C54 /* Todo.swift */; };
+		EB428529272AA20100911C54 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42846D272AA20100911C54 /* View+.swift */; };
+		EB42852A272AA20100911C54 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42846D272AA20100911C54 /* View+.swift */; };
+		EB42852B272AA20100911C54 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42846D272AA20100911C54 /* View+.swift */; };
+		EB42852C272AA20100911C54 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42846D272AA20100911C54 /* View+.swift */; };
+		EB42852D272AA20100911C54 /* InfoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42846F272AA20100911C54 /* InfoText.swift */; };
+		EB42852E272AA20100911C54 /* InfoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42846F272AA20100911C54 /* InfoText.swift */; };
+		EB42852F272AA20100911C54 /* InfoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42846F272AA20100911C54 /* InfoText.swift */; };
+		EB428530272AA20100911C54 /* InfoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42846F272AA20100911C54 /* InfoText.swift */; };
+		EB428531272AA20100911C54 /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428470272AA20100911C54 /* RoundedTextField.swift */; };
+		EB428532272AA20100911C54 /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428470272AA20100911C54 /* RoundedTextField.swift */; };
+		EB428533272AA20100911C54 /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428470272AA20100911C54 /* RoundedTextField.swift */; };
+		EB428534272AA20100911C54 /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428470272AA20100911C54 /* RoundedTextField.swift */; };
+		EB428535272AA20100911C54 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428471272AA20100911C54 /* RoundedButton.swift */; };
+		EB428536272AA20100911C54 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428471272AA20100911C54 /* RoundedButton.swift */; };
+		EB428537272AA20100911C54 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428471272AA20100911C54 /* RoundedButton.swift */; };
+		EB428538272AA20100911C54 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428471272AA20100911C54 /* RoundedButton.swift */; };
+		EB428539272AA20100911C54 /* StinsenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428473272AA20100911C54 /* StinsenApp.swift */; };
+		EB42853A272AA20100911C54 /* StinsenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428473272AA20100911C54 /* StinsenApp.swift */; };
+		EB42853B272AA20100911C54 /* StinsenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428473272AA20100911C54 /* StinsenApp.swift */; };
+		EB42853C272AA20100911C54 /* StinsenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428473272AA20100911C54 /* StinsenApp.swift */; };
+		EB42853D272AA20100911C54 /* TodosStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428476272AA20100911C54 /* TodosStore.swift */; };
+		EB42853E272AA20100911C54 /* TodosStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428476272AA20100911C54 /* TodosStore.swift */; };
+		EB42853F272AA20100911C54 /* TodosStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428476272AA20100911C54 /* TodosStore.swift */; };
+		EB428540272AA20100911C54 /* TodosStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428476272AA20100911C54 /* TodosStore.swift */; };
+		EB428541272AA20100911C54 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428477272AA20100911C54 /* AuthenticationService.swift */; };
+		EB428542272AA20100911C54 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428477272AA20100911C54 /* AuthenticationService.swift */; };
+		EB428543272AA20100911C54 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428477272AA20100911C54 /* AuthenticationService.swift */; };
+		EB428544272AA20100911C54 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428477272AA20100911C54 /* AuthenticationService.swift */; };
+		EB428545272AA20100911C54 /* UserRegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428479272AA20100911C54 /* UserRegistrationService.swift */; };
+		EB428546272AA20100911C54 /* UserRegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428479272AA20100911C54 /* UserRegistrationService.swift */; };
+		EB428547272AA20100911C54 /* UserRegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428479272AA20100911C54 /* UserRegistrationService.swift */; };
+		EB428548272AA20100911C54 /* UserRegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB428479272AA20100911C54 /* UserRegistrationService.swift */; };
+		EB428549272AA20100911C54 /* ForgotPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42847A272AA20100911C54 /* ForgotPasswordService.swift */; };
+		EB42854A272AA20100911C54 /* ForgotPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42847A272AA20100911C54 /* ForgotPasswordService.swift */; };
+		EB42854B272AA20100911C54 /* ForgotPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42847A272AA20100911C54 /* ForgotPasswordService.swift */; };
+		EB42854C272AA20100911C54 /* ForgotPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42847A272AA20100911C54 /* ForgotPasswordService.swift */; };
+		EB42854D272AA20100911C54 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42847B272AA20100911C54 /* LoginService.swift */; };
+		EB42854E272AA20100911C54 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42847B272AA20100911C54 /* LoginService.swift */; };
+		EB42854F272AA20100911C54 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42847B272AA20100911C54 /* LoginService.swift */; };
+		EB428550272AA20100911C54 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42847B272AA20100911C54 /* LoginService.swift */; };
+		EB428551272AA20100911C54 /* UnauthenticatedServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42847C272AA20100911C54 /* UnauthenticatedServices.swift */; };
+		EB428552272AA20100911C54 /* UnauthenticatedServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42847C272AA20100911C54 /* UnauthenticatedServices.swift */; };
+		EB428553272AA20100911C54 /* UnauthenticatedServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42847C272AA20100911C54 /* UnauthenticatedServices.swift */; };
+		EB428554272AA20100911C54 /* UnauthenticatedServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42847C272AA20100911C54 /* UnauthenticatedServices.swift */; };
+		EB428555272AA22900911C54 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42843D272AA20100911C54 /* Main.swift */; };
+		EB9E366B25E4DC1200C4E25C /* StinsenApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = EB9E366A25E4DC1200C4E25C /* StinsenApp.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EB9E367725E4DC1300C4E25C /* StinsenApp.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EB9E367625E4DC1300C4E25C /* StinsenApp.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EB9E366C25E4DC1200C4E25C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EBC24EE425AC62FF00F455F3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EB9E366925E4DC1200C4E25C;
+			remoteInfo = "StinsenApp WatchKit App";
+		};
+		EB9E367825E4DC1300C4E25C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EBC24EE425AC62FF00F455F3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EB9E367525E4DC1300C4E25C;
+			remoteInfo = "StinsenApp WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EB9E368A25E4DC1300C4E25C /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				EB9E367725E4DC1300C4E25C /* StinsenApp.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB9E368E25E4DC1300C4E25C /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				EB9E366B25E4DC1200C4E25C /* StinsenApp.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		EB235D2225E8D502008BEE0A /* Stinsen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stinsen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB42842C272AA1E800911C54 /* Sources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Sources; path = ../../Sources; sourceTree = "<group>"; };
+		EB42842E272AA20100911C54 /* Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		EB42842F272AA20100911C54 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB428431272AA20100911C54 /* iOS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = iOS.entitlements; sourceTree = "<group>"; };
+		EB428432272AA20100911C54 /* Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		EB428433272AA20100911C54 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB428436272AA20100911C54 /* ComplicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		EB428437272AA20100911C54 /* Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		EB428438272AA20100911C54 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB42843A272AA20100911C54 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB42843C272AA20100911C54 /* macOS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		EB42843D272AA20100911C54 /* Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		EB42843E272AA20100911C54 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB428442272AA20100911C54 /* HomeCoordinator+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeCoordinator+Factory.swift"; sourceTree = "<group>"; };
+		EB428443272AA20100911C54 /* HomeCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		EB428444272AA20100911C54 /* HomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		EB428446272AA20100911C54 /* PasswordRegistrationScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordRegistrationScreen.swift; sourceTree = "<group>"; };
+		EB428447272AA20100911C54 /* RegistrationCoordinator+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RegistrationCoordinator+Factory.swift"; sourceTree = "<group>"; };
+		EB428448272AA20100911C54 /* RegistrationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationCoordinator.swift; sourceTree = "<group>"; };
+		EB428449272AA20100911C54 /* UserRegistrationScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationScreen.swift; sourceTree = "<group>"; };
+		EB42844B272AA20100911C54 /* TestbedEnvironmentObjectScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestbedEnvironmentObjectScreen.swift; sourceTree = "<group>"; };
+		EB42844C272AA20100911C54 /* TestbedEnvironmentObjectCoordinator+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TestbedEnvironmentObjectCoordinator+Factory.swift"; sourceTree = "<group>"; };
+		EB42844D272AA20100911C54 /* TestbedEnvironmentObjectCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestbedEnvironmentObjectCoordinator.swift; sourceTree = "<group>"; };
+		EB42844F272AA20100911C54 /* AuthenticatedCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatedCoordinator.swift; sourceTree = "<group>"; };
+		EB428450272AA20100911C54 /* AuthenticatedCoordinator+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AuthenticatedCoordinator+Factory.swift"; sourceTree = "<group>"; };
+		EB428452272AA20100911C54 /* ProfileScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
+		EB428453272AA20100911C54 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		EB428454272AA20100911C54 /* ProfileCoordinator+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+Factory.swift"; sourceTree = "<group>"; };
+		EB428456272AA20100911C54 /* UnauthenticatedCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnauthenticatedCoordinator.swift; sourceTree = "<group>"; };
+		EB428458272AA20100911C54 /* ForgotPasswordScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordScreen.swift; sourceTree = "<group>"; };
+		EB428459272AA20100911C54 /* UnauthenticatedCoordinator+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UnauthenticatedCoordinator+Factory.swift"; sourceTree = "<group>"; };
+		EB42845B272AA20100911C54 /* LoginScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		EB42845D272AA20100911C54 /* TodosCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodosCoordinator.swift; sourceTree = "<group>"; };
+		EB42845F272AA20100911C54 /* TodoScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoScreen.swift; sourceTree = "<group>"; };
+		EB428461272AA20100911C54 /* CreateTodoScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTodoScreen.swift; sourceTree = "<group>"; };
+		EB428462272AA20100911C54 /* TodosScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodosScreen.swift; sourceTree = "<group>"; };
+		EB428463272AA20100911C54 /* TodosCoordinator+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TodosCoordinator+Factory.swift"; sourceTree = "<group>"; };
+		EB428465272AA20100911C54 /* MainCoordinator+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainCoordinator+Factory.swift"; sourceTree = "<group>"; };
+		EB428466272AA20100911C54 /* MainCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		EB428467272AA20100911C54 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EB428469272AA20100911C54 /* DeepLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeepLink.swift; sourceTree = "<group>"; };
+		EB42846A272AA20100911C54 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		EB42846B272AA20100911C54 /* Todo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		EB42846D272AA20100911C54 /* View+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		EB42846F272AA20100911C54 /* InfoText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoText.swift; sourceTree = "<group>"; };
+		EB428470272AA20100911C54 /* RoundedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
+		EB428471272AA20100911C54 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		EB428473272AA20100911C54 /* StinsenApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StinsenApp.swift; sourceTree = "<group>"; };
+		EB428476272AA20100911C54 /* TodosStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodosStore.swift; sourceTree = "<group>"; };
+		EB428477272AA20100911C54 /* AuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		EB428479272AA20100911C54 /* UserRegistrationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationService.swift; sourceTree = "<group>"; };
+		EB42847A272AA20100911C54 /* ForgotPasswordService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordService.swift; sourceTree = "<group>"; };
+		EB42847B272AA20100911C54 /* LoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		EB42847C272AA20100911C54 /* UnauthenticatedServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnauthenticatedServices.swift; sourceTree = "<group>"; };
+		EB6B0F5E25DB03F60011E826 /* StinsenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StinsenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB9E366725E4DC1200C4E25C /* StinsenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StinsenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB9E366A25E4DC1200C4E25C /* StinsenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StinsenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB9E367625E4DC1300C4E25C /* StinsenApp.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = StinsenApp.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBC24EF025AC630300F455F3 /* StinsenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StinsenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBC24EF825AC630300F455F3 /* StinsenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StinsenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBC4E62125E4E12700C7D645 /* Stinsen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stinsen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBC4E62625E4E12C00C7D645 /* Stinsen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stinsen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBC4E62925E4E13100C7D645 /* Stinsen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stinsen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBC4E62C25E4E13B00C7D645 /* Stinsen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stinsen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBC4E63125E4E14900C7D645 /* Stinsen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stinsen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBC4E64A25E4E5AA00C7D645 /* Stinsen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stinsen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EB6B0F5B25DB03F60011E826 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB24976626C9192800A4C2D4 /* Stinsen in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB9E367325E4DC1300C4E25C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB24976A26C9193500A4C2D4 /* Stinsen in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB9E36F225E4DDCF00C4E25C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBC24EED25AC630300F455F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB24976C26C9194700A4C2D4 /* Stinsen in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBC24EF525AC630300F455F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB24976426C9192200A4C2D4 /* Stinsen in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EB428406272A9D6D00911C54 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				EB42842C272AA1E800911C54 /* Sources */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		EB42842D272AA20100911C54 /* tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				EB42842E272AA20100911C54 /* Main.swift */,
+				EB42842F272AA20100911C54 /* Info.plist */,
+			);
+			path = tvOS;
+			sourceTree = "<group>";
+		};
+		EB428430272AA20100911C54 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				EB428431272AA20100911C54 /* iOS.entitlements */,
+				EB428432272AA20100911C54 /* Main.swift */,
+				EB428433272AA20100911C54 /* Info.plist */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		EB428434272AA20100911C54 /* watchOS */ = {
+			isa = PBXGroup;
+			children = (
+				EB428435272AA20100911C54 /* Extension */,
+				EB428439272AA20100911C54 /* App */,
+			);
+			path = watchOS;
+			sourceTree = "<group>";
+		};
+		EB428435272AA20100911C54 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				EB428436272AA20100911C54 /* ComplicationController.swift */,
+				EB428437272AA20100911C54 /* Main.swift */,
+				EB428438272AA20100911C54 /* Info.plist */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		EB428439272AA20100911C54 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				EB42843A272AA20100911C54 /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		EB42843B272AA20100911C54 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				EB42843C272AA20100911C54 /* macOS.entitlements */,
+				EB42843D272AA20100911C54 /* Main.swift */,
+				EB42843E272AA20100911C54 /* Info.plist */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		EB42843F272AA20100911C54 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				EB428440272AA20100911C54 /* Coordinators */,
+				EB428467272AA20100911C54 /* Assets.xcassets */,
+				EB428468272AA20100911C54 /* Models */,
+				EB42846C272AA20100911C54 /* Extensions */,
+				EB42846E272AA20100911C54 /* Components */,
+				EB428472272AA20100911C54 /* Main */,
+				EB428474272AA20100911C54 /* Services */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		EB428440272AA20100911C54 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				EB428441272AA20100911C54 /* Home */,
+				EB428445272AA20100911C54 /* Registration */,
+				EB42844A272AA20100911C54 /* TestbedEO */,
+				EB42844E272AA20100911C54 /* Authenticated */,
+				EB428451272AA20100911C54 /* Profile */,
+				EB428455272AA20100911C54 /* Unauthenticated */,
+				EB42845C272AA20100911C54 /* Todos */,
+				EB428464272AA20100911C54 /* Main */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		EB428441272AA20100911C54 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				EB428442272AA20100911C54 /* HomeCoordinator+Factory.swift */,
+				EB428443272AA20100911C54 /* HomeCoordinator.swift */,
+				EB428444272AA20100911C54 /* HomeScreen.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		EB428445272AA20100911C54 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				EB428446272AA20100911C54 /* PasswordRegistrationScreen.swift */,
+				EB428447272AA20100911C54 /* RegistrationCoordinator+Factory.swift */,
+				EB428448272AA20100911C54 /* RegistrationCoordinator.swift */,
+				EB428449272AA20100911C54 /* UserRegistrationScreen.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		EB42844A272AA20100911C54 /* TestbedEO */ = {
+			isa = PBXGroup;
+			children = (
+				EB42844B272AA20100911C54 /* TestbedEnvironmentObjectScreen.swift */,
+				EB42844C272AA20100911C54 /* TestbedEnvironmentObjectCoordinator+Factory.swift */,
+				EB42844D272AA20100911C54 /* TestbedEnvironmentObjectCoordinator.swift */,
+			);
+			path = TestbedEO;
+			sourceTree = "<group>";
+		};
+		EB42844E272AA20100911C54 /* Authenticated */ = {
+			isa = PBXGroup;
+			children = (
+				EB42844F272AA20100911C54 /* AuthenticatedCoordinator.swift */,
+				EB428450272AA20100911C54 /* AuthenticatedCoordinator+Factory.swift */,
+			);
+			path = Authenticated;
+			sourceTree = "<group>";
+		};
+		EB428451272AA20100911C54 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				EB428452272AA20100911C54 /* ProfileScreen.swift */,
+				EB428453272AA20100911C54 /* ProfileCoordinator.swift */,
+				EB428454272AA20100911C54 /* ProfileCoordinator+Factory.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		EB428455272AA20100911C54 /* Unauthenticated */ = {
+			isa = PBXGroup;
+			children = (
+				EB428456272AA20100911C54 /* UnauthenticatedCoordinator.swift */,
+				EB428457272AA20100911C54 /* ForgotPassword */,
+				EB428459272AA20100911C54 /* UnauthenticatedCoordinator+Factory.swift */,
+				EB42845A272AA20100911C54 /* Login */,
+			);
+			path = Unauthenticated;
+			sourceTree = "<group>";
+		};
+		EB428457272AA20100911C54 /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				EB428458272AA20100911C54 /* ForgotPasswordScreen.swift */,
+			);
+			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
+		EB42845A272AA20100911C54 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				EB42845B272AA20100911C54 /* LoginScreen.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		EB42845C272AA20100911C54 /* Todos */ = {
+			isa = PBXGroup;
+			children = (
+				EB42845D272AA20100911C54 /* TodosCoordinator.swift */,
+				EB42845E272AA20100911C54 /* Todo */,
+				EB428460272AA20100911C54 /* CreateTodo */,
+				EB428462272AA20100911C54 /* TodosScreen.swift */,
+				EB428463272AA20100911C54 /* TodosCoordinator+Factory.swift */,
+			);
+			path = Todos;
+			sourceTree = "<group>";
+		};
+		EB42845E272AA20100911C54 /* Todo */ = {
+			isa = PBXGroup;
+			children = (
+				EB42845F272AA20100911C54 /* TodoScreen.swift */,
+			);
+			path = Todo;
+			sourceTree = "<group>";
+		};
+		EB428460272AA20100911C54 /* CreateTodo */ = {
+			isa = PBXGroup;
+			children = (
+				EB428461272AA20100911C54 /* CreateTodoScreen.swift */,
+			);
+			path = CreateTodo;
+			sourceTree = "<group>";
+		};
+		EB428464272AA20100911C54 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				EB428465272AA20100911C54 /* MainCoordinator+Factory.swift */,
+				EB428466272AA20100911C54 /* MainCoordinator.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		EB428468272AA20100911C54 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EB428469272AA20100911C54 /* DeepLink.swift */,
+				EB42846A272AA20100911C54 /* User.swift */,
+				EB42846B272AA20100911C54 /* Todo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EB42846C272AA20100911C54 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EB42846D272AA20100911C54 /* View+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EB42846E272AA20100911C54 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				EB42846F272AA20100911C54 /* InfoText.swift */,
+				EB428470272AA20100911C54 /* RoundedTextField.swift */,
+				EB428471272AA20100911C54 /* RoundedButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		EB428472272AA20100911C54 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				EB428473272AA20100911C54 /* StinsenApp.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		EB428474272AA20100911C54 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				EB428475272AA20100911C54 /* Authenticated */,
+				EB428477272AA20100911C54 /* AuthenticationService.swift */,
+				EB428478272AA20100911C54 /* Unauthenticated */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		EB428475272AA20100911C54 /* Authenticated */ = {
+			isa = PBXGroup;
+			children = (
+				EB428476272AA20100911C54 /* TodosStore.swift */,
+			);
+			path = Authenticated;
+			sourceTree = "<group>";
+		};
+		EB428478272AA20100911C54 /* Unauthenticated */ = {
+			isa = PBXGroup;
+			children = (
+				EB428479272AA20100911C54 /* UserRegistrationService.swift */,
+				EB42847A272AA20100911C54 /* ForgotPasswordService.swift */,
+				EB42847B272AA20100911C54 /* LoginService.swift */,
+				EB42847C272AA20100911C54 /* UnauthenticatedServices.swift */,
+			);
+			path = Unauthenticated;
+			sourceTree = "<group>";
+		};
+		EBC24EE325AC62FF00F455F3 = {
+			isa = PBXGroup;
+			children = (
+				EB428430272AA20100911C54 /* iOS */,
+				EB42843B272AA20100911C54 /* macOS */,
+				EB42843F272AA20100911C54 /* Shared */,
+				EB42842D272AA20100911C54 /* tvOS */,
+				EB428434272AA20100911C54 /* watchOS */,
+				EB428406272A9D6D00911C54 /* Packages */,
+				EBC24EF125AC630300F455F3 /* Products */,
+				EBE38ED925DFD13F00962D95 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		EBC24EF125AC630300F455F3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EBC24EF025AC630300F455F3 /* StinsenApp.app */,
+				EBC24EF825AC630300F455F3 /* StinsenApp.app */,
+				EB6B0F5E25DB03F60011E826 /* StinsenApp.app */,
+				EB9E366725E4DC1200C4E25C /* StinsenApp.app */,
+				EB9E366A25E4DC1200C4E25C /* StinsenApp.app */,
+				EB9E367625E4DC1300C4E25C /* StinsenApp.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EBE38ED925DFD13F00962D95 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EB235D2225E8D502008BEE0A /* Stinsen.framework */,
+				EBC4E64A25E4E5AA00C7D645 /* Stinsen.framework */,
+				EBC4E63125E4E14900C7D645 /* Stinsen.framework */,
+				EBC4E62C25E4E13B00C7D645 /* Stinsen.framework */,
+				EBC4E62925E4E13100C7D645 /* Stinsen.framework */,
+				EBC4E62625E4E12C00C7D645 /* Stinsen.framework */,
+				EBC4E62125E4E12700C7D645 /* Stinsen.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EB6B0F5D25DB03F60011E826 /* StinsenApp (tvOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB6B0F6A25DB03F70011E826 /* Build configuration list for PBXNativeTarget "StinsenApp (tvOS)" */;
+			buildPhases = (
+				EB6B0F5A25DB03F60011E826 /* Sources */,
+				EB6B0F5B25DB03F60011E826 /* Frameworks */,
+				EB6B0F5C25DB03F60011E826 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "StinsenApp (tvOS)";
+			packageProductDependencies = (
+				EB24976526C9192800A4C2D4 /* Stinsen */,
+			);
+			productName = Coordinate;
+			productReference = EB6B0F5E25DB03F60011E826 /* StinsenApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EB9E366625E4DC1200C4E25C /* StinsenApp (watchOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB9E368F25E4DC1300C4E25C /* Build configuration list for PBXNativeTarget "StinsenApp (watchOS)" */;
+			buildPhases = (
+				EB9E366525E4DC1200C4E25C /* Resources */,
+				EB9E368E25E4DC1300C4E25C /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EB9E366D25E4DC1200C4E25C /* PBXTargetDependency */,
+			);
+			name = "StinsenApp (watchOS)";
+			packageProductDependencies = (
+			);
+			productName = StinsenApp;
+			productReference = EB9E366725E4DC1200C4E25C /* StinsenApp.app */;
+			productType = "com.apple.product-type.application.watchapp2-container";
+		};
+		EB9E366925E4DC1200C4E25C /* StinsenApp (watchOS App) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB9E368B25E4DC1300C4E25C /* Build configuration list for PBXNativeTarget "StinsenApp (watchOS App)" */;
+			buildPhases = (
+				EB9E366825E4DC1200C4E25C /* Resources */,
+				EB9E368A25E4DC1300C4E25C /* Embed App Extensions */,
+				EB9E36F225E4DDCF00C4E25C /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EB9E367925E4DC1300C4E25C /* PBXTargetDependency */,
+			);
+			name = "StinsenApp (watchOS App)";
+			packageProductDependencies = (
+			);
+			productName = "StinsenApp WatchKit App";
+			productReference = EB9E366A25E4DC1200C4E25C /* StinsenApp.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		EB9E367525E4DC1300C4E25C /* StinsenApp (watchOS Extension) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB9E368725E4DC1300C4E25C /* Build configuration list for PBXNativeTarget "StinsenApp (watchOS Extension)" */;
+			buildPhases = (
+				EB9E367225E4DC1300C4E25C /* Sources */,
+				EB9E367325E4DC1300C4E25C /* Frameworks */,
+				EB9E367425E4DC1300C4E25C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "StinsenApp (watchOS Extension)";
+			packageProductDependencies = (
+				EB24976926C9193500A4C2D4 /* Stinsen */,
+			);
+			productName = "StinsenApp WatchKit Extension";
+			productReference = EB9E367625E4DC1300C4E25C /* StinsenApp.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+		EBC24EEF25AC630300F455F3 /* StinsenApp (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EBC24F0425AC630300F455F3 /* Build configuration list for PBXNativeTarget "StinsenApp (iOS)" */;
+			buildPhases = (
+				EBC24EEC25AC630300F455F3 /* Sources */,
+				EBC24EED25AC630300F455F3 /* Frameworks */,
+				EBC24EEE25AC630300F455F3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "StinsenApp (iOS)";
+			packageProductDependencies = (
+				EB24976B26C9194700A4C2D4 /* Stinsen */,
+			);
+			productName = "Coordinate (iOS)";
+			productReference = EBC24EF025AC630300F455F3 /* StinsenApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EBC24EF725AC630300F455F3 /* StinsenApp (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EBC24F0725AC630300F455F3 /* Build configuration list for PBXNativeTarget "StinsenApp (macOS)" */;
+			buildPhases = (
+				EBC24EF425AC630300F455F3 /* Sources */,
+				EBC24EF525AC630300F455F3 /* Frameworks */,
+				EBC24EF625AC630300F455F3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "StinsenApp (macOS)";
+			packageProductDependencies = (
+				EB24976326C9192200A4C2D4 /* Stinsen */,
+			);
+			productName = "Coordinate (macOS)";
+			productReference = EBC24EF825AC630300F455F3 /* StinsenApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EBC24EE425AC62FF00F455F3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1310;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					EB6B0F5D25DB03F60011E826 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					EB9E366625E4DC1200C4E25C = {
+						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1250;
+					};
+					EB9E366925E4DC1200C4E25C = {
+						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1250;
+					};
+					EB9E367525E4DC1300C4E25C = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					EBC24EEF25AC630300F455F3 = {
+						CreatedOnToolsVersion = 12.3;
+					};
+					EBC24EF725AC630300F455F3 = {
+						CreatedOnToolsVersion = 12.3;
+					};
+				};
+			};
+			buildConfigurationList = EBC24EE725AC62FF00F455F3 /* Build configuration list for PBXProject "App" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EBC24EE325AC62FF00F455F3;
+			packageReferences = (
+			);
+			productRefGroup = EBC24EF125AC630300F455F3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EBC24EEF25AC630300F455F3 /* StinsenApp (iOS) */,
+				EBC24EF725AC630300F455F3 /* StinsenApp (macOS) */,
+				EB6B0F5D25DB03F60011E826 /* StinsenApp (tvOS) */,
+				EB9E366625E4DC1200C4E25C /* StinsenApp (watchOS) */,
+				EB9E366925E4DC1200C4E25C /* StinsenApp (watchOS App) */,
+				EB9E367525E4DC1300C4E25C /* StinsenApp (watchOS Extension) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EB6B0F5C25DB03F60011E826 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB428519272AA20100911C54 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB9E366525E4DC1200C4E25C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB42851A272AA20100911C54 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB9E366825E4DC1200C4E25C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB42851B272AA20100911C54 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB9E367425E4DC1300C4E25C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB42851C272AA20100911C54 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBC24EEE25AC630300F455F3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB428517272AA20100911C54 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBC24EF625AC630300F455F3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB428518272AA20100911C54 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EB6B0F5A25DB03F60011E826 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB4284D9272AA20100911C54 /* AuthenticatedCoordinator.swift in Sources */,
+				EB4284F5272AA20100911C54 /* UnauthenticatedCoordinator+Factory.swift in Sources */,
+				EB428547272AA20100911C54 /* UserRegistrationService.swift in Sources */,
+				EB428537272AA20100911C54 /* RoundedButton.swift in Sources */,
+				EB4284C9272AA20100911C54 /* UserRegistrationScreen.swift in Sources */,
+				EB428509272AA20100911C54 /* TodosScreen.swift in Sources */,
+				EB4284F9272AA20100911C54 /* LoginScreen.swift in Sources */,
+				EB42847F272AA20100911C54 /* Main.swift in Sources */,
+				EB42853B272AA20100911C54 /* StinsenApp.swift in Sources */,
+				EB4284D1272AA20100911C54 /* TestbedEnvironmentObjectCoordinator+Factory.swift in Sources */,
+				EB4284C5272AA20100911C54 /* RegistrationCoordinator.swift in Sources */,
+				EB428543272AA20100911C54 /* AuthenticationService.swift in Sources */,
+				EB4284BD272AA20100911C54 /* PasswordRegistrationScreen.swift in Sources */,
+				EB42850D272AA20100911C54 /* TodosCoordinator+Factory.swift in Sources */,
+				EB4284D5272AA20100911C54 /* TestbedEnvironmentObjectCoordinator.swift in Sources */,
+				EB4284C1272AA20100911C54 /* RegistrationCoordinator+Factory.swift in Sources */,
+				EB4284E5272AA20100911C54 /* ProfileCoordinator.swift in Sources */,
+				EB42853F272AA20100911C54 /* TodosStore.swift in Sources */,
+				EB428527272AA20100911C54 /* Todo.swift in Sources */,
+				EB4284DD272AA20100911C54 /* AuthenticatedCoordinator+Factory.swift in Sources */,
+				EB42852B272AA20100911C54 /* View+.swift in Sources */,
+				EB4284B9272AA20100911C54 /* HomeScreen.swift in Sources */,
+				EB4284E1272AA20100911C54 /* ProfileScreen.swift in Sources */,
+				EB4284B1272AA20100911C54 /* HomeCoordinator+Factory.swift in Sources */,
+				EB428515272AA20100911C54 /* MainCoordinator.swift in Sources */,
+				EB42851F272AA20100911C54 /* DeepLink.swift in Sources */,
+				EB428533272AA20100911C54 /* RoundedTextField.swift in Sources */,
+				EB4284ED272AA20100911C54 /* UnauthenticatedCoordinator.swift in Sources */,
+				EB4284CD272AA20100911C54 /* TestbedEnvironmentObjectScreen.swift in Sources */,
+				EB42852F272AA20100911C54 /* InfoText.swift in Sources */,
+				EB42854B272AA20100911C54 /* ForgotPasswordService.swift in Sources */,
+				EB4284B5272AA20100911C54 /* HomeCoordinator.swift in Sources */,
+				EB428501272AA20100911C54 /* TodoScreen.swift in Sources */,
+				EB4284F1272AA20100911C54 /* ForgotPasswordScreen.swift in Sources */,
+				EB4284FD272AA20100911C54 /* TodosCoordinator.swift in Sources */,
+				EB428511272AA20100911C54 /* MainCoordinator+Factory.swift in Sources */,
+				EB428553272AA20100911C54 /* UnauthenticatedServices.swift in Sources */,
+				EB42854F272AA20100911C54 /* LoginService.swift in Sources */,
+				EB428505272AA20100911C54 /* CreateTodoScreen.swift in Sources */,
+				EB4284E9272AA20100911C54 /* ProfileCoordinator+Factory.swift in Sources */,
+				EB428523272AA20100911C54 /* User.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB9E367225E4DC1300C4E25C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB4284DA272AA20100911C54 /* AuthenticatedCoordinator.swift in Sources */,
+				EB4284F6272AA20100911C54 /* UnauthenticatedCoordinator+Factory.swift in Sources */,
+				EB428548272AA20100911C54 /* UserRegistrationService.swift in Sources */,
+				EB428538272AA20100911C54 /* RoundedButton.swift in Sources */,
+				EB4284CA272AA20100911C54 /* UserRegistrationScreen.swift in Sources */,
+				EB42850A272AA20100911C54 /* TodosScreen.swift in Sources */,
+				EB4284FA272AA20100911C54 /* LoginScreen.swift in Sources */,
+				EB42853C272AA20100911C54 /* StinsenApp.swift in Sources */,
+				EB4284D2272AA20100911C54 /* TestbedEnvironmentObjectCoordinator+Factory.swift in Sources */,
+				EB4284C6272AA20100911C54 /* RegistrationCoordinator.swift in Sources */,
+				EB428544272AA20100911C54 /* AuthenticationService.swift in Sources */,
+				EB4284BE272AA20100911C54 /* PasswordRegistrationScreen.swift in Sources */,
+				EB42850E272AA20100911C54 /* TodosCoordinator+Factory.swift in Sources */,
+				EB4284D6272AA20100911C54 /* TestbedEnvironmentObjectCoordinator.swift in Sources */,
+				EB4284C2272AA20100911C54 /* RegistrationCoordinator+Factory.swift in Sources */,
+				EB4284E6272AA20100911C54 /* ProfileCoordinator.swift in Sources */,
+				EB428540272AA20100911C54 /* TodosStore.swift in Sources */,
+				EB428528272AA20100911C54 /* Todo.swift in Sources */,
+				EB428498272AA20100911C54 /* Main.swift in Sources */,
+				EB4284DE272AA20100911C54 /* AuthenticatedCoordinator+Factory.swift in Sources */,
+				EB42852C272AA20100911C54 /* View+.swift in Sources */,
+				EB4284BA272AA20100911C54 /* HomeScreen.swift in Sources */,
+				EB4284E2272AA20100911C54 /* ProfileScreen.swift in Sources */,
+				EB4284B2272AA20100911C54 /* HomeCoordinator+Factory.swift in Sources */,
+				EB428516272AA20100911C54 /* MainCoordinator.swift in Sources */,
+				EB428520272AA20100911C54 /* DeepLink.swift in Sources */,
+				EB428534272AA20100911C54 /* RoundedTextField.swift in Sources */,
+				EB4284EE272AA20100911C54 /* UnauthenticatedCoordinator.swift in Sources */,
+				EB4284CE272AA20100911C54 /* TestbedEnvironmentObjectScreen.swift in Sources */,
+				EB428530272AA20100911C54 /* InfoText.swift in Sources */,
+				EB42854C272AA20100911C54 /* ForgotPasswordService.swift in Sources */,
+				EB4284B6272AA20100911C54 /* HomeCoordinator.swift in Sources */,
+				EB428502272AA20100911C54 /* TodoScreen.swift in Sources */,
+				EB4284F2272AA20100911C54 /* ForgotPasswordScreen.swift in Sources */,
+				EB4284FE272AA20100911C54 /* TodosCoordinator.swift in Sources */,
+				EB428512272AA20100911C54 /* MainCoordinator+Factory.swift in Sources */,
+				EB428554272AA20100911C54 /* UnauthenticatedServices.swift in Sources */,
+				EB428550272AA20100911C54 /* LoginService.swift in Sources */,
+				EB428506272AA20100911C54 /* CreateTodoScreen.swift in Sources */,
+				EB4284EA272AA20100911C54 /* ProfileCoordinator+Factory.swift in Sources */,
+				EB428494272AA20100911C54 /* ComplicationController.swift in Sources */,
+				EB428524272AA20100911C54 /* User.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBC24EEC25AC630300F455F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB4284D7272AA20100911C54 /* AuthenticatedCoordinator.swift in Sources */,
+				EB4284F3272AA20100911C54 /* UnauthenticatedCoordinator+Factory.swift in Sources */,
+				EB428545272AA20100911C54 /* UserRegistrationService.swift in Sources */,
+				EB428535272AA20100911C54 /* RoundedButton.swift in Sources */,
+				EB4284C7272AA20100911C54 /* UserRegistrationScreen.swift in Sources */,
+				EB428487272AA20100911C54 /* Main.swift in Sources */,
+				EB428507272AA20100911C54 /* TodosScreen.swift in Sources */,
+				EB4284F7272AA20100911C54 /* LoginScreen.swift in Sources */,
+				EB428539272AA20100911C54 /* StinsenApp.swift in Sources */,
+				EB4284CF272AA20100911C54 /* TestbedEnvironmentObjectCoordinator+Factory.swift in Sources */,
+				EB4284C3272AA20100911C54 /* RegistrationCoordinator.swift in Sources */,
+				EB428541272AA20100911C54 /* AuthenticationService.swift in Sources */,
+				EB4284BB272AA20100911C54 /* PasswordRegistrationScreen.swift in Sources */,
+				EB42850B272AA20100911C54 /* TodosCoordinator+Factory.swift in Sources */,
+				EB4284D3272AA20100911C54 /* TestbedEnvironmentObjectCoordinator.swift in Sources */,
+				EB4284BF272AA20100911C54 /* RegistrationCoordinator+Factory.swift in Sources */,
+				EB4284E3272AA20100911C54 /* ProfileCoordinator.swift in Sources */,
+				EB42853D272AA20100911C54 /* TodosStore.swift in Sources */,
+				EB428525272AA20100911C54 /* Todo.swift in Sources */,
+				EB4284DB272AA20100911C54 /* AuthenticatedCoordinator+Factory.swift in Sources */,
+				EB428529272AA20100911C54 /* View+.swift in Sources */,
+				EB4284B7272AA20100911C54 /* HomeScreen.swift in Sources */,
+				EB4284DF272AA20100911C54 /* ProfileScreen.swift in Sources */,
+				EB4284AF272AA20100911C54 /* HomeCoordinator+Factory.swift in Sources */,
+				EB428513272AA20100911C54 /* MainCoordinator.swift in Sources */,
+				EB42851D272AA20100911C54 /* DeepLink.swift in Sources */,
+				EB428531272AA20100911C54 /* RoundedTextField.swift in Sources */,
+				EB4284EB272AA20100911C54 /* UnauthenticatedCoordinator.swift in Sources */,
+				EB4284CB272AA20100911C54 /* TestbedEnvironmentObjectScreen.swift in Sources */,
+				EB42852D272AA20100911C54 /* InfoText.swift in Sources */,
+				EB428549272AA20100911C54 /* ForgotPasswordService.swift in Sources */,
+				EB4284B3272AA20100911C54 /* HomeCoordinator.swift in Sources */,
+				EB4284FF272AA20100911C54 /* TodoScreen.swift in Sources */,
+				EB4284EF272AA20100911C54 /* ForgotPasswordScreen.swift in Sources */,
+				EB4284FB272AA20100911C54 /* TodosCoordinator.swift in Sources */,
+				EB42850F272AA20100911C54 /* MainCoordinator+Factory.swift in Sources */,
+				EB428551272AA20100911C54 /* UnauthenticatedServices.swift in Sources */,
+				EB42854D272AA20100911C54 /* LoginService.swift in Sources */,
+				EB428503272AA20100911C54 /* CreateTodoScreen.swift in Sources */,
+				EB4284E7272AA20100911C54 /* ProfileCoordinator+Factory.swift in Sources */,
+				EB428521272AA20100911C54 /* User.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBC24EF425AC630300F455F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB4284D8272AA20100911C54 /* AuthenticatedCoordinator.swift in Sources */,
+				EB4284F4272AA20100911C54 /* UnauthenticatedCoordinator+Factory.swift in Sources */,
+				EB428555272AA22900911C54 /* Main.swift in Sources */,
+				EB428546272AA20100911C54 /* UserRegistrationService.swift in Sources */,
+				EB428536272AA20100911C54 /* RoundedButton.swift in Sources */,
+				EB4284C8272AA20100911C54 /* UserRegistrationScreen.swift in Sources */,
+				EB428508272AA20100911C54 /* TodosScreen.swift in Sources */,
+				EB4284F8272AA20100911C54 /* LoginScreen.swift in Sources */,
+				EB42853A272AA20100911C54 /* StinsenApp.swift in Sources */,
+				EB4284D0272AA20100911C54 /* TestbedEnvironmentObjectCoordinator+Factory.swift in Sources */,
+				EB4284C4272AA20100911C54 /* RegistrationCoordinator.swift in Sources */,
+				EB428542272AA20100911C54 /* AuthenticationService.swift in Sources */,
+				EB4284BC272AA20100911C54 /* PasswordRegistrationScreen.swift in Sources */,
+				EB42850C272AA20100911C54 /* TodosCoordinator+Factory.swift in Sources */,
+				EB4284D4272AA20100911C54 /* TestbedEnvironmentObjectCoordinator.swift in Sources */,
+				EB4284C0272AA20100911C54 /* RegistrationCoordinator+Factory.swift in Sources */,
+				EB4284E4272AA20100911C54 /* ProfileCoordinator.swift in Sources */,
+				EB42853E272AA20100911C54 /* TodosStore.swift in Sources */,
+				EB428526272AA20100911C54 /* Todo.swift in Sources */,
+				EB4284DC272AA20100911C54 /* AuthenticatedCoordinator+Factory.swift in Sources */,
+				EB42852A272AA20100911C54 /* View+.swift in Sources */,
+				EB4284B8272AA20100911C54 /* HomeScreen.swift in Sources */,
+				EB4284E0272AA20100911C54 /* ProfileScreen.swift in Sources */,
+				EB4284B0272AA20100911C54 /* HomeCoordinator+Factory.swift in Sources */,
+				EB428514272AA20100911C54 /* MainCoordinator.swift in Sources */,
+				EB42851E272AA20100911C54 /* DeepLink.swift in Sources */,
+				EB428532272AA20100911C54 /* RoundedTextField.swift in Sources */,
+				EB4284EC272AA20100911C54 /* UnauthenticatedCoordinator.swift in Sources */,
+				EB4284CC272AA20100911C54 /* TestbedEnvironmentObjectScreen.swift in Sources */,
+				EB42852E272AA20100911C54 /* InfoText.swift in Sources */,
+				EB42854A272AA20100911C54 /* ForgotPasswordService.swift in Sources */,
+				EB4284B4272AA20100911C54 /* HomeCoordinator.swift in Sources */,
+				EB428500272AA20100911C54 /* TodoScreen.swift in Sources */,
+				EB4284F0272AA20100911C54 /* ForgotPasswordScreen.swift in Sources */,
+				EB4284FC272AA20100911C54 /* TodosCoordinator.swift in Sources */,
+				EB428510272AA20100911C54 /* MainCoordinator+Factory.swift in Sources */,
+				EB428552272AA20100911C54 /* UnauthenticatedServices.swift in Sources */,
+				EB42854E272AA20100911C54 /* LoginService.swift in Sources */,
+				EB428504272AA20100911C54 /* CreateTodoScreen.swift in Sources */,
+				EB4284E8272AA20100911C54 /* ProfileCoordinator+Factory.swift in Sources */,
+				EB428522272AA20100911C54 /* User.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EB9E366D25E4DC1200C4E25C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EB9E366925E4DC1200C4E25C /* StinsenApp (watchOS App) */;
+			targetProxy = EB9E366C25E4DC1200C4E25C /* PBXContainerItemProxy */;
+		};
+		EB9E367925E4DC1300C4E25C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EB9E367525E4DC1300C4E25C /* StinsenApp (watchOS Extension) */;
+			targetProxy = EB9E367825E4DC1300C4E25C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		EB6B0F6B25DB03F70011E826 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "Brand Assets";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = tvOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = se.rundfunk.stinsen.examples.app.tvos;
+				PRODUCT_NAME = StinsenApp;
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 14.3;
+			};
+			name = Debug;
+		};
+		EB6B0F6C25DB03F70011E826 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "Brand Assets";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = tvOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = se.rundfunk.stinsen.examples.app.tvos;
+				PRODUCT_NAME = StinsenApp;
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 14.3;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EB9E368825E4DC1300C4E25C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = watchOS/Extension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = se.rundfunk.stinsen.examples.app.watchkitapp.watchkitextension;
+				PRODUCT_NAME = StinsenApp;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Debug;
+		};
+		EB9E368925E4DC1300C4E25C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = watchOS/Extension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = se.rundfunk.stinsen.examples.app.watchkitapp.watchkitextension;
+				PRODUCT_NAME = StinsenApp;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Release;
+		};
+		EB9E368C25E4DC1300C4E25C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				IBSC_MODULE = StinsenApp_WatchKit_Extension;
+				INFOPLIST_FILE = watchOS/App/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = se.rundfunk.stinsen.examples.app.watchkitapp;
+				PRODUCT_NAME = StinsenApp;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Debug;
+		};
+		EB9E368D25E4DC1300C4E25C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				IBSC_MODULE = StinsenApp_WatchKit_Extension;
+				INFOPLIST_FILE = watchOS/App/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = se.rundfunk.stinsen.examples.app.watchkitapp;
+				PRODUCT_NAME = StinsenApp;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Release;
+		};
+		EB9E369025E4DC1300C4E25C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = se.rundfunk.stinsen.examples.app;
+				PRODUCT_NAME = StinsenApp;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Debug;
+		};
+		EB9E369125E4DC1300C4E25C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = se.rundfunk.stinsen.examples.app;
+				PRODUCT_NAME = StinsenApp;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Release;
+		};
+		EBC24F0225AC630300F455F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		EBC24F0325AC630300F455F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		EBC24F0525AC630300F455F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = iOS/iOS.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = se.rundfunk.stinsen.examples.app.ios;
+				PRODUCT_NAME = StinsenApp;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
+				TARGETED_DEVICE_FAMILY = "1,2,6";
+			};
+			name = Debug;
+		};
+		EBC24F0625AC630300F455F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = iOS/iOS.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = se.rundfunk.stinsen.examples.app.ios;
+				PRODUCT_NAME = StinsenApp;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
+				TARGETED_DEVICE_FAMILY = "1,2,6";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EBC24F0825AC630300F455F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = se.rundfunk.stinsen.examples.app.macos;
+				PRODUCT_NAME = StinsenApp;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		EBC24F0925AC630300F455F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = se.rundfunk.stinsen.examples.app.macos;
+				PRODUCT_NAME = StinsenApp;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EB6B0F6A25DB03F70011E826 /* Build configuration list for PBXNativeTarget "StinsenApp (tvOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB6B0F6B25DB03F70011E826 /* Debug */,
+				EB6B0F6C25DB03F70011E826 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB9E368725E4DC1300C4E25C /* Build configuration list for PBXNativeTarget "StinsenApp (watchOS Extension)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB9E368825E4DC1300C4E25C /* Debug */,
+				EB9E368925E4DC1300C4E25C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB9E368B25E4DC1300C4E25C /* Build configuration list for PBXNativeTarget "StinsenApp (watchOS App)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB9E368C25E4DC1300C4E25C /* Debug */,
+				EB9E368D25E4DC1300C4E25C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB9E368F25E4DC1300C4E25C /* Build configuration list for PBXNativeTarget "StinsenApp (watchOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB9E369025E4DC1300C4E25C /* Debug */,
+				EB9E369125E4DC1300C4E25C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EBC24EE725AC62FF00F455F3 /* Build configuration list for PBXProject "App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBC24F0225AC630300F455F3 /* Debug */,
+				EBC24F0325AC630300F455F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EBC24F0425AC630300F455F3 /* Build configuration list for PBXNativeTarget "StinsenApp (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBC24F0525AC630300F455F3 /* Debug */,
+				EBC24F0625AC630300F455F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EBC24F0725AC630300F455F3 /* Build configuration list for PBXNativeTarget "StinsenApp (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBC24F0825AC630300F455F3 /* Debug */,
+				EBC24F0925AC630300F455F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EB24976326C9192200A4C2D4 /* Stinsen */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Stinsen;
+		};
+		EB24976526C9192800A4C2D4 /* Stinsen */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Stinsen;
+		};
+		EB24976926C9193500A4C2D4 /* Stinsen */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Stinsen;
+		};
+		EB24976B26C9194700A4C2D4 /* Stinsen */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Stinsen;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = EBC24EE425AC62FF00F455F3 /* Project object */;
+}

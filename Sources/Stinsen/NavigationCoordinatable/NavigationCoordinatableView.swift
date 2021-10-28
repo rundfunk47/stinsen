@@ -104,7 +104,7 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
         
         self.router = NavigationRouter(
             id: id,
-            coordinator: coordinator
+            coordinator: coordinator.routerStorable
         )
         
         if coordinator.stack.root == nil {
