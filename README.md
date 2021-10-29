@@ -122,7 +122,7 @@ final class MainCoordinator: NavigationCoordinatable {
 
 What actions you can perform from the router/coordinator depends on the kind of coordinator used. For instance, using a `NavigationCoordinatable`, some of the functions you can perform are:
 
-* `popLast` - Removes the last item from the stack. Note that `Stinsen` doesn't care if the view was presented modally or pushed, the same function is used for both. 
+* `popLast` - Removes the last item from the stack. Note that _Stinsen_ doesn't care if the view was presented modally or pushed, the same function is used for both. 
 * `pop` - Removes the view from the stack. This function can only be performed by a router, since only the router knows about which view you're trying to pop.
 * `popToRoot` - Clears the stack.
 * `root` - Changes the root (i.e. the first view of the stack). If the root is already the active root, will do nothing.
