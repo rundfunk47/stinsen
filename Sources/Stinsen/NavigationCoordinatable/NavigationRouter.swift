@@ -227,6 +227,18 @@ public extension NavigationRouter where T: NavigationCoordinatable {
     }
     
     @discardableResult func root<Input, Output: Coordinatable>(
+        _ route: KeyPath<T, Transition<T, RootSwitch, Input, Output>>
+    ) -> Output {
+        return coordinator.root(route)
+    }
+    
+    @discardableResult func root<Input, Output: View>(
+        _ route: KeyPath<T, Transition<T, RootSwitch, Input, Output>>
+    ) -> T {
+        return coordinator.root(route)
+    }
+    
+    @discardableResult func root<Input, Output: Coordinatable>(
         _ route: KeyPath<T, Transition<T, RootSwitch, Input, Output>>,
         _ input: Input,
         comparator: @escaping (Input, Input) -> Bool

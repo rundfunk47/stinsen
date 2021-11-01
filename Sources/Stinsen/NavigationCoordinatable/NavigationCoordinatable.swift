@@ -192,6 +192,14 @@ public protocol NavigationCoordinatable: Coordinatable {
     ) -> Self
     
     @discardableResult func root<Input, Output: Coordinatable>(
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>
+    ) -> Output
+    
+    @discardableResult func root<Input, Output: View>(
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>
+    ) -> Self
+    
+    @discardableResult func root<Input, Output: Coordinatable>(
         _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>,
         _ input: Input,
         comparator: @escaping (Input, Input) -> Bool
@@ -600,6 +608,18 @@ public extension NavigationCoordinatable {
     
     @discardableResult func root<Output: View>(
         _ route: KeyPath<Self, Transition<Self, RootSwitch, Void, Output>>
+    ) -> Self {
+        self._root(route, inputItem: nil)
+    }
+    
+    @discardableResult func root<Input, Output: Coordinatable>(
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>
+    ) -> Output {
+        self._root(route, inputItem: nil)
+    }
+    
+    @discardableResult func root<Input, Output: View>(
+        _ route: KeyPath<Self, Transition<Self, RootSwitch, Input, Output>>
     ) -> Self {
         self._root(route, inputItem: nil)
     }
