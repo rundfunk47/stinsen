@@ -48,11 +48,11 @@ public extension TabCoordinatable {
         }
     }
 
-    func dismissChild(coordinator: AnyCoordinatable, action: (() -> Void)?) {
+    func dismissChild<T: Coordinatable>(coordinator: T, action: (() -> Void)?) {
         fatalError("Not implemented")
     }
     
-    var parent: AnyCoordinatable? {
+    var parent: ChildDismissable? {
         get {
             return child.parent
         } set {

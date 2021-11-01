@@ -22,7 +22,7 @@ public class NavigationRoot: ObservableObject {
 public class NavigationStack<T: NavigationCoordinatable> {
     var dismissalAction: [Int: () -> Void] = [:]
     
-    weak var parent: AnyCoordinatable?
+    weak var parent: ChildDismissable?
     var poppedTo = PassthroughSubject<Int, Never>()
     let initial: PartialKeyPath<T>
     let initialInput: Any?

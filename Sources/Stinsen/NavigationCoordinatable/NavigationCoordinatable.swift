@@ -278,7 +278,7 @@ public extension NavigationCoordinatable {
         }
     }
     
-    var parent: AnyCoordinatable? {
+    weak var parent: ChildDismissable? {
         get {
             return stack.parent
         } set {
@@ -290,13 +290,13 @@ public extension NavigationCoordinatable {
         return view
     }
     
-    func dismissChild(coordinator: AnyCoordinatable, action: (() -> Void)?) {
+    func dismissChild<T: Coordinatable>(coordinator: T, action: (() -> Void)?) {
         let value = stack.value.firstIndex { item in
-            guard let presentable = item.presentable as? AnyCoordinatable else {
+            guard let presentable = item.presentable as? StringIdentifiable else {
                 return false
             }
             
-            return presentable === coordinator
+            return presentable.id == coordinator.id
         }!
         
         self.popTo(value - 1, action)
