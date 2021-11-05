@@ -8,6 +8,6 @@ public protocol Coordinatable: ObservableObject, StringIdentifiable, Identifiabl
 
 public extension Coordinatable {
     var id: String {
-        return ObjectIdentifier(self).debugDescription + NSStringFromClass(Self.self) //objc-name for better debugging
+        return ObjectIdentifier(self).debugDescription
     }
 }
