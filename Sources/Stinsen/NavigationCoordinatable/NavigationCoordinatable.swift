@@ -331,7 +331,7 @@ public extension NavigationCoordinatable {
         self.popTo(int, nil)
     }
     
-    internal func popLast(_ action: (() -> ())?) {
+    func popLast(_ action: (() -> ())?) {
         self.popTo(self.stack.value.count - 2, action)
     }
     
