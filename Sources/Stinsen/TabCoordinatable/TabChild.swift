@@ -1,10 +1,10 @@
 import Foundation
 import SwiftUI
 
-struct TabChildItem {
-    let presentable: ViewPresentable
+public struct TabChildItem {
+    public let presentable: ViewPresentable
     let keyPathIsEqual: (Any) -> Bool
-    let tabItem: (Bool) -> AnyView
+    public let tabItem: (Bool) -> AnyView
 }
 
 /// Wrapper around childCoordinators
@@ -15,7 +15,7 @@ public class TabChild: ObservableObject {
     
     @Published var activeItem: TabChildItem!
     
-    var allItems: [TabChildItem]!
+    public internal(set) var allItems: [TabChildItem]!
     
     public var activeTab: Int {
         didSet {

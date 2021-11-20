@@ -60,7 +60,7 @@ public extension TabCoordinatable {
         }
     }
     
-    internal func setupAllTabs() {
+    func setupAllTabs() {
         var all: [TabChildItem] = []
         
         for abs in self.child.startingItems {
