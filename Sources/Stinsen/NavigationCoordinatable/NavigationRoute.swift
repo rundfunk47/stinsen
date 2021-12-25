@@ -22,7 +22,11 @@ public struct Transition<T: NavigationCoordinatable, U: RouteType, Input, Output
     let closure: ((T) -> ((Input) -> Output))
     
     func using(coordinator: Any, input: Any) -> ViewPresentable {
-        return closure(coordinator as! T)(input as! Input)
+        if Input.self == Void.self {
+            return closure(coordinator as! T)(() as! Input)
+        } else {
+            return closure(coordinator as! T)(input as! Input)
+        }
     }
 }
 

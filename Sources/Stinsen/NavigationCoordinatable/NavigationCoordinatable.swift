@@ -316,7 +316,7 @@ public extension NavigationCoordinatable {
     
     internal func setupRoot() {
         let a = self[keyPath: self.stack.initial] as! NavigationOutputable
-        let presentable = a.using(coordinator: self, input: self.stack.initialInput ?? ())
+        let presentable = a.using(coordinator: self, input: self.stack.initialInput as Any)
         
         let item = NavigationRootItem(
             keyPath: self.stack.initial.hashValue,
