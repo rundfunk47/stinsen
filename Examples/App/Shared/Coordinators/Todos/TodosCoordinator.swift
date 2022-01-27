@@ -7,7 +7,12 @@ final class TodosCoordinator: NavigationCoordinatable {
 
     @Root var start = makeStart
     @Route(.push) var todo = makeTodo
+    @Route(.push) var todoDetails = makeTodoDetails
     @Route(.modal) var createTodo = makeCreateTodo
+    
+    func makeTodoDetails(id: UUID) -> some View {
+        Color.red
+    }
     
     let todosStore: TodosStore
     

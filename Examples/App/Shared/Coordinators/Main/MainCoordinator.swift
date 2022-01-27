@@ -44,6 +44,7 @@ final class MainCoordinator: NavigationCoordinatable {
                                     .focusFirst(\.todos)
                                     .child
                                     .route(to: \.todo, id)
+                                    .route(to: \.todoDetails, id)
                             }
                         } catch {
                             print(error.localizedDescription)

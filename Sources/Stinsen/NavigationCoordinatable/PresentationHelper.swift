@@ -27,23 +27,14 @@ final class PresentationHelper<T: NavigationCoordinatable>: ObservableObject {
                         #if os(macOS)
                         self.presented = Presented(
                             view: AnyView(
-                                NavigationView(
-                                    content: {
-                                        view
-                                    }
-                                )
+                                view
                             ),
                             type: .modal
                         )
                         #else
                         self.presented = Presented(
                             view: AnyView(
-                                NavigationView(
-                                    content: {
-                                        view.navigationBarHidden(true)
-                                    }
-                                )
-                                .navigationViewStyle(StackNavigationViewStyle())
+                                view
                             ),
                             type: .modal
                         )
@@ -76,27 +67,14 @@ final class PresentationHelper<T: NavigationCoordinatable>: ObservableObject {
                             #if os(macOS)
                             self.presented = Presented(
                                 view: AnyView(
-                                    NavigationView(
-                                        content: {
-                                            view
-                                        }
-                                    )
+                                    view
                                 ),
                                 type: .fullScreen
                             )
                             #else
                             self.presented = Presented(
                                 view: AnyView(
-                                    NavigationView(
-                                        content: {
-                                            #if os(macOS)
-                                            view
-                                            #else
-                                            view.navigationBarHidden(true)
-                                            #endif
-                                        }
-                                    )
-                                    .navigationViewStyle(StackNavigationViewStyle())
+                                    view
                                 ),
                                 type: .fullScreen
                             )
