@@ -38,6 +38,17 @@ public class NavigationStack<T: NavigationCoordinatable> {
     }
 }
 
+/// Convenience checks against the navigation stack's contents
+extension NavigationStack {
+    public var currentRouteHash: Int {
+        return value.last?.keyPath ?? -1
+    }
+    
+    private func isInStack(_ keyPathHash: Int) -> Bool {
+        return value.contains { $0.keyPath == keyPathHash }
+    }
+}
+
 struct NavigationStackItem {
     let presentationType: PresentationType
     let presentable: ViewPresentable
