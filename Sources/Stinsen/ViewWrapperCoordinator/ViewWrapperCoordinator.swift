@@ -4,7 +4,7 @@ import SwiftUI
 /// The NavigationViewCoordinator is used to represent a coordinator with a NavigationView
 open class ViewWrapperCoordinator<T: Coordinatable, V: View>: Coordinatable {
     public func dismissChild<T: Coordinatable>(coordinator: T, action: (() -> Void)?) {
-        self.parent!.dismissChild(coordinator: self, action: action)
+        self.parent?.dismissChild(coordinator: self, action: action)
     }
 
     public weak var parent: ChildDismissable?
