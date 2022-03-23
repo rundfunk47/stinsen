@@ -14,7 +14,7 @@ final class DefaultLoginViewModel: LoginViewModel {
     
     // You have two ways of performing routing here. The first one is to use the RouterStore, which is what we're using in this example. The second one is by injecting the coordinator, either in init or by using a dependency injection framework. Using a dependency injection framework is recommended over using RouterObject, since you get a lot more flexibility and features that way.
     
-    @RouterObject var router: NavigationRouter<LoginCoordinator>!
+    @RouterObject var router: NavigationRouter<DefaultLoginCoordinator>!
     
     fileprivate let api: API
     
