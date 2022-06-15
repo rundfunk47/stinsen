@@ -364,6 +364,15 @@ public extension NavigationCoordinatable {
     
     @discardableResult func route<Input, Output: Coordinatable>(
         to route: KeyPath<Self, Transition<Self, Presentation, Input, Output>>,
+        _ input: Input,
+        onDismiss: @escaping () -> ()
+    ) -> Output {
+        stack.dismissalAction[-1] = onDismiss
+        return self.route(to: route, input)
+    }
+    
+    @discardableResult func route<Input, Output: Coordinatable>(
+        to route: KeyPath<Self, Transition<Self, Presentation, Input, Output>>,
         _ input: Input
     ) -> Output {
         let transition = self[keyPath: route]
@@ -378,6 +387,14 @@ public extension NavigationCoordinatable {
         )
         output.parent = self
         return output
+    }
+    
+    @discardableResult func route<Output: Coordinatable>(
+        to route: KeyPath<Self, Transition<Self, Presentation, Void, Output>>,
+        onDismiss: @escaping () -> ()
+    ) -> Output {
+        stack.dismissalAction[-1] = onDismiss
+        return self.route(to: route)
     }
     
     @discardableResult func route<Output: Coordinatable>(
@@ -399,6 +416,15 @@ public extension NavigationCoordinatable {
     
     @discardableResult func route<Input, Output: View>(
         to route: KeyPath<Self, Transition<Self, Presentation, Input, Output>>,
+        _ input: Input,
+        onDismiss: @escaping () -> ()
+    ) -> Self {
+        stack.dismissalAction[-1] = onDismiss
+        return self.route(to: route, input)
+    }
+    
+    @discardableResult func route<Input, Output: View>(
+        to route: KeyPath<Self, Transition<Self, Presentation, Input, Output>>,
         _ input: Input
     ) -> Self {
         let transition = self[keyPath: route]
@@ -412,6 +438,14 @@ public extension NavigationCoordinatable {
             )
         )
         return self
+    }
+    
+    @discardableResult func route<Output: View>(
+        to route: KeyPath<Self, Transition<Self, Presentation, Void, Output>>,
+        onDismiss: @escaping () -> ()
+    ) -> Self {
+        stack.dismissalAction[-1] = onDismiss
+        return self.route(to: route)
     }
     
     @discardableResult func route<Output: View>(
