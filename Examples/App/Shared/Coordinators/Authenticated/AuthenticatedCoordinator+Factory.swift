@@ -13,7 +13,9 @@ extension AuthenticatedCoordinator {
     }
     
     func onTestbedTapped(_ isRepeat: Bool, coordinator: NavigationViewCoordinator<TestbedEnvironmentObjectCoordinator>) {
-        coordinator.child.popToRoot().popToRoot()
+        if isRepeat {
+            coordinator.child.popToRoot()
+        }
     }
 
     func makeHome() -> HomeCoordinator {
