@@ -15,19 +15,19 @@ public class Content<T: TabCoordinatable, Output: ViewPresentable>: Outputable {
     
     func using(coordinator: Any) -> ViewPresentable {
         let closureOutput = self.closure(coordinator as! T)()
-        self._output = closureOutput
+        self.output = closureOutput
         return closureOutput
     }
     
     func onTapped(_ isRepeat: Bool, coordinator: Any) {
-        self.onTapped(coordinator as! T)(isRepeat, _output!)
+        self.onTapped(coordinator as! T)(isRepeat, output!)
     }
     
     let closure: ((T) -> (() -> Output))
     let tabItem: ((T) -> ((Bool) -> AnyView))
     let onTapped: ((T) -> ((Bool, Output) -> Void))
     
-    private var _output: Output?
+    private var output: Output?
     
     init<TabItem: View>(
         closure: @escaping ((T) -> (() -> Output)),

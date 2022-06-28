@@ -20,12 +20,7 @@ public class TabChild: ObservableObject {
     
     public var activeTab: Int {
         didSet {
-            if oldValue != activeTab {
-                allItems[activeTab].onTapped(false)
-            } else {
-                allItems[oldValue].onTapped(true)
-            }
-            
+            allItems[activeTab].onTapped(oldValue == activeTab)            
             guard oldValue != activeTab else { return }
             let newItem = allItems[activeTab]
             self.activeItem = newItem
