@@ -18,7 +18,7 @@ final class AuthenticatedCoordinator: TabCoordinatable {
     @Route(tabItem: makeHomeTab) var home = makeHome
     @Route(tabItem: makeTodosTab) var todos = makeTodos
     @Route(tabItem: makeProfileTab) var profile = makeProfile
-    @Route(tabItem: makeTestbedTab) var testbed = makeTestbed
+    @Route(tabItem: makeTestbedTab, onTapped: onTestbedTapped) var testbed = makeTestbed
     
     init(user: User) {
         self.todosStore = TodosStore(user: user)
