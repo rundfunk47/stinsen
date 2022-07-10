@@ -11,6 +11,12 @@ extension AuthenticatedCoordinator {
         Image(systemName: "bed.double" + (isActive ? ".fill" : ""))
         Text("Testbed")
     }
+    
+    func onTestbedTapped(_ isRepeat: Bool, coordinator: NavigationViewCoordinator<TestbedEnvironmentObjectCoordinator>) {
+        if isRepeat {
+            coordinator.child.popToRoot()
+        }
+    }
 
     func makeHome() -> HomeCoordinator {
         return HomeCoordinator(todosStore: todosStore)

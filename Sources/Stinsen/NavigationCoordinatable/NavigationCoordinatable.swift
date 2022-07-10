@@ -331,7 +331,7 @@ public extension NavigationCoordinatable {
         self.popTo(int, nil)
     }
     
-    func popLast(_ action: (() -> ())?) {
+    func popLast(_ action: (() -> ())? = nil) {
         self.popTo(self.stack.value.count - 2, action)
     }
     
@@ -357,7 +357,7 @@ public extension NavigationCoordinatable {
         return AnyView(NavigationCoordinatableView(id: -1, coordinator: self))
     }
 
-    func popToRoot(_ action: (() -> ())? = nil) -> Self {
+    @discardableResult func popToRoot(_ action: (() -> ())? = nil) -> Self {
         self.popTo(-1, action)
         return self
     }
