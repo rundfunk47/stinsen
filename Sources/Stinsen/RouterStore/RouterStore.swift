@@ -31,17 +31,24 @@ public class RouterStore {
 
 public extension RouterStore {
     func store<T: Routable>(router: T) {
+        cleanupRouterStore()
         let ref = WeakRef<AnyObject>(value: router)
         self.routers.insert(ref, at: 0)
     }
     
     func retrieve<T: Routable>() -> T? {
         for router in self.routers {
-            if let router = router.value as? T {
-                return router
+            if let foundRouter = router.value as? T, router.value != nil {
+                return foundRouter
             }
         }
         
         return nil
+    }
+    
+    /// Removes all nil weak references
+    private func cleanupRouterStore() {
+        let notNilRouters = self.routers.filter({ $0.value != nil })
+        self.routers = notNilRouters
     }
 }
