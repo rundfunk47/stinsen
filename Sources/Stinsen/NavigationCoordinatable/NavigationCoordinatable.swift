@@ -298,7 +298,7 @@ public extension NavigationCoordinatable {
         return view
     }
     
-    func dismissChild<T: Coordinatable>(coordinator: T, action: (() -> Void)?) {
+    func dismissChild<T: Coordinatable>(coordinator: T, action: (() -> Void)? = nil) {
         let value = stack.value.firstIndex { item in
             guard let presentable = item.presentable as? StringIdentifiable else {
                 return false
@@ -310,7 +310,7 @@ public extension NavigationCoordinatable {
         self.popTo(value - 1, action)
     }
     
-    func dismissCoordinator(_ action: (() -> ())?) {
+    func dismissCoordinator(_ action: (() -> ())? = nil) {
         stack.parent!.dismissChild(coordinator: self, action: action)
     }
     
@@ -335,7 +335,7 @@ public extension NavigationCoordinatable {
         self.popTo(self.stack.value.count - 2, action)
     }
     
-    internal func popTo(_ int: Int, _ action: (() -> ())?) {
+    internal func popTo(_ int: Int, _ action: (() -> ())? = nil) {
         if let action = action {
             self.stack.dismissalAction[int] = action
         }
