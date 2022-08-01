@@ -4,7 +4,12 @@ import PackageDescription
 
 let package = Package(
     name: "Stinsen",
-    platforms: [.iOS(.v13), .macOS(.v10_15), .tvOS(.v13), .watchOS(.v7)],
+    platforms: [
+        .iOS(.v13),
+            .macOS(.v10_15),
+            .tvOS(.v13),
+            .watchOS(.v7)
+    ],
     products: [
         .library(
             name: "Stinsen",
@@ -13,15 +18,6 @@ let package = Package(
     ],
     dependencies: [],
     targets: [
-        .target(
-            name: "Stinsen",
-            dependencies: [],
-            path: "",
-            exclude: ["Examples",
-                      "Images",
-                      "Stinsen.podspec"],
-            sources: ["Sources",
-                      "README.md",
-                     "LICENSE"]),
+        .target(name: "Stinsen", path: "Sources")
     ]
 )
