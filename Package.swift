@@ -15,6 +15,13 @@ let package = Package(
     targets: [
         .target(
             name: "Stinsen",
-            dependencies: []),
+            dependencies: [],
+            path: "",
+            exclude: ["Examples",
+                      "Images",
+                      "Stinsen.podspec"],
+            sources: ["Sources",
+                      "README.md",
+                     "LICENSE"]),
     ]
 )
