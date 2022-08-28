@@ -16,7 +16,7 @@ struct PasswordError: LocalizedError {
 class DefaultAPI: API {
     func login(username: String, password: String) async throws {
         // Let's pretend this is a real network call being made here
-        await Task.sleep(2_000_000_000)
+        try await Task.sleep(nanoseconds: 2_000_000_000)
         if username == "user@example.com" && password == "password" {
             return
         } else {

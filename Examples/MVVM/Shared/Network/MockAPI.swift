@@ -12,8 +12,8 @@ class MockAPI: API {
     
     func login(username: String, password: String) async throws {
         // Let's pretend this is a real network call being made here
-        await Task.sleep(2_000_000_000)
-        
+        try await Task.sleep(nanoseconds: 2_000_000_000)
+
         if let error = error {
             throw error
         }

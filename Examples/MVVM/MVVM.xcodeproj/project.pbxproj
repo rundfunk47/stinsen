@@ -16,8 +16,6 @@
 		EBE63206272AA43E00E18E9C /* AuthenticatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE63205272AA43E00E18E9C /* AuthenticatedView.swift */; };
 		EBE63208272AA45200E18E9C /* AuthenticatedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE63207272AA45200E18E9C /* AuthenticatedCoordinator.swift */; };
 		EBE6320A272AA46200E18E9C /* DefaultLoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE63209272AA46200E18E9C /* DefaultLoginCoordinator.swift */; };
-		EBE63210272AA51400E18E9C /* Stinsen in Frameworks */ = {isa = PBXBuildFile; productRef = EBE6320F272AA51400E18E9C /* Stinsen */; };
-		EBE63212272AA51800E18E9C /* Stinsen in Frameworks */ = {isa = PBXBuildFile; productRef = EBE63211272AA51800E18E9C /* Stinsen */; };
 		EBE63217272AA69F00E18E9C /* DefaultLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE63216272AA69F00E18E9C /* DefaultLoginViewModel.swift */; };
 		EBE6321A272AA73800E18E9C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE63219272AA73800E18E9C /* API.swift */; };
 		EBE6321C272AA73F00E18E9C /* MockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE6321B272AA73F00E18E9C /* MockAPI.swift */; };
@@ -41,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EB5247BF28BBD395002E3838 /* Stinsen */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Stinsen; path = ../..; sourceTree = "<group>"; };
 		EBE631DC272AA38500E18E9C /* MVVMApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMApp.swift; sourceTree = "<group>"; };
 		EBE631DE272AA38600E18E9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBE631E3272AA38600E18E9C /* MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,8 +50,6 @@
 		EBE63205272AA43E00E18E9C /* AuthenticatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedView.swift; sourceTree = "<group>"; };
 		EBE63207272AA45200E18E9C /* AuthenticatedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedCoordinator.swift; sourceTree = "<group>"; };
 		EBE63209272AA46200E18E9C /* DefaultLoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLoginCoordinator.swift; sourceTree = "<group>"; };
-		EBE6320C272AA49900E18E9C /* Sources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Sources; path = ../../Sources; sourceTree = "<group>"; };
-		EBE6320D272AA50C00E18E9C /* Sources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Sources; path = ../../Sources; sourceTree = "<group>"; };
 		EBE63216272AA69F00E18E9C /* DefaultLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLoginViewModel.swift; sourceTree = "<group>"; };
 		EBE63219272AA73800E18E9C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		EBE6321B272AA73F00E18E9C /* MockAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPI.swift; sourceTree = "<group>"; };
@@ -71,7 +68,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBE63210272AA51400E18E9C /* Stinsen in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,7 +75,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBE63212272AA51800E18E9C /* Stinsen in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,10 +88,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB5247BE28BBD395002E3838 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				EB5247BF28BBD395002E3838 /* Stinsen */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 		EBE631D6272AA38400E18E9C = {
 			isa = PBXGroup;
 			children = (
-				EBE6320B272AA49900E18E9C /* Packages */,
+				EB5247BE28BBD395002E3838 /* Packages */,
 				EBE631DB272AA38500E18E9C /* Shared */,
 				EBE631EA272AA38600E18E9C /* macOS */,
 				EBE63230272AB91B00E18E9C /* MVVMTests */,
@@ -152,15 +155,6 @@
 				EBE63224272AAF7A00E18E9C /* View */,
 			);
 			path = Authenticated;
-			sourceTree = "<group>";
-		};
-		EBE6320B272AA49900E18E9C /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				EBE6320C272AA49900E18E9C /* Sources */,
-				EBE6320D272AA50C00E18E9C /* Sources */,
-			);
-			name = Packages;
 			sourceTree = "<group>";
 		};
 		EBE6320E272AA51400E18E9C /* Frameworks */ = {
@@ -251,7 +245,6 @@
 			);
 			name = "MVVM (iOS)";
 			packageProductDependencies = (
-				EBE6320F272AA51400E18E9C /* Stinsen */,
 			);
 			productName = "MVVM (iOS)";
 			productReference = EBE631E3272AA38600E18E9C /* MVVM.app */;
@@ -271,7 +264,6 @@
 			);
 			name = "MVVM (macOS)";
 			packageProductDependencies = (
-				EBE63211272AA51800E18E9C /* Stinsen */,
 			);
 			productName = "MVVM (macOS)";
 			productReference = EBE631E9272AA38600E18E9C /* MVVM.app */;
@@ -724,17 +716,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		EBE6320F272AA51400E18E9C /* Stinsen */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Stinsen;
-		};
-		EBE63211272AA51800E18E9C /* Stinsen */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Stinsen;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EBE631D7272AA38400E18E9C /* Project object */;
 }
