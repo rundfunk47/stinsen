@@ -299,13 +299,16 @@ public extension NavigationCoordinatable {
     }
     
     func dismissChild<T: Coordinatable>(coordinator: T, action: (() -> Void)? = nil) {
-        let value = stack.value.firstIndex { item in
+        guard let value = stack.value.firstIndex(where: { item in
             guard let presentable = item.presentable as? StringIdentifiable else {
                 return false
             }
             
             return presentable.id == coordinator.id
-        }!
+        }) else {
+            assertionFailure("Can not dismiss child when coordinator is top of the stack.")
+            return
+        }
         
         self.popTo(value - 1, action)
     }
