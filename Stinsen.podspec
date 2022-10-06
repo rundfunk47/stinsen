@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
     s.license      = { :type => 'MIT License' }
     s.author      = { 'Narek Mailian' => 'narek.mailian@gmail.com' }
     s.source       = { :git => 'https://github.com/rundfunk47/stinsen.git', :tag => s.version }
-    s.source_files = 'Sources/Stinsen/**/*.swift'
+    s.source_files = 'Sources/**/*.swift'
     s.framework    = 'SwiftUI'
     s.ios.deployment_target  = '13.0'
     s.osx.deployment_target = '10.15'
