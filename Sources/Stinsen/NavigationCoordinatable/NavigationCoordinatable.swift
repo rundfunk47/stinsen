@@ -370,7 +370,7 @@ public extension NavigationCoordinatable {
         _ input: Input,
         onDismiss: @escaping () -> ()
     ) -> Output {
-        stack.dismissalAction[-1] = onDismiss
+        stack.dismissalAction[stack.value.count - 1] = onDismiss
         return self.route(to: route, input)
     }
     
@@ -396,7 +396,7 @@ public extension NavigationCoordinatable {
         to route: KeyPath<Self, Transition<Self, Presentation, Void, Output>>,
         onDismiss: @escaping () -> ()
     ) -> Output {
-        stack.dismissalAction[-1] = onDismiss
+        stack.dismissalAction[stack.value.count - 1] = onDismiss
         return self.route(to: route)
     }
     
@@ -422,7 +422,7 @@ public extension NavigationCoordinatable {
         _ input: Input,
         onDismiss: @escaping () -> ()
     ) -> Self {
-        stack.dismissalAction[-1] = onDismiss
+        stack.dismissalAction[stack.value.count - 1] = onDismiss
         return self.route(to: route, input)
     }
     
@@ -447,7 +447,7 @@ public extension NavigationCoordinatable {
         to route: KeyPath<Self, Transition<Self, Presentation, Void, Output>>,
         onDismiss: @escaping () -> ()
     ) -> Self {
-        stack.dismissalAction[-1] = onDismiss
+        stack.dismissalAction[stack.value.count - 1] = onDismiss
         return self.route(to: route)
     }
     
