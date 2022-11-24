@@ -26,4 +26,9 @@ public class NavigationViewCoordinator<T: Coordinatable>: ViewWrapperCoordinator
     public override init(_ childCoordinator: T, _ view: @escaping (AnyView) -> AnyView) {
         fatalError("view cannot be customized")
     }
+    
+    @available(*, unavailable)
+    public override init(_ childCoordinator: T, _ view: @escaping (any Coordinatable) -> (AnyView) -> AnyView) {
+        fatalError("view cannot be customized")
+    }
 }
