@@ -14,15 +14,21 @@ open class ViewWrapperCoordinator<T: Coordinatable, V: View>: Coordinatable {
 
     public weak var parent: ChildDismissable?
     public let child: T
-    private let viewFactory: (AnyView) -> V
+    private let viewFactory: (any Coordinatable) -> (AnyView) -> V
 
     public func view() -> AnyView {
         AnyView(
-            ViewWrapperCoordinatorView(coordinator: self, viewFactory)
+            ViewWrapperCoordinatorView(coordinator: self, viewFactory(self))
         )
     }
     
     public init(_ childCoordinator: T, _ view: @escaping (AnyView) -> V) {
+        self.child = childCoordinator
+        self.viewFactory = { _ in { view($0) } }
+        self.child.parent = self
+    }
+    
+    public init(_ childCoordinator: T, _ view: @escaping (any Coordinatable) -> (AnyView) -> V) {
         self.child = childCoordinator
         self.viewFactory = view
         self.child.parent = self
