@@ -56,6 +56,14 @@ public extension NavigationStack {
     func isInStack(_ keyPathHash: Int) -> Bool {
         return value.contains { $0.keyPath == keyPathHash }
     }
+
+    /**
+    Checks if a parent coordinator
+     - Returns: Boolean indiacting whether the coordinator has a parent
+     */
+    func hasParent() -> Bool {
+        return self.parent != nil
+    }
 }
 
 struct NavigationStackItem {

@@ -314,7 +314,11 @@ public extension NavigationCoordinatable {
     }
     
     func dismissCoordinator(_ action: (() -> ())? = nil) {
-        stack.parent!.dismissChild(coordinator: self, action: action)
+        guard let parent = stack.parent else {
+            assertionFailure("Can not dismiss coordinator when parent is null.")
+            return
+        }
+        parent.dismissChild(coordinator: self, action: action)
     }
     
     internal func setupRoot() {
