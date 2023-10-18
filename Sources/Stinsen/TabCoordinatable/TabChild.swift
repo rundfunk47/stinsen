@@ -16,7 +16,12 @@ public class TabChild: ObservableObject {
     
     @Published var activeItem: TabChildItem!
     
-    var allItems: [TabChildItem]!
+    var allItems: [TabChildItem]! {
+        didSet {
+            let newItem = allItems?[safe: activeTab]
+            activeItem = newItem
+        }
+    }
     
     public var activeTab: Int {
         didSet {
