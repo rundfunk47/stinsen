@@ -73,26 +73,3 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
         }
     }
 }
-
-// MARK: - uikit present
-extension View {
-    func present(presented: Presented?, onAppear: @escaping () -> Void, onDismiss: @escaping () -> Void) -> some View {
-#if os(iOS)
-        background(UIKitIntrospectionViewController(selector: { $0.parent }) { viewController in
-            guard case let .viewController(uiKitPresented) = presented else { return }
-
-            guard let destination = uiKitPresented.viewController else {
-                return
-            }
-            uiKitPresented.presentationType.presented(
-                parent: viewController,
-                content: destination,
-                onAppeared: onAppear,
-                onDissmissed: onDismiss
-            )
-        })
-#else
-        self
-#endif
-    }
-}
