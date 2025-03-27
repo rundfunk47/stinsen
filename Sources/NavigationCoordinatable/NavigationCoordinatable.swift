@@ -333,7 +333,12 @@ public extension NavigationCoordinatable {
     internal func appear(_ int: Int) {        
         self.popTo(int, nil)
     }
-    
+
+    internal func disappear(_ id: Int) {
+        stack.dismissalAction[id]?()
+        stack.dismissalAction[id] = nil
+    }
+
     func popLast(_ action: (() -> ())? = nil) {
         self.popTo(self.stack.value.count - 2, action)
     }

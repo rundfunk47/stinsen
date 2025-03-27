@@ -17,16 +17,6 @@ public protocol UIKitPresentationType: PresentationType {
     func dismissed(viewController: UIViewController)
 }
 
-public struct ViewPresented {
-    var view: AnyView
-    var presentationType: PresentationType
-
-    init(view: AnyView, presentationType: PresentationType) {
-        self.view = view
-        self.presentationType = presentationType
-    }
-}
-
 public final class ViewControllerPresented {
 
     init(

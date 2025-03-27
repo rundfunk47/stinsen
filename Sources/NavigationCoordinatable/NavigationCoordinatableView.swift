@@ -7,7 +7,7 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
     var coordinator: T
     private let id: Int
     private let router: NavigationRouter<T>
-    @ObservedObject var presentationHelper: PresentationHelper<T>
+    @StateObject var presentationHelper: PresentationHelper<T>
     @ObservedObject var root: NavigationRoot
     
     var start: AnyView?
@@ -32,23 +32,20 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
     @ViewBuilder
     var commonView: some View {
         rootView
-            .present(
-                presented: presentationHelper.presented,
-                onAppear: { coordinator.appear(id) },
-                onDismiss: {
-                    coordinator.stack.dismissalAction[id]?()
-                    coordinator.stack.dismissalAction[id] = nil
-                }
-            )
+            .background(UIKitIntrospectionViewController(selector: { $0.parent }) {
+                presentationHelper.setupViewController($0)
+            })
     }
     
     init(id: Int, coordinator: T) {
         self.id = id
         self.coordinator = coordinator
-        self.presentationHelper = PresentationHelper(
-            id: self.id,
-            coordinator: coordinator
-        )
+        self._presentationHelper = StateObject(wrappedValue: {
+            PresentationHelper(
+                id: id,
+                coordinator: coordinator
+            )
+        }())
 
         self.router = NavigationRouter(
             id: id,
