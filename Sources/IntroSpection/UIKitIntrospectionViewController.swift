@@ -30,16 +30,20 @@ struct UIKitIntrospectionViewController<TargetViewControllerType: UIViewControll
         viewController.view.accessibilityLabel = "IntrospectionUIView<\(TargetViewControllerType.self)>"
         return viewController
     }
-
+    
     public func updateUIViewController(
         _ uiViewController: IntrospectionUIViewController,
         context: UIViewControllerRepresentableContext<UIKitIntrospectionViewController>
     ) {
         DispatchQueue.main.async {
-            guard let targetView = self.selector(uiViewController) else {
-                return
+            DispatchQueue.main.async {
+                DispatchQueue.main.async {
+                    guard let targetView = self.selector(uiViewController) else {
+                        return
+                    }
+                    self.customize(targetView)
+                }
             }
-            self.customize(targetView)
         }
     }
 }
