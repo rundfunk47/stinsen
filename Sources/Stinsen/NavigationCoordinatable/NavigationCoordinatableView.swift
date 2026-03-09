@@ -2,6 +2,18 @@ import Foundation
 import SwiftUI
 import Combine
 
+extension View {
+    /// Applies `.interactiveDismissDisabled()` on iOS 15+. No-op on earlier versions.
+    @ViewBuilder
+    func interactiveDismissDisabledIfAvailable(_ isDisabled: Bool) -> some View {
+        if #available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *) {
+            self.interactiveDismissDisabled(isDisabled)
+        } else {
+            self
+        }
+    }
+}
+
 struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
     var coordinator: T
     private let id: Int
@@ -85,7 +97,11 @@ struct NavigationCoordinatableView<T: NavigationCoordinatable>: View {
             }, content: { () -> AnyView in
                 return { () -> AnyView in
                     if let view = presentationHelper.presented?.view {
-                        return AnyView(view)
+                        return AnyView(
+                            view.interactiveDismissDisabledIfAvailable(
+                                !(presentationHelper.presented?.type.isModalDismissible ?? true)
+                            )
+                        )
                     } else {
                         return AnyView(EmptyView())
                     }

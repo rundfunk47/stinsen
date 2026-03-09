@@ -19,8 +19,9 @@ final class PresentationHelper<T: NavigationCoordinatable>: ObservableObject {
         if value.count - 1 == nextId, self.presented == nil {
             if let value = value[safe: nextId] {
                 let presentable = value.presentable
-                switch value.presentationType {
-                case .modal:
+                let presentationType = value.presentationType
+                switch presentationType {
+                case .modal, .modalNonDismissible:
                     if presentable is AnyView {
                         let view = AnyView(NavigationCoordinatableView(id: nextId, coordinator: coordinator))
 
@@ -33,7 +34,7 @@ final class PresentationHelper<T: NavigationCoordinatable>: ObservableObject {
                                     }
                                 )
                             ),
-                            type: .modal
+                            type: presentationType
                         )
                         #else
                         self.presented = Presented(
@@ -45,13 +46,13 @@ final class PresentationHelper<T: NavigationCoordinatable>: ObservableObject {
                                 )
                                 .navigationViewStyle(StackNavigationViewStyle())
                             ),
-                            type: .modal
+                            type: presentationType
                         )
                         #endif
                     } else {
                         self.presented = Presented(
                             view: presentable.view(),
-                            type: .modal
+                            type: presentationType
                         )
                     }
                 case .push:
