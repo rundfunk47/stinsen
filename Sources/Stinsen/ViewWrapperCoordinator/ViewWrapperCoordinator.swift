@@ -12,6 +12,10 @@ open class ViewWrapperCoordinator<T: Coordinatable, V: View>: Coordinatable {
         parent.dismissChild(coordinator: self, action: action)
     }
 
+    public var canDismissChild: Bool {
+        self.parent?.canDismissChild ?? false
+    }
+
     public weak var parent: ChildDismissable?
     public let child: T
     private let viewFactory: (any Coordinatable) -> (AnyView) -> V

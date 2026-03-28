@@ -7,7 +7,8 @@ struct RoundedButton: View {
         case secondary
         case tertiary
     }
-    
+
+    @Environment(\.isEnabled) var isEnabled
     let title: String
     var action: () -> Void
     let style: Style
@@ -51,6 +52,7 @@ struct RoundedButton: View {
                 .foregroundColor(backgroundColor)
             )
             .frame(maxWidth: 300, minHeight: 50)
+            .opacity(isEnabled ? 1.0 : 0.4)
         })
     }
     

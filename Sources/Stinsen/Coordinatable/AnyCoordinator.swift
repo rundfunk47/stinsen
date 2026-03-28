@@ -18,11 +18,15 @@ fileprivate class _AnyCoordinatorBase: Coordinatable {
     func dismissChild<T: Coordinatable>(coordinator: T, action: (() -> Void)?) {
         fatalError("must override")
     }
-    
+
+    var canDismissChild: Bool {
+        fatalError("must override")
+    }
+
     var id: String {
         fatalError("must override")
     }
-    
+
     init() {
         guard type(of: self) != _AnyCoordinatorBase.self else {
             fatalError("_AnyCoordinatorBase instances can not be created; create a subclass instance instead")
@@ -51,7 +55,11 @@ fileprivate final class _AnyCoordinatorBox<Base: Coordinatable>: _AnyCoordinator
     override func dismissChild<T: Coordinatable>(coordinator: T, action: (() -> Void)?) {
         base.dismissChild(coordinator: coordinator, action: action)
     }
-    
+
+    override var canDismissChild: Bool {
+        base.canDismissChild
+    }
+
     override var id: String {
         base.id
     }
@@ -70,7 +78,11 @@ public final class AnyCoordinator: Coordinatable {
     public func dismissChild<T: Coordinatable>(coordinator: T, action: (() -> Void)?) {
         box.dismissChild(coordinator: coordinator, action: action)
     }
-    
+
+    public var canDismissChild: Bool {
+        box.canDismissChild
+    }
+
     public func view() -> AnyView {
         box.view()
     }

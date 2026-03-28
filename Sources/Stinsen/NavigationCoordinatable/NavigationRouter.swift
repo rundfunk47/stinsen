@@ -34,6 +34,10 @@ public extension NavigationRouter where T: NavigationCoordinatable {
     func dismissCoordinator(_ action: (() -> ())? = nil) {
         coordinator.dismissCoordinator(action)
     }
+
+    var canDismiss: Bool {
+        coordinator.stack.parent?.canDismissChild ?? false
+    }
     
     /**
      Appends a view to the navigation stack.

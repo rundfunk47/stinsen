@@ -51,6 +51,8 @@ public extension TabCoordinatable {
     func dismissChild<T: Coordinatable>(coordinator: T, action: (() -> Void)?) {
         fatalError("Not implemented")
     }
+
+    var canDismissChild: Bool { false }
     
     var parent: ChildDismissable? {
         get {
